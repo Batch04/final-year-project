@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Seeker Dashboard - PartTimeConnect</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <h2>PartTimeConnect</h2>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="nav-search">
+                <div class="search-container">
+                    <div class="search-field">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="jobTitleSearch" placeholder="Job title, keywords..." value="Marketing Assistant">
+                    </div>
+                    <div class="search-divider"></div>
+                    <div class="search-field">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" id="locationSearch" placeholder="Location..." value="San Francisco, CA">
+                    </div>
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="nav-profile">
+                <div class="nav-notifications">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+                
+                <div class="profile-dropdown">
+                    <button class="profile-btn">
+                        <img src="../assets/images/job-seeker-avatar.png" alt="Profile" class="profile-avatar">
+                        <span class="profile-name">John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            My Profile
+                        </a>
+                        <a href="applied-jobs.html" class="dropdown-item">
+                            <i class="fas fa-briefcase"></i>
+                            Applied Jobs
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-heart"></i>
+                            Saved Jobs
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="../auth/login.html" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Welcome back, John!</h1>
+                    <p>Find your perfect part-time opportunity in San Francisco, CA</p>
+                </div>
+                
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Applications</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Interviews</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Saved Jobs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Completion -->
+            <div class="profile-completion">
+                <div class="completion-header">
+                    <h3>Complete Your Profile</h3>
+                    <span class="completion-percentage">75%</span>
+                </div>
+                <div class="completion-bar">
+                    <div class="completion-progress" style="width: 75%"></div>
+                </div>
+                <p>Add your skills and experience to get better job matches</p>
+                <button class="btn btn-outline">Complete Profile</button>
+            </div>
+
+            <!-- Job Listings Section -->
+            <div class="jobs-section">
+                <div class="section-header">
+                    <h2>Recommended Jobs for You</h2>
+                    <div class="filter-controls">
+                        <select class="filter-select">
+                            <option>All Job Types</option>
+                            <option>Part-time</option>
+                            <option>Contract</option>
+                            <option>Freelance</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>All Salaries</option>
+                            <option>$15-20/hr</option>
+                            <option>$20-25/hr</option>
+                            <option>$25+/hr</option>
+                        </select>
+                        <button class="filter-btn">
+                            <i class="fas fa-filter"></i>
+                            More Filters
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Job Cards -->
+                <div class="job-grid">
+                    <!-- Job Card 1 -->
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="company-logo">
+                                <img src="https://via.placeholder.com/60x60/0077B5/FFFFFF?text=TC" alt="TechCorp">
+                            </div>
+                            <div class="job-basic-info">
+                                <h3 class="job-title">Marketing Assistant</h3>
+                                <p class="company-name">TechCorp Solutions</p>
+                                <div class="job-meta">
+                                    <span class="job-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        San Francisco, CA
+                                    </span>
+                                    <span class="job-type">Part-time</span>
+                                </div>
+                            </div>
+                            <button class="save-job-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="job-details">
+                            <div class="job-salary">
+                                <i class="fas fa-dollar-sign"></i>
+                                $22-25/hour
+                            </div>
+                            <div class="job-time">
+                                <i class="fas fa-clock"></i>
+                                20-25 hours/week
+                            </div>
+                        </div>
+
+                        <div class="job-description">
+                            <p>We're looking for a creative Marketing Assistant to help with social media campaigns, content creation, and market research. Perfect for students or professionals seeking flexible work.</p>
+                        </div>
+
+                        <div class="job-tags">
+                            <span class="tag">Social Media</span>
+                            <span class="tag">Content Creation</span>
+                            <span class="tag">Marketing</span>
+                        </div>
+
+                        <div class="job-footer">
+                            <div class="job-posted">
+                                <i class="fas fa-calendar"></i>
+                                Posted 2 days ago
+                            </div>
+                            <button class="btn btn-primary apply-btn">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 2 -->
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="company-logo">
+                                <img src="https://via.placeholder.com/60x60/FF6B35/FFFFFF?text=RC" alt="RetailCo">
+                            </div>
+                            <div class="job-basic-info">
+                                <h3 class="job-title">Customer Service Representative</h3>
+                                <p class="company-name">RetailCo</p>
+                                <div class="job-meta">
+                                    <span class="job-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        San Francisco, CA
+                                    </span>
+                                    <span class="job-type">Part-time</span>
+                                </div>
+                            </div>
+                            <button class="save-job-btn saved">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="job-details">
+                            <div class="job-salary">
+                                <i class="fas fa-dollar-sign"></i>
+                                $18-20/hour
+                            </div>
+                            <div class="job-time">
+                                <i class="fas fa-clock"></i>
+                                15-20 hours/week
+                            </div>
+                        </div>
+
+                        <div class="job-description">
+                            <p>Join our customer service team! Handle customer inquiries, process orders, and provide excellent support. Flexible scheduling available for students and working professionals.</p>
+                        </div>
+
+                        <div class="job-tags">
+                            <span class="tag">Customer Service</span>
+                            <span class="tag">Communication</span>
+                            <span class="tag">Retail</span>
+                        </div>
+
+                        <div class="job-footer">
+                            <div class="job-posted">
+                                <i class="fas fa-calendar"></i>
+                                Posted 1 week ago
+                            </div>
+                            <button class="btn btn-primary apply-btn">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 3 -->
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="company-logo">
+                                <img src="https://via.placeholder.com/60x60/10B981/FFFFFF?text=DC" alt="DesignCo">
+                            </div>
+                            <div class="job-basic-info">
+                                <h3 class="job-title">Graphic Design Intern</h3>
+                                <p class="company-name">DesignCo Studio</p>
+                                <div class="job-meta">
+                                    <span class="job-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        San Francisco, CA
+                                    </span>
+                                    <span class="job-type">Internship</span>
+                                </div>
+                            </div>
+                            <button class="save-job-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="job-details">
+                            <div class="job-salary">
+                                <i class="fas fa-dollar-sign"></i>
+                                $20-23/hour
+                            </div>
+                            <div class="job-time">
+                                <i class="fas fa-clock"></i>
+                                10-15 hours/week
+                            </div>
+                        </div>
+
+                        <div class="job-description">
+                            <p>Creative internship opportunity for aspiring graphic designers. Work on real client projects, learn industry tools, and build your portfolio while gaining valuable experience.</p>
+                        </div>
+
+                        <div class="job-tags">
+                            <span class="tag">Graphic Design</span>
+                            <span class="tag">Adobe Creative</span>
+                            <span class="tag">Internship</span>
+                        </div>
+
+                        <div class="job-footer">
+                            <div class="job-posted">
+                                <i class="fas fa-calendar"></i>
+                                Posted 3 days ago
+                            </div>
+                            <button class="btn btn-primary apply-btn">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 4 -->
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="company-logo">
+                                <img src="https://via.placeholder.com/60x60/8B5CF6/FFFFFF?text=FC" alt="FoodCo">
+                            </div>
+                            <div class="job-basic-info">
+                                <h3 class="job-title">Barista</h3>
+                                <p class="company-name">FreshCafe</p>
+                                <div class="job-meta">
+                                    <span class="job-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        San Francisco, CA
+                                    </span>
+                                    <span class="job-type">Part-time</span>
+                                </div>
+                            </div>
+                            <button class="save-job-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <div class="job-details">
+                            <div class="job-salary">
+                                <i class="fas fa-dollar-sign"></i>
+                                $16-18/hour + tips
+                            </div>
+                            <div class="job-time">
+                                <i class="fas fa-clock"></i>
+                                20-30 hours/week
+                            </div>
+                        </div>
+
+                        <div class="job-description">
+                            <p>Join our friendly cafe team! Prepare coffee drinks, serve customers, and maintain a clean environment. No experience required - we provide training. Great for students!</p>
+                        </div>
+
+                        <div class="job-tags">
+                            <span class="tag">Food Service</span>
+                            <span class="tag">Customer Service</span>
+                            <span class="tag">Entry Level</span>
+                        </div>
+
+                        <div class="job-footer">
+                            <div class="job-posted">
+                                <i class="fas fa-calendar"></i>
+                                Posted 5 days ago
+                            </div>
+                            <button class="btn btn-primary apply-btn">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More -->
+                <div class="load-more-section">
+                    <button class="btn btn-outline load-more-btn">
+                        Load More Jobs
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts/dashboard.js"></script>
+</body>
+</html>
+

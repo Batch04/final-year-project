@@ -1,0 +1,180 @@
+/* Basic css style  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+    scroll-behavior: smooth;
+}
+
+/* colors are golobal declared */
+:root {
+    --blue: #0384fc;
+    --white: #f5f6f7;
+    --black: #000;
+    --gray: #d1d1d1;
+}
+
+::selection {
+    background: var(--white);
+    color: var(--blue);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #3498db;
+    border-radius: 6px;
+    border: 3px solid #f0f0f0;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 4vw;
+    position: relative;
+}
+
+
+/* navigation bar css */
+
+.navigation-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 4vw;
+    background-color: var(--white);
+    box-shadow: 0px 0px 20px grey;
+    border-bottom: 1px solid var(--gray);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo-container {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container h1 a {
+    text-decoration: none;
+    color: var(--blue);
+}
+
+.nav-links {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-links ul {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 1.1rem;
+}
+
+.nav-links ul li a:hover {
+    color: var(--blue);
+}
+
+.account-managment {
+    width: 17%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.account-managment div {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-managment div a {
+    width: 60%;
+    height: 55%;
+    border-radius: 10px;
+}
+
+.login-button,
+.signup-button {
+    width: 100%;
+    height: 100%;
+}
+
+.login-button {
+    background-color: var(--white);
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+.login-button:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    border: 0px solid transparent;
+    cursor: pointer;
+}
+
+.signup-button {
+    background-color: var(--blue);
+    color: var(--white);
+    border: 1px solid var(--blue);
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+.signup-button:hover {
+    background-color: var(--white);
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    font-size: 1rem;
+}
+
+/* main css code starts */
+
+
+.image-overyplay {
+    width: 100%;
+    height: 100vh;
+    background-color: aqua;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+}
+
+.background-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
