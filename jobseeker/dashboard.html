@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css" >
+    <title>Document</title>
+</head>
+<body>
+    <header class="navbar">
+        <h2>JOBSY</h2>
+        <div class="search">
+            <input type="text" name="search" placeholder="Job title,keywords..." >
+            <input type="text" name="loc" placeholder="Location..." >
+            <input type="button" value="search" onclick="search()" id="search_btn">
+        </div>
+
+        <div class="profile">
+            <div class="notification">
+                <p>notification</p>
+            </div>
+            <div class="profile-dropdown">
+                <div class="details">
+                  <a href="#">My Profile</a>
+                </div>
+                <div class="dropdown-menu">
+                    <a href="#" class="menu-items">Home</a>
+                    <a href="#" class="menu-items">Dashboard</a>
+                    <a href="#" class="menu-items">Applied jobs</a>
+                    <a href="#" class="menu-items">Settings</a>
+                    <a href="#" class="menu-items">Logout</a>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+
+    <script>
+       function search()
+    {
+        alert("searching")
+    }
+    </script>
+</body>
+</html>
