@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dashboard.css" >
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
     <title>Document</title>
+    <style>
+
+    </style>
 </head>
+
 <body>
-    <header class="navbar">
-        <h2>JOBSY</h2>
+    <nav class="navbar">
+        <h2 style=" color: rgb(36, 140, 201); font-size:xx-large;">PartTimeConnect</h2>
         <div class="search">
-            <input type="text" name="search" placeholder="Job title,keywords..." >
-            <input type="text" name="loc" placeholder="Location..." >
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" name="search" placeholder="Job title,keywords...">
+            <span class="material-symbols-outlined">location_on</span>
+            <input type="text" name="loc" placeholder="Location...">
             <input type="button" value="search" onclick="search()" id="search_btn">
         </div>
 
-        <div class="profile">
-            <div class="notification">
-                <p>notification</p>
+        <div class="profile-details">
+            <div class="notification" style="width: 40px;">
+                <span class="material-symbols-outlined">notifications</span>
             </div>
-            <div class="profile-dropdown">
-                <div class="details">
-                  <a href="#">My Profile</a>
-                </div>
-                <div class="dropdown-menu">
-                    <a href="#" class="menu-items">Home</a>
-                    <a href="#" class="menu-items">Dashboard</a>
-                    <a href="#" class="menu-items">Applied jobs</a>
-                    <a href="#" class="menu-items">Settings</a>
-                    <a href="#" class="menu-items">Logout</a>
-                </div>
+
+            <div class="profile-info">
+                <span class="material-symbols-outlined">account_circle</span>
+                <span>job</span>
             </div>
-            
+
         </div>
-    </header>
+    </nav>
+    <main class="main-conten">
+        <div class="conten">
+            <div class="header">
+                <h1 style="font-size: 30px;">Welcome back, job!</h1>
+                <p style="padding: 20px;color: rgba(128, 128, 128, 0.89); ">Find your perfect part-time opportunity in Sam Francisco, CA</p>
+            </div>
+            <div class="quick-stats">
+                <div class="stat-card">
+                    
+                </div>
+            </div>
+        </div>
+
+    </main>
 
 
     <script>
-       function search()
-    {
-        alert("searching")
-    }
+        function search() {
+            alert("searching")
+        }
     </script>
 </body>
+
 </html>
