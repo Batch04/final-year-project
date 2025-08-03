@@ -275,6 +275,7 @@ input:focus {
     border-radius: 20px;
     background-color: var(--blue);
     color: var(--white);
+    cursor: pointer;
 }
 
 .buttons-container {
