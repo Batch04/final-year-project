@@ -5,49 +5,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/application.css">
+    <link rel="stylesheet" href="styles/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scrpit/jquery.js"></script>
+    <script src="script/loadhead.js"></script>
+    
     <title>Document</title>
-    <style>
-
-    </style>
 </head>
 
 <body>
-    <nav class="navbar">
-        <h2 style=" color: rgb(36, 140, 201); font-size:xx-large;">PartTimeConnect</h2>
-        <div class="search">
-            <span class="material-symbols-outlined">search</span>
-            <input type="text" name="search" placeholder="Job title,keywords...">
-            <span class="material-symbols-outlined">location_on</span>
-            <input type="text" name="loc" placeholder="Location...">
-            <input type="button" value="search" onclick="search()" id="search_btn">
-        </div>
-
-        <div class="profile-details">
-            <div class="notification" style="width: 40px;">
-                <span class="material-symbols-outlined">notifications</span>
-            </div>
-
-            <div class="profile-info">
-                <span class="material-symbols-outlined">account_circle</span>
-                <span>job</span>
-            </div>
-
-        </div>
-    </nav>
+    <header id="header"></header>
     <main class="main-conten">
         <div class="conten">
             <div class="header">
-                <h1 style="font-size: 30px;">Welcome back, job!</h1>
-                <p style="padding: 20px;color: rgba(128, 128, 128, 0.89); ">Find your perfect part-time opportunity in Sam Francisco, CA</p>
+                <h2>Welcome back, job!</h2>
+                <p>Find your perfect part-time opportunity in
+                    Sam Francisco, CA</p>
             </div>
+
             <div class="quick-stats">
                 <div class="stat-card">
-                    
+                    <div class="star-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span><b>12</b></span>
+                        <p>Applications</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="star-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span><b>3</b></span>
+                        <p>Interviews</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="star-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span><b>8</b></span>
+                        <p>Saved jobs</p>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="jobs-section">
+            <div class="section-header">
+                <h2>Recommended Jobs for You</h2>
+                <div class="section-filter">
+                    <select class="filter-select">
+                        <option value="All Job Types">All Job Types</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Content">Content</option>
+                        <option value="Freelance">Freelance</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>All Salaries</option>
+                        <option>$15-20/hr</option>
+                        <option>$20-25/hr</option>
+                        <option>$25+/hr</option>
+                    </select>
+                    <button class="filter-btn">
+                        <i class="fas fa-filter"></i>
+                        More Filters
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="grid-container">
+                <div class="job-card">
+                    <div class="company-basic-details">
+                        <div class="logo-container">
+                            <img src="images/logo.png" alt="">
+                        </div>
+                        <div class="saved-container">
+                            <button class="saved-button">
+                                <i class="fa-solid fa-heart"></i>
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="job-basic-deatils">
+                        <h2 class="job-title">Marketing Assistant</h2>
+                        <p class="company-name">Starterwave</p>
+                    </div>
+                    <div class="job-location-detalis">
+                        <div class="job-location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p>Tirupati Andhra Pradesh</p>
+                        </div>
+                        <div class="job-type">
+                            <span>Part Time</span>
+                        </div>
+                    </div>
+                    <div class="job-pay">
+                        <div class="job-slary">
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            <p>2000/day</p>
+                        </div>
+                        <div class="job-time">
+                            <i class="fa-solid fa-clock"></i>
+                            <p>10hrs/day</p>
+                        </div>
+                    </div>
+                    <div class="job-status-details">
+                        <div class="job-status">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <p>Applied Succesfully</p>
+                        </div>
+                        <div class="applied-date">
+                            <p>Applied on 25 May 2025 </p>
+                        </div>
+                    </div>
+                    <div class="view-more">
+                        <button>View More</button>
+                    </div>
+                </div>
+
+
+                <div class="job-card">
+                    <div class="company-basic-details">
+                        <div class="logo-container">
+                            <img src="images/logo.png" alt="">
+                        </div>
+                        <div class="saved-container">
+                            <button class="saved-button">
+                                <i class="fa-solid fa-heart"></i>
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="job-basic-deatils">
+                        <h2 class="job-title">Marketing Assistant</h2>
+                        <p class="company-name">Starterwave</p>
+                    </div>
+                    <div class="job-location-detalis">
+                        <div class="job-location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p>Tirupati Andhra Pradesh</p>
+                        </div>
+                        <div class="job-type">
+                            <span>Part Time</span>
+                        </div>
+                    </div>
+                    <div class="job-pay">
+                        <div class="job-slary">
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            <p>2000/day</p>
+                        </div>
+                        <div class="job-time">
+                            <i class="fa-solid fa-clock"></i>
+                            <p>10hrs/day</p>
+                        </div>
+                    </div>
+                    <div class="job-status-details">
+                        <div class="job-status">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <p>Applied Succesfully</p>
+                        </div>
+                        <div class="applied-date">
+                            <p>Applied on 25 May 2025 </p>
+                        </div>
+                    </div>
+                    <div class="view-more">
+                        <button>View More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </main>
 
