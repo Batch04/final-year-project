@@ -25,18 +25,25 @@
         border: 3px solid #f0f0f0;
     }
 
-    *{
-         font-family: poppins, sans-serif;
-         transition: all 0.4s  ease-in-out;
+    * {
+        font-family: poppins, sans-serif;
+        transition: all 0.4s ease-in-out;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    
-h1,
-.company-title {
-    font-family: "outfit", sans-serif;
-}
 
-.navbar {
+    h1,
+    .company-title {
+        font-family: "outfit", sans-serif;
+    }
+
+    body {
+        padding-top: 8vh;
+    }
+
+    .navbar {
         width: 100%;
         height: 8vh;
         background-color: var(--white);
@@ -146,11 +153,11 @@ h1,
         cursor: pointer;
     }
 
-    .profile-section:hover>.dropdown-menu{
+    .profile-section:hover>.dropdown-menu {
         display: flex;
     }
 
-    .profile-section:hover>i{
+    .profile-section:hover>i {
         transform: rotate(180deg);
     }
 
@@ -168,11 +175,11 @@ h1,
         height: 100%;
     }
 
-    .profile-name{
+    .profile-name {
         color: var(--blue);
     }
 
-    .fas.fa-chevron-down{
+    .fas.fa-chevron-down {
         color: var(--blue);
     }
 
@@ -211,8 +218,8 @@ h1,
         text-decoration: none;
         border-radius: 7px;
     }
-    
-    .dropdown-item div{
+
+    .dropdown-item div {
         width: 80%;
         height: 100%;
         display: flex;
@@ -223,9 +230,9 @@ h1,
     }
 
 
-     .dropdown-item:hover{
+    .dropdown-item:hover {
         background-color: rgba(177, 177, 177, 0.205);
-     }
+    }
 
     .dropdown-item div i {
         font-size: 1.3rem;
@@ -241,5 +248,3 @@ h1,
         font-size: 1.1rem;
         color: var(--blue);
     }
-
-
