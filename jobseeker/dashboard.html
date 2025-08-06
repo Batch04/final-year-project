@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/dashboard.css">
-    <link rel="stylesheet" href="styles/application.css">
+    <link rel="stylesheet" href="styles/savedjobs.css">
     <link rel="stylesheet" href="styles/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="../scrpit/jquery.js"></script>
     <script src="script/loadhead.js"></script>
-    
+
     <title>Document</title>
 </head>
 
 <body>
     <header id="header"></header>
-    <main class="main-conten">
-        <div class="conten">
+    <div class="main-content">
+        <div class="content">
             <div class="header">
                 <h2>Welcome back, job!</h2>
                 <p>Find your perfect part-time opportunity in
@@ -57,6 +57,7 @@
                 </div>
             </div>
         </div>
+
         <div class="jobs-section">
             <div class="section-header">
                 <h2>Recommended Jobs for You</h2>
@@ -69,128 +70,213 @@
                     </select>
                     <select class="filter-select">
                         <option>All Salaries</option>
-                        <option>$15-20/hr</option>
-                        <option>$20-25/hr</option>
-                        <option>$25+/hr</option>
+                        <option>&#8377;200-400/day</option>
+                        <option>&#8377;500-1000/day</option>
+                        <option>&#8377;1000+/day</option>
                     </select>
-                    <button class="filter-btn">
+                    <button class="filter-btn" onclick="filter()">
                         <i class="fas fa-filter"></i>
                         More Filters
                     </button>
+                    <div class="dropdown-filter" id="dropdown-filters">
+                        <form>
+                            <div class="filter-class">
+                                <h3>Experience Level</h3>
+                                <label class="dropdown-label"><input type="radio" name="level">Intern / Fresher</label>
+                                <label class="dropdown-label"><input type="radio" name="level">0–1 year</label>
+                                <label class="dropdown-label"><input type="radio" name="level">1-3 years</label>
+                                <label class="dropdown-label"><input type="radio" name="level">3+ years</label>
+                            </div>
+
+                            <div class="filter-class">
+                                <h3>Job Type</h3>
+                                <label class="dropdown-label"><input type="checkbox">On-site</label>
+                                <label class="dropdown-label"><input type="checkbox">Remote</label>
+                                <label class="dropdown-label"><input type="checkbox">Hybrid</label>
+                            </div>
+
+                            <div class="filter-class">
+                                <h3>Work Hours</h3>
+                                <label class="dropdown-label"><input type="checkbox">Morning / Day Shift</label>
+                                <label class="dropdown-label"><input type="checkbox">Evening Shift</label>
+                                <label class="dropdown-label"><input type="checkbox">Night Shift</label>
+                                <label class="dropdown-label"><input type="checkbox">Flexible Hours</label>
+                            </div>
+
+                            <div class="filter-class">
+                                <h3>Industry</h3>
+                                <label class="dropdown-label"><input type="checkbox">IT / Software</label>
+                                <label class="dropdown-label"><input type="checkbox">Marketing / Sales</label>
+                                <label class="dropdown-label"><input type="checkbox">Education / Training</label>
+                                <label class="dropdown-label"><input type="checkbox">Healthcare</label>
+                            </div>
+
+                            <div class="filter-class">
+                                <h3>Posted Date</h3>
+                                <label class="dropdown-label"><input type="radio" name="date">Last 24 hours</label>
+                                <label class="dropdown-label"><input type="radio" name="date">Last 3 days</label>
+                                <label class="dropdown-label"><input type="radio" name="date">Last 7 days</label>
+                                <label class="dropdown-label"><input type="radio" name="date">Last 30 days</label>
+
+                                <h3>Salaries</h3>
+                                <label class="dropdown-label"><input type="radio" name="date">All</label>
+                                <label class="dropdown-label"><input type="radio" name="date">0-500/day</label>
+                                <label class="dropdown-label"><input type="radio" name="date">500-1000/day</label>
+                                <label class="dropdown-label"><input type="radio" name="date">above 1000/day</label>
+                            </div>
+                            <div class="btn-filter">
+                                <button type="reset" class="clear-btn">clear</button>
+                                <button type="submit" class="apply-btn">Apply</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
 
-            </div>
-
-            <div class="grid-container">
-                <div class="job-card">
-                    <div class="company-basic-details">
-                        <div class="logo-container">
-                            <img src="images/logo.png" alt="">
-                        </div>
-                        <div class="saved-container">
-                            <button class="saved-button">
-                                <i class="fa-solid fa-heart"></i>
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="job-basic-deatils">
-                        <h2 class="job-title">Marketing Assistant</h2>
-                        <p class="company-name">Starterwave</p>
-                    </div>
-                    <div class="job-location-detalis">
-                        <div class="job-location">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <p>Tirupati Andhra Pradesh</p>
-                        </div>
-                        <div class="job-type">
-                            <span>Part Time</span>
-                        </div>
-                    </div>
-                    <div class="job-pay">
-                        <div class="job-slary">
-                            <i class="fa-solid fa-indian-rupee-sign"></i>
-                            <p>2000/day</p>
-                        </div>
-                        <div class="job-time">
-                            <i class="fa-solid fa-clock"></i>
-                            <p>10hrs/day</p>
-                        </div>
-                    </div>
-                    <div class="job-status-details">
-                        <div class="job-status">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <p>Applied Succesfully</p>
-                        </div>
-                        <div class="applied-date">
-                            <p>Applied on 25 May 2025 </p>
-                        </div>
-                    </div>
-                    <div class="view-more">
-                        <button>View More</button>
-                    </div>
-                </div>
-
-
-                <div class="job-card">
-                    <div class="company-basic-details">
-                        <div class="logo-container">
-                            <img src="images/logo.png" alt="">
-                        </div>
-                        <div class="saved-container">
-                            <button class="saved-button">
-                                <i class="fa-solid fa-heart"></i>
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="job-basic-deatils">
-                        <h2 class="job-title">Marketing Assistant</h2>
-                        <p class="company-name">Starterwave</p>
-                    </div>
-                    <div class="job-location-detalis">
-                        <div class="job-location">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <p>Tirupati Andhra Pradesh</p>
-                        </div>
-                        <div class="job-type">
-                            <span>Part Time</span>
-                        </div>
-                    </div>
-                    <div class="job-pay">
-                        <div class="job-slary">
-                            <i class="fa-solid fa-indian-rupee-sign"></i>
-                            <p>2000/day</p>
-                        </div>
-                        <div class="job-time">
-                            <i class="fa-solid fa-clock"></i>
-                            <p>10hrs/day</p>
-                        </div>
-                    </div>
-                    <div class="job-status-details">
-                        <div class="job-status">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <p>Applied Succesfully</p>
-                        </div>
-                        <div class="applied-date">
-                            <p>Applied on 25 May 2025 </p>
-                        </div>
-                    </div>
-                    <div class="view-more">
-                        <button>View More</button>
-                    </div>
-                </div>
             </div>
         </div>
 
+        <div class="grid-container">
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="logo-container">
+                        <div class="company-logo">
+                            <img src="images/logo.png" alt="TechCorp">
+                        </div>
+                        <div class="save-container">
+                            <button class="save-job-btn">
+                                <i class="far fa-heart"></i>
+                                <i class="fa-solid fa-heart "></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="job-basic-info">
+                        <h3 class="job-title">Marketing Assistant</h3>
+                        <p class="company-name">TechCorp Solutions</p>
+                        <div class="job-meta">
+                            <span class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p>tirupati, Andhra Pradesh</p>
+                            </span>
+                            <span class="job-type">Part-time</span>
+                        </div>
+                    </div>
 
-    </main>
+                </div>
+                >
+                <div class="job-details">
+                    <div class="job-container">
+
+                        <div class="job-salary">
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            <p>2000/day</p>
+                        </div>
+                        <div class="job-time">
+                            <i class="fas fa-clock"></i>
+                            <p>20-25 hours/week</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job-description">
+                    <p>We're looking for a creative Marketing Assistant to help with social media campaigns, content
+                        creation, and market research. Perfect for students or professionals seeking flexible work.
+                    </p>
+                </div>
+
+                <div class="job-footer">
+                    <div class="footer-container">
+                        <div class="job-posted">
+                            Posted 2 days ago
+                        </div>
+                        <div class="apply-container">
+                            <button class="btn btn-primary apply-btn">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="logo-container">
+                        <div class="company-logo">
+                            <img src="images/logo.png" alt="TechCorp">
+                        </div>
+                        <div class="save-container">
+                            <button class="save-job-btn">
+                                <i class="far fa-heart"></i>
+                                <i class="fa-solid fa-heart "></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="job-basic-info">
+                        <h3 class="job-title">Marketing Assistant</h3>
+                        <p class="company-name">TechCorp Solutions</p>
+                        <div class="job-meta">
+                            <span class="job-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p>tirupati, Andhra Pradesh</p>
+                            </span>
+                            <span class="job-type">Part-time</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="job-details">
+                    <div class="job-container">
+
+                        <div class="job-salary">
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            <p>2000/day</p>
+                        </div>
+                        <div class="job-time">
+                            <i class="fas fa-clock"></i>
+                            <p>20-25 hours/week</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job-description">
+                    <p>We're looking for a creative Marketing Assistant to help with social media campaigns, content
+                        creation, and market research. Perfect for students or professionals seeking flexible work.
+                    </p>
+                </div>
+
+                <div class="job-footer">
+                    <div class="footer-container">
+                        <div class="job-posted">
+                            Posted 2 days ago
+                        </div>
+
+                        <div class="apply-container">
+                            <button class="btn btn-primary apply-btn">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
 
 
     <script>
         function search() {
             alert("searching")
         }
+
+        function filter() {
+            let filter = document.getElementById("dropdown-filters");
+            filter.style.display = filter.style.display === "block" ? "none" : "block";
+        }
+
     </script>
 </body>
 
