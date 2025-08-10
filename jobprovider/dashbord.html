@@ -14,6 +14,334 @@
 
 <body>
     <header id="header"></header>
+    <div class="main-container">
+        <div class="dashboard-header">
+            <div class="welcome-section">
+                <h2>Welcome back, TechCorp!</h2>
+                <p>Manage your job postings and find the perfect candidates</p>
+            </div>
+
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Active Jobs</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">47</span>
+                        <span class="stat-label"> Applicants</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Hired</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-action-conatiner">
+            <div class="quick-actions-section">
+                <h2>Quick Actions</h2>
+                <div class="action-cards">
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="action-deatils">
+                            <h3>Post New Job</h3>
+                            <p>Create a new job posting to attract candidates</p>
+                            <button class="btn btn-primary">Get Started</button>
+                        </div>
+                    </div>
+
+                    <div class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="action-deatils">
+                            <h3>Browse Candidates</h3>
+                            <p>Search through available candidates</p>
+                            <button class="btn btn-outline">Browse Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-applications">
+            <div class="section-header">
+                <h2>Recent Applications</h2>
+                <a href="#" class="view-all-link">View All Applications</a>
+            </div>
+
+            <div class="applications-list">
+                <!-- Application 1 -->
+                <div class="application-card">
+                    <div class="applicant-info">
+                        <div class="applicant-avatar">
+                            <img src="images/person-image.png" alt="John Smith">
+                        </div>
+                        <div class="applicant-details">
+                            <h2>John Smith</h2>
+                            <p class="applied-for">Applied for: Marketing Assistant</p>
+
+                        </div>
+                    </div>
+
+                    <div class="application-status">
+                        <span class="status-badge new">New</span>
+                        <div class="application-time">2 hours ago</div>
+                    </div>
+
+                    <div class="application-actions">
+                        <button class="btn btn-outline btn-sm">View Profile</button>
+                    </div>
+                </div>
+
+                <!-- Application 2 -->
+                <div class="application-card">
+                    <div class="applicant-info">
+                        <div class="applicant-avatar">
+                            <img src="images/person-image.png" alt="Emily Martinez">
+                        </div>
+                        <div class="applicant-details">
+                            <h2>Emily Martinez</h2>
+                            <p class="applied-for">Applied for: Customer Service Rep</p>
+
+                        </div>
+                    </div>
+
+                    <div class="application-status">
+                        <span class="status-badge reviewed">New</span>
+                        <div class="application-time">1 day ago</div>
+                    </div>
+
+                    <div class="application-actions">
+                        <button class="btn btn-outline btn-sm">View Profile</button>
+                    </div>
+                </div>
+
+                <div class="application-card">
+                    <div class="applicant-info">
+                        <div class="applicant-avatar">
+                            <img src="images/person-image.png" alt="Michael Johnson">
+                        </div>
+                        <div class="applicant-details">
+                            <h2>Michael Johnson</h2>
+                            <p class="applied-for">Applied for: Data Entry Clerk</p>
+
+                        </div>
+                    </div>
+
+                    <div class="application-status">
+                        <span class="status-badge interview">New</span>
+                        <div class="application-time">3 days ago</div>
+                    </div>
+
+                    <div class="application-actions">
+                        <button class="btn btn-outline btn-sm">View Profile</button>
+                    </div>
+                </div>
+                <div class="application-card">
+                    <div class="applicant-info">
+                        <div class="applicant-avatar">
+                            <img src="images/person-image.png" alt="Michael Johnson">
+                        </div>
+                        <div class="applicant-details">
+                            <h2>Michael Johnson</h2>
+                            <p class="applied-for">Applied for: Data Entry Clerk</p>
+
+                        </div>
+                    </div>
+
+                    <div class="application-status">
+                        <span class="status-badge interview">New</span>
+                        <div class="application-time">3 days ago</div>
+                    </div>
+
+                    <div class="application-actions">
+                        <button class="btn btn-outline btn-sm">View Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="job-postings-section">
+            <div class="section-headers">
+                <h2>Your Active Job Postings</h2>
+                <button class="btn btn-primary post-button">
+                    <i class="fas fa-plus"></i>
+                    Post New Job
+                </button>
+            </div>
+
+            <div class="job-postings-grid">
+                <div class="job-posting-card">
+                    <div class="job-header">
+                        <div class="job-title-section">
+                            <h3>Marketing Assistant</h3>
+                            <div class="job-meta">
+                                <span class="job-type">Part-time</span>
+                                <span class="job-salary">$22-25/hour</span>
+                            </div>
+                        </div>
+                        <div class="job-status">
+                            <span class="status-badge active">Active</span>
+                        </div>
+                    </div>
+
+                    <div class="job-stats">
+                        <div class="stat">
+                            <i class="fas fa-eye"></i>
+                            <span>234 views</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>18 applicants</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-calendar"></i>
+                            <span>Posted 5 days ago</span>
+                        </div>
+                    </div>
+
+                    <div class="job-description">
+                        <p>Looking for a creative Marketing Assistant to help with social media campaigns and content
+                            creation...</p>
+                    </div>
+
+                    <div class="job-actions">
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-users"></i>
+                            View Applicants (18)
+                        </button>
+                        <button class="action-btn" title="More options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- <div class="job-posting-card">
+                    <div class="job-header">
+                        <div class="job-title-section">
+                            <h3>Customer Service Representative</h3>
+                            <div class="job-meta">
+                                <span class="job-type">Part-time</span>
+                                <span class="job-salary">$18-20/hour</span>
+                            </div>
+                        </div>
+                        <div class="job-status">
+                            <span class="status-badge active">Active</span>
+                        </div>
+                    </div>
+
+                    <div class="job-stats">
+                        <div class="stat">
+                            <i class="fas fa-eye"></i>
+                            <span>156 views</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>12 applicants</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-calendar"></i>
+                            <span>Posted 1 week ago</span>
+                        </div>
+                    </div>
+
+                    <div class="job-description">
+                        <p>Join our customer service team! Handle customer inquiries and provide excellent support...
+                        </p>
+                    </div>
+
+                    <div class="job-actions">
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-users"></i>
+                            View Applicants (12)
+                        </button>
+                        <button class="action-btn" title="More options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="job-posting-card">
+                    <div class="job-header">
+                        <div class="job-title-section">
+                            <h3>Data Entry Clerk</h3>
+                            <div class="job-meta">
+                                <span class="job-type">Part-time</span>
+                                <span class="job-salary">$16-18/hour</span>
+                            </div>
+                        </div>
+                        <div class="job-status">
+                            <span class="status-badge paused">Paused</span>
+                        </div>
+                    </div>
+
+                    <div class="job-stats">
+                        <div class="stat">
+                            <i class="fas fa-eye"></i>
+                            <span>89 views</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>7 applicants</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-calendar"></i>
+                            <span>Posted 2 weeks ago</span>
+                        </div>
+                    </div>
+
+                    <div class="job-description">
+                        <p>Seeking detail-oriented individual for data entry tasks. Flexible hours available...</p>
+                    </div>
+
+                    <div class="job-actions">
+                        <button class="btn btn-success btn-sm">
+                            <i class="fas fa-play"></i>
+                            Resume
+                        </button>
+                        <button class="btn btn-outline btn-sm">
+                            <i class="fas fa-users"></i>
+                            View Applicants (7)
+                        </button>
+                        <button class="action-btn" title="More options">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
