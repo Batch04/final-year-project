@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title>PartTimeConnect – Job Provider Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f2f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-top: 80px; 
+        }
+
+        .container {
+            background: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .login-btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #138496;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Job Provider Login</h2>
+        <form id="loginForm">
+            <input type="text" id="provider-username" placeholder="Enter username" required><br>
+            <input type="password" id="provider-password" placeholder="Enter password" required><br>
+            <a href="forgot-password.html">Forgot Password?</a><br><br> 
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p style="margin-top: 20px;"><a href="index.html">← Back to Home</a></p>
+    </div>
+
+    <nav class="navbar">
+    <div class="nav-logo">PartTimeConnect</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+    </nav>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // stop form from reloading page
+
+            const username = document.getElementById("provider-username").value.trim();
+            const password = document.getElementById("provider-password").value.trim();
+
+            // Dummy login (change later when you use backend)
+            if (username === "provider" && password === "1234") {
+                alert("Login successful!");
+                window.location.href = "provider_dashboard.html";
+            } else {
+                alert("Invalid username or password!");
+            }
+        });
+    </script>
+</body>
+</html>

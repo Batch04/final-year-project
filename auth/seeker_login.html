@@ -1,0 +1,120 @@
+<html>
+<head>
+
+    <title>PartTimeConnect– Job Seeker Login</title>
+    <link rel="stylesheet" href="style.css">
+        <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #DDD2C5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-top: 80px; 
+        }
+
+        .container {
+            background: #DDD2C5;
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .login-btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: cornflowerblue;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #4B4C70;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4B4C70;
+        }
+
+        
+    .login-box .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .login-box .remember-forgot a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .login-box input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Job Seeker Login</h2>
+        <form onsubmit="return loginSeeker()">
+            <input type="text" id="seeker-username" placeholder="Enter username" required><br>
+            <input type="password" id="seeker-password" placeholder="Enter password" required><br>
+            <a href="forgot-password.html">Forgot Password?</a><br><br>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p style="margin-top: 20px;"><a href="index.html">← Back to Home</a></p>
+    </div>
+
+
+    <nav class="navbar">
+    <div class="nav-logo">PartTimeConnect</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+    </nav>
+
+    <script>
+        function loginSeeker() {
+            const username = document.getElementById("seeker-username").value;
+            const password = document.getElementById("seeker-password").value;
+
+            // Basic dummy check – you can replace this with backend logic later
+            if (username === "seeker" && password === "1234") {
+                alert("Login successful!");
+                window.location.href = "seeker_dashboard.html";
+            } else {
+                alert("Invalid credentials");
+            }
+
+            return false; // prevent form from submitting
+        }
+    </script>
+</body>
+</html>
