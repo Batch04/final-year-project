@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> PartTimeConnect</title>
+    <script src="../scrpit/jquery.js"></script>
+    <link rel="stylesheet" href="styles/apply-job.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <script src="script/loadhead.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header id="header">
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="job-header">
+                <div class="job-title-section">
+                    <div class="company-logo">
+                        <img src="images/logo.png" alt="TechStart Solutions Logo" class="logo-image">
+                    </div>
+                    <div class="job-title-info">
+                        <h1 class="job-title">Part-Time Marketing Assistant</h1>
+                        <div class="company-info">
+                            <h2 class="company-name">TechStart Solutions</h2>
+                            <div class="company-details">
+                                <span class="company-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="rating-text">4.5 (127 reviews)</span>
+                                </span>
+                                <span class="company-size">
+                                    <i class="fas fa-users"></i>
+                                    50-100 employees
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="job-actions">
+                    <button class="action-btn save-btn" onclick="saveJob()">
+                        <i class="fas fa-bookmark"></i>
+                        Save Job
+                    </button>
+                    <button class="action-btn share-btn" onclick="shareJob()">
+                        <i class="fas fa-share-alt"></i>
+                        Share
+                    </button>
+                </div>
+            </section>
+
+            <!-- Job Details Card -->
+            <section class="job-details-card">
+                <div class="card-header">
+                    <h3>
+                        <i class="fas fa-info-circle"></i>
+                        Job Details
+                    </h3>
+                    <div class="job-status">
+                        <span class="status-badge active">
+                            <i class="fas fa-circle"></i>
+                            Actively Hiring
+                        </span>
+                    </div>
+                </div>
+                <div class="job-details-grid">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span class="detail-label">Salary</span>
+                            <span class="detail-value">₹25,000 / month</span>
+                            <span class="detail-extra">Plus performance bonus</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span class="detail-label">Job Type</span>
+                            <span class="detail-value">Part-Time</span>
+                            <span class="detail-extra">20-25 hours/week</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span class="detail-label">Location</span>
+                            <span class="detail-value">San Francisco, CA</span>
+                            <span class="detail-extra">Hybrid (3 days office, 2 remote)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span class="detail-label">Experience Required</span>
+                            <span class="detail-value">1-2 years</span>
+                            <span class="detail-extra">Entry level welcome</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span class="detail-label">Posted Date</span>
+                            <span class="detail-value">2 days ago</span>
+                            <span class="detail-extra">Expires in 28 days</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span class="detail-label">Applicants</span>
+                            <span class="detail-value">23 applied</span>
+                            <span class="detail-extra">Be among the first 50</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Job Description Section -->
+            <section class="job-description">
+                <div class="section-header">
+                    <h3>
+                        <i class="fas fa-file-alt"></i>
+                        Job Description
+                    </h3>
+                    <div class="reading-time">
+                        <i class="fas fa-clock"></i>
+                        3 min read
+                    </div>
+                </div>
+                
+                <div class="description-content">
+                    <div class="description-section">
+                        <h4>About the Role</h4>
+                        <p>We are seeking a motivated and creative Part-Time Marketing Assistant to join our dynamic team at TechStart Solutions. This is an excellent opportunity for someone looking to gain hands-on experience in digital marketing while maintaining flexibility for other commitments such as studies or personal projects.</p>
+                        
+                        <p>As a Marketing Assistant, you will work closely with our marketing team to support various campaigns, content creation, and customer engagement initiatives. This role offers great learning opportunities and the potential for growth within our organization.</p>
+                    </div>
+
+                    <div class="description-section">
+                        <h4>Key Responsibilities</h4>
+                        <ul class="responsibilities-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Assist in creating and scheduling social media content across multiple platforms
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Support email marketing campaigns and newsletter creation
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Conduct market research and competitor analysis
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Help maintain and update company website content
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Assist with event planning and promotional activities
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Create basic graphics and visual content using design tools
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Monitor and report on marketing campaign performance
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="description-section">
+                        <h4>Required Qualifications</h4>
+                        <ul class="requirements-list">
+                            <li>
+                                <i class="fas fa-star"></i>
+                                Bachelor's degree in Marketing, Communications, or related field (or currently pursuing)
+                            </li>
+                            <li>
+                                <i class="fas fa-star"></i>
+                                1-2 years of experience in marketing or related field (internships count)
+                            </li>
+                            <li>
+                                <i class="fas fa-star"></i>
+                                Strong written and verbal communication skills
+                            </li>
+                            <li>
+                                <i class="fas fa-star"></i>
+                                Proficiency in Microsoft Office Suite and Google Workspace
+                            </li>
+                            <li>
+                                <i class="fas fa-star"></i>
+                                Basic knowledge of social media platforms and digital marketing
+                            </li>
+                            <li>
+                                <i class="fas fa-star"></i>
+                                Creative thinking and attention to detail
+                            </li>
+                            <li>
+                                <i class="fas fa-star"></i>
+                                Ability to work independently and manage time effectively
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="description-section">
+                        <h4>Preferred Qualifications</h4>
+                        <ul class="preferred-list">
+                            <li>
+                                <i class="fas fa-plus-circle"></i>
+                                Experience with design tools (Canva, Adobe Creative Suite)
+                            </li>
+                            <li>
+                                <i class="fas fa-plus-circle"></i>
+                                Knowledge of SEO and content marketing principles
+                            </li>
+                            <li>
+                                <i class="fas fa-plus-circle"></i>
+                                Familiarity with marketing automation tools
+                            </li>
+                            <li>
+                                <i class="fas fa-plus-circle"></i>
+                                Previous experience in a startup environment
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="description-section">
+                        <h4>What We Offer</h4>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>Competitive hourly rate</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Flexible working hours</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-home"></i>
+                                <span>Hybrid work environment</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Learning & development opportunities</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-users"></i>
+                                <span>Collaborative team environment</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Growth potential</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="description-section">
+                        <h4>About TechStart Solutions</h4>
+                        <p>TechStart Solutions is a rapidly growing technology company specializing in innovative software solutions for small and medium businesses. Founded in 2019, we've helped over 500 companies streamline their operations and grow their digital presence.</p>
+                        
+                        <p>Our team values creativity, collaboration, and continuous learning. We believe in providing our employees with the flexibility they need to succeed while contributing to meaningful projects that make a real impact.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Application Section -->
+            <section class="application-section">
+                <div class="application-card">
+                    <div class="application-header">
+                        <h3>
+                            <i class="fas fa-paper-plane"></i>
+                            Ready to Apply?
+                        </h3>
+                        <p>Join TechStart Solutions and kickstart your marketing career with us!</p>
+                    </div>
+                    
+                    <div class="application-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">23</span>
+                            <span class="stat-label">Applicants</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4.5★</span>
+                            <span class="stat-label">Company Rating</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">85%</span>
+                            <span class="stat-label">Response Rate</span>
+                        </div>
+                    </div>
+                    
+                    <div class="application-requirements">
+                        <h4>Application Requirements</h4>
+                        <div class="requirements-checklist">
+                            <div class="requirement-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Updated resume/CV</span>
+                            </div>
+                            <div class="requirement-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cover letter (optional but recommended)</span>
+                            </div>
+                            <div class="requirement-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Portfolio or work samples (if available)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="apply-now-btn" onclick="applyForJob()">
+                        <i class="fas fa-paper-plane"></i>
+                        Apply Now
+                    </button>
+                    
+                    <div class="application-note">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Your profile shows you're a great match for this role!</span>
+                    </div>
+                </div>
+            </section>
+
+           
+        </div>
+    </main>
+
+   
+    <script src="script/apply-job.js"></script>
+</body>
+</html>
+
