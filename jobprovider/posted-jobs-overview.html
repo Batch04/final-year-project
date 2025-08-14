@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posted Jobs - PartTimeConnect</title>
+    <link rel="stylesheet" href="styles/applicants-list.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../scrpit/jquery.js"></script>
+    <script src="scrpit/loadhead.js"></script>
+    <link rel="stylesheet" href="styles/header.css">
+</head>
+<body>
+    <header id="header"></header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Top Section - Company Information -->
+            <section class="company-header">
+                <div class="company-logo-container">
+                    <img src="images/logo.png" alt="TechStart Solutions Logo" class="company-logo">
+                </div>
+                <div class="company-info">
+                    <h1 class="company-name">TechStart Solutions</h1>
+                    <p class="company-tagline">Innovating the future, one solution at a time.</p>
+                    <div class="company-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Jobs Posted</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">85</span>
+                            <span class="stat-label">Total Applicants</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">7</span>
+                            <span class="stat-label">Active Jobs</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Posted Jobs Grid -->
+            <section class="posted-jobs-section">
+                <div class="section-header">
+                    <h2>
+                        <i class="fas fa-briefcase"></i>
+                        Your Posted Jobs
+                    </h2>
+                    <button class="btn-primary" onclick="location.href=\"/home/ubuntu/post-job/post-job.html\"">
+                        <i class="fas fa-plus-circle"></i> Post New Job
+                    </button>
+                </div>
+
+                <div class="job-grid">
+                    <!-- Job Card 1 -->
+                    <a href="job-details-applicants.html?jobId=1" class="job-card">
+                        <div class="job-card-header">
+                            <h3 class="job-title">Part-Time Marketing Assistant</h3>
+                            <span class="job-type">Part-Time</span>
+                        </div>
+                        <div class="job-card-details">
+                            <p class="job-salary"><i class="fas fa-dollar-sign"></i> ₹25,000 / month</p>
+                            <p class="job-location"><i class="fas fa-map-marker-alt"></i> San Francisco, CA</p>
+                            <p class="job-posted-date"><i class="fas fa-calendar-alt"></i> Posted 2 days ago</p>
+                        </div>
+                        <div class="job-card-footer">
+                            <span class="applicants-count"><i class="fas fa-users"></i> 15 Applied</span>
+                            <span class="job-status active"><i class="fas fa-circle"></i> Active</span>
+                        </div>
+                    </a>
+
+                    <!-- Job Card 2 -->
+                    <a href="job-details-applicants.html?jobId=2" class="job-card">
+                        <div class="job-card-header">
+                            <h3 class="job-title">Remote Customer Support Specialist</h3>
+                            <span class="job-type">Remote</span>
+                        </div>
+                        <div class="job-card-details">
+                            <p class="job-salary"><i class="fas fa-dollar-sign"></i> ₹20,000 / month</p>
+                            <p class="job-location"><i class="fas fa-globe"></i> Remote</p>
+                            <p class="job-posted-date"><i class="fas fa-calendar-alt"></i> Posted 5 days ago</p>
+                        </div>
+                        <div class="job-card-footer">
+                            <span class="applicants-count"><i class="fas fa-users"></i> 22 Applied</span>
+                            <span class="job-status active"><i class="fas fa-circle"></i> Active</span>
+                        </div>
+                    </a>
+
+                    <!-- Job Card 3 -->
+                    <a href="job-details-applicants.html?jobId=3" class="job-card">
+                        <div class="job-card-header">
+                            <h3 class="job-title">Internship - Software Development</h3>
+                            <span class="job-type">Internship</span>
+                        </div>
+                        <div class="job-card-details">
+                            <p class="job-salary"><i class="fas fa-dollar-sign"></i> ₹10,000 / month</p>
+                            <p class="job-location"><i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
+                            <p class="job-posted-date"><i class="fas fa-calendar-alt"></i> Posted 1 week ago</p>
+                        </div>
+                        <div class="job-card-footer">
+                            <span class="applicants-count"><i class="fas fa-users"></i> 30 Applied</span>
+                            <span class="job-status active"><i class="fas fa-circle"></i> Active</span>
+                        </div>
+                    </a>
+
+                    <!-- Job Card 4 -->
+                    <a href="job-details-applicants.html?jobId=4" class="job-card">
+                        <div class="job-card-header">
+                            <h3 class="job-title">Full-Time Data Analyst</h3>
+                            <span class="job-type">Full-Time</span>
+                        </div>
+                        <div class="job-card-details">
+                            <p class="job-salary"><i class="fas fa-dollar-sign"></i> ₹45,000 / month</p>
+                            <p class="job-location"><i class="fas fa-map-marker-alt"></i> New York, NY</p>
+                            <p class="job-posted-date"><i class="fas fa-calendar-alt"></i> Posted 3 weeks ago</p>
+                        </div>
+                        <div class="job-card-footer">
+                            <span class="applicants-count"><i class="fas fa-users"></i> 18 Applied</span>
+                            <span class="job-status inactive"><i class="fas fa-circle"></i> Closed</span>
+                        </div>
+                    </a>
+
+                    <!-- Job Card 5 -->
+                    <a href="job-details-applicants.html?jobId=5" class="job-card">
+                        <div class="job-card-header">
+                            <h3 class="job-title">Part-Time Graphic Designer</h3>
+                            <span class="job-type">Part-Time</span>
+                        </div>
+                        <div class="job-card-details">
+                            <p class="job-salary"><i class="fas fa-dollar-sign"></i> ₹18,000 / month</p>
+                            <p class="job-location"><i class="fas fa-map-marker-alt"></i> London, UK</p>
+                            <p class="job-posted-date"><i class="fas fa-calendar-alt"></i> Posted 1 month ago</p>
+                        </div>
+                        <div class="job-card-footer">
+                            <span class="applicants-count"><i class="fas fa-users"></i> 10 Applied</span>
+                            <span class="job-status active"><i class="fas fa-circle"></i> Active</span>
+                        </div>
+                    </a>
+
+                    <!-- Job Card 6 -->
+                    <a href="job-details-applicants.html?jobId=6" class="job-card">
+                        <div class="job-card-header">
+                            <h3 class="job-title">Remote Content Writer</h3>
+                            <span class="job-type">Remote</span>
+                        </div>
+                        <div class="job-card-details">
+                            <p class="job-salary"><i class="fas fa-dollar-sign"></i> ₹22,000 / month</p>
+                            <p class="job-location"><i class="fas fa-globe"></i> Remote</p>
+                            <p class="job-posted-date"><i class="fas fa-calendar-alt"></i> Posted 2 months ago</p>
+                        </div>
+                        <div class="job-card-footer">
+                            <span class="applicants-count"><i class="fas fa-users"></i> 12 Applied</span>
+                            <span class="job-status inactive"><i class="fas fa-circle"></i> Closed</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+   
+
+    <script src="scrpit/applicants-list.js"></script>
+</body>
+</html>
+

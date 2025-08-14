@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> PartTimeConnect</title>
+    <link rel="stylesheet" href="styles/applicants-list.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../scrpit/jquery.js"></script>
+    <script src="scrpit/loadhead.js"></script>
+    <link rel="stylesheet" href="styles/header.css">
+</head>
+<body>
+    <header id="header"></header>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+
+            <!-- Top Section - Company Information -->
+            <section class="company-header">
+                <div class="company-logo-container">
+                    <img src="images/logo.png" alt="TechStart Solutions Logo" class="company-logo">
+                </div>
+                <div class="company-info">
+                    <h1 class="company-name">TechStart Solutions</h1>
+                    <p class="company-tagline">Innovating the future, one solution at a time.</p>
+                </div>
+            </section>
+
+            <!-- Job Details Section -->
+            <section class="job-details-section">
+                <div class="section-header">
+                    <h2>
+                        <i class="fas fa-briefcase"></i>
+                        Job Details
+                    </h2>
+                    <div class="job-actions">
+                        <button class="btn-secondary" onclick="editJob()">
+                            <i class="fas fa-edit"></i> Edit Job
+                        </button>
+                        <button class="btn-danger" onclick="closeJob()">
+                            <i class="fas fa-times-circle"></i> Close Job
+                        </button>
+                    </div>
+                </div>
+
+                <div class="job-details-card">
+                    <div class="job-header">
+                        <div class="job-title-section">
+                            <h3 class="job-title" id="jobTitle">Part-Time Marketing Assistant</h3>
+                            <span class="job-type" id="jobType">Part-Time</span>
+                        </div>
+                        <div class="job-meta">
+                            <span class="job-status active"><i class="fas fa-circle"></i> Active</span>
+                            <span class="job-posted-date"><i class="fas fa-calendar-alt"></i> Posted 2 days ago</span>
+                        </div>
+                    </div>
+
+                    <div class="job-info-grid">
+                        <div class="job-info-item">
+                            <i class="fas fa-dollar-sign"></i>
+                            <div>
+                                <span class="info-label">Salary</span>
+                                <span class="info-value" id="jobSalary">₹25,000 / month</span>
+                            </div>
+                        </div>
+                        <div class="job-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span class="info-label">Location</span>
+                                <span class="info-value" id="jobLocation">San Francisco, CA</span>
+                            </div>
+                        </div>
+                        <div class="job-info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <span class="info-label">Job Type</span>
+                                <span class="info-value" id="jobTypeDetail">Part-Time (20-25 hours/week)</span>
+                            </div>
+                        </div>
+                        <div class="job-info-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <span class="info-label">Experience</span>
+                                <span class="info-value" id="jobExperience">1-2 years required</span>
+                            </div>
+                        </div>
+                        <div class="job-info-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <span class="info-label">Applicants</span>
+                                <span class="info-value" id="applicantsCount">15 Applied</span>
+                            </div>
+                        </div>
+                        <div class="job-info-item">
+                            <i class="fas fa-eye"></i>
+                            <div>
+                                <span class="info-label">Views</span>
+                                <span class="info-value" id="jobViews">127 Views</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job-description">
+                        <h4><i class="fas fa-file-alt"></i> Job Description</h4>
+                        <div class="description-content" id="jobDescription">
+                            <p>We are seeking a dynamic and creative Part-Time Marketing Assistant to join our growing team at TechStart Solutions. This role is perfect for someone looking to gain valuable experience in digital marketing while maintaining flexibility in their schedule.</p>
+                            
+                            <h5>Key Responsibilities:</h5>
+                            <ul>
+                                <li>Assist in developing and implementing social media marketing strategies</li>
+                                <li>Create engaging content for various social media platforms</li>
+                                <li>Conduct market research and analyze competitor activities</li>
+                                <li>Support email marketing campaigns and newsletter creation</li>
+                                <li>Help organize and coordinate marketing events and webinars</li>
+                                <li>Assist with SEO optimization and content marketing efforts</li>
+                                <li>Prepare marketing reports and performance analytics</li>
+                            </ul>
+
+                            <h5>Required Qualifications:</h5>
+                            <ul>
+                                <li>Bachelor's degree in Marketing, Communications, or related field</li>
+                                <li>1-2 years of experience in digital marketing or related role</li>
+                                <li>Proficiency in social media platforms (Facebook, Instagram, LinkedIn, Twitter)</li>
+                                <li>Basic knowledge of marketing tools (Google Analytics, Mailchimp, Canva)</li>
+                                <li>Excellent written and verbal communication skills</li>
+                                <li>Strong attention to detail and organizational abilities</li>
+                                <li>Ability to work independently and meet deadlines</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job-offers">
+                        <h4><i class="fas fa-gift"></i> What We Offer</h4>
+                        <div class="offers-content" id="jobOffers">
+                            <ul>
+                                <li>Competitive salary with performance-based bonuses</li>
+                                <li>Flexible working hours (20-25 hours per week)</li>
+                                <li>Remote work options available</li>
+                                <li>Professional development opportunities</li>
+                                <li>Health insurance coverage</li>
+                                <li>Paid time off and holidays</li>
+                                <li>Collaborative and innovative work environment</li>
+                                <li>Opportunity for career growth within the company</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Applicants Section -->
+            <section class="applicants-section">
+                <div class="section-header">
+                    <h2>
+                        <i class="fas fa-users"></i>
+                        Applied Applicants
+                    </h2>
+                    <div class="applicants-filter">
+                        <select class="filter-select" id="applicantsFilter">
+                            <option value="all">All Applicants (15)</option>
+                            <option value="new">New Applications (8)</option>
+                            <option value="reviewed">Reviewed (5)</option>
+                            <option value="shortlisted">Shortlisted (2)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="applicants-grid">
+                    <!-- Applicant Card 1 -->
+                    <div class="applicant-card">
+                        <div class="applicant-header">
+                            <img src="../app/profile/assets/images/default-user-avatar.png" alt="Sarah Johnson" class="applicant-avatar">
+                            <div class="applicant-info">
+                                <h4 class="applicant-name">Sarah Johnson</h4>
+                                <p class="applicant-title">Digital Marketing Specialist</p>
+                                <div class="applicant-meta">
+                                    <span class="application-date"><i class="fas fa-calendar-alt"></i> Applied 1 day ago</span>
+                                    <span class="applicant-status new"><i class="fas fa-circle"></i> New</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="applicant-bio">
+                            <p>Experienced marketing professional with 3+ years in digital marketing. Skilled in social media management, content creation, and analytics. Looking for flexible part-time opportunities to balance work and personal commitments.</p>
+                        </div>
+                        <div class="applicant-skills">
+                            <span class="skill-tag">Social Media Marketing</span>
+                            <span class="skill-tag">Content Creation</span>
+                            <span class="skill-tag">Google Analytics</span>
+                            <span class="skill-tag">SEO</span>
+                        </div>
+                        <div class="applicant-actions">
+                            <button class="btn-primary" onclick="contactApplicant('sarah.johnson@email.com')">
+                                <i class="fas fa-envelope"></i> Contact
+                            </button>
+                            <button class="btn-secondary" onclick="viewProfile('sarah-johnson')">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn-success" onclick="shortlistApplicant('sarah-johnson')">
+                                <i class="fas fa-star"></i> Shortlist
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Applicant Card 2 -->
+                    <div class="applicant-card">
+                        <div class="applicant-header">
+                            <img src="../app/profile/assets/images/default-user-avatar.png" alt="Michael Chen" class="applicant-avatar">
+                            <div class="applicant-info">
+                                <h4 class="applicant-name">Michael Chen</h4>
+                                <p class="applicant-title">Marketing Coordinator</p>
+                                <div class="applicant-meta">
+                                    <span class="application-date"><i class="fas fa-calendar-alt"></i> Applied 2 days ago</span>
+                                    <span class="applicant-status reviewed"><i class="fas fa-circle"></i> Reviewed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="applicant-bio">
+                            <p>Recent marketing graduate with internship experience at tech startups. Passionate about digital marketing trends and data-driven strategies. Seeking part-time role to gain more industry experience.</p>
+                        </div>
+                        <div class="applicant-skills">
+                            <span class="skill-tag">Email Marketing</span>
+                            <span class="skill-tag">Canva</span>
+                            <span class="skill-tag">Market Research</span>
+                            <span class="skill-tag">Adobe Creative Suite</span>
+                        </div>
+                        <div class="applicant-actions">
+                            <button class="btn-primary" onclick="contactApplicant('michael.chen@email.com')">
+                                <i class="fas fa-envelope"></i> Contact
+                            </button>
+                            <button class="btn-secondary" onclick="viewProfile('michael-chen')">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn-success" onclick="shortlistApplicant('michael-chen')">
+                                <i class="fas fa-star"></i> Shortlist
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Applicant Card 3 -->
+                    <div class="applicant-card">
+                        <div class="applicant-header">
+                            <img src="../app/profile/assets/images/default-user-avatar.png" alt="Emily Rodriguez" class="applicant-avatar">
+                            <div class="applicant-info">
+                                <h4 class="applicant-name">Emily Rodriguez</h4>
+                                <p class="applicant-title">Social Media Manager</p>
+                                <div class="applicant-meta">
+                                    <span class="application-date"><i class="fas fa-calendar-alt"></i> Applied 3 days ago</span>
+                                    <span class="applicant-status shortlisted"><i class="fas fa-circle"></i> Shortlisted</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="applicant-bio">
+                            <p>Creative social media expert with 2+ years managing brand accounts. Proven track record of increasing engagement and follower growth. Available for part-time remote work with flexible scheduling.</p>
+                        </div>
+                        <div class="applicant-skills">
+                            <span class="skill-tag">Instagram Marketing</span>
+                            <span class="skill-tag">Facebook Ads</span>
+                            <span class="skill-tag">Content Strategy</span>
+                            <span class="skill-tag">Influencer Outreach</span>
+                        </div>
+                        <div class="applicant-actions">
+                            <button class="btn-primary" onclick="contactApplicant('emily.rodriguez@email.com')">
+                                <i class="fas fa-envelope"></i> Contact
+                            </button>
+                            <button class="btn-secondary" onclick="viewProfile('emily-rodriguez')">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn-warning" onclick="scheduleInterview('emily-rodriguez')">
+                                <i class="fas fa-calendar-check"></i> Schedule Interview
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Applicant Card 4 -->
+                    <div class="applicant-card">
+                        <div class="applicant-header">
+                            <img src="../app/profile/assets/images/default-user-avatar.png" alt="David Kim" class="applicant-avatar">
+                            <div class="applicant-info">
+                                <h4 class="applicant-name">David Kim</h4>
+                                <p class="applicant-title">Content Marketing Specialist</p>
+                                <div class="applicant-meta">
+                                    <span class="application-date"><i class="fas fa-calendar-alt"></i> Applied 1 week ago</span>
+                                    <span class="applicant-status reviewed"><i class="fas fa-circle"></i> Reviewed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="applicant-bio">
+                            <p>Freelance content creator with expertise in blog writing, email campaigns, and SEO optimization. Strong analytical skills and experience with marketing automation tools. Seeking stable part-time position.</p>
+                        </div>
+                        <div class="applicant-skills">
+                            <span class="skill-tag">Content Writing</span>
+                            <span class="skill-tag">SEO Optimization</span>
+                            <span class="skill-tag">Mailchimp</span>
+                            <span class="skill-tag">WordPress</span>
+                        </div>
+                        <div class="applicant-actions">
+                            <button class="btn-primary" onclick="contactApplicant('david.kim@email.com')">
+                                <i class="fas fa-envelope"></i> Contact
+                            </button>
+                            <button class="btn-secondary" onclick="viewProfile('david-kim')">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn-success" onclick="shortlistApplicant('david-kim')">
+                                <i class="fas fa-star"></i> Shortlist
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Applicant Card 5 -->
+                    <div class="applicant-card">
+                        <div class="applicant-header">
+                            <img src="../app/profile/assets/images/default-user-avatar.png" alt="Lisa Thompson" class="applicant-avatar">
+                            <div class="applicant-info">
+                                <h4 class="applicant-name">Lisa Thompson</h4>
+                                <p class="applicant-title">Marketing Assistant</p>
+                                <div class="applicant-meta">
+                                    <span class="application-date"><i class="fas fa-calendar-alt"></i> Applied 1 week ago</span>
+                                    <span class="applicant-status new"><i class="fas fa-circle"></i> New</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="applicant-bio">
+                            <p>Entry-level marketing professional with strong academic background and internship experience. Eager to learn and contribute to a dynamic team. Available for flexible part-time hours including evenings and weekends.</p>
+                        </div>
+                        <div class="applicant-skills">
+                            <span class="skill-tag">Microsoft Office</span>
+                            <span class="skill-tag">Social Media</span>
+                            <span class="skill-tag">Research</span>
+                            <span class="skill-tag">Communication</span>
+                        </div>
+                        <div class="applicant-actions">
+                            <button class="btn-primary" onclick="contactApplicant('lisa.thompson@email.com')">
+                                <i class="fas fa-envelope"></i> Contact
+                            </button>
+                            <button class="btn-secondary" onclick="viewProfile('lisa-thompson')">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn-success" onclick="shortlistApplicant('lisa-thompson')">
+                                <i class="fas fa-star"></i> Shortlist
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Applicant Card 6 -->
+                    <div class="applicant-card">
+                        <div class="applicant-header">
+                            <img src="../app/profile/assets/images/default-user-avatar.png" alt="James Wilson" class="applicant-avatar">
+                            <div class="applicant-info">
+                                <h4 class="applicant-name">James Wilson</h4>
+                                <p class="applicant-title">Digital Marketing Analyst</p>
+                                <div class="applicant-meta">
+                                    <span class="application-date"><i class="fas fa-calendar-alt"></i> Applied 2 weeks ago</span>
+                                    <span class="applicant-status shortlisted"><i class="fas fa-circle"></i> Shortlisted</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="applicant-bio">
+                            <p>Data-driven marketing professional with expertise in analytics and performance optimization. Experience with A/B testing, conversion tracking, and ROI analysis. Looking for part-time role to supplement consulting work.</p>
+                        </div>
+                        <div class="applicant-skills">
+                            <span class="skill-tag">Google Analytics</span>
+                            <span class="skill-tag">Data Analysis</span>
+                            <span class="skill-tag">A/B Testing</span>
+                            <span class="skill-tag">Excel</span>
+                        </div>
+                        <div class="applicant-actions">
+                            <button class="btn-primary" onclick="contactApplicant('james.wilson@email.com')">
+                                <i class="fas fa-envelope"></i> Contact
+                            </button>
+                            <button class="btn-secondary" onclick="viewProfile('james-wilson')">
+                                <i class="fas fa-user"></i> View Profile
+                            </button>
+                            <button class="btn-warning" onclick="scheduleInterview('james-wilson')">
+                                <i class="fas fa-calendar-check"></i> Schedule Interview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-section">
+                    <button class="btn-secondary load-more-btn" onclick="loadMoreApplicants()">
+                        <i class="fas fa-plus"></i> Load More Applicants (9 remaining)
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="scrpit/applicants-list.js"></script>
+</body>
+</html>
+

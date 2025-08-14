@@ -186,8 +186,8 @@
     .dropdown-menu {
         position: absolute;
         top: 100%;
-        width: 110%;
-        height: 400%;
+        width: 120%;
+        height: 490%;
         z-index: 999;
         background-color: var(--white);
         display: none;

@@ -51,35 +51,7 @@ body {
     width: 100%;
 }
 
-/* Breadcrumb Navigation */
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    font-size: 14px;
-    color: var(--gray);
-}
 
-.breadcrumb a {
-    color: var(--blue);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.breadcrumb a:hover {
-    color: var(--dark-blue);
-    text-decoration: underline;
-}
-
-.breadcrumb-separator {
-    margin: 0 10px;
-    color: var(--text-muted);
-}
-
-.breadcrumb-current {
-    color: var(--black);
-    font-weight: 500;
-}
 
 /* Company Header Section */
 .company-header {
