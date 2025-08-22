@@ -1,11 +1,18 @@
-/* Basic css style  */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: all 0.3s ease-in-out;
     scroll-behavior: smooth;
     font-family: poppins, sans-serif;
+}
+
+/* Set transitions on specific properties for efficiency */
+button,
+a,
+.tab-btn,
+.step-card,
+.social-links a {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out, scale 0.3s ease-in-out;
 }
 
 /* colors are golobal declared */
@@ -36,6 +43,8 @@
 }
 
 h1,
+h2,
+h3,
 .company-title {
     font-family: "outfit", sans-serif;
 }
@@ -43,33 +52,25 @@ h1,
 body {
     width: 100%;
     min-height: 100vh;
-    padding-top: 4vw;
+    padding-top: 5rem;
     position: relative;
+    
 }
 
 
 /* navigation bar css */
-
 .navigation-bar {
     position: fixed;
     top: 0;
     z-index: 1000;
     width: 100%;
-    height: 4vw;
+    height: 5rem;
     background-color: var(--white);
     box-shadow: 0px 0px 20px grey;
     border-bottom: 1px solid var(--gray);
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-
-.logo-container {
-    width: 20%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .logo-container h1 a {
@@ -81,9 +82,6 @@ body {
 .nav-links {
     width: 30%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .nav-links ul {
@@ -113,15 +111,7 @@ body {
     justify-content: space-evenly;
 }
 
-.account-managment div {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.account-managment div a {
+.account-managment a {
     width: 60%;
     height: 60%;
     border-radius: 10px;
@@ -132,45 +122,63 @@ body {
     cursor: pointer;
     width: 100%;
     height: 100%;
+    border-radius: 10px;
+    font-size: 1rem;
 }
 
 .login-button {
     background-color: var(--white);
     color: var(--blue);
     border: 1px solid var(--blue);
-    font-size: 1rem;
-    border-radius: 10px;
 }
 
 .login-button:hover {
     background-color: var(--blue);
     color: var(--white);
     border: 0px solid transparent;
-    cursor: pointer;
-    scale: 0.97;
-
 }
 
 .signup-button {
     background-color: var(--blue);
     color: var(--white);
     border: 1px solid var(--blue);
-    font-size: 1rem;
-    border-radius: 10px;
 }
 
 .signup-button:hover {
     background-color: var(--white);
     color: var(--blue);
     border: 1px solid var(--blue);
-    font-size: 1rem;
-    scale: 0.93;
+}
 
+.mobile-only-buttons {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--blue);
+    cursor: pointer;
+}
+
+.nav-buttons-desktop {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 17%;
+    height: 100%;
+}
+
+.nav-buttons-desktop a {
+    width: 45%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 /* main css code starts */
-
-
 .image-overyplay {
     width: 100%;
     height: 93vh;
@@ -180,11 +188,7 @@ body {
     justify-content: center;
 }
 
-.background-image {
-    width: 100%;
-    height: 100%;
-}
-
+.background-image,
 .background-image img {
     width: 100%;
     height: 100%;
@@ -207,7 +211,6 @@ body {
     justify-content: space-around;
     flex-direction: column;
 }
-
 
 .text-container .title {
     width: 80%;
@@ -286,17 +289,21 @@ input:focus {
     justify-content: space-around;
 }
 
-.find-jobs {
+.find-jobs,
+.post-jobs {
     width: 35%;
     height: 90%;
-    background-color: var(--blue);
-    color: var(--white);
     font-size: 1.1rem;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
+}
+
+.find-jobs {
+    background-color: var(--blue);
+    color: var(--white);
 }
 
 .find-jobs:hover {
@@ -304,21 +311,12 @@ input:focus {
     color: var(--blue);
     border: 1px solid var(--blue);
     scale: 0.98;
-
 }
 
 .post-jobs {
-    width: 35%;
-    height: 90%;
     background-color: var(--white);
     color: var(--blue);
     border: 1px solid var(--blue);
-    font-size: 1.1rem;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
 }
 
 .post-jobs:hover {
@@ -329,10 +327,10 @@ input:focus {
 }
 
 /* how it works section css */
-
 .how-it-works {
     width: 100%;
-    height: 90vh;
+    height: 80vh;
+    padding: 50px 0;
 }
 
 .work-container {
@@ -345,7 +343,6 @@ input:focus {
     justify-content: space-around;
 }
 
-
 .section-header {
     width: 80%;
     height: 25%;
@@ -353,12 +350,14 @@ input:focus {
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .section-header h2 {
     font-size: 2.1rem;
+    margin-bottom: 10px;
 }
-
 
 .section-header p {
     color: var(--gray);
@@ -366,22 +365,17 @@ input:focus {
 }
 
 .user-type-tabs {
-    width: 30%;
-    height: 10%;
+    width: 80%;
+    height: 6vh;
     display: flex;
     align-items: center;
-    justify-content: space-around
-}
-
-.job-seekers {
-    background-color: var(--blue);
-    color: var(--white);
-    border: 1px solid var(--blue);
+    justify-content: space-around;
+   
 }
 
 .tab-btn {
-    width: 35%;
-    height: 80%;
+    width: 25%;
+    height: 100%;
     background-color: var(--white);
     color: var(--blue);
     border: 1px solid var(--blue);
@@ -394,6 +388,12 @@ input:focus {
     cursor: pointer;
 }
 
+.job-seekers {
+    background-color: var(--blue);
+    color: var(--white);
+    border: 1px solid var(--blue);
+}
+
 .tab-btn:hover {
     background-color: var(--blue);
     color: var(--white);
@@ -402,21 +402,21 @@ input:focus {
 
 .tab-content {
     width: 80%;
-    height: 50%;
+    height: 36vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-
 .steps-grid {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    gap: 20px;
 }
 
 .step-card {
@@ -431,6 +431,8 @@ input:focus {
     border-radius: 10px;
     box-shadow: 0px 0px 5px grey;
     cursor: pointer;
+    padding: 20px;
+    text-align: center;
 }
 
 .step-card:hover {
@@ -440,14 +442,14 @@ input:focus {
 }
 
 .step-icon {
-    width: 21%;
-    height: 25%;
+    width: 70px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 0px solid transparent;
     border-radius: 50%;
     background-color: rgb(45, 119, 230);
+    margin-bottom: 15px;
 }
 
 .step-icon i {
@@ -455,13 +457,13 @@ input:focus {
     font-size: 2rem;
 }
 
+.step-card h3 {
+    margin-bottom: 10px;
+}
 
 .step-card p {
-    width: 80%;
-    height: 30%;
-    text-align: center;
-    display: flex;
-    align-items: center;
+    width: 100%;
+    height: auto;
     color: var(--gray);
 }
 
@@ -469,18 +471,11 @@ input:focus {
     display: none;
 }
 
-.section-header {
-    width: 40%;
-    height: 13%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-}
-
+/* Features Section CSS */
 .features {
     width: 100%;
-    height: 230vh;
+    height: auto;
+    padding: 50px 0;
 }
 
 .features-container {
@@ -489,231 +484,226 @@ input:focus {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    flex-direction: column
+    flex-direction: column;
+    gap: 50px;
 }
 
 .features-grid {
     width: 100%;
-    height: 80%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    gap: 50px;
 }
 
 .feature-card {
     width: 74%;
-    height: 27%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    gap: 40px;
+}
+
+.feature-card.reverse {
+    flex-direction: row-reverse;
 }
 
 .feature-image {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 37%;
-    height: 86%;
+    width: 50%;
+    height: 100%;
 }
 
 .feature-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
-    border: 0px solid transparent;
     border-radius: 10px;
 }
 
+.feature-image.mobile img {
+    max-width: 300px;
+}
+
 .feature-content {
-    width: 42%;
+    width: 50%;
     height: 50%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    text-align: left;
+    gap: 15px;
+}
+
+.feature-content h3 {
+    font-size: 1.9rem;
+    
+}
+
+.feature-content p {
+    font-size: 1.2rem;
+    color: var(--gray);
     text-align: left;
 }
 
-.feature-content p{
-    text-align: center;
-    font-size: 1.2rem;
-    color: var(--gray);
+/* Benefits Section CSS */
+.benefits {
+    width: 100%;
+    height: auto;
+    padding: 50px 0;
 }
 
-.feature-content h3{
-    font-size: 1.9rem;
-}
-
-.mobile {
-    height: 60%;
-}
-
-.mobile img {
+.benifits-container {
     width: 100%;
     height: 100%;
 }
 
-.mobile .feature-content {
-    width: 40%;
-    height: 25%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-}
-
-.benefits{
-    width: 100%;
-    height: 65vh;
-}
-
-.benifits-container{
-    width: 100%;
-    height: 100%;
-}
-
-.benefits-grid{
+.benefits-grid {
     background-color: rgba(128, 128, 128, 0.105);
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
     justify-items: center;
+    padding: 50px 20px;
+    gap: 40px;
 }
 
-.benefits-column{
+.benefits-column {
     width: 80%;
-    height: 90%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    gap: 20px;
 }
 
-.benefits-column h3{
+.benefits-column h3 {
     width: 100%;
     height: 14%;
     font-size: 1.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-weight: 500;
+    text-align: center;
 }
 
-.benefit-item{
+.benefit-item {
     border: 0px solid transparent;
     border-radius: 10px;
     background-color: var(--white);
     box-shadow: 0px 0px 2px var(--gray);
-    width: 80%;
-    height: 20%;
+    width: 100%;
+    height: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     position: relative;
+    padding: 20px;
+    gap: 20px;
 }
 
-.benefit-item i{
-    position: absolute;
-    left: 5%;
-    top: 38%;
+.benefit-item i {
     font-size: 1.4rem;
     color: var(--blue);
 }
 
-.benefit-item div{
-    width: 70%;
+.benefit-item div {
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: start;
     justify-content: space-around;
     flex-direction: column;
+    gap: 5px;
 }
 
-.benefit-item div h4{
+.benefit-item div h4 {
     font-size: 1.1rem;
     color: var(--black);
     font-weight: 400;
 }
 
-.benefit-item div p{
+.benefit-item div p {
     font-size: 1rem;
     color: var(--gray);
 }
 
-.call-to-action{
+/* Call to Action Section CSS */
+.call-to-action {
     width: 100%;
-    height: 55vh;
+    height: auto;
+    padding: 80px 0;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.cta-background{
+.cta-background,
+.cta-background img {
     width: 100%;
     height: 100%;
-}
-.cta-background img{
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     object-fit: cover;
     filter: brightness(0.6);
+    z-index: 1;
 }
 
-.cta-container{
-    position: absolute;
+.cta-container {
+    position: relative;
+    z-index: 100;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    text-align: center;
 }
 
-.cta-content{
-    width: 50%;
-    height: 70%;
+.cta-content {
+    width: 70%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    gap: 20px;
+    color: var(--white);
 }
 
-.cta-content h2{
-    width: 80%;
-    height: 19%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.cta-content h2 {
     font-size: 2.8rem;
-    color: var(--white);
     font-weight: 500;
 }
 
-.cta-content p{
-    width: 70%;
-    height: 13%;
+.cta-content p {
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.cta-buttons {
+    width: 80%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
 }
 
-.cta-buttons{
-    width: 80%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.cta-buttons a{
-    width: 36%;
-    height: 60%;
+.cta-buttons a {
+    padding: 15px 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -723,24 +713,28 @@ input:focus {
     border: 0px solid transparent;
     border-radius: 11px;
     cursor: pointer;
+    font-size: 1rem;
 }
 
-.cta-buttons a:hover{
+.cta-buttons a:hover {
     background-color: var(--white);
     color: var(--blue);
     border: 1px solid var(--blue);
     scale: 0.98;
 }
 
-
-footer{
-    width: 100%;
-    height: 40vh;
+.cta-note {
+    color: var(--white);
+    margin-top: 15px;
 }
 
+/* Footer CSS */
+footer {
+    width: 100%;
+    height: auto;
+}
 
-
-.footer-container{
+.footer-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -748,106 +742,101 @@ footer{
     justify-content: space-between;
     flex-direction: column;
     background-color: #2F3349;
+    padding: 50px 20px;
 }
 
-.footer-content{
-    width: 80%;
-    height: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-bottom: 1px solid var(--gray);
-}
-
-
-.footer-section{
-    width: 30%;
-    height: 70%;
+.footer-content {
+    width: 100%;
+    height: auto;
     display: flex;
     align-items: start;
-    justify-content:space-between;
-    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 30px;
+    gap: 30px;
 }
 
-.social-links{
-    width: 80%;
-    height: 40%;
+.footer-section {
+    width: 18%;
+    height: auto;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-section.profile {
+    width: 25%;
+}
+
+.social-links {
+    width: 100%;
+    height: auto;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: start;
+    gap: 10px;
 }
 
-.social-links a{
+.social-links a {
     background-color: var(--blue);
-    width: 20%;
-    height: 70%;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    border: 0px solid transparent;
     border-radius: 50%;
 }
 
-.social-links a:hover{
+.social-links a:hover {
     background-color: var(--white);
     border: 1px solid var(--blue);
     scale: 0.98;
 }
 
-.social-links a:hover i{
+.social-links a:hover i {
     color: var(--blue);
 }
-.social-links a i{
+
+.social-links a i {
     font-size: 1.3rem;
     color: var(--white);
 }
 
-.footer-section h3{
+.footer-section h3,
+.footer-section h4 {
     width: 100%;
-    font-size: 1.5rem;
     color: var(--blue);
-    display: flex;
-    align-items: end;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
 }
 
- 
-
-.footer-section  h4{
-    width: 60%;
-    height: 20%;
-    display: flex;
-    align-items: center;
-    color: var(--blue);
+.footer-section h4 {
     font-size: 1rem;
 }
 
-
-.footer-section ul{
-    width: 60%;
-    height: 60%;
+.footer-section ul {
+    width: 100%;
+    height: auto;
     list-style: none;
     display: flex;
-    align-items: start;    
+    align-items: start;
     justify-content: space-around;
     flex-direction: column;
+    gap: 10px;
 }
 
-.footer-section ul li{
-    width: 100%;
-    height: 20%;
-}
-
-
-
-.footer-section ul li a{
+.footer-section ul li a {
     text-decoration: none;
     color: var(--white);
     font-size: 1rem;
     position: relative;
 }
 
-.footer-section ul li a::before{
+.footer-section ul li a::before {
     content: "";
     width: 0%;
     height: 3%;
@@ -856,27 +845,377 @@ footer{
     top: 100%;
 }
 
-.footer-section ul li a:hover::before{
+.footer-section ul li a:hover::before {
     width: 100%;
     transition: width 0.4s ease-in-out;
 }
 
-
-.footer-bottom{
+.footer-bottom {
     width: 100%;
-    height: 30%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--white);
+    margin-top: 20px;
+    text-align: center;
 }
 
-.footer-bottom a{
+.footer-bottom a {
     text-decoration: none;
     color: var(--white);
     font-size: 1rem;
 }
 
+/* Responsive Styles */
+/* For Tablets and smaller desktops (768px - 1023px) */
+@media (max-width: 1024px) {
+    body {
+        padding-top: 60px;
+        /* Adjust padding for fixed nav */
+    }
+
+    .navigation-bar {
+        height: 60px;
+    }
+
+    .logo-container h1 a {
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        width: 40%;
+    }
+
+    .nav-links ul li a {
+        font-size: 1rem;
+    }
+
+    .nav-buttons-desktop {
+        width: 25%;
+    }
+
+    .nav-buttons-desktop a {
+        width: 45%;
+    }
+
+    .login-button,
+    .signup-button {
+        font-size: 0.9rem;
+    }
+
+    .nav-buttons-desktop a button {
+        width: 100%;
+        height: 100%;
+    }
+
+    .text-container .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        width: 60%;
+        font-size: 1.2rem;
+    }
+
+    .landing-search {
+        width: 60%;
+    }
+
+    .buttons-container {
+        width: 50%;
+    }
 
 
+    .tab-btn {
+        font-size: 1rem;
+        width: 40%;
+    }
 
+    .step-card {
+        width: 30%;
+        height: auto;
+    }
+
+    .features-grid .feature-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .feature-card.reverse {
+        flex-direction: column;
+    }
+
+    .feature-image,
+    .feature-content {
+        width: 80%;
+    }
+
+    .feature-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .cta-buttons a {
+        font-size: 0.9rem;
+        padding: 12px 20px;
+    }
+
+    .footer-content {
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .footer-section {
+        width: 45%;
+        margin-bottom: 20px;
+    }
+
+    .footer-section.profile {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+
+/* For Mobile devices (up to 767px) */
+@media (max-width: 767px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .navigation-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 60px;
+    }
+
+    .nav-buttons-desktop {
+        display: none;
+    }
+
+    .logo-container {
+        width: auto;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .nav-links ul li {
+        margin-bottom: 15px;
+    }
+
+    .account-managment {
+        display: none;
+    }
+
+    .mobile-only-buttons {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .mobile-only-buttons .login-button,
+    .mobile-only-buttons .signup-button {
+        width: 55%;
+        padding: 12px 20px;
+        height: auto;
+    }
+
+    .hamburger {
+        display: block;
+    }
+    .features{
+       margin-top: 90%;
+    }
+
+    .text-overlay {
+        width: 90%;
+        height: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .text-container .title {
+        width: 100%;
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .subtitle {
+        width: 100%;
+        font-size:0.9rem;
+    }
+
+    .landing-search {
+        width: 100%;
+        height: 5vh;
+    }
+
+    .search-container input {
+        width: 100%;
+        padding-left: 15%;
+    }
+
+    .search-container svg {
+        left: 6%;
+    }
+
+    .search-btn {
+        left: 75%;
+        width: 20%;
+        font-size: 0.8rem;
+    }
+
+    .buttons-container {
+        width: 90%;
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .find-jobs,
+    .post-jobs {
+        width: 60%;
+        height: 50px;
+    }
+
+    .section-header {
+        width: 90%;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-header p {
+        font-size: 0.9rem;
+    }
+
+    .user-type-tabs {
+        width: 90%;
+        height: 6vh;
+        
+      
+    }
+
+    .steps-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .step-card {
+        width: 90%;
+    }
+
+    .features-grid .feature-card {
+        width: 90%;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .feature-card.reverse {
+        flex-direction: column;
+    }
+
+    .feature-image,
+    .feature-content {
+        width: 100%;
+    }
+
+    .feature-content h3 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .feature-content p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-column {
+        width: 90%;
+    }
+
+    .cta-content {
+        width: 90%;
+    }
+
+    .cta-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-content p {
+        font-size: 0.9rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        width: 65%;
+    }
+
+    .cta-buttons a {
+        width: 100%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        width: 90%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+        align-items: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}

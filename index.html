@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/landing.css">
+    <!-- jQuery is not used in the updated script, but I've kept the original include for compatibility -->
+    <script src="scrpit/landing.js"></script>
     <script src="scrpit/jquery.js"></script>
+    <link rel="stylesheet" href="styles/landing.css">
+
     <title>PartTimeConnect</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,28 +23,31 @@
         <div class="logo-container">
             <h1><a href="" class="company-title">PartTimeConnect</a></h1>
         </div>
+        <div class="hamburger">&#9776;</div>
         <div class="nav-links">
             <ul>
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#benefits">Bentifits</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li class="mobile-only-buttons">
+                    <a href="#"><button class="login-button">Login</button></a>
+                </li>
+                <li class="mobile-only-buttons">
+                    <a href="#"><button class="signup-button">Sign Up</button></a>
+                </li>
             </ul>
-
         </div>
-        <div class="account-managment">
-            <div>
-                <a href="#"><button class="login-button">Login</button></a>
-            </div>
-            <div>
-                <a href="#"><button class="signup-button">Sign Up</button></a>
-            </div>
+        <div class="nav-buttons-desktop">
+            <a href="#"><button class="login-button">Login</button></a>
+            <a href="#"><button class="signup-button">Sign Up</button></a>
         </div>
     </nav>
 
 
     <div class="image-overyplay">
         <div class="background-image">
-            <img src="images/background.jpg" alt="">
+            <!-- Background image for the hero section, scales with the container -->
+            <img src="images/background.jpg" alt="Two people working on laptops">
         </div>
         <div class="text-overlay">
             <div class="text-container">
@@ -55,7 +61,8 @@
                             fill="#0384fc">
                             <path
                                 d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
-                        </svg> <input type="text" placeholder="Search jobs near me..." class="search-input">
+                        </svg>
+                        <input type="text" placeholder="Search jobs near me..." class="search-input">
                         <button class="search-btn">Search</button>
                     </div>
                 </div>
@@ -74,13 +81,13 @@
                 <h2>How It Works</h2>
                 <p>Simple steps to connect job seekers with employers</p>
             </div>
-            
+
             <div class="user-type-tabs">
                 <button class="tab-btn active job-seekers" data-tab="job-seekers">For Job Seekers</button>
                 <button class="tab-btn job-provider" data-tab="employers">For Employers</button>
             </div>
-            
-            <div class="tab-content active" id="job-seekers">
+
+            <div class="tab-content" id="job-seekers">
                 <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-icon">
@@ -105,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="tab-content inactive" id="employers">
                 <div class="steps-grid">
                     <div class="step-card">
@@ -140,42 +147,48 @@
                 <h2>Key Features</h2>
                 <p>Everything you need for successful part-time job connections</p>
             </div>
-            
+
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-image">
+                        <!-- Image that scales proportionally for location feature -->
                         <img src="images/location-feature.png" alt="Location-based matching">
                     </div>
                     <div class="feature-content">
                         <h3>Find Opportunities Near You</h3>
-                        <p>Our smart location matching connects you with jobs and talent within your preferred distance, reducing commute time and increasing convenience.</p>
+                        <p>Our smart location matching connects you with jobs and talent within your preferred distance,
+                            reducing commute time and increasing convenience.</p>
                     </div>
                 </div>
-                
+
                 <div class="feature-card reverse">
                     <div class="feature-content">
                         <h3>Tailored for Both Sides</h3>
-                        <p>Separate, optimized experiences for job seekers and employers, ensuring everyone gets exactly what they need.</p>
+                        <p>Separate, optimized experiences for job seekers and employers, ensuring everyone gets exactly
+                            what they need.</p>
                     </div>
                     <div class="feature-image">
+                        <!-- Image that scales proportionally for dual user feature -->
                         <img src="images/dual-user-feature.png" alt="Dual user experience">
                     </div>
                 </div>
-                
+
                 <div class="feature-card mobile">
                     <div class="feature-image">
+                        <!-- Image of a mobile screen, scales proportionally -->
                         <img src="images/quick-application.png" alt="Quick applications">
                     </div>
                     <div class="feature-content">
                         <h3>Apply in Seconds</h3>
-                        <p>Streamlined application process with profile auto-fill and one-click applications. No more lengthy forms.</p>
+                        <p>Streamlined application process with profile auto-fill and one-click applications. No more
+                            lengthy forms.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-     <!-- Benefits Section -->
+    <!-- Benefits Section -->
     <div class="benefits" id="benefits">
         <div class="benifits-container">
             <div class="benefits-grid">
@@ -203,7 +216,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="benefits-column">
                     <h3>For Employers</h3>
                     <div class="benefit-item">
@@ -234,8 +247,8 @@
 
     <div class="call-to-action">
         <div class="cta-background">
+            <!-- Background image for the call to action, scales with the container -->
             <img src="images/cta-background.jpg" alt="Call to action background">
-            <div class="cta-overlay"></div>
         </div>
         <div class="cta-container">
             <div class="cta-content">
@@ -250,7 +263,7 @@
         </div>
     </div>
 
-     <footer class="footer">
+    <footer class="footer">
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-section profile">
@@ -260,8 +273,8 @@
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-facebook"></i></a>
                     </div>
-                </div>  
-                
+                </div>
+
                 <div class="footer-section">
                     <h4>Company</h4>
                     <ul>
@@ -270,7 +283,7 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>For Job Seekers</h4>
                     <ul>
@@ -279,7 +292,7 @@
                         <li><a href="#">Success Stories</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>For Employers</h4>
                     <ul>
@@ -288,7 +301,7 @@
                         <li><a href="#">Pricing</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Legal</h4>
                     <ul>
@@ -298,14 +311,58 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p><a href="">&copy; 2025 PartTimeConnect. All rights reserved.</a></p>
             </div>
         </div>
     </footer>
+    <script>
+        let job_seekers_tab = document.querySelector(".job-seekers");
+        let employer_tab = document.querySelector(".job-provider");
+        let job_seekers_content = document.querySelector("#job-seekers");
+        let employers_content = document.querySelector("#employers");
 
-<script src="scrpit/landing.js"></script>
+        function switchTabs(activeTab, inactiveTab, activeContent, inactiveContent) {
+            activeContent.classList.remove("inactive");
+            inactiveContent.classList.add("inactive");
+            activeTab.style.backgroundColor = "#0384fc";
+            activeTab.style.color = "#f5f6f7";
+            inactiveTab.style.backgroundColor = "#f5f6f7";
+            inactiveTab.style.color = "#0384fc";
+        }
+
+        job_seekers_tab.addEventListener("click", () => {
+            switchTabs(job_seekers_tab, employer_tab, job_seekers_content, employers_content);
+        });
+
+        employer_tab.addEventListener("click", () => {
+            switchTabs(employer_tab, job_seekers_tab, employers_content, job_seekers_content);
+        });
+
+
+        // Mobile navigation toggle logic
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        const allLinks = document.querySelectorAll('.nav-links a');
+        allLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Close the mobile menu after clicking a link
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Initial setup for the first tab
+        switchTabs(job_seekers_tab, employer_tab, job_seekers_content, employers_content);
+
+    </script>
+
+
 </body>
 
 </html>
