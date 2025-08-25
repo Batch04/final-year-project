@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scrpit/jquery.js"></script>
+    <link rel="stylesheet" href="styles/header.css">
+    <script src="script/loadhead.js"></script>
+    <link rel="stylesheet" href="styles/settings.css">
+</head>
+
+<body>
+    <header id="header"></header>
+    <main class="settings-container">
+        <div class="profile-header">
+            <div class="profile-avatar-container">
+                <img src="images/job-seeker-avatar.png" alt="Profile Avatar" class="profile-avatar-large" id="profileAvatarPreview">
+            </div>
+            <h1 class="profile-name-display">John Doe</h1>
+        </div>
+
+        <div class="settings-card">
+            <h2>Profile Settings</h2>
+
+            <div class="setting-section">
+                <div class="section-header" id="securitySettingsHeader">
+                    <h3>Security Settings</h3>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+                <div class="dropdown-content" id="securitySettingsDropdown">
+                    <div class="dropdown-item-setting">
+                        <span>Change Password</span>
+                        <button class="manage-btn" data-modal-target="changePasswordModal">Manage</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-section">
+                <div class="section-header" id="accountManagementHeader">
+                    <h3>Account Management</h3>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+                <div class="dropdown-content" id="accountManagementDropdown">
+                    <div class="dropdown-item-setting">
+                        <span>Deactivate Account</span>
+                        <button class="manage-btn" data-modal-target="deactivateAccountModal">Manage</button>
+                    </div>
+                    <div class="dropdown-item-setting">
+                        <span>Delete Account</span>
+                        <button class="manage-btn" data-modal-target="deleteAccountModal">Manage</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div id="changePasswordModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Change Password</h3>
+            <form>
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit" class="modal-save-btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="deactivateAccountModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Deactivate Account</h3>
+            <p>Are you sure you want to deactivate your account? You can reactivate it later by logging back in.</p>
+            <button class="modal-deactivate-btn">Deactivate Account</button>
+        </div>
+    </div>
+
+    <div id="deleteAccountModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Delete Account</h3>
+            <p>Are you absolutely sure you want to delete your account? This action is irreversible.</p>
+            <button class="modal-delete-btn">Delete Account</button>
+        </div>
+    </div>
+
+    <script src="script/settings.js"></script>
+</body>
+
+</html>

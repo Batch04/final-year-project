@@ -1,0 +1,364 @@
+:root {
+    --blue: #0384fc;
+    --white: white;
+    --black: #000;
+    --gray: #797272;
+    --light-gray: #f4f4f4;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding-top: 8vh;
+    background-color: var(--light-gray);
+    color: var(--black);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--black);
+}
+
+/* Main content styling */
+.settings-container {
+    max-width: 650px;
+    margin: 80px auto;
+    padding: 50px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    min-height: 70vh; /* Larger height for balanced design */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+}
+
+.profile-avatar-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--blue);
+    box-shadow: 0 0 0 5px rgba(3, 132, 252, 0.1);
+}
+
+.profile-avatar-large {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name-display {
+    color: var(--blue);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.settings-card {
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.settings-card h2 {
+    font-size: 1.8rem;
+    color: var(--black);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.setting-section {
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--white);
+    cursor: pointer;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.section-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+.section-header.expanded .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    display: none;
+    padding: 15px 20px;
+    background-color: var(--white);
+    border-top: 1px solid #e0e0e0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.section-header.expanded + .dropdown-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item-setting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-item-setting:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item-setting span {
+    font-size: 1rem;
+    color: var(--black);
+}
+
+.manage-btn {
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.manage-btn:hover {
+    background-color: #006bb3;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10002;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    position: relative;
+    max-width: 500px; /* Fixed width for desktop */
+    width: 90%;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray);
+}
+
+.close-button:hover {
+    color: var(--black);
+}
+
+.modal-content h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-content .form-group {
+    margin-bottom: 15px;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--gray);
+}
+
+.modal-content input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-content input[type="password"]:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 2px rgba(3, 132, 252, 0.2);
+}
+
+.modal-save-btn,
+.modal-deactivate-btn,
+.modal-delete-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.modal-save-btn {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.modal-save-btn:hover {
+    background-color: #006bb3;
+}
+
+.modal-deactivate-btn {
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+.modal-deactivate-btn:hover {
+    background-color: #555;
+}
+
+.modal-delete-btn {
+    background-color: #dc3545;
+    color: var(--white);
+}
+
+.modal-delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .settings-container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .profile-name-display {
+        font-size: 2rem;
+    }
+
+    .settings-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .dropdown-item-setting span {
+        font-size: 0.9rem;
+    }
+
+    .manage-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .modal-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .modal-content p {
+        font-size: 0.9rem;
+    }
+
+    .modal-save-btn,
+    .modal-deactivate-btn,
+    .modal-delete-btn {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-avatar-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-name-display {
+        font-size: 1.8rem;
+    }
+
+    .settings-container {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+
+
