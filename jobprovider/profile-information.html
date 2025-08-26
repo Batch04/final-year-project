@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Information</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/profile-information.css">
+    <script src="../scrpit/jquery.js"></script>
+    <script src="scrpit/loadhead.js"></script>
+    <link rel="stylesheet" href="styles/header.css">
+</head>
+
+<body>
+    <header id="header"></header>
+    <div class="main-container">
+        <!-- Top Section with Company Logo and Name side by side -->
+        <div class="company-header">
+            <div class="company-info-horizontal">
+                <div class="company-logo-container">
+                    <div class="company-logo-circle">
+                        <img src="images/logo.png" alt="Company Logo">
+                    </div>
+                </div>
+                <div class="company-details">
+                    <h1 class="company-name">TechStart Solutions</h1>
+                    <div class="company-meta">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="rating-text">4.5 (127 reviews)</span>
+                        </div>
+                        <div class="employees">
+                            <i class="fas fa-users"></i>
+                            <span>50-100 employees</span>
+                        </div>
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>San Francisco, CA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-header">
+                <h2 class="section-title">Profile</h2>
+                <button class="edit-button">
+                    <i class="fas fa-edit"></i>
+                    Edit
+                </button>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-grid">
+                    <!-- Name -->
+                    <div class="info-card">
+                        <div class="info-label">Name:</div>
+                        <div class="info-value">TechStart Solutions</div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="info-card">
+                        <div class="info-label">Email:</div>
+                        <div class="info-value">contact@techstart.com</div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="info-card">
+                        <div class="info-label">Location:</div>
+                        <div class="info-value">San Francisco, CA, USA</div>
+                    </div>
+
+                    <!-- Company Description -->
+                    <div class="info-card full-width">
+                        <div class="info-label">Company Description:</div>
+                        <div class="info-value">We are a leading technology company specializing in innovative software solutions for businesses. Our team of experts delivers cutting-edge applications and digital transformation services.</div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Posted Jobs Section -->
+        <div class="posted-jobs-section">
+            <div class="section-header">
+                <h2 class="section-title">Your Posted Jobs</h2>
+            </div>
+
+            <div class="jobs-grid">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Senior Frontend Developer</h3>
+                        <span class="job-type full-time">Full-Time</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$80,000 - $120,000</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">San Francisco, CA</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 3 days ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="1" data-job-title="Senior Frontend Developer">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">UX/UI Designer</h3>
+                        <span class="job-type part-time">Part-Time</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$40 - $60 /hour</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">Remote</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 1 week ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="2" data-job-title="UX/UI Designer">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Backend Developer</h3>
+                        <span class="job-type full-time">Full-Time</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$70,000 - $100,000</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">San Francisco, CA</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 5 days ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="3" data-job-title="Backend Developer">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Marketing Specialist</h3>
+                        <span class="job-type contract">Contract</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$50,000 - $70,000</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">Hybrid</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 2 weeks ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="4" data-job-title="Marketing Specialist">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Data Analyst</h3>
+                        <span class="job-type part-time">Part-Time</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$35 - $50 /hour</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">Remote</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 4 days ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="5" data-job-title="Data Analyst">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Project Manager</h3>
+                        <span class="job-type full-time">Full-Time</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$90,000 - $130,000</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">San Francisco, CA</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 1 day ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="6" data-job-title="Project Manager">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applicants Modal -->
+        <div id="applicantsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalJobTitle">Job Applicants</h3>
+                    <button class="close-modal" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="applicantsList" class="applicants-list">
+                        <!-- Applicants will be loaded here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scrpit/profile-information.js"></script>
+</body>
+
+</html>
+
