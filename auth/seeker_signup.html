@@ -6,27 +6,30 @@
 <body>
   <div class="signup-container">
     <h2>Job Seeker Registration</h2>
-    <form>
+    <form action="register_seeker.php" method="POST">
       <label for="fullname">Full Name</label>
-      <input type="text" id="fullname" required placeholder="Vyshnavi Narala">
+      <input type="text" id="fullname" name="name" required placeholder="Vyshnavi Narala">
 
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="vyshanvi111@gmail.com">
+      <input type="email" id="email" name="email" placeholder="vyshanvi111@gmail.com">
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" placeholder="03928232...">
+      <input type="tel" id="phone" name="phone" placeholder="03928232...">
 
       <label for="qualification">Qualification</label>
       <input type="text" id="qualification" placeholder="Graduated from SVU" required>
 
       <label for="skills">Skills</label>
-      <input type="text" id="skills"placeholder="programming..." required>
+      <input type="text" id="skills" name="skills"placeholder="programming..." required>
 
       <label for="location">Preferred Job Location</label>
       <input type="text" id="location" placeholder="kurnool" required>
 
+      <label for="location">Age</label>
+      <input type="text" required placeholder="18" name="age">
+
       <label for="password">Password</label>
-      <input type="password" id="password"  required>
+      <input type="password" name="pass" id="password"  required>
 
       <button type="submit">Sign Up</button>
     </form>
