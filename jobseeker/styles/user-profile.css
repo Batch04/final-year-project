@@ -1,0 +1,496 @@
+/* CSS Variables from header.css */
+:root {
+
+    --light-gray: #f9fafb;
+    --border-gray: #e5e7eb;
+    --success-green: #10b981;
+    --warning-yellow: #f59e0b;
+    --error-red: #ef4444;
+    
+    /* /* Additional variables for enhanced styling */
+    --border-radius: 12px;
+    --shadow:  0px 0px 20px rgba(186, 186, 186, 0.18);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease; 
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color:var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Main Container */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    margin-top: 80px; /* Account for fixed header */
+}
+
+/* User Header Section */
+.user-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.user-header:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.user-avatar-container {
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    position: relative;
+}
+
+.user-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--blue);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}   
+
+.user-avatar:hover {
+    transform: scale(1);
+}
+
+.user-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--blue);
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Section */
+.profile-section {
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    transition: var(--transition);
+    box-shadow:var(--shadow);
+}
+
+.profile-section:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+.profile-heading {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+
+/* Profile Content */
+.profile-content {
+    margin-top: 2rem;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Profile Field */
+.profile-field {
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.194);
+}
+
+.profile-field:hover{
+    background-color: rgba(128, 128, 128, 0.08);
+}
+
+.profile-field.full-width {
+    grid-column: 1 / -1;
+}
+
+
+.profile-field > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Field Labels */
+.field-label {
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+
+.field-label::before {
+    content: '';
+    width: 4px;
+    height: 16px;
+    background: var(--blue);
+    border-radius: 2px;
+}
+
+/* Field Values */
+.field-value {
+    color: var(--black);
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Education Items */
+.education-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--white);
+    border-radius: 8px;
+    border-left: 4px solid var(--blue);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.education-item:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow);
+}
+
+.education-item:last-child {
+    margin-bottom: 0;
+}
+
+.education-year {
+    color: var(--gray);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 0.25rem;
+    display: inline-block;
+}
+
+/* Skills Container */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.skill-tag {
+    background: linear-gradient(135deg, var(--blue), #2563eb);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+    transition: var(--transition);
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+}
+
+.skill-tag:hover::before {
+    left: 100%;
+}
+
+/* Availability Status */
+.availability-status {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    border: 2px solid var(--success-green);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+
+.availability-icon {
+    color: var(--success-green);
+    font-size: 1.25rem;
+    animation: pulse 2s infinite;
+}
+
+.availability-text {
+    font-weight: 600;
+    color: var(--success-green);
+    font-size: 1rem;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Page Load Animations */
+.user-header {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.profile-section {
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+    opacity: 0;
+}
+
+.profile-field {
+    animation: slideInLeft 0.6s ease forwards;
+    opacity: 0;
+}
+
+.profile-field:nth-child(1) { animation-delay: 0.1s; }
+.profile-field:nth-child(2) { animation-delay: 0.2s; }
+.profile-field:nth-child(3) { animation-delay: 0.3s; }
+.profile-field:nth-child(4) { animation-delay: 0.4s; }
+.profile-field:nth-child(5) { animation-delay: 0.5s; }
+.profile-field:nth-child(6) { animation-delay: 0.6s; }
+.profile-field:nth-child(7) { animation-delay: 0.7s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 1rem 0.5rem;
+        margin-top: 70px;
+    }
+    
+    .user-header {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .user-avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .user-name {
+        font-size: 1.5rem;
+    }
+    
+    .profile-section {
+        padding: 1.5rem;
+    }
+    
+    .profile-heading {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .profile-field {
+        padding: 1rem;
+    }
+    
+    .field-label {
+        font-size: 0.9rem;
+    }
+    
+    .field-value {
+        font-size: 0.95rem;
+    }
+    
+    .skills-container {
+        gap: 0.5rem;
+    }
+    
+    .skill-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .education-item {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    .user-header {
+        padding: 1rem;
+    }
+    
+    .user-avatar {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .user-name {
+        font-size: 1.25rem;
+    }
+    
+    .profile-section {
+        padding: 1rem;
+    }
+    
+    .profile-heading {
+        font-size: 1.25rem;
+    }
+    
+    .profile-field {
+        padding: 0.75rem;
+    }
+    
+    .skills-container {
+        gap: 0.4rem;
+    }
+    
+    .skill-tag {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .user-header,
+    .profile-section {
+        box-shadow: none;
+        border: 1px solid var(--border-gray);
+    }
+    
+    .profile-field {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid var(--border-gray);
+    }
+    
+    .skill-tag {
+        box-shadow: none;
+        border: 1px solid var(--blue);
+    }
+}
+
+/* Focus Styles for Accessibility */
+.profile-field:focus-within {
+    outline: 3px solid rgba(59, 130, 246, 0.5);
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .profile-field {
+        border: 2px solid var(--black);
+    }
+    
+    .skill-tag {
+        border: 2px solid var(--white);
+    }
+    
+    .availability-status {
+        border: 3px solid var(--success-green);
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .availability-icon {
+        animation: none;
+    }
+}
+
+/* Dark Mode Support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --white: #1f2937;
+        --light-gray: #111827;
+        --black: #f9fafb;
+        --border-gray: #374151;
+    }
+}
+

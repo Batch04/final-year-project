@@ -144,7 +144,7 @@
         justify-content: center;
     }
 
-    .profile-section {
+    .profile-section-header {
         width: 100%;
         height: 100%;
         display: flex;
@@ -153,11 +153,11 @@
         cursor: pointer;
     }
 
-    .profile-section:hover>.dropdown-menu {
+    .profile-section-header:hover>.dropdown-menu {
         display: flex;
     }
 
-    .profile-section:hover>i {
+    .profile-section-header:hover>i {
         transform: rotate(180deg);
     }
 
