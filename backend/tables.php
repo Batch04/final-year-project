@@ -19,7 +19,7 @@ if(mysqli_query($con,$sql)){
 else{
     echo "creation error";
 }
-$sql2="CREATE TABLE  IF NOT EXISTS providerr(
+$sql2="CREATE TABLE  IF NOT EXISTS providers(
 id INT AUTO_INCREMENT PRIMARY KEY,
 company_name VARCHAR(255) NOT NULL,
 email VARCHAR(255) NOT NULL UNIQUE,

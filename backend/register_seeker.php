@@ -11,15 +11,13 @@ if(isset($_POST['submit'])){
     $age=$_POST['age'];
     $skills=$_POST['skills'];
     $sql="INSERT INTO seekers(name,email,password,phone,age,skills)
-                VALUES('$name','$email','$hash_pass','$phone','$age','$skilss')";
+                VALUES('$name','$email','$hash_pass','$phone','$age','$skills')";
     $res=mysqli_query($con,$sql);
     if($res){
         echo "1 row inserted successfully";
     }
     else{
-        echo "Error";
+        echo "Error".mysqli_error($con);
     }
-
-}
-
+  }
 ?>

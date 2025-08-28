@@ -6,7 +6,7 @@
 <body>
   <div class="signup-container">
     <h2>Job Seeker Registration</h2>
-    <form action="register_seeker.php" method="POST">
+    <form action="../backend/register_seeker.php" method="POST">
       <label for="fullname">Full Name</label>
       <input type="text" id="fullname" name="name" required placeholder="Vyshnavi Narala">
 
@@ -31,7 +31,7 @@
       <label for="password">Password</label>
       <input type="password" name="pass" id="password"  required>
 
-      <button type="submit">Sign Up</button>
+      <button type="submit" name="submit">Sign Up</button>
     </form>
     <p>Already have an account? <a href="seeker_login.html">Login</a></p>
   </div>
