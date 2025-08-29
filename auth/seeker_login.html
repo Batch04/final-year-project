@@ -120,20 +120,18 @@
       cursor: pointer;
     }
 
-    
-
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Job Seeker Login</h2>
-        <form onsubmit="return loginSeeker()">
-            <input type="text" id="seeker-username" placeholder="Enter username" required><br>
-            <input type="password" id="seeker-password" placeholder="Enter password" required><br>
+        <form method="POST" action="../backend/seeker_log.php">
+            <input type="text" id="seeker-username" placeholder="Enter Email" name="email"required><br>
+            <input type="password" id="seeker-password" name="pass" placeholder="Enter password" required><br>
             <a href="forgot-password.html">Forgot Password?</a><br><br>
-            <button type="submit" class="login-btn">Login</button>
+            <button type="submit" name="submit" class="login-btn">Login</button>
         </form>
-        <p >Don't have an account?<a style="color:dodgerblue" href="seeker_signup.html">Sign up</a></p>
+        <p >Don't have an account?<a style="color:dodgerblue" href="seeker_signup.php">Sign up</a></p>
         <p style="margin-top: 20px;"><a href="index.html">← Back to Home</a></p>
     </div>
 
@@ -146,21 +144,5 @@
     </ul>
     </nav>
 
-    <script>
-        function loginSeeker() {
-            const username = document.getElementById("seeker-username").value;
-            const password = document.getElementById("seeker-password").value;
-
-            // Basic dummy check – you can replace this with backend logic later
-            if (username === "seeker" && password === "1234") {
-                alert("Login successful!");
-                window.location.href = "seeker_dashboard.html";
-            } else {
-                alert("Invalid credentials");
-            }
-
-            return false; // prevent form from submitting
-        }
-    </script>
 </body>
 </html>

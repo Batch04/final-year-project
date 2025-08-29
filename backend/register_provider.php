@@ -10,15 +10,17 @@ if(isset($_POST['submit'])){
     $address=$_POST['address'];
     $location=$_POST['location'];
     $contact_number=$_POST['contact_number'];
-    $sql="INSERT INTO providers(company_name,email,password,address,location,contact_number) 
-                VALUES('$company_name','$email','$hash_pass','$address','$location','$contact_number')";
-    $res=mysqli_query($con,$sql);
-    if($res){
-        echo "row inserted";
+    $sql=$con->prepare("INSERT INTO providers(company_name,email,password,address,location,contact_number) 
+                VALUES(?,?,?,?,?,?)");
+    $sql->bind_param('sssssi',$company_name,$email,$hash_pass,$address,$location,$contact_number);
+    if($sql->execute()){
+        header("Location:../jobprovider/dashboard.html");
+        exit();
     }
     else{
-        echo "Error";
+        echo "Error".mysql_error($con);
     }
-
+    $sql->close();
+    $con->close();
 }
 ?>

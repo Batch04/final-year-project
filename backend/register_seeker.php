@@ -10,14 +10,17 @@ if(isset($_POST['submit'])){
     $phone=$_POST['phone'];
     $age=$_POST['age'];
     $skills=$_POST['skills'];
-    $sql="INSERT INTO seekers(name,email,password,phone,age,skills)
-                VALUES('$name','$email','$hash_pass','$phone','$age','$skills')";
-    $res=mysqli_query($con,$sql);
-    if($res){
-        echo "1 row inserted successfully";
+    $sql=$con->prepare("INSERT INTO seekers(name,email,password,phone,age,skills)
+                VALUES(?,?,?,?,?,?)");
+    $sql->bind_param('sssiis',$name,$email,$hash_pass,$phone,$age,$skills);
+    if($sql->execute()){
+       header("Location:../jobseeker/dashboard.html");
+       exit();
     }
     else{
         echo "Error".mysqli_error($con);
     }
   }
+  $sql->close();
+  $con->close();
 ?>

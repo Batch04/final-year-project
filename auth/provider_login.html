@@ -98,11 +98,11 @@
 <body>
     <div class="container">
         <h2>Job Provider Login</h2>
-        <form id="loginForm">
-            <input type="text" id="provider-username" placeholder="Enter username" required><br>
-            <input type="password" id="provider-password" placeholder="Enter password" required><br>
+        <form id="loginForm" method="POST" action="../backend/provider_log.php">
+            <input type="text" id="provider-username" placeholder="Enter email" name="email"required><br>
+            <input type="password" id="provider-password" name="pass" placeholder="Enter password" required><br>
             <a href="forgot-password.html">Forgot Password?</a><br><br> 
-            <button type="submit" class="login-btn">Login</button>
+            <button type="submit" name="submit" class="login-btn">Login</button>
         </form>
         <p>Don't have an account?<a style="color:dodgerblue"href="../auth/provider_signup.php">Sign up</a></p>
         <p style="margin-top: 20px;"><a href="index.html">← Back to Home</a></p>
@@ -115,22 +115,5 @@
         <li><a href="feedback.html">Feedback</a></li>
     </ul>
     </nav>
-
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // stop form from reloading page
-
-            const username = document.getElementById("provider-username").value.trim();
-            const password = document.getElementById("provider-password").value.trim();
-
-            // Dummy login (change later when you use backend)
-            if (username === "provider" && password === "1234") {
-                alert("Login successful!");
-                window.location.href = "provider_dashboard.html";
-            } else {
-                alert("Invalid username or password!");
-            }
-        });
-    </script>
 </body>
 </html>
