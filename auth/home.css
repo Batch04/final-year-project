@@ -1,104 +1,176 @@
+:root {
+            --blue: #0384fc;
+            --white: #f5f6f7;
+            --black: #000;
+            --gray: #797272;
+    }
+
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: #f7f7f6;
+    background: linear-gradient(to bottom, #f9f9f9, #5DADE2);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding-top: 80px; 
+    padding-top: 0px; 
 }
-.navbar {
-    position: fixed;
-    left:0;
-    width: 100%;
-    background-color: steelblue;
-    color:#F7F0D8;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    top: 0;
-    z-index: 999;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    overflow-x: auto;
-}
+    .navbar {
+        position: fixed;
+        left: 0;
+        width: 100%;
+        background-color:var(--white);
+        color:var(--blue);
+        height: 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        top: 0;
+        z-index: 999;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow-x: hidden;
+    }
 
-.nav-logo {
-    font-size: 22px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
 
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            padding-left: 7%;
+            letter-spacing: 0px;
+            text-decoration: none;
+            color: var(--blue);
+        }
 .nav-links {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
     margin: 0;
     padding: 0;
     gap: 10px;
-    right: 40px;
 }
 
 .nav-links li a {
     padding: 8px 14px;
     font-size: 16px;
-    color: white;
+    color:var(--blue);
     text-decoration: none;
+    font-weight: 500;
     display: inline-block;
     white-space: nowrap;
 }
 
 
 .nav-links li a:hover {
-    color: #ffdd57;
+    color:var(--gray);
 }
 
-.container {
-    background: white;
-    padding: 40px 60px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+
+.auth-content {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    max-width: 500px;
+    margin: 120px auto 40px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding:1rem 2rem;
+    top: 0;
+}
+
+.auth-logo {
     text-align: center;
+    margin-bottom: 2rem;
+    color: var(--black);
 }
 
-h1 {
-    margin-bottom: 10px;
-    font-size: 32px;
-    color: #333;
+.auth-logo h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    
 }
 
-.highlight {
-    color: cornflowerblue;
-}
-
-p {
-    color: cornflowerblue;
-    font-size: 16px;
+.auth-logo p {
+    font-size: 1rem;
+    opacity: 0.9;
 }
 
 .role-selection {
-    margin-top: 30px;
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    text-align: center;
+    animation: slideUp 0.6s ease-out;
 }
 
-.role-btn {
-    display: inline-block;
-    margin: 10px 20px;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 10px;
-    text-decoration: none;
+.role-selection h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.role-selection p {
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+.role-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.role-card {
+    padding: 2rem 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    background: white;
+}
+
+.role-card:hover {
+    border-color: #0077B5;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 119, 181, 0.1);
+}
+
+.role-card.selected {
+    border-color: #0077B5;
+    background: #f0f9ff;
+}
+
+.role-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0077B5, #004182);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
     color: white;
-    transition: background 0.3s;
+    font-size: 1.5rem;
 }
 
-.seeker {
-    background-color: #8591b7;
+.role-card h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
 }
 
-.provider {
-    background-color:#8591b7;
+.role-card p {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
 }
 
-.role-btn:hover {
-    opacity: 0.9;
+a {
+     text-decoration: none;
+     color: #007bff;
 }

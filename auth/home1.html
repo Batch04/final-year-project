@@ -2,22 +2,44 @@
 <head>
     <title>PartTimeConnect – Find Part-Time Jobs</title>
     <link rel="stylesheet" href="home.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to <span class="highlight">PartTimeConnect</span></h1>
-        <p>Your platform to find or post part-time jobs</p>
+    <div class="auth-content">
+        <div class="auth-logo">
+            <h2>PartTimeConnect</h2>
+            <p>find a job perfect for you</p>
+        </div>
 
-        <div class="role-selection">
-            <a href="seeker_signup.php" class="role-btn seeker">I’m a Job Seeker</a>
-            <a href="provider_signup.php" class="role-btn provider">I’m a Job Provider</a>
+        <div class="role-selection" id="roleSelection">
+            <h3>Join PartTimeConnect</h3>
+            <p>Choose your account type to get started</p>
+            
+            <div class="role-cards">
+                <a href=seeker_signup.php class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Job Seeker</h4>
+                </a>
+                
+                <a href="provider_signup.php" class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4>Job Provider</h4>
+                </a>
+            </div>
         </div>
     </div>
+
     <nav class="navbar">
-    <div class="nav-logo">PartTimeConnect</div>
-    <ul class="nav-links">
-        <li><a href="/index.html">Home</a></li>
-    </ul>
+        <div class="nav-logo">
+            <a href="/index.html">PartTimeConnect</a></div>
+        <ul class="nav-links">
+            <li><a href="/index.html">Home</a></li>
+        </ul>
     </nav>
 
 </body>
