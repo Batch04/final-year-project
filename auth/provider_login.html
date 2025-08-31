@@ -2,87 +2,7 @@
 
 <head>
     <title>PartTimeConnect – Job Provider Login</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        :root {
-            --blue: #0384fc;
-            --white: #f5f6f7;
-            --black: #000;
-            --gray: #797272;
-        }
-        
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background:var(--white);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding-top: 10px;
-        }
-
-        .navbar {
-            position: fixed;
-            left: 0;
-            width: 100%;
-            background-color:var(--white);
-            color:var(--blue);
-            height: 5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            top: 0;
-            z-index: 999;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            overflow-x: auto;
-        }
-
-        .nav-logo {
-            font-size: 29px;
-            font-weight: bold;
-            padding-left: 6%;
-            letter-spacing: 0px;
-        }
-
-
-        .container {
-            background: white;
-            padding: 90px 110px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            position:fixed;
-            font-size: 20px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 20px 0;
-            font-size: 22px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-
-        .login-btn {
-            padding: 12px 25px;
-            font-size: 20px;
-            background-color: #17a2b8;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .login-btn:hover {
-            background-color: #138496;
-        }
-
-        a {
-            text-decoration: none;
-            color: #007bff;
-        }
-    </style>
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
@@ -95,13 +15,13 @@
             <button type="submit" name="submit" class="login-btn">Login</button>
         </form>
         <p>Don't have an account?<a style="color:dodgerblue" href="../auth/provider_signup.php">Sign up</a></p>
-        <p style="margin-top: 20px;"><a href="index.html">← Back to Home</a></p>
+        <p style="margin-top: 20px;"><a href="/index.html">← Back to Home</a></p>
     </div>
 
     <nav class="navbar">
-        <div class="nav-logo">PartTimeConnect</div>
+        <div class="nav-logo"><a href="/index.html">PartTimeConnect</a></div>
         <ul class="nav-links">
-
+            <li><a href="">Home</a></li>
         </ul>
     </nav>
 </body>

@@ -1,0 +1,103 @@
+:root {
+            --blue: #0384fc;
+            --white: #f5f6f7;
+            --black: #000;
+            --gray: #797272;
+        }
+        
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background:linear-gradient(to bottom, #f9f9f9, #5DADE2);
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            left: 0;
+            width: 100%;
+            background-color:var(--white);
+            color:var(--blue);
+            height: 5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow-x: hidden;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            padding-left: 7%;
+            letter-spacing: 0px;
+        }
+        
+        .nav-links li a:hover {
+            color:var(--gray);
+        }
+
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+
+        .container {
+            background: white;
+            padding: 80px 140px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position:fixed;
+            font-size: 22px;
+        }
+
+        .container h2{
+            font-size: 2.5rem;
+            color: var(--black);
+            text-align: center;    
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2); 
+            font-weight: bold;
+        }
+
+        input {
+            width: 105%;
+            padding: 10px;
+            margin: 20px 0;
+            font-size: 22px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .login-btn {
+            padding: 12px 25px;
+            font-size: 25px;
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #138496;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }

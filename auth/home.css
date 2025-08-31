@@ -1,0 +1,104 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f7f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 80px; 
+}
+.navbar {
+    position: fixed;
+    left:0;
+    width: 100%;
+    background-color: steelblue;
+    color:#F7F0D8;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    overflow-x: auto;
+}
+
+.nav-logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+    right: 40px;
+}
+
+.nav-links li a {
+    padding: 8px 14px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+.nav-links li a:hover {
+    color: #ffdd57;
+}
+
+.container {
+    background: white;
+    padding: 40px 60px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 32px;
+    color: #333;
+}
+
+.highlight {
+    color: cornflowerblue;
+}
+
+p {
+    color: cornflowerblue;
+    font-size: 16px;
+}
+
+.role-selection {
+    margin-top: 30px;
+}
+
+.role-btn {
+    display: inline-block;
+    margin: 10px 20px;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    transition: background 0.3s;
+}
+
+.seeker {
+    background-color: #8591b7;
+}
+
+.provider {
+    background-color:#8591b7;
+}
+
+.role-btn:hover {
+    opacity: 0.9;
+}
