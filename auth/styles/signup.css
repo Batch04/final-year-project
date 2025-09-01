@@ -12,16 +12,9 @@ body {
     padding-top: 100px; 
     justify-content: center;
     align-items: center;
+    overflow: auto;
 }
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom, #5DADE2,#f9f9f9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding-top: 0px;
-}
+
 
 .signup-container {
   width: 400px;
@@ -127,4 +120,9 @@ form button:hover {
 
 .nav-links li a:hover {
     color:var(--gray);
+}
+
+a {
+     text-decoration: none;
+     color: #007bff;
 }

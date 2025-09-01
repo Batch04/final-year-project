@@ -35,10 +35,9 @@
 
   
     <nav class="navbar">
-    <div class="nav-logo">PartTimeConnect</div>
+    <div class="nav-logo"><a href="../index.html">PartTimeConnect</a></div>
     <ul class="nav-links">
         <li><a href="../auth/home1.html">Home</a></li>
-        <li><a href="index.html">Home</a></li>
 
     </ul>
     </nav>

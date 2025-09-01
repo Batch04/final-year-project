@@ -39,7 +39,6 @@
     <div class="nav-logo">PartTimeConnect</div>
     <ul class="nav-links">
         <li><a href="../auth/home1.html">Home</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
     </ul>
     </nav>
 </body>
