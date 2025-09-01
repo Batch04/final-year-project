@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>Job Seeker Sign-Up</title>
-  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="style/signup.css">
 </head>
 <body>
   <div class="signup-container">
