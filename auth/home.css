@@ -3,11 +3,11 @@
             --white: #f5f6f7;
             --black: #000;
             --gray: #797272;
-    }
+}
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom, #f9f9f9, #5DADE2);
+    background: linear-gradient(to bottom, #5DADE2,#f9f9f9);
     display: flex;
     justify-content: center;
     align-items: center;
