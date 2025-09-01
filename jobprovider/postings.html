@@ -20,53 +20,181 @@
     <div class="main-content">
         <div class="content">
             <div class="page-header">
-                <div class="header">
+                <div class="job-heading">
                     <h2>My Job Postings</h2>
                     <p>Manager your active and past job postings.</p>
                 </div>
-                <div>
-                    <button class="btn-post"><span class="material-symbols-outlined">add_circle</span>&nbsp;Post New Job</button>
+                <div class="post-job-btn">
+                    <button class="btn-post"><span class="material-symbols-outlined">add_circle</span>&nbsp;Post New
+                        Job</button>
                 </div>
-            </div>
-
-            <div class="filters-section">
-                <div class="filters-group">
-                    <span>Search Jobs</span>
-                    <input type="text" placeholder="Search by title...">
-                </div>
-                <div class="filters-group">
-                    <span>Statuses</span>
-                    <select>
-                        <option>All Statuses</option>
-                        <option>Active</option>
-                        <option>Paused</option>
-                        <option>Closed</option>
-                    </select>
-                </div>
-                <div class="filters-group">
-                    <span>Department</span>
-                    <select>
-                        <option>Engineering</option>
-                        <option>Design</option>
-                        <option>Marketing</option>
-                        <option>Sales</option>
-                        <option>Human Resources</option>
-                    </select>
-                </div>
-               
-                <div class="filters-group">
-                    <span>Sort By</span>
-                    <select>
-                        <option>All Statuses</option>
-                        <option>Newest First</option>
-                        <option>Oldest First</option>
-                        <option>Most Applications</option>
-                        <option>Title A-Z</option>
-                    </select>
-                </div>
-
             </div>
         </div>
+        <div class="posted-jobs-section">
+            <div class="section-header">
+                <h2 class="section-title">Your Posted Jobs</h2>
+            </div>
+
+            <div class="jobs-grid">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Senior Frontend Developer</h3>
+                        <span class="job-type full-time">Full-Time</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$80,000 - $120,000</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">San Francisco, CA</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 3 days ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="1" data-job-title="Senior Frontend Developer">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">UX/UI Designer</h3>
+                        <span class="job-type part-time">Part-Time</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$40 - $60 /hour</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">Remote</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 1 week ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="2" data-job-title="UX/UI Designer">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Backend Developer</h3>
+                        <span class="job-type full-time">Full-Time</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$70,000 - $100,000</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">San Francisco, CA</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 5 days ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="3" data-job-title="Backend Developer">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Marketing Specialist</h3>
+                        <span class="job-type contract">Contract</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$50,000 - $70,000</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">Hybrid</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 2 weeks ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="4" data-job-title="Marketing Specialist">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Data Analyst</h3>
+                        <span class="job-type part-time">Part-Time</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$35 - $50 /hour</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">Remote</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 4 days ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="5" data-job-title="Data Analyst">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Project Manager</h3>
+                        <span class="job-type full-time">Full-Time</span>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-info">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span class="job-salary">$90,000 - $130,000</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="job-location">San Francisco, CA</span>
+                        </div>
+                        <div class="job-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="job-date">Posted 1 day ago</span>
+                        </div>
+                    </div>
+                    <button class="view-applicants-btn" data-job-id="6" data-job-title="Project Manager">
+                        <i class="fas fa-users"></i>
+                        View Applicants
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <script>
 
