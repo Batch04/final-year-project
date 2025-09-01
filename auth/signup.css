@@ -1,7 +1,17 @@
+:root {
+            --blue: #0384fc;
+            --white: #f5f6f7;
+            --black: #000;
+            --gray: #797272;
+}
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f1f1f1;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #5DADE2,#f9f9f9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 0px;
 }
 
 .signup-container {

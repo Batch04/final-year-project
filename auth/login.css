@@ -58,12 +58,12 @@
 
         .container {
             background: white;
-            padding: 80px 140px;
+            padding:40px 80px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             text-align: center;
             position:fixed;
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .container h2{

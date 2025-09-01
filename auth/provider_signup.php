@@ -32,11 +32,12 @@
     </form>
     <p>Already have an account? <a href="provider_login.html">Login</a></p>
   </div>
-      <nav class="navbar">
+
+  
+    <nav class="navbar">
     <div class="nav-logo">PartTimeConnect</div>
     <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
     </ul>
     </nav>
 </body>
