@@ -1,17 +1,27 @@
+:root {
+            --blue: #0384fc;
+            --white: #f5f6f7;
+            --black: #000;
+            --gray: #797272;
+    }
+
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f1f1f1;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #f9f9f9, #5DADE2);
+    align-items: center;
+    padding-top: 100px; 
+    justify-content: center;
+    align-items: center;
 }
 
 .signup-container {
-  max-width: 450px;
+  width: 400px;
   margin: 8% auto;
   background: #ffffff;
-  padding: 30px;
+  padding: 4%;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  padding-top: 0px;
+  padding-top: 4px;
 }
 
 .signup-container h2 {
@@ -41,7 +51,7 @@ form select {
 
 form button {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -70,8 +80,8 @@ form button:hover {
     position: fixed;
     left:0;
     width: 100%;
-    background-color: #007bff;
-    color: white;
+    background-color:var(--white);
+    color:var(--blue);
     height:10%;
     display: flex;
     justify-content: space-between;
@@ -99,7 +109,7 @@ form button:hover {
 .nav-links li a {
     padding: 8px 14px;
     font-size: 16px;
-    color: white;
+    color:var(--blue);
     text-decoration: none;
     display: inline-block;
     white-space: nowrap;
@@ -107,5 +117,5 @@ form button:hover {
 
 
 .nav-links li a:hover {
-    color: #ffdd57;
+    color:var(--gray);
 }

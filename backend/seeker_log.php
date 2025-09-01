@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
     if($res->num_rows>0){
         while($row=$res->fetch_assoc()){
             if(password_verify($pass,$row['password'])){
-                $_SESSION['id']=$row['id'];
+                $_SESSION['seeker_id']=$row['id'];
                 header("Location:../jobseeker/dashboard.html");
                 exit();
             }

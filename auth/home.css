@@ -65,16 +65,15 @@ body {
 
 
 .auth-content {
-    position: fixed;
     z-index: 2;
     width: 100%;
     max-width: 500px;
-    margin: 120px auto 40px auto;
-    display: flex;
+    margin: 100px auto 40px auto;
+    display:flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 100vh;
-    padding:1rem 2rem;
+    height: 100vh;
+    padding:20px 40px;
     top: 0;
 }
 
@@ -85,7 +84,7 @@ body {
 }
 
 .auth-logo h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     
@@ -99,7 +98,7 @@ body {
 .role-selection {
     background: white;
     border-radius: 16px;
-    padding: 2.5rem;
+    padding: 2rem;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     text-align: center;
     animation: slideUp 0.6s ease-out;
