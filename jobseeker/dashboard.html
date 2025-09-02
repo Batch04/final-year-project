@@ -20,7 +20,7 @@
     <div class="main-content">
         <div class="content">
             <div class="header">
-                <h2>Welcome back, job!</h2>
+                <h2 id="name">Welcome back, job!</h2>
                 <p>Find your perfect part-time opportunity in
                     Sam Francisco, CA</p>
             </div>
@@ -276,6 +276,13 @@
             let filter = document.getElementById("dropdown-filters");
             filter.style.display = filter.style.display === "block" ? "none" : "block";
         }
+        fetch("../backend/get_seeker.php")
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.status==='success'){
+                document.getElementById("name").textContent="Welcome back!   "+data.user.name;
+            }
+        })
 
     </script>
 </body>
