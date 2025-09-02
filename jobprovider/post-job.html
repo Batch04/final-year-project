@@ -54,7 +54,7 @@
                     <p>Fill out the details below to post your job opportunity and attract the best candidates.</p>
                 </div>
 
-                <form class="job-form" action="add_jobs.php" method="Post" id="jobPostingForm">
+                <form class="job-form" onsubmit="event.preventDefault();submitJob();" id="jobPostingForm">
                     <!-- Basic Job Information -->
                     <div class="form-section">
                         <h3 class="section-title">
@@ -297,7 +297,7 @@
                             <i class="fas fa-eye"></i>
                             Preview Job
                         </button>
-                        <button type="submit" class="btn-primary">
+                        <button type="submit" name="submit"class="btn-primary">
                             <i class="fas fa-paper-plane"></i>
                             Post Job
                         </button>

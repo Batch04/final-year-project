@@ -2,29 +2,64 @@
 
 <head>
     <title>PartTimeConnect – Job Provider Login</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="styles/login.css">
 </head>
 
 <body>
     <div class="container">
         <h2>Job Provider Login</h2>
-        <form id="loginForm" method="POST" action="../backend/provider_log.php">
+        <form id="loginForm">
             <input type="text" id="provider-username" placeholder="Enter email" name="email" required><br>
             <input type="password" id="provider-password" name="pass" placeholder="Enter password" required><br>
             <a href="forgot-password.html">Forgot Password?</a><br><br>
-            <button type="submit" name="submit" class="login-btn">Login</button>
+            <button type="submit" name="submit" id="submit" class="login-btn">Login</button>
         </form>
-        <p>Don't have an account?<a style="color:dodgerblue" href="../auth/provider_signup.php">Sign up</a></p>
-        <p style="margin-top: 20px;"><a href="/index.html">← Back to Home</a></p>
+        <p>Don't have an account?<a style="color:dodgerblue" href="../auth/provider_signup.html">Sign up</a></p>
+        <p style="margin-top: 20px;"><a href="../auth/home.html">← Back to Home</a></p>
     </div>
 
     <nav class="navbar">
         <div class="nav-logo">
             <a href="../index.html">PartTimeConnect</a></div>
         <ul class="nav-links">
-            <li><a href="../auth/home.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
         </ul>
     </nav>
+    <script>
+        document.querySelector("#loginForm").addEventListener("submit",function(e) {
+            e.preventDefault();
+            let formData=new FormData(this);
+            fetch("../backend/provider_log.php",{
+                method:"POST",
+                body:formData,
+            })    
+        .then(res=>res.text())
+        .then(text=>{
+            console.log("raw Response",text);
+            let data=JSON.parse(text);
+            if(data.status==="success"){
+                window.location.href="../jobprovider/dashboard.html";
+            }
+            else{
+                alert(data.message);
+            }
+        }).catch(err=>
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        {console.error("Fetch error:",err);
+        alert("Network error.Please try again");
+     });
+    });
+    </script>
 </body>
 
 </html>

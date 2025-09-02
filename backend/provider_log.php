@@ -2,8 +2,9 @@
 include 'connect.php';
 include 'dbcreate.php';
 include 'tables.php';
+header("Content-Type:application/json");
 session_start();
-if(isset($_POST['submit'])){
+
     $email=$_POST['email'];
     $pass=$_POST['pass'];
     $sql=$con->prepare("SELECT * FROM providers WHERE email=? ");
@@ -13,19 +14,17 @@ if(isset($_POST['submit'])){
     if($res->num_rows>0){
         while($row=$res->fetch_assoc()){
             if(password_verify($pass,$row['password'])){
-                $_SESSION['provider_id']=$row['id'];
-                header("Location:../jobprovider/dashboard.html");
-                exit();
+                $_SESSION['provider_id']=$row['provider_id'];
+                echo json_encode(['status'=>'success']);
             }
             else{
-                echo "Incorrect Password";
+                echo json_encode(['status'=>'error','message'=>'invalid login']);
             }
         }
     }
     else{
         echo "No data found";
     }
-}
 $sql->close();
 $con->close();
 ?>

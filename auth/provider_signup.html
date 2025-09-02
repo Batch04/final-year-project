@@ -1,12 +1,12 @@
 <html>
 <head>
   <title>Job Provider Sign-Up</title>
-  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="styles/signup.css">
 </head>
 <body>
   <div class="signup-container">
     <h2>Job Provider Registration</h2>
-    <form action="../backend/register_provider.php" method="POST">
+    <form id="signupForm">
       <label for="companyname">Company / Provider Name</label>
       <input type="text"  name="company_name"id="companyname"placeholder="Techcrop" required>
 
@@ -37,9 +37,44 @@
     <nav class="navbar">
     <div class="nav-logo"><a href="../index.html">PartTimeConnect</a></div>
     <ul class="nav-links">
-        <li><a href="../auth/home1.html">Home</a></li>
+        <li><a href="../index.html">Home</a></li>
 
     </ul>
     </nav>
+    <script>
+      document.getElementById("signupForm").addEventListener("submit",async function(e){
+        e.preventDefault();
+        const formData = new FormData(this);
+        try{
+          const response=await fetch("../backend/register_provider.php",{
+            method:"POST",
+            body:formData
+          });
+          const text=await response.text();
+          console.log("Raw response:",text);
+          try{
+            const result=JSON.parse(text);
+            console.log("Parsed rsult",result);
+          
+          if(result.success){
+            localStorage.setItem("provider",JSON.stringify(result.provider));
+            window.location.href="../jobprovider/dashboard.html";
+          }
+          else{
+            alert(result.message|| "Signup Failed");
+          }
+        }
+        catch(jsonError){
+            console.error("JSON PArse Error",jsonError);
+            alert("Error");
+        }
+      }
+        catch(fetchError){
+          console.error("Error:",fetchError);
+          alert("Something went wrong.Try again");
+        }
+      });
+    </script>
+
 </body>
 </html>

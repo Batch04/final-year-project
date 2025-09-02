@@ -14,6 +14,8 @@ if(isset($_POST['submit'])){
                 VALUES(?,?,?,?,?,?)");
     $sql->bind_param('sssiis',$name,$email,$hash_pass,$phone,$age,$skills);
     if($sql->execute()){
+       $last_id=$con->insert_id;
+       $_SESSION['seeker_id']=$last_id;
        header("Location:../jobseeker/dashboard.html");
        exit();
     }

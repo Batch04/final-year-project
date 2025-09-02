@@ -444,6 +444,21 @@ function handleFormSubmission() {
 }
 
 function submitJob() {
+    let form=document.getElementById("jobPostingForm");
+    let formData=new FormData(form);
+    fetch("../backend/add_jobs.php",{
+        method:"POST",
+        body:formData
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data.status==="success"){
+            alert(data.message);
+        }
+        else{
+            alert(data.message);
+        }
+    })
     closeModal('jobPreviewModal');
     handleFormSubmission();
 }
@@ -825,4 +840,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log('Post Job page JavaScript loaded successfully!');
+
+
+
 

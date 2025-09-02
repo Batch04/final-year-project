@@ -18,7 +18,7 @@
     <div class="main-container">
         <div class="dashboard-header">
             <div class="welcome-section">
-                <h2>Welcome back, TechCorp!</h2>
+                <h2 id="company_name">Welcome back, TechCorp!</h2>
                 <p>Manage your job postings and find the perfect candidates</p>
             </div>
 
@@ -339,6 +339,16 @@
             </div>
         </div>
     </div>
+    <script>
+        fetch("../backend/get_provider.php")
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.status==='success'){
+                document.getElementById("company_name").textContent="Welcome back!"+data.user.company_name;
+            }
+        })
+
+    </script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>Job Seeker Sign-Up</title>
-  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="styles/signup.css">
 </head>
 <body>
   <div class="signup-container">
@@ -38,7 +38,7 @@
       <nav class="navbar">
     <div class="nav-logo">PartTimeConnect</div>
     <ul class="nav-links">
-        <li><a href="../auth/home1.html">Home</a></li>
+        <li><a href="../index.html">Home</a></li>
     </ul>
     </nav>
 </body>
