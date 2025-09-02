@@ -1,7 +1,11 @@
 <html>
 <head>
   <title>Job Seeker Sign-Up</title>
+<<<<<<< HEAD
   <link rel="stylesheet" href="styles/signup.css">
+=======
+  <link rel="stylesheet" href="style/signup.css">
+>>>>>>> 7bed10a981ff0c8f7b413092af47a48a4b369c0d
 </head>
 <body>
   <div class="signup-container">
