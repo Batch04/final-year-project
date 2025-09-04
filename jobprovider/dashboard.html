@@ -90,7 +90,7 @@
                 <a href="#" class="view-all-link">View All Applications</a>
             </div>
 
-            <div class="applications-list">
+            <div id="application-list" class="applications-list">
                 <!-- Application 1 -->
                 <div class="application-card">
                     <div class="applicant-info">
@@ -346,8 +346,52 @@
             if(data.status==='success'){
                 document.getElementById("company_name").textContent="Welcome back!"+data.user.company_name;
             }
-        })
+        });
+        fetch("../backend/get_recent_applications.php")
+        .then(res=>res.json())
+        .then(data=>{
+            const container=document.getElementById("application-list");
+                container.innerHTML="";
+            if(data.status==='success' && data.applications.length > 0){
+                data.applications.forEach(app=>{
+                    const card=document.createElement(div);
+                    card.className='application-card';
+                    card.innerHTML=+`
+                    <div class="applicant-info">
+                        <img src="images/person-image.png" alt="${app.seeker_name}"/>
+                        <h3>${app.seeker_name}</h3>
+                        <p>Applied for:${app.job_title}</p>
+                    </div>
+                        <div class="application-status">
+                            <span class="status-badge ${app.status.toLowerCase()}">${app.status}</span>
+                            <p>${formatTime(app.applied_at)}</p>
+                            </div>
+                            <div class="application-actions">
+                                <button>View Profile</button>
+                                </div>
+                        `;
+                container.appendChild(card);
+                });
+            }
+            else{
+                container.style.display="none";
+                const applicantsSection=document.getElementById("applicants");
+                if  ( applicantsSection && !document.getElementById('no-app-msg')){
+                const msg=document.createElement("p");
+                msg.id='no-app-msg';
+                msg.textContent="No applications found";
+                msg.style.color="grey";
+                msg.style.fontSize="14px";
+                msg.style.marginTop="10px";
+                applicantsSection.appendChild(msg);
+            }
+        }
 
+        })
+        .catch(err=>{
+            console.error('Error fetching data:',err);
+            document.getElementById("application-list").innerHTML='<p>Error loading applications.</p>';
+        });
     </script>
 </body>
 
