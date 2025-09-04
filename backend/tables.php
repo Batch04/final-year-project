@@ -37,4 +37,15 @@ FOREIGN KEY(provider_id) REFERENCES
  providers(provider_id)ON DELETE CASCADE)";
  $res=mysqli_query($con,$sql3);
 
+ $sql4="CREATE TABLE IF NOT EXISTS reset_tokens(
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            user_type ENUM('seeker','provider') NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            otp VARCHAR(6) NOT NULL,
+            reset_token VARCHAR(64) DEFAULT NULL,
+            expires_at DATETIME NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+$res=mysqli_query($con,$sql4);
+
 ?>
