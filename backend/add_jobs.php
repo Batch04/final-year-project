@@ -11,7 +11,7 @@ $resposnedata = json_decode($data, true);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $provider_id = "starterwave";
+    $provider_id = $_SESSION['provider_id'];
     $title = $resposnedata['jobTitle'];
     $description = $resposnedata['jobDescription'];
     $location = $resposnedata['location'];
