@@ -25,20 +25,6 @@ contact_number VARCHAR(20),
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
 $res=mysqli_query($con,$sql2);
 
-//jobs table
-$sql3="CREATE TABLE  IF NOT EXISTS jobs(
-job_id INT AUTO_INCREMENT PRIMARY KEY,
-provider_id INT NOT NULL,
-title VARCHAR(255) NOT NULL,
-description TEXT NOT NULL,
-location VARCHAR(255) NOT NULL,
-type VARCHAR(255) NOT NULL,
-salary VARCHAR(100),
-status ENUM('ACTIVE','PAUSED') DEFAULT 'ACTIVE',
-posted_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY(provider_id) REFERENCES
- providers(provider_id)ON DELETE CASCADE)";
- $res=mysqli_query($con,$sql3);
 
 //reset_tokens table
  $sql4="CREATE TABLE IF NOT EXISTS reset_tokens(

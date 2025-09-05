@@ -443,24 +443,38 @@ function handleFormSubmission() {
     }, 2000);
 }
 
-function submitJob() {
-    let form=document.getElementById("jobPostingForm");
-    let formData=new FormData(form);
-    fetch("../backend/add_jobs.php",{
-        method:"POST",
-        body:formData
-    })
-    .then(response=>response.json())
-    .then(data=>{
-        if(data.status==="success"){
-            alert(data.message);
+async function submitJob() {
+      updateJobData();
+    console.log(jobData);
+    
+    try {
+        let response = await fetch("../backend/add_jobs.php", {
+            method: "POST",
+            body: JSON.stringify(jobData),
+            headers: { "Content-Type": "application/json" }
+        });
+
+        let rawText = await response.text();
+        console.log("Raw backend response:", rawText);
+
+        let data;
+        try {
+            data = JSON.parse(rawText); // Try to parse JSON
+        } catch (err) {
+            showNotification("Server returned invalid JSON. Check console logs.", "error");
+            return;
         }
-        else{
-            alert(data.message);
+
+        if (data.status === "success") {
+            closeModal("jobPreviewModal");
+            handleFormSubmission();
+        } else {
+            showNotification(data.message || "Failed to post job.", "error");
         }
-    })
-    closeModal('jobPreviewModal');
-    handleFormSubmission();
+    } catch (error) {
+        console.error("Fetch error:", error);
+        showNotification("Network or server error. Please try again later.", "error");
+    }
 }
 
 // Modal functionality
@@ -492,7 +506,7 @@ function postAnotherJob() {
 }
 
 function viewDashboard() {
-    window.location.href = '../app/job-provider/dashboard.html';
+    window.location.href = 'dashboard.html';
 }
 
 // Notification system
