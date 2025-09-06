@@ -1,11 +1,20 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<nav class="navbar">
+</head>
+
+<body>
+
+
+    <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="dashboard.html">
@@ -56,7 +65,7 @@
                                         <i class="fas fa-heart"></i>
                                         <p>Saved Jobs</p>
                                     </div>
-                                </a>    
+                                </a>
                                 <a href="settings.html" class="dropdown-item">
                                     <div>
                                         <i class="fas fa-cog"></i>
@@ -68,10 +77,10 @@
                                         <i class="fas fa-sign-out-alt"></i>
                                         <p>Logout</p>
                                     </div>
-    
+
                                 </a>
                             </div>
-    
+
                         </div>
                     </div>
 
@@ -79,3 +88,19 @@
             </div>
         </div>
     </nav>
+
+    <script>
+
+        <?php 
+            session_start();
+        ?>
+
+        const name = <?Php echo $_SESSION['seeker_id'] ?>
+        console.log(name);
+        document.querySelector(".profile-name").innertext = name;
+
+    </script>
+
+</body>
+
+</html>
