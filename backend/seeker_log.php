@@ -1,11 +1,12 @@
 <?php
+header('Content-Type:application/json');
 include 'connect.php';
 include 'dbcreate.php';
 include 'tables.php';
 session_start();
-if(isset($_POST['submit'])){
-    $email=$_POST['email'];
-    $pass=$_POST['pass'];
+$data=json_decode(file_get_contents("php://input"),true);
+    $email=$data['email']?? '';
+    $pass=$data['pass']?? '';
     $sql=$con->prepare("SELECT * FROM seekers WHERE email=?");
     $sql->bind_param("s",$email);
     $sql->execute();
@@ -14,19 +15,20 @@ if(isset($_POST['submit'])){
         while($row=$res->fetch_assoc()){
             if(password_verify($pass,$row['password'])){
                 $_SESSION['seeker_id']=$row['id'];
-                header("Location:../jobseeker/dashboard.html");
-                exit();
+                echo json_encode(['status'=>'success','message'=>'log in succesfully']);
+                exit;
             }
             else{
-                echo "Incorrect Password";
+                echo json_encode(['status'=>'error','message'=>'invalid login or Password']);
+                exit;
             }
         }
     }
+    
     else{
-        echo "No data found";
+        echo json_encode(['status'=>'error','message'=>'No user found']);
     }
     $sql->close();
     $con->close();
-}
 
 ?>

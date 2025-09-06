@@ -89,7 +89,7 @@
     const name = '<?php echo $_SESSION['provider_id'] ?>'
 
     console.log(name);
-    document.querySelector(".profile-name").innerText = name;
+    document.querySelector(".profile-name").innerHTML = name;
 
     </script>
 </body>
