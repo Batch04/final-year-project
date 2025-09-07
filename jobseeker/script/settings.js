@@ -60,26 +60,71 @@ function initializeModals() {
     // Handle modal form submissions (simulated)
     const changePasswordForm = document.querySelector("#changePasswordModal form");
     if (changePasswordForm) {
-        changePasswordForm.addEventListener("submit", function(e) {
+        changePasswordForm.addEventListener("submit", async function(e) {
             e.preventDefault();
-            alert("Password change simulated!");
+            const formData=new FormData(this);
+            console.log(formData);
+            try{
+            const response=await fetch("../backend/change_pass_seeker.php",{
+                method:"POST",
+                body:formData
+            });
+            const text = await response.text();
+            console.log("Raw Response",text);
+            try{
+               let   result=JSON.parse(text);
+                alert(result.message);
+            if(result.status==='success'){
+
             this.closest(".modal-overlay").classList.remove("show");
+            }
+        } 
+        catch(parseError){
+            console.error("Invalid JSON response form server",text);
+            alert("Unexpected server response");
+        }
+     } catch(error){
+                alert("Error connecting to server");
+                console.error(error);       
+                 }
         });
     }
 
-    const deactivateButton = document.querySelector("#deactivateAccountModal .modal-deactivate-btn");
-    if (deactivateButton) {
-        deactivateButton.addEventListener("click", function() {
-            alert("Account deactivation simulated!");
-            this.closest(".modal-overlay").classList.remove("show");
-        });
-    }
 
     const deleteButton = document.querySelector("#deleteAccountModal .modal-delete-btn");
     if (deleteButton) {
-        deleteButton.addEventListener("click", function() {
-            alert("Account deletion simulated! This action is irreversible.");
-            this.closest(".modal-overlay").classList.remove("show");
+        deleteButton.addEventListener("click", async function() {
+            if(!confirm("Are you sure you want to delete your account?")){
+                return;
+            }
+            try{
+                const response=await fetch("../backend/delete_account_seeker.php",{
+                    method:"POST",
+                    headers:{"Content-Type":"application/json"}
+                });
+                const text=await response.text();
+                console.log("Raw Response",text);
+                let result;
+                try{
+                    result=JSON.parse(text);
+                }
+                catch(jsonError){
+                    console.error(jsonError);
+                    alert("Server Returned Invalid json");
+                    return;
+
+                }
+                alert(result.message);
+                if(result.status==='success'){
+                       this.closest(".modal-overlay").classList.remove("show");
+                    window.location.href="../index.html";
+                }
+            }
+            catch(error){
+                alert("Error connecting to server");
+                console.error;
+            }
+         
         });
     }
 }

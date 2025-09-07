@@ -38,7 +38,7 @@ $hashPass=password_hash($newPassword,PASSWORD_DEFAULT);
 $update=$con->prepare("UPDATE providers SET password=? where provider_id=?");
 $update->bind_param('si',$hashPass,$provider_id);
 if($update->execute()){
-    echo json_encode(['status'=>'suucess','message'=>'Password Updated']);
+    echo json_encode(['status'=>'success','message'=>'Password Updated']);
 }
 else{
     echo json_encode(['status'=>'error','message'=>'Failed to Update']);
