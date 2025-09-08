@@ -97,7 +97,7 @@
 
         const name = <?Php echo $_SESSION['seeker_id'] ?>
         console.log(name);
-        document.querySelector(".profile-name").innertext = name;
+        document.querySelector(".profile-name").innerHTML = name;
 
     </script>
 

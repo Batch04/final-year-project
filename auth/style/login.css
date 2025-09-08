@@ -7,7 +7,7 @@
         
         body {
             font-family: 'Segoe UI', sans-serif;
-            background:linear-gradient(to bottom, #f9f9f9, #5DADE2);
+            background:linear-gradient(150deg, #f9f9f9, #5DADE2);
             background-attachment: fixed;
             background-size: cover;
             display: flex;
@@ -68,16 +68,15 @@
 
         .container h2{
             font-size: 2rem;
-            color: var(--black);
+            color: var(--blue);
             text-align: center;    
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.2); 
             font-weight: bold;
         }
 
         input {
             width: 105%;
             padding: 10px;
-            margin: 20px 0;
+            margin: 10px 0;
             font-size: 20px;
             border: 1px solid #ccc;
             border-radius: 8px;
