@@ -2,19 +2,18 @@
 <head>
 
     <title>PartTimeConnect– Job Seeker Login</title>
-    <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="style/login.css">
 </head>
 
 <body>
     <div class="container">
         <h2>Job Seeker Login</h2>
-        <form method="POST" action="../backend/seeker_log.php">
+        <form id="loginForm">
             <input type="text" id="seeker-username" placeholder="Enter Email" name="email"required><br>
             <input type="password" id="seeker-password" name="pass" placeholder="Enter password" required><br>
             <input type="hidden" name="type" value="seeker">
             <a href="forgotpass/forgot.html">Forgot Password?</a><br><br>
-            <button type="submit" name="submit" class="login-btn">Login</button>
+            <button type="submit" name="submit" id="submit"class="login-btn">Login</button>
         </form>
         <p >Don't have an account?<a style="color:dodgerblue" href="seeker_signup.html">Sign up</a></p>
         <p style="margin-top: 20px;"><a href="../auth/home.html">< Back to Home</a></p>
@@ -27,6 +26,38 @@
         <li><a href="../auth/home.html">Home</a></li>
     </ul>
     </nav>
+    <script>
+        document.querySelector("#loginForm").addEventListener("submit",function(e){
+            e.preventDefault();
+            const email=document.querySelector("#seeker-username").value;
+            const pass=document.querySelector("#seeker-password").value;
+            const formData={email,pass};
+            console.log(formData);
+            fetch("../backend/seeker_log.php",{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(formData)
+            })
+            .then(res=>res.text())
+            .then(text=>{
+                console.log("Raw response",text);
+                const data=JSON.parse(text);
+                if(data.status==='success'){
+                    alert(data.message);
+                    window.location.href="../jobseeker/dashboard.html";
+                }
+                else{
+                    alert(data.message);
+                }
+            }).catch((err)=>
+            {
+                console.error("Fetch error",err);
+                alert("Network error please try again");
+            }
+
+            );
+        });
+    </script>
 
 </body>
 </html>

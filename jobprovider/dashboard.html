@@ -352,6 +352,7 @@
         .then(data=>{
             const container=document.getElementById("application-list");
                 container.innerHTML="";
+                console.log(data);
             if(data.status==='success' && data.applications.length > 0){
                 data.applications.forEach(app=>{
                     const card=document.createElement(div);
