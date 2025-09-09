@@ -216,5 +216,5 @@ document.addEventListener("DOMContentLoaded", function () {
         profileAvatarPreview.src = userAvatar;
     }
 });
-}
+})
 

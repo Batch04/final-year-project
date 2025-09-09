@@ -21,7 +21,7 @@ session_start();
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="dashboard.html">
-                    <h1>PartTimeConnect</h1>
+                    <h1 class="company-logo-h1">PartTimeConnect</h1>
                 </a>
             </div>
             <div class="nav-search">

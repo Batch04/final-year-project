@@ -62,7 +62,7 @@
     }
 
     .nav-logo {
-        width: 11%;
+        width: 18%;
         height: 100%;
         display: flex;
         align-items: center;
@@ -70,6 +70,10 @@
 
     .nav-logo a {
         text-decoration: none;
+        color: var(--blue);
+    }
+
+    .company-logo-h1{
         color: var(--blue);
     }
 
@@ -131,7 +135,7 @@
     }
 
     .nav-profile {
-        width: 12%;
+        width: 13%;
         height: 100%;
     }
 
@@ -164,7 +168,7 @@
 
 
     .avatar-image {
-        width: 30%;
+        width: 27%;
         height: 70%;
         display: flex;
         align-items: center;
