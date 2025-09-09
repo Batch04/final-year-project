@@ -129,6 +129,7 @@ function initializeModals() {
     }
 }
 
+
 // Navbar functionality (from header.html)
 function initializeNavbarFunctionality() {
     const profileSection = document.querySelector(".profile-section");
@@ -179,17 +180,29 @@ function performSearch() {
 
 // Update profile name and avatar (simulated)
 document.addEventListener("DOMContentLoaded", function() {
-    const profileNameDisplay = document.querySelector(".profile-name-display");
-    const profileNameNavbar = document.querySelector(".profile-name");
-    const profileAvatarPreview = document.getElementById("profileAvatarPreview");
+    
+
+    fetch("../backend/get_seeker.php")
+    .then(res=>res.json())
+    .then(data=>{
+        if(data.error){
+            console.error("Error fetching data",data.error);
+            showNotification("Error loading pages","error");
+            return;
+        }
+       const userName =  document.querySelector(".profile-name-display");
+        if (userName) {
+        userName.textContent =data.user.name;
+    }
+
+    }
+    )
 
     // Simulate loading user data
-    const userName = "Jaswant";
+    
     const userAvatar = "images/job-seeker-avatar.png"; // Or a path to a default image
 
-    if (profileNameDisplay) {
-        profileNameDisplay.textContent = userName;
-    }
+   
     if (profileNameNavbar) {
         profileNameNavbar.textContent = userName;
     }

@@ -9,11 +9,13 @@ if(isset($_POST['submit'])){
     $pass=$_POST['pass'];
     $hash_pass=password_hash($pass,PASSWORD_DEFAULT);
     $phone=$_POST['phone'];
+    $education=$_POST['education'];
+    $location=$_POST['location'];
     $age=$_POST['age'];
     $skills=$_POST['skills'];
-    $sql=$con->prepare("INSERT INTO seekers(name,email,password,phone,age,skills)
-                VALUES(?,?,?,?,?,?)");
-    $sql->bind_param('sssiis',$name,$email,$hash_pass,$phone,$age,$skills);
+    $sql=$con->prepare("INSERT INTO seekers(name,email,password,phone,location,education,age,skills)
+                VALUES(?,?,?,?,?,?,?,?)");
+    $sql->bind_param('sssissis',$name,$email,$hash_pass,$phone,$location,$education,$age,$skills);
     if($sql->execute()){
        $last_id=$con->insert_id;
        $_SESSION['seeker_id']=$last_id;

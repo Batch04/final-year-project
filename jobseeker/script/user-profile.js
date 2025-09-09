@@ -1,4 +1,61 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // ==============================
+    // FETCH SEEKER DATA FROM BACKEND
+    // ==============================
+    fetch('../backend/get_seeker.php')
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                console.error("Error fetching profile:", data.error);
+                showNotification("Error loading profile", "error");
+                return;
+            }
+
+            // Fill profile fields dynamically
+            document.querySelector('.user-name').textContent = data.user.name || "Seeker";
+
+            const fullName=document.querySelector(".field-value-fullName");
+             if (fullName) fullName.textContent = data.user.name || "Not Provided";
+
+            const emailField = document.querySelector('.field-value-email');
+            if (emailField) emailField.textContent = data.user.email || "Not Provided";
+
+            const locationField = document.querySelector('.field-value-location');
+            if (locationField) locationField.textContent = data.user.location || "Not Provided";
+
+            const phoneField = document.querySelector('.field-value-phone');
+            if (phoneField) phoneField.textContent = data.user.phone || "Not Provided";
+
+            const educationField = document.querySelector('.field-value-education');
+            if (educationField) {
+                educationField.innerHTML = data.user.education || "Not Provided";
+            }
+
+            const skillsContainer = document.querySelector('.skills-container');
+            if (skillsContainer) {
+                skillsContainer.innerHTML = "";
+                if (data.user.skills) {
+                    data.user.skills.split(",").forEach(skill => {
+                        const span = document.createElement("span");
+                        span.className = "skill-tag";
+                        span.textContent = skill.trim();
+                        skillsContainer.appendChild(span);
+                    });
+                } else {
+                    skillsContainer.innerHTML = "<span>No skills added</span>";
+                }
+            }
+
+            const availabilityText = document.querySelector('.availability-text');
+            if (availabilityText) {
+                availabilityText.textContent = data.user.availability || "Not Mentioned";
+            }
+        })
+        .catch(err => {
+            console.error("Profile fetch failed:", err);
+            showNotification("Failed to load profile", "error");
+        });
+
     // Enhanced profile field interactions
     const profileFields = document.querySelectorAll('.profile-field');
     const userAvatar = document.querySelector('.user-avatar');
