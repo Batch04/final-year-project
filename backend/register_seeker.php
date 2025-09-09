@@ -26,6 +26,6 @@ if(isset($_POST['submit'])){
         echo "Error".mysqli_error($con);
     }
   }
-  $sql->close();
-  $con->close();
+$sql->close();
+$con->close();
 ?>

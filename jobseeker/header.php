@@ -95,7 +95,7 @@
             session_start();
         ?>
 
-        const name = <?Php echo $_SESSION['seeker_id'] ?>
+        const name = <?Php echo $_SESSION['sekker_name'] ?>
         console.log(name);
         document.querySelector(".profile-name").innerHTML = name;
 

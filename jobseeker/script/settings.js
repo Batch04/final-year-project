@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     initializeDropdowns();
     initializeModals();
     initializeNavbarFunctionality();
@@ -10,7 +10,7 @@ function initializeDropdowns() {
     const sectionHeaders = document.querySelectorAll(".section-header");
 
     sectionHeaders.forEach(header => {
-        header.addEventListener("click", function() {
+        header.addEventListener("click", function () {
             const dropdownContent = this.nextElementSibling;
             const dropdownIcon = this.querySelector(".dropdown-icon");
 
@@ -31,7 +31,7 @@ function initializeModals() {
     const modalOverlays = document.querySelectorAll(".modal-overlay");
 
     manageButtons.forEach(button => {
-        button.addEventListener("click", function() {
+        button.addEventListener("click", function () {
             const modalId = this.dataset.modalTarget;
             const modal = document.getElementById(modalId);
             if (modal) {
@@ -41,7 +41,7 @@ function initializeModals() {
     });
 
     closeButtons.forEach(button => {
-        button.addEventListener("click", function() {
+        button.addEventListener("click", function () {
             const modal = this.closest(".modal-overlay");
             if (modal) {
                 modal.classList.remove("show");
@@ -50,7 +50,7 @@ function initializeModals() {
     });
 
     modalOverlays.forEach(overlay => {
-        overlay.addEventListener("click", function(e) {
+        overlay.addEventListener("click", function (e) {
             if (e.target === this) {
                 this.classList.remove("show");
             }
@@ -60,71 +60,71 @@ function initializeModals() {
     // Handle modal form submissions (simulated)
     const changePasswordForm = document.querySelector("#changePasswordModal form");
     if (changePasswordForm) {
-        changePasswordForm.addEventListener("submit", async function(e) {
+        changePasswordForm.addEventListener("submit", async function (e) {
             e.preventDefault();
-            const formData=new FormData(this);
+            const formData = new FormData(this);
             console.log(formData);
-            try{
-            const response=await fetch("../backend/change_pass_seeker.php",{
-                method:"POST",
-                body:formData
-            });
-            const text = await response.text();
-            console.log("Raw Response",text);
-            try{
-               let   result=JSON.parse(text);
-                alert(result.message);
-            if(result.status==='success'){
+            try {
+                const response = await fetch("../backend/change_pass_seeker.php", {
+                    method: "POST",
+                    body: formData
+                });
+                const text = await response.text();
+                console.log("Raw Response", text);
+                try {
+                    let result = JSON.parse(text);
+                    alert(result.message);
+                    if (result.status === 'success') {
 
-            this.closest(".modal-overlay").classList.remove("show");
-            }
-        } 
-        catch(parseError){
-            console.error("Invalid JSON response form server",text);
-            alert("Unexpected server response");
-        }
-     } catch(error){
+                        this.closest(".modal-overlay").classList.remove("show");
+                    }
+                }
+                catch (parseError) {
+                    console.error("Invalid JSON response form server", text);
+                    alert("Unexpected server response");
+                }
+            } catch (error) {
                 alert("Error connecting to server");
-                console.error(error);       
-                 }
+                console.error(error);
+            }
         });
     }
 
 
     const deleteButton = document.querySelector("#deleteAccountModal .modal-delete-btn");
     if (deleteButton) {
-        deleteButton.addEventListener("click", async function() {
-            if(!confirm("Are you sure you want to delete your account?")){
+        deleteButton.addEventListener("click", async function () {
+            if (!confirm("Are you sure you want to delete your account?")) {
                 return;
             }
-            try{
-                const response=await fetch("../backend/delete_account_seeker.php",{
-                    method:"POST",
-                    headers:{"Content-Type":"application/json"}
+            try {
+                const response = await fetch("../backend/delete_account_seeker.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" }
                 });
-                const text=await response.text();
-                console.log("Raw Response",text);
+                const text = await response.text();
+                console.log("Raw Response", text);
                 let result;
-                try{
-                    result=JSON.parse(text);
+                try {
+                    result = JSON.parse(text);
                 }
-                catch(jsonError){
+                catch (jsonError) {
                     console.error(jsonError);
                     alert("Server Returned Invalid json");
                     return;
 
                 }
                 alert(result.message);
-                if(result.status==='success'){
-                       this.closest(".modal-overlay").classList.remove("show");
-                    window.location.href="../index.html";
+                if (result.status === 'success') {
+                    this.closest(".modal-overlay").classList.remove("show");
+                    window.location.href = "../index.html";
                 }
             }
-            catch(error){
+            catch (error) {
                 alert("Error connecting to server");
                 console.error;
             }
-         
+
         });
     }
 }
@@ -136,16 +136,16 @@ function initializeNavbarFunctionality() {
     const dropdownMenu = document.querySelector(".dropdown-menu");
 
     if (profileSection && dropdownMenu) {
-        profileSection.addEventListener("click", function(e) {
+        profileSection.addEventListener("click", function (e) {
             e.stopPropagation();
             dropdownMenu.classList.toggle("active");
         });
 
-        document.addEventListener("click", function() {
+        document.addEventListener("click", function () {
             dropdownMenu.classList.remove("active");
         });
 
-        dropdownMenu.addEventListener("click", function(e) {
+        dropdownMenu.addEventListener("click", function (e) {
             e.stopPropagation();
         });
     }
@@ -161,7 +161,7 @@ function initializeSearchFunctionality() {
     }
 
     if (locationSearchInput) {
-        locationSearchInput.addEventListener("keypress", function(e) {
+        locationSearchInput.addEventListener("keypress", function (e) {
             if (e.key === "Enter") {
                 performSearch();
             }
@@ -206,9 +206,15 @@ document.addEventListener("DOMContentLoaded", function() {
     if (profileNameNavbar) {
         profileNameNavbar.textContent = userName;
     }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const profileAvatarPreview = document.getElementById("profileAvatarPreview");
+
+    // Simulate loading user data
+    const userAvatar = "images/job-seeker-avatar.png"; // Or a path to a default image
     if (profileAvatarPreview) {
         profileAvatarPreview.src = userAvatar;
     }
 });
-
+}
 

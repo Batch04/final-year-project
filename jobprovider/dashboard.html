@@ -66,7 +66,10 @@
                         <div class="action-deatils">
                             <h3>Post New Job</h3>
                             <p>Create a new job posting to attract candidates</p>
+
                             <button class="btn btn-primary" onclick="window.location.href='post-job.html'">Get Started</button>
+                            <button class="btn btn-primary get-strated-btn">Get Started</button>
+
                         </div>
                     </div>
 
@@ -188,6 +191,7 @@
             <div class="section-headers">
                 <h2>Your Active Job Postings</h2>
                 <button class="btn btn-primary post-button" onclick="window.location.href='post-job.html'">
+                <button class="btn btn-primary post-button ">
                     <i class="fas fa-plus"></i>
                     Post New Job
                 </button>
@@ -340,6 +344,15 @@
         </div>
     </div>
     <script>
+
+        document.querySelector(".get-strated-btn").addEventListener("click",()=>{
+            window.location.href="post-job.html";
+        });
+
+        document.querySelector(".post-button").addEventListener("click",()=>{
+            window.location.href="post-job.html";
+        });
+
         fetch("../backend/get_provider.php")
         .then(res=>res.json())
         .then(data=>{
