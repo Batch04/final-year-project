@@ -1,13 +1,12 @@
 <html>
 <head>
   <title>Job Seeker Sign-Up</title>
-  <link rel="stylesheet" href="styles/signup.css">
   <link rel="stylesheet" href="style/signup.css">
 </head>
 <body>
   <div class="signup-container">
     <h2>Job Seeker Registration</h2>
-    <form action="../backend/register_seeker.php" method="POST">
+    <form id="signupForm">
       <label for="fullname">Full Name</label>
       <input type="text" id="fullname" name="name" required placeholder="Vyshnavi Narala">
 
@@ -15,7 +14,7 @@
       <input type="email" id="email" name="email" placeholder="vyshanvi111@gmail.com">
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" placeholder="03928232...">
+      <input type="text" id="phone" name="phone" maxlength="10" placeholder="03928232...">
 
       <label for="qualification">Qualification</label>
       <input type="text" id="qualification" name="education" placeholder="Graduated from SVU" required>
@@ -26,7 +25,7 @@
       <label for="location">Preferred Job Location</label>
       <input type="text" id="location" name="location" placeholder="kurnool" required>
 
-      <label for="age">Age</label>
+      <label for="location">Age</label>
       <input type="text" required placeholder="18" name="age">
 
       <label for="password">Password</label>
@@ -42,5 +41,40 @@
         <li><a href="../index.html">Home</a></li>
     </ul>
     </nav>
+    <script>
+       document.getElementById("signupForm").addEventListener("submit",async function(e){
+        e.preventDefault();
+        const formData = new FormData(this);
+        const data=Object.fromEntries(formData.entries());
+        try{
+          const response=await fetch("../backend/register_seeker.php",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(data)
+          });
+          const text=await response.text();
+          console.log("Raw response:",text);
+          try{
+            const result=JSON.parse(text);
+            console.log("Parsed result",result);
+          
+          if(result.status==='success'){
+            window.location.href="../jobseeker/dashboard.html";
+          }
+          else{
+            alert(result.message|| "Signup Failed");
+          }
+        }
+        catch(jsonError){
+            console.error("JSON PArse Error",jsonError);
+            alert("Error");
+        }
+      }
+        catch(fetchError){
+          console.error("Error:",fetchError);
+          alert("Something went wrong.Try again");
+        }
+      });
+    </script>
 </body>
 </html>
