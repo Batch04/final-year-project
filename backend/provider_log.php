@@ -24,7 +24,7 @@ session_start();
         }
     }
     else{
-        echo "No data found";
+        echo json_encode(['status'=>'error','message'=>'No data found']);
     }
 $sql->close();
 $con->close();
