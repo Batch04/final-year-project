@@ -15,6 +15,7 @@ session_start();
         while($row=$res->fetch_assoc()){
             if(password_verify($pass,$row['password'])){
                 $_SESSION['provider_id']=$row['provider_id'];
+                $_SESSION['company_name']=$row['company_name'];
                 echo json_encode(['status'=>'success']);
             }
             else{

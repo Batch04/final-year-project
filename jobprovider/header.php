@@ -86,7 +86,7 @@
         session_start();
     ?>
 
-    const name = '<?php echo $_SESSION['provider_id'] ?>'
+    const name = '<?php echo $_SESSION['company_name'] ?>'
 
     console.log(name);
     document.querySelector(".profile-name").innerHTML = name;
