@@ -15,7 +15,7 @@ $data=json_decode(file_get_contents("php://input"),true);
         while($row=$res->fetch_assoc()){
             if(password_verify($pass,$row['password'])){
                 $_SESSION['seeker_id']=$row['id'];
-                $_SESSION['sekker_name']=$row['name'];
+                $_SESSION['seeker_name']=$row['name'];
                 echo json_encode(['status'=>'success','message'=>'log in succesfully']);
                 exit;
             }
