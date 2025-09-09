@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,15 +93,11 @@
     </nav>
 
     <script>
-
-        <?php 
-            session_start();
-        ?>
-
-        const name = <?Php echo $_SESSION['sekker_name'] ?>
+        const id = '<?php echo $_SESSION['seeker_id'] ?>';
+        console.log(id);
+        const name = '<?php echo $_SESSION['sekker_name'] ?>';
         console.log(name);
         document.querySelector(".profile-name").innerHTML = name;
-
     </script>
 
 </body>

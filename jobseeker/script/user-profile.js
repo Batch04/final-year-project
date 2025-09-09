@@ -3,36 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileFields = document.querySelectorAll('.profile-field');
     const userAvatar = document.querySelector('.user-avatar');
     const skillTags = document.querySelectorAll('.skill-tag');
-    
-    // // Add enhanced hover effects for profile fields
-    // profileFields.forEach((field, index) => {
-    //     // Staggered animation on page load
-    //     field.style.animationDelay = `${index * 0.1}s`;
-        
-    //     // Enhanced hover effect with subtle animations
-    //     field.addEventListener('mouseenter', function() {
-    //         this.style.transform = 'translateY(-4px) scale(1.02)';
-    //         this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
-            
-    //         // Add a subtle glow effect
-    //         this.style.borderColor = 'var(--blue)';
-    //     });
-
-    //     field.addEventListener('mouseleave', function() {
-    //         this.style.transform = '';
-    //         this.style.boxShadow = '';
-    //         this.style.borderColor = 'transparent';
-    //     });
-
-    //     // Add click effect for better interactivity
-    //     field.addEventListener('mousedown', function() {
-    //         this.style.transform = 'translateY(-2px) scale(1.01)';
-    //     });
-
-    //     field.addEventListener('mouseup', function() {
-    //         this.style.transform = 'translateY(-4px) scale(1.02)';
-    //     });
-    // });
 
     // Enhanced avatar interactions
     if (userAvatar) {
@@ -418,4 +388,11 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+
+
+/* html genration using js */
+
+
 

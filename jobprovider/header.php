@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,87 +16,83 @@
 
 <body>
     <nav class="navbar">
-    <div class="nav-container">
-        <div class="nav-logo">
-            <a href="dashboard.html">
-                <h1>PartTimeConnect</h1>
-            </a>
-        </div>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="dashboard.html">
+                    <h1>PartTimeConnect</h1>
+                </a>
+            </div>
 
-        <div class="nav-actions">
-            <a href="../jobprovider/post-job.html"> <button class=" header-post-button">
-                    <i class="fas fa-plus"></i>
-                    Post New Job
-                </button></a>
-        </div>
+            <div class="nav-actions">
+                <a href="../jobprovider/post-job.html"> <button class=" header-post-button">
+                        <i class="fas fa-plus"></i>
+                        Post New Job
+                    </button></a>
+            </div>
 
-        <div class="nav-profile">
-            <div class="profile-dropdown">
-                <div class="avater-image-container">
-                    <img src="images/job-provider-avatar.png" alt="Profile" class="profile-avatar">
+            <div class="nav-profile">
+                <div class="profile-dropdown">
+                    <div class="avater-image-container">
+                        <img src="images/job-provider-avatar.png" alt="Profile" class="profile-avatar">
+                    </div>
+                    <div class="profile-details">
+                        <span class="profile-name">TechCorp Solutions</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html" class="dropdown-item">
+                            <div>
+                                <i class="fa-solid fa-house"></i>
+                                <p>Home</p>
+                            </div>
+                        </a>
+                        <a href="profile-information.html" class="dropdown-item">
+                            <div>
+                                <i class="fas fa-building"></i>
+                                <p>Company Profile</p>
+                            </div>
+                        </a>
+                        <a href="postings.html" class="dropdown-item">
+                            <div>
+                                <i class="fas fa-briefcase"></i>
+                                <p>My Job Postings</p>
+                            </div>
+                        </a>
+                        <a href="posted-jobs-overview.html" class="dropdown-item">
+                            <div>
+                                <i class="fas fa-users"></i>
+                                <p>Applicants</p>
+                            </div>
+                        </a>
+                        <a href="settings.html" class="dropdown-item">
+                            <div>
+                                <i class="fas fa-cog"></i>
+                                <p>Settings</p>
+                            </div>
+                        </a>
+                        <a href="../backend/provider_logout.php" class="dropdown-item">
+                            <div>
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>Logout</p>
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
-                <div class="profile-details">
-                    <span class="profile-name">TechCorp Solutions</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-
-                <div class="dropdown-menu">
-                    <a href="dashboard.html" class="dropdown-item">
-                        <div>
-                            <i class="fa-solid fa-house"></i>
-                            <p>Home</p>
-                        </div>
-                    </a>
-                    <a href="profile-information.html" class="dropdown-item">
-                        <div>
-                            <i class="fas fa-building"></i>
-                            <p>Company Profile</p>
-                        </div>
-                    </a>
-                    <a href="postings.html" class="dropdown-item">
-                        <div>
-                            <i class="fas fa-briefcase"></i>
-                            <p>My Job Postings</p>
-                        </div>
-                    </a>
-                    <a href="posted-jobs-overview.html" class="dropdown-item">
-                        <div>
-                            <i class="fas fa-users"></i>
-                            <p>Applicants</p>
-                        </div>
-                    </a>
-                    <a href="settings.html" class="dropdown-item">
-                        <div>
-                            <i class="fas fa-cog"></i>
-                            <p>Settings</p>
-                        </div>
-                    </a>
-                    <a href="../backend/provider_logout.php" class="dropdown-item">
-                        <div>
-                            <i class="fas fa-sign-out-alt"></i>
-                            <p>Logout</p>
-                        </div>
-                    </a>
-                </div>
-
             </div>
         </div>
-    </div>
 
-    <script>
-        
-    <?php
-        session_start();
-    ?>
+        <script>
 
-    const name = '<?php echo $_SESSION['company_name'] ?>'
 
-    console.log(name);
-    document.querySelector(".profile-name").innerHTML = name;
 
-    </script>
+            const name = '<?php echo $_SESSION['company_name'] ?>'
+
+            console.log(name);
+            document.querySelector(".profile-name").innerHTML = name;
+
+        </script>
 </body>
 
 </html>
-
-
