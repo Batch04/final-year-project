@@ -1,7 +1,6 @@
 <html>
 <head>
   <title>Job Provider Sign-Up</title>
-  <link rel="stylesheet" href="styles/signup.css">
   <link rel="stylesheet" href="style/signup.css">
 </head>
 <body>
@@ -15,13 +14,17 @@
       <input type="email" id="email" name="email" placeholder="vsfjhsfh@gmal.com">
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone"name="contact_number" placeholder="3758270.....">
+      <input type="tel" id="phone"name="contact_number" maxlength="10" placeholder="3758270.....">
 
       <label for="address">Address</label>
       <textarea id="address" name="address" rows="2"placeholder="K.T road,tirupati....." required></textarea>
 
       <label for="jobrole">Job Roles Offered</label>
       <input type="text" id="jobrole" placeholder="Manager">
+
+      <label for="address">Describe your company</label>
+      <textarea id="Description" name="description" rows="5"placeholder="technology for softwares...." required></textarea>
+
 
       <label for="location">Job Location</label>
       <input type="text" id="location"placeholder="tirupati" name="location" required>

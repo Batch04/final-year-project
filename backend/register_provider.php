@@ -13,10 +13,11 @@ $pass = $_POST['pass'];
 $hash_pass = password_hash($pass, PASSWORD_DEFAULT);
 $address = $_POST['address'];
 $location = $_POST['location'];
+$description=$_POST['description'];
 $contact_number = $_POST['contact_number'];
-$sql = $con->prepare("INSERT INTO providers(company_name,email,password,address,location,contact_number) 
-                VALUES(?,?,?,?,?,?)");
-$sql->bind_param('sssssi', $company_name, $email, $hash_pass, $address, $location, $contact_number);
+$sql = $con->prepare("INSERT INTO providers(company_name,email,password,address,location,contact_number,company_description) 
+                VALUES(?,?,?,?,?,?,?)");
+$sql->bind_param('sssssis', $company_name, $email, $hash_pass, $address, $location, $contact_number,$description);
 if ($sql->execute()) {
     $_SESSION['provider_id'] = $con->insert_id;
     $_SESSION['company_name'] = $company_name;

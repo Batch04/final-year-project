@@ -1,4 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+
+    fetch("../backend/get_provider.php")
+    .then(res=>res.json())
+    .then(data=>{
+        if(data.error){
+            console.error("Error fetching data",data.error);
+            return;
+        }
+       const name= document.querySelector(".info-value-name");
+       if(name) name.textContent=data.user.company_name;
+
+       const email=document.querySelector(".info-value-email");
+       if(email) email.textContent=data.user.email;
+
+       const location=document.querySelector(".info-value-location");
+       if(location) location.textContent=data.user.location;
+
+       const description=document.querySelector(".info-value-description");
+       if(description) description.textContent=data.user.company_description;
+    })
     // Get all buttons that open external links
     const visitButton = document.querySelector('.visit-button');
     const socialButtons = document.querySelectorAll('.social-button');
@@ -356,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    Enhanced job card hover effects
+    //Enhanced job card hover effects
     const jobCards = document.querySelectorAll('.job-card');
     
     jobCards.forEach((card, index) => {

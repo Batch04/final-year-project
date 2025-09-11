@@ -85,8 +85,6 @@ session_start();
 
         <script>
 
-
-
             const name = '<?php echo $_SESSION['company_name'] ?>'
 
             console.log(name);
