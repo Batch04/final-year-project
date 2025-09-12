@@ -10,7 +10,9 @@ let jobData = {
     experienceRequired: '',
     postedDate: '',
     jobDescription: '',
-    whatTheyOffer: ''
+    whatTheyOffer: '',
+    workload:'',
+    workperiod:''
 };
 
 let isDraft = false;
@@ -266,7 +268,9 @@ function updateJobData() {
         experienceRequired: document.getElementById('experienceRequired').value,
         postedDate: document.getElementById('postedDate').value,
         jobDescription: document.getElementById('jobDescription').value,
-        whatTheyOffer: document.getElementById('whatTheyOffer').value
+        whatTheyOffer: document.getElementById('whatTheyOffer').value,
+        workload : document.getElementById("workload").value,
+        workperiod : document.getElementById("workPeriod").value
     };
 }
 
@@ -355,6 +359,10 @@ function generateJobPreview() {
     const salaryDisplay = jobData.salaryAmount && jobData.salaryPeriod 
         ? `₹${parseInt(jobData.salaryAmount).toLocaleString()} ${jobData.salaryPeriod.replace('-', ' ')}`
         : 'Salary not specified';
+
+    const workDisplay = jobData.workload && jobData.workperiod 
+        ? ` ${jobData.workload}hrs ${jobData.workperiod.replace('-', ' ')}`
+        : 'workload not specified';
     
     const experienceDisplay = jobData.experienceRequired 
         ? jobData.experienceRequired.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())
@@ -388,6 +396,9 @@ function generateJobPreview() {
                     </div>
                     <div class="detail-item">
                         <strong>Posted:</strong> ${new Date(jobData.postedDate).toLocaleDateString()}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Work:</strong> ${workDisplay}
                     </div>
                 </div>
             </div>

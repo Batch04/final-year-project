@@ -158,6 +158,50 @@
                         </div>
                     </div>
 
+                    <!-- working hours -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-clock"></i>
+                            Working Hours
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="salaryAmount" class="form-label">
+                                    Work Load<span class="required">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-prefix" style="color: var(--blue);"><i class="fas fa-clock"></i></span>
+                                    <input 
+                                        type="number" 
+                                        id="workload" 
+                                        name="salaryAmount" 
+                                        class="form-input" 
+                                        placeholder="2hours"
+                                        min="1"
+                                        step="1000"
+                                        required
+                                    >
+                                </div>
+                                <div class="input-hint">Enter How much work </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="salaryPeriod" class="form-label">
+                                    Work Period <span class="required">*</span>
+                                </label>
+                                <select id="workPeriod" name="salaryPeriod" class="form-select" required>
+                                    <option value="">Select period</option>
+                                    <option value="per-day">Per Day</option>
+                                    <option value="per-week">Per Week</option>
+                                    <option value="per-month">Per Month</option>
+                                    <option value="hourly">Per Hour</option>
+                                </select>
+                                <div class="input-hint">work per period</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Job Requirements -->
                     <div class="form-section">
                         <h3 class="section-title">

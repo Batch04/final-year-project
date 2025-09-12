@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/dashboard.css">
-    <link rel="stylesheet" href="styles/savedjobs.css">
     <link rel="stylesheet" href="styles/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -143,9 +142,8 @@
                             <img src="images/logo.png" alt="TechCorp">
                         </div>
                         <div class="save-container">
-                            <button class="save-job-btn">
+                            <button class="save-job-btn" id="save">
                                 <i class="far fa-heart"></i>
-                                <i class="fa-solid fa-heart "></i>
                             </button>
                         </div>
                     </div>
@@ -162,7 +160,7 @@
                     </div>
 
                 </div>
-                
+
                 <div class="job-details">
                     <div class="job-container">
 
@@ -265,7 +263,7 @@
 
     </div>
 
-
+    <script src="script/get-jobs.js"></script>
     <script>
         function search() {
             alert("searching")
@@ -276,12 +274,12 @@
             filter.style.display = filter.style.display === "block" ? "none" : "block";
         }
         fetch("../backend/get_seeker.php")
-        .then(res=>res.json())
-        .then(data=>{
-            if(data.status==='success'){
-                document.getElementById("name").textContent="Welcome back!   "+data.user.name;
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById("name").textContent = "Welcome back!   " + data.user.name;
+                }
+            });
 
     </script>
 </body>

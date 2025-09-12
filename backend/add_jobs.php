@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$con = mysqli_connect("localhost", "root", "", "partconnectdb");
+include 'connection.php';
 
 header('Content-Type: application/json');
 
@@ -21,9 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $experience = $resposnedata['experienceRequired'];
     $benifits = $resposnedata['whatTheyOffer'];
     $posted_date = $resposnedata['postedDate'];
-    $sql = "insert into  posted_jobs (provider_name, job_title,job_type, job_location,job_salary,job_salary_time,job_experience,job_posted,job_description,job_benifits,job_status) 
-                values ('$provider_id', '$title', '$type', '$location', $salary,'$salary_time', '$experience', '$posted_date', '$description', '$benifits','open')";
-
+    $company_name = $_SESSION['company_name'];
+    $workload = $resposnedata['workload'];
+    $workperiod = $resposnedata['workperiod'];
+    $sql = "insert into  posted_jobs (provider_name, job_title,job_type, job_location,job_salary,job_salary_time,job_experience,job_posted,job_description,job_benifits,job_status,company_name,work_load,work_period) 
+                values ('$provider_id', '$title', '$type', '$location', $salary,'$salary_time', '$experience', '$posted_date', '$description', '$benifits','open','$company_name',$workload,'$workperiod')";
+ 
 
     $jobinsert = mysqli_query($con, $sql);
     if ($jobinsert) {
