@@ -270,9 +270,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Form submission
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit',async function(e)  {
         e.preventDefault();
-        
+
+          
+
         if (!validateForm()) {
             showNotification('Please fix the errors in the form.', 'error');
             return;
@@ -281,6 +283,41 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show loading state
         saveButton.classList.add('loading');
         saveButton.disabled = true;
+
+        const formData =new FormData(this);
+        try{
+       const response=await fetch("../backend/update_seeker.php",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:formData
+        })
+        const text=await response.text();
+        console.log("Raw Response",text);
+    try{
+        const result=JSON.parse(text);
+        console.log("Response",result);
+              saveButton.classList.add('loading');
+        saveButton.disabled = true;
+        if(result.status==='success'){
+            showNotification(result.message,'info');
+        }
+        else{
+            showNotification(result.message,'error');
+        }
+    }
+      catch(jsonError){
+        console.error("Json response error",jsonError);
+        console.log("Json error");
+      }
+      }
+     catch(error){
+              saveButton.classList.add('loading');
+        saveButton.disabled = false;
+        showNotification("Server error or fetching ",'error');
+        console.log(error);
+
+     }
+  
 
         // Simulate API call
         setTimeout(() => {

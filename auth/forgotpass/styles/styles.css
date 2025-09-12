@@ -1,13 +1,23 @@
+:root {
+    --blue: #0384fc;
+    --white: #f5f6f7;
+    --black: #000;
+    --gray: #797272;
+}
+
 /* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+    background: linear-gradient(to top,#f9f9f9, #5DADE2);
+    background-attachment: fixed;
+    background-size: cover;
     display: flex;
     background-color:lightblue;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding-top: 50px;
 }
 
 /* Form container */
@@ -19,14 +29,17 @@ form {
     right:5%;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
+    animation: slideUp 0.6s ease-out;
 }
 
 /* Headings */
 h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #084b9c;
+    color:var(--blue);
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 /* Input fields */
@@ -36,10 +49,19 @@ input[type="password"] {
     width: 100%;
     padding: 12px;
     margin: 8px 0 16px 0;
-    border-radius: 8px;
+    border-radius: 12px;
     border: 1px solid #ccc;
     box-sizing: border-box;
     font-size: 16px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 6px rgba(3, 132, 252, 0.3);
+    outline: none;
 }
 
 /* Buttons */

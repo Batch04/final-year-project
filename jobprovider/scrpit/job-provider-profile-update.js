@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const logoPreview = document.getElementById('logo-preview');
     const companyLogoDisplay = document.getElementById('company-logo-display');
     const companyNameInput = document.getElementById('company-name');
-    const companyNameDisplay = document.querySelector('.company-name-display');
+    const companyNameDisplay = document.querySelector('.company-name');
     const saveButton = document.querySelector('.btn-save');
     const fileUploadDisplay = document.querySelector('.file-upload-display');
 
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Form submission
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit',  async function(e) {
         e.preventDefault();
         
         if (!validateForm()) {
@@ -137,6 +137,45 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show loading state
         saveButton.classList.add('loading');
         saveButton.disabled = true;
+      const formElement = document.getElementById('company-settings-form');
+        const formData = new FormData(formElement);
+        console.log(formData);
+        for (let [key, value] of formData.entries()) {
+  console.log(`${key}: ${value}`);
+}
+
+
+        try{
+       const response=await fetch("../backend/update_provider.php",{
+            method:"POST",
+            body:formData
+        })
+        const text=await response.text();
+        console.log("Raw Response",text);
+    try{
+        const result=JSON.parse(text);
+        console.log("Response",result);
+              saveButton.classList.add('loading');
+        saveButton.disabled = true;
+        if(result.status==='success'){
+            showNotification(result.message,'info');
+        }
+        else{
+            showNotification(result.message,'error');
+        }
+    }
+      catch(jsonError){
+        console.error("Json response error",jsonError);
+        console.log("Json error");
+      }
+      }
+     catch(error){
+              saveButton.classList.add('loading');
+        saveButton.disabled = false;
+        showNotification("Server error or fetching ",'error');
+        console.log(error);
+
+     }
 
         // Simulate API call
         setTimeout(() => {
