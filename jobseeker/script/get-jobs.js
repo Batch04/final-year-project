@@ -1,4 +1,5 @@
 let data = [];
+let savedstatus = [];
 async function genratedata() {
     try {
         let resposive = await fetch("../backend/get-jobs.php");
@@ -30,9 +31,7 @@ function genratejob() {
                             <img src="images/logo.png" alt="TechCorp">
                         </div>
                         <div class="save-container">
-                            <button class="save-job-btn" data-heart="unsave" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}">
-                             <i class="far fa-heart" ></i>
-                            </button>
+                            ${ issave(job.jobs_id)? `<button class="save-job-btn" data-heart="save" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}"><i class="fa-solid fa-heart "></i></button>`:`<button class="save-job-btn" data-heart="unsave" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}"> <i class="far fa-heart" ></i></button>`}
                         </div>
                     </div>
                     <div class="job-basic-info">
@@ -87,6 +86,37 @@ function genratejob() {
     document.querySelector(".grid-container").innerHTML = postjob;
 }
 
+
+async function issaveddata(){ 
+    
+     try {
+        let resposive = await fetch("../backend/getsaveddata.php");
+        let rawdata = await resposive.text();
+        console.log(rawdata);
+
+        try {
+            savedstatus = JSON.parse(rawdata);
+        } catch (err) {
+            console.log("something error", err);
+        }
+    } catch (er) {
+        console.log('eror ', er);
+    }
+}
+
+
+function issave(jobid){
+    let isstatus = false;
+    savedstatus.forEach((val)=>{
+        if(val.job_id === jobid){
+            isstatus = true;
+        }
+    })
+
+    return isstatus;
+}
+
+
 async function postsavejob(jobid , jobtitile, jobstatus) {
     let response = await fetch("../backend/add_savedjob.php", {
         method: "POST", 
@@ -110,6 +140,7 @@ async function postsavejob(jobid , jobtitile, jobstatus) {
 
 async function main() {
     await genratedata();
+    await issaveddata();
     genratejob();
 
     let savebuttons = document.querySelectorAll(".save-job-btn");

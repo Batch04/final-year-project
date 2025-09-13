@@ -133,16 +133,13 @@ async function main() {
                 await postsavejob(jobid, jobtitle, "unsave");
                 refrese = true;
             }
+
+            if (refrese) {
+                await genratesaveddata();
+                genratesavejob();
+            }
         });
-        console.log(refrese);
     });
-
-    if(refrese){
-    await genratesaveddata();
-    console.log('ready to referse');
-    genratesavejob();
-    }
-
 
 }
 

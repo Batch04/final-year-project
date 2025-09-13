@@ -15,8 +15,11 @@
 
  .content {
      display: flex;
+     align-items: center;
      justify-content: space-between;
      margin-top: 20px;
+     height: 12vh;
+
  }
 
  .header h2 {
@@ -64,64 +67,9 @@
      display: flex;
      justify-content: space-between;
      padding-top: 50px;
-
- }
-
- .filter-select,
- .filter-btn {
-     padding: 6px 8px;
-     margin-right: 10px;
-     border: 1px solid var(--gray);
-     box-shadow: 0.5px 0.5px 1px 0 var(--gray);
-     border-radius: 0.5rem;
- }
-
- .filter-select:focus-within,
- .filter-btn:hover {
-     border: 2px solid var(--blue);
-     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
- }
-
-    .dropdown-filter {
-    position: absolute;
-    top: 30%;
-    right: 4%;
-    border-radius: 0.5rem;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    background-color:var(--white);
     color: var(--blue);
-}
+ }
 
-#dropdown-filters{
-    display: none;
-}
-
-
- .dropdown-label {
-     display: flex;
-     align-items: center;
-     padding-left: 20px;
-     padding-bottom: 5px;
-     gap: 12px;
-     color: var(--gray);
- }
- .btn-filter{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
- }
- .clear-btn,.apply-btn{
-    background-color: red;
-    color: var(--white);
-    padding: 5px 10px;
-    border: 0;
-    border-radius: 0.5rem;
- }
- .apply-btn{
-    background-color: var(--blue);
-    color: var(--white);
- }
 
 
  
