@@ -31,7 +31,7 @@ function genratejob() {
                             <img src="images/logo.png" alt="TechCorp">
                         </div>
                         <div class="save-container">
-                            ${ issave(job.jobs_id)? `<button class="save-job-btn" data-heart="save" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}"><i class="fa-solid fa-heart "></i></button>`:`<button class="save-job-btn" data-heart="unsave" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}"> <i class="far fa-heart" ></i></button>`}
+                            ${issave(job.jobs_id) ? `<button class="save-job-btn" data-heart="save" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}"><i class="fa-solid fa-heart "></i></button>` : `<button class="save-job-btn" data-heart="unsave" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}"> <i class="far fa-heart" ></i></button>`}
                         </div>
                     </div>
                     <div class="job-basic-info">
@@ -73,7 +73,7 @@ function genratejob() {
                         </div>
 
                         <div class="apply-container">
-                            <button class="btn btn-primary apply-btn">
+                            <button class="btn btn-primary apply-btn" data-jobid="${job.jobs_id}">
                                 Apply Now
                             </button>
                         </div>
@@ -87,9 +87,9 @@ function genratejob() {
 }
 
 
-async function issaveddata(){ 
-    
-     try {
+async function issaveddata() {
+
+    try {
         let resposive = await fetch("../backend/getsaveddata.php");
         let rawdata = await resposive.text();
         console.log(rawdata);
@@ -105,10 +105,10 @@ async function issaveddata(){
 }
 
 
-function issave(jobid){
+function issave(jobid) {
     let isstatus = false;
-    savedstatus.forEach((val)=>{
-        if(val.job_id === jobid){
+    savedstatus.forEach((val) => {
+        if (val.job_id === jobid) {
             isstatus = true;
         }
     })
@@ -117,16 +117,16 @@ function issave(jobid){
 }
 
 
-async function postsavejob(jobid , jobtitile, jobstatus) {
+async function postsavejob(jobid, jobtitile, jobstatus) {
     let response = await fetch("../backend/add_savedjob.php", {
-        method: "POST", 
+        method: "POST",
         headers: {
-            "Content-Type": "application/json" 
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
             id: jobid,
             title: jobtitile,
-            state : jobstatus
+            state: jobstatus
         })
     });
 
@@ -148,7 +148,7 @@ async function main() {
     let jobtitle;
     savebuttons.forEach((btn) => {
 
-        btn.addEventListener("click", async() => {
+        btn.addEventListener("click", async () => {
             let status = btn.dataset.heart;
             jobid = btn.dataset.jobid;
             jobtitle = btn.dataset.jobtitle;
@@ -156,16 +156,24 @@ async function main() {
             if (status === "unsave") {
                 btn.innerHTML = '<i class="fa-solid fa-heart "></i>';
                 btn.dataset.heart = "save"
-               await postsavejob(jobid,jobtitle,"save");
+                await postsavejob(jobid, jobtitle, "save");
             }
             else if (status === "save") {
                 btn.innerHTML = '<i class="far fa-heart" >';
                 btn.dataset.heart = "unsave"
-                await postsavejob(jobid,jobtitle,"unsave");
+                await postsavejob(jobid, jobtitle, "unsave");
             }
         });
 
     });
+
+    let apllyjob = document.querySelectorAll(".btn-primary");
+    apllyjob.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            let jobid = btn.dataset.jobid;
+            window.location.href = `./apply-job.html?jobid=${jobid}`;
+        })
+    })
 
 }
 

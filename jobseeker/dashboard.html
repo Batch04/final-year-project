@@ -187,10 +187,6 @@
             alert("searching")
         }
 
-        function filter() {
-            let filter = document.getElementById("dropdown-filters");
-            filter.style.display = filter.style.display === "block" ? "none" : "block";
-        }
         fetch("../backend/get_seeker.php")
             .then(res => res.json())
             .then(data => {
@@ -199,6 +195,7 @@
                 }
             });
 
+          
     </script>
 </body>
 

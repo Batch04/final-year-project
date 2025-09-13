@@ -77,7 +77,7 @@ function genratesavejob() {
                                         Posted on ${job.job_posted}
                                     </div>
                                     <div class="apply-container">
-                                        <button class="btn btn-primary apply-btn">
+                                        <button class="btn btn-primary apply-btn" data-jobid="${job.jobs_id}">
                                             Apply Now
                                         </button>
                                     </div>
@@ -140,6 +140,14 @@ async function main() {
             }
         });
     });
+
+    let apllyjob = document.querySelectorAll(".btn-primary");
+    apllyjob.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            let jobid = btn.dataset.jobid;
+            window.location.href = `./apply-job.html?jobid=${jobid}`;
+        })
+    })
 
 }
 
