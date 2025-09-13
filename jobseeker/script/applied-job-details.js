@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
+
+
 // Share job functionality
 function shareJob() {
     const jobUrl = window.location.href;
@@ -105,7 +108,13 @@ function goToDashboard() {
     window.location.href = '../app/job-seeker/applied-jobs.html';
 }
 
-
+function updateApplicationCount() {
+    jobData.applicants += 1;
+    const applicantElement = document.querySelector('.detail-item:nth-child(6) .detail-value');
+    if (applicantElement) {
+        applicantElement.textContent = `${jobData.applicants} applied`;
+    }
+}
 
 // Scroll effects
 function initializeScrollEffects() {
@@ -486,6 +495,30 @@ function formatSalary(amount) {
 
 
 
+// Keyboard shortcuts
+document.addEventListener('keydown', function (e) {
+    // Ctrl/Cmd + S to save job
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        saveJob();
+    }
+
+    // Ctrl/Cmd + Enter to apply
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        e.preventDefault();
+        applyForJob();
+    }
+
+    // Escape to close modals
+    if (e.key === 'Escape') {
+        const modals = document.querySelectorAll('.share-modal, .application-success-modal');
+        modals.forEach(modal => {
+            if (modal.parentElement) {
+                modal.parentElement.removeChild(modal);
+            }
+        });
+    }
+});
 
 // Performance monitoring
 if ('performance' in window) {
@@ -632,7 +665,9 @@ function genrateidjob() {
                 
                 <!-- Quick Actions -->
                 <div class="job-actions">
-                     ${issave(job.jobs_id) ? `<button class="action-btn save-btn"  data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}" data-heart="save"><i class="fas fa-bookmark"></i>Saved</button>` : `<button class="action-btn save-btn"  data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}" data-heart="unsave"> <i class="fas fa-bookmark"></i>Save Job</button>`}
+                    
+                    ${issave(job.jobs_id) ? `<button class="action-btn save-btn"  data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}" data-heart="save"><i class="fas fa-bookmark"></i>Saved</button>` : `<button class="action-btn save-btn"  data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}" data-heart="unsave"> <i class="fas fa-bookmark"></i>Save Job</button>`}
+
                     <button class="action-btn share-btn" onclick="shareJob()">
                         <i class="fas fa-share-alt"></i>
                         Share
@@ -759,40 +794,6 @@ function genrateidjob() {
                     </div>
                 </div>
             </section>
-
-            <!-- Application Section -->
-            <section class="application-section">
-                <div class="application-card">
-                    <div class="application-header">
-                        <h3>
-                            <i class="fas fa-paper-plane"></i>
-                            Ready to Apply?
-                        </h3>
-                        <p>Join ${job.company_name} and kickstart your PartTime career with us!</p>
-                    </div>
-                    
-                    <div class="application-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">23</span>
-                            <span class="stat-label">Applicants</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">4.5★</span>
-                            <span class="stat-label">Company Rating</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">85%</span>
-                            <span class="stat-label">Response Rate</span>
-                        </div>
-                    </div>
-
-
-                    <button class="apply-now-btn" onclick="applyForJob()" data-jobid ="${job.jobs_id}" data-companyid ="${job.provider_name}" data-companyname="${job.company_name}">
-                        <i class="fas fa-paper-plane"></i>
-                        Apply Now
-                    </button>
-                </div>
-            </section>
         </div>
         
         `
@@ -801,8 +802,6 @@ function genrateidjob() {
     document.querySelector(".main-content").innerHTML = idjob;
 
 }
-
-
 
 
 let savedstatus = [];
@@ -826,10 +825,10 @@ async function issaveddata() {
 
 
 
-function issave(isjobid) {
+function issave(jobid) {
     let isstatus = false;
     savedstatus.forEach((val) => {
-        if (val.job_id === isjobid) {
+        if (val.job_id === jobid) {
             isstatus = true;
         }
     })
@@ -860,36 +859,13 @@ async function postsavejob(jobid, jobtitile, jobstatus) {
 
 
 
-
 async function main() {
     await getjobiddata();
     await issaveddata();
     genrateidjob();
 
-    const applyBtn = document.querySelector('.apply-now-btn');
-    let jobid;
-    let companyid;
-    let companyname;
-    applyBtn.addEventListener("click", async () => {
-        jobid = applyBtn.dataset.jobid;
-        companyid = applyBtn.dataset.companyid;
-        companyname = applyBtn.dataset.companyname;
-        console.log(jobid, companyid, companyname);
-
-        let respose = await fetch("../backend/applyjob.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ "jobid": jobid, "companyid": companyid, "companyname": companyname })
-        });
-        let rawtext = await respose.text();
-        console.log(rawtext);
-        let realdata = await JSON.parse(rawtext);
-        console.log(realdata);
-    });
-
-
     let savebutton = document.querySelector(".save-btn");
-    let isjobid;
+    let jobid;
     let jobtitle;
 
     if (savebutton.dataset.heart === "save") {
@@ -900,9 +876,8 @@ async function main() {
 
     savebutton.addEventListener("click", async () => {
         let status = savebutton.dataset.heart;
-        isjobid = savebutton.dataset.jobid;
+        jobid = savebutton.dataset.jobid;
         jobtitle = savebutton.dataset.jobtitle;
-        console.log(isjobid);
 
         if (status === "unsave") {
             savebutton.innerHTML = '<i class="fas fa-bookmark"></i> Saved';
@@ -912,21 +887,20 @@ async function main() {
             const message = 'Job saved successfully!';
             const type = 'success';
             showNotification(message, type);
-            if (!issave(isjobid)) {
-                await postsavejob(isjobid, jobtitle, "save");
+            if (!issave(jobid)) {
+                await postsavejob(jobid, jobtitle, "save");
             }
         }
         else if (status === "save") {
             savebutton.innerHTML = '<i class="fas fa-bookmark"></i> Save Job';
             savebutton.dataset.heart = "unsave"
-            savebutton.style.background = "var(--white)";
-            savebutton.style.color = "var(--gray)";
             const message = 'Job removed from saved jobs.';
             const type = 'info';
             showNotification(message, type);
-            await postsavejob(isjobid, jobtitle, "unsave");
+            await postsavejob(jobid, jobtitle, "unsave");
         }
     });
+
 }
 
 main();

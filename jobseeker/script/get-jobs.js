@@ -173,7 +173,7 @@ async function main() {
             let jobid = btn.dataset.jobid;
             window.location.href = `./apply-job.html?jobid=${jobid}`;
         })
-    })
+    });
 
 }
 
