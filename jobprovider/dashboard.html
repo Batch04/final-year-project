@@ -67,7 +67,8 @@
                             <h3>Post New Job</h3>
                             <p>Create a new job posting to attract candidates</p>
 
-                            <button class="btn btn-primary get-strated-btn" onclick="window.location.href='post-job.html'">Get Started</button>
+                            <button class="btn btn-primary get-strated-btn"
+                                onclick="window.location.href='post-job.html'">Get Started</button>
 
                         </div>
                     </div>
@@ -86,7 +87,7 @@
             </div>
         </div>
 
-        <div id="applicants"class="recent-applications">
+        <div id="applicants" class="recent-applications">
             <div class="section-header">
                 <h2>Recent Applications</h2>
                 <a href="#" class="view-all-link">View All Applications</a>
@@ -186,7 +187,7 @@
 
 
 
-        <div id="your-jobs"class="job-postings-section">
+        <div id="your-jobs" class="job-postings-section">
             <div class="section-headers">
                 <h2>Your Active Job Postings</h2>
                 <button class="btn btn-primary post-button" onclick="window.location.href='post-job.html'">
@@ -200,7 +201,7 @@
                     <div class="job-header">
                         <div class="job-title-section">
                             <h3>Marketing Assistant</h3>
-                                
+
                         </div>
                         <div class="job-status">
                             <div class="job-meta">
@@ -248,7 +249,7 @@
                     <div class="job-header">
                         <div class="job-title-section">
                             <h3>Customer Service Representative</h3>
-                            
+
                         </div>
                         <div class="job-status">
                             <div class="job-meta">
@@ -288,7 +289,7 @@
                             <i class="fas fa-users"></i>
                             View Applicants (12)
                         </button>
-                       
+
                     </div>
                 </div>
 
@@ -296,7 +297,7 @@
                 <div class="job-posting-card">
                     <div class="job-header">
                         <div class="job-title-section">
-                            <h3>Data Entry Clerk</h3>  
+                            <h3>Data Entry Clerk</h3>
                         </div>
                         <div class="job-status">
                             <div class="job-meta">
@@ -327,7 +328,7 @@
                     </div>
 
                     <div class="job-actions">
-                         <button class="btn btn-outline btn-sm">
+                        <button class="btn btn-outline btn-sm">
                             <i class="fas fa-edit"></i>
                             Edit
                         </button>
@@ -335,7 +336,7 @@
                             <i class="fas fa-users"></i>
                             View Applicants (7)
                         </button>
-                       
+
                     </div>
                 </div>
             </div>
@@ -343,67 +344,30 @@
     </div>
     <script>
 
-        document.querySelector(".get-strated-btn").addEventListener("click",()=>{
-            window.location.href="post-job.html";
-        });
+        let data =[];
+        async function getdata() {
+            let res = await fetch("../backend/get_provider.php");
+            let rawdata = await res.text();
+            data = JSON.parse(rawdata);
+        }
 
-        document.querySelector(".post-button").addEventListener("click",()=>{
-            window.location.href="post-job.html";
-        });
+        async function main() {
+            await getdata();
+            document.querySelector(".get-strated-btn").addEventListener("click", () => {
+                window.location.href = "post-job.html";
+            });
 
-        fetch("../backend/get_provider.php")
-        .then(res=>res.json())
-        .then(data=>{
-            if(data.status==='success'){
-                document.getElementById("company_name").textContent="Welcome back!"+data.user.company_name;
-            }
-        });
-        fetch("../backend/get_recent_applications.php")
-        .then(res=>res.json())
-        .then(data=>{
-            const container=document.getElementById("application-list");
-                container.innerHTML="";
-                console.log(data);
-            if(data.status==='success' && data.applications.length > 0){
-                data.applications.forEach(app=>{
-                    const card=document.createElement(div);
-                    card.className='application-card';
-                    card.innerHTML=+`
-                    <div class="applicant-info">
-                        <img src="images/person-image.png" alt="${app.seeker_name}"/>
-                        <h3>${app.seeker_name}</h3>
-                        <p>Applied for:${app.job_title}</p>
-                    </div>
-                        <div class="application-status">
-                            <span class="status-badge ${app.status.toLowerCase()}">${app.status}</span>
-                            <p>${formatTime(app.applied_at)}</p>
-                            </div>
-                            <div class="application-actions">
-                                <button>View Profile</button>
-                                </div>
-                        `;
-                container.appendChild(card);
-                });
-            }
-            else{
-                container.style.display="none";
-                const applicantsSection=document.getElementById("applicants");
-                if  ( applicantsSection && !document.getElementById('no-app-msg')){
-                const msg=document.createElement("p");
-                msg.id='no-app-msg';
-                msg.textContent="No applications found";
-                msg.style.color="grey";
-                msg.style.fontSize="14px";
-                msg.style.marginTop="10px";
-                applicantsSection.appendChild(msg);
+            document.querySelector(".post-button").addEventListener("click", () => {
+                window.location.href = "post-job.html";
+            });
+
+            if(data.status === "success"){
+                document.querySelector("#company_name").innerHTML=` Welcome back ! ${data.user.company_name}`;
             }
         }
 
-        })
-        .catch(err=>{
-            console.error('Error fetching data:',err);
-            document.getElementById("application-list").innerHTML='<h3 style="color:var(--black); text-align: center">No Recent Applications.😢😢</h3>';
-        });
+        main();
+
     </script>
 </body>
 

@@ -1,8 +1,6 @@
 <?php
 header('Content-Type:application/json');
-include 'connect.php';
-include 'dbcreate.php';
-include 'tables.php';
+include 'connection.php';
 session_start();
 $data=json_decode(file_get_contents("php://input"),true);
     $email=$data['email']?? '';
@@ -27,7 +25,7 @@ $data=json_decode(file_get_contents("php://input"),true);
     }
     
     else{
-        echo json_encode(['status'=>'error','message'=>'No user found']);
+        echo json_encode(['status'=>'dataerror','message'=>'No user found']);
     }
     $sql->close();
     $con->close();

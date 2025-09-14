@@ -1,7 +1,5 @@
 <?php
-include 'connect.php';
-include 'dbcreate.php';
-include 'tables.php';
+include 'connection.php';
 header("Content-Type:application/json");
 session_start();
 if(!isset($_SESSION['seeker_id'])){

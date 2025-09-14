@@ -19,7 +19,7 @@
         <div class="content">
             <div class="header">
                 <h2 id="name">Welcome back, job!</h2>
-                <p>Find your perfect part-time opportunity in
+                <p class="header-location">Find your perfect part-time opportunity in
                     Sam Francisco, CA</p>
             </div>
 
@@ -186,14 +186,24 @@
         function search() {
             alert("searching")
         }
+        let seekerdata = [];
+        async function getdata() {
+            let res = await fetch("../backend/get_seeker.php");
+            let rawdata = await res.text();
+            console.log(rawdata);
+            seekerdata  = JSON.parse(rawdata);
+            console.log(seekerdata);
+        }
 
-        fetch("../backend/get_seeker.php")
-            .then(res => res.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    document.getElementById("name").textContent = "Welcome back!   " + data.user.name;
-                }
-            });
+        async function main(){
+            await getdata();
+            if(seekerdata.status === "success"){
+                document.querySelector("#name").innerHTML=`Welcome back , ${seekerdata.user.name}`;
+                document.querySelector(".header-location").innerHTML=`Find your perfect part-time opportunity in Tirupati`
+            }
+        }
+
+        main();
 
           
     </script>

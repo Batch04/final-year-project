@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location:../auth/provider_login.html");
+header("Location:../authentication/jobprovider-login.html");
 exit();
 ?>
