@@ -311,3 +311,7 @@
      background-color: var(--blue);
      color: var(--white);
  }
+
+  .apply-container button:hover{
+    cursor: pointer;
+  }

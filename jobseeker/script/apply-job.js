@@ -565,7 +565,7 @@ function showApplicationSuccess() {
         }
     }, 5000);
 
-   
+
 
     showNotification('Application submitted successfully!', 'success');
 }
@@ -576,6 +576,8 @@ function showApplicationSuccess() {
 /* actual js  */
 
 let jobiddata = [];
+let jobbenfits = [];
+let benfits = '';
 let url = new URL(window.location.href);
 
 let jobId = url.searchParams.get("jobid");
@@ -593,6 +595,7 @@ async function getjobiddata() {
 
     jobiddata = JSON.parse(rawText);
     console.log(jobiddata);
+    benfits = jobiddata[0].job_benifits;
 }
 
 
@@ -730,30 +733,8 @@ function genrateidjob() {
                     <div class="description-section">
                         <h4>What We Offer</h4>
                         <div class="benefits-grid">
-                            <div class="benefit-item">
-                                <i class="fas fa-dollar-sign"></i>
-                                <span>Competitive hourly rate</span>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-clock"></i>
-                                <span>Flexible working hours</span>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-home"></i>
-                                <span>Hybrid work environment</span>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>Learning & development opportunities</span>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-users"></i>
-                                <span>Collaborative team environment</span>
-                            </div>
-                            <div class="benefit-item">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Growth potential</span>
-                            </div>
+                            ${jobsbenfits()}
+                           
                         </div>
                     </div>
                 </div>
@@ -786,10 +767,8 @@ function genrateidjob() {
                     </div>
 
 
-                    <button class="apply-now-btn" onclick="applyForJob()" data-jobid ="${job.jobs_id}" data-companyid ="${job.provider_name}" data-companyname="${job.company_name}">
-                        <i class="fas fa-paper-plane"></i>
-                        Apply Now
-                    </button>
+                 ${isapplied(job.jobs_id) ? `<button class="apply-now-btn""> <i class="fas fa-paper-plane"> </i>Applied On ${getapplieddate(job.jobs_id)} </button>` : `<button class="apply-now-btn"  data-jobid ="${job.jobs_id}" data-companyid ="${job.provider_name}" data-companyname="${job.company_name}"> <i class="fas fa-paper-plane"></i> Apply Now</button>`}  
+
                 </div>
             </section>
         </div>
@@ -805,7 +784,8 @@ function genrateidjob() {
 
 
 let savedstatus = [];
-let applieddata= [];
+let applieddata = [];
+
 
 async function issaveddata() {
 
@@ -838,13 +818,52 @@ function issave(isjobid) {
 }
 
 
-async function isapplieddata(){
-    let respose  = await fetch("../backend/getapplieddata.php");
+function jobsbenfits() {
+
+    jobbenfits = benfits.split("\n")
+    let benfitsgrid = ``;
+    jobbenfits.forEach((val) => {
+        benfitsgrid += `
+        <div class="benefit-item">
+            <i class="fa-solid fa-medal"></i>
+            <span>${val}</span>
+        </div>`
+    });
+    return benfitsgrid;
+}
+
+function getapplieddate(jobid) {
+    let applieddate;
+    applieddata.forEach((job) => {
+        if (job.job_id === jobid) {
+            applieddate = job.applied_date;
+        }
+    });
+    return applieddate;
+}
+
+
+async function isapplieddata() {
+    let respose = await fetch("../backend/getapplieddata.php");
     let rawdata = await respose.text();
     console.log(rawdata);
-    applieddata = JSON.parse(rawdata);
+    let arraydata = JSON.parse(rawdata);
+    applieddata = arraydata.data;
     console.log(applieddata);
 }
+
+
+function isapplied(jobid) {
+    let applystatus = false;
+    applieddata.forEach((job) => {
+        if (job.job_id === jobid) {
+            applystatus = true;
+        }
+    });
+    return applystatus;
+}
+
+
 
 async function postsavejob(jobid, jobtitile, jobstatus) {
     let response = await fetch("../backend/add_savedjob.php", {
@@ -884,16 +903,17 @@ async function main() {
         companyid = applyBtn.dataset.companyid;
         companyname = applyBtn.dataset.companyname;
         console.log(jobid, companyid, companyname);
-
-        let respose = await fetch("../backend/applyjob.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ "jobid": jobid, "companyid": companyid, "companyname": companyname })
-        });
-        let rawtext = await respose.text();
-        console.log(rawtext);
-        let realdata = await JSON.parse(rawtext);
-        console.log(realdata);
+        if (!isapplied(jobid)) {
+            let respose = await fetch("../backend/applyjob.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "jobid": jobid, "companyid": companyid, "companyname": companyname })
+            });
+            let rawtext = await respose.text();
+            console.log(rawtext);
+            let realdata = await JSON.parse(rawtext);
+            console.log(realdata);
+        }
     });
 
 
@@ -936,6 +956,8 @@ async function main() {
             await postsavejob(isjobid, jobtitle, "unsave");
         }
     });
+
+
 }
 
 main();
