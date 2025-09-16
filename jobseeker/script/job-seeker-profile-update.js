@@ -459,3 +459,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+/* Main js */
+
+document.querySelector(".edit-button").addEventListener("click",()=>{
+
+    window.location.href="./job-seeker-profile-update.html";
+})
+

@@ -548,7 +548,7 @@ function showApplicationSuccess() {
                 <i class="fas fa-check-circle"></i>
             </div>
             <h3>Application Submitted Successfully!</h3>
-            <p>Your application for <strong>${jobData.title}</strong> at <strong>${jobData.company}</strong> has been submitted.</p>
+            <p>Your application for <strong>${jobiddata[0].job_title}</strong> at <strong>${jobiddata[0].company_name}</strong> has been submitted.</p>
             <div class="success-actions">
                 <button class="btn-primary" onclick="goToDashboard()">View Applications</button>
                 <button class="btn-secondary" onclick="closeSuccessModal()">Continue Browsing</button>
@@ -565,8 +565,7 @@ function showApplicationSuccess() {
         }
     }, 5000);
 
-    // Update application count
-    updateApplicationCount();
+   
 
     showNotification('Application submitted successfully!', 'success');
 }
@@ -806,6 +805,7 @@ function genrateidjob() {
 
 
 let savedstatus = [];
+let applieddata= [];
 
 async function issaveddata() {
 
@@ -838,6 +838,14 @@ function issave(isjobid) {
 }
 
 
+async function isapplieddata(){
+    let respose  = await fetch("../backend/getapplieddata.php");
+    let rawdata = await respose.text();
+    console.log(rawdata);
+    applieddata = JSON.parse(rawdata);
+    console.log(applieddata);
+}
+
 async function postsavejob(jobid, jobtitile, jobstatus) {
     let response = await fetch("../backend/add_savedjob.php", {
         method: "POST",
@@ -864,6 +872,7 @@ async function postsavejob(jobid, jobtitile, jobstatus) {
 async function main() {
     await getjobiddata();
     await issaveddata();
+    await isapplieddata();
     genrateidjob();
 
     const applyBtn = document.querySelector('.apply-now-btn');

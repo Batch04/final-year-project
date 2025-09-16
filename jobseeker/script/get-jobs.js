@@ -4,11 +4,8 @@ async function genratedata() {
     try {
         let resposive = await fetch("../backend/get-jobs.php");
         let rawdata = await resposive.text();
-        console.log(rawdata);
-
         try {
             data = JSON.parse(rawdata);
-            console.log(data);
         } catch (err) {
             console.log("something error", err);
         }
@@ -92,7 +89,6 @@ async function issaveddata() {
     try {
         let resposive = await fetch("../backend/getsaveddata.php");
         let rawdata = await resposive.text();
-        console.log(rawdata);
 
         try {
             savedstatus = JSON.parse(rawdata);

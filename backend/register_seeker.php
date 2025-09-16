@@ -22,6 +22,7 @@ try {
     if ($sql->execute()) {
         $last_id = $con->insert_id;
         $_SESSION['seeker_id'] = $last_id;
+        $_SESSION['seeker_name'] = $name;
         echo json_encode(['status' => 'success', 'message' => "Successfully Registered"]);
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Failed to register']);

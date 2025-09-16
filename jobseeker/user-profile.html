@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+ <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <header id="header"></header>
+   <header id="header"></header>
     <!-- Main Content -->
     <div class="main-container">
         <!-- User Avatar and Name Section -->
@@ -24,52 +24,58 @@
             <div class="user-avatar-container">
                 <img src="images/job-seeker-avatar.png" alt="User Avatar" class="user-avatar">
             </div>
-            <h2 class="user-name">Jaswant</h2>
+            <h2 class="user-name">John Doe</h2>
         </div>
 
         <!-- Profile Section -->
         <div class="profile-section">
-            <h3 class="profile-heading">Profile</h3>
+            <div class="profile-header">
+                <h3 class="profile-heading">Profile</h3>
+                <button class="edit-button">
+                    <i class="fas fa-edit"></i>
+                    Edit
+                </button>
+            </div>
             
             <div class="profile-content">
                 <div class="profile-grid">
                     <!-- Full Name -->
                     <div class="profile-field">
                         <div class="field-label">Full Name:</div>
-                        <div class="field-value-fullName">Jaswant Karri</div>
+                        <div class="field-value">John Michael Doe</div>
                     </div>
 
                     <!-- Email -->
                     <div class="profile-field">
                         <div class="field-label">Email:</div>
-                        <div class="field-value-email">jaswant5511246@gmail.com</div>
+                        <div class="field-value">john.doe@email.com</div>
                     </div>
 
                     <!-- Location -->
                     <div class="profile-field">
                         <div class="field-label">Location:</div>
-                        <div class="field-value-location">Tirupati , AndhraPradesh</div>
+                        <div class="field-value">San Francisco, CA, USA</div>
                     </div>
 
                     <!-- Mobile Number -->
                     <div class="profile-field">
                         <div class="field-label">Mobile Number:</div>
-                        <div class="field-value-phone">91+0000000000</div>
+                        <div class="field-value">+1 (555) 123-4567</div>
                     </div>
 
                     <!-- Education -->
                     <div class="profile-field full-width">
                         <div class="field-label">Education:</div>
-                        <div class="field-value-education">
+                        <div class="field-value">
                             <div class="education-item">
                                 <strong>Bachelor of Science in Computer Science</strong><br>
-                                JNTU Kakinada<br>
-                                <span class="education-year">2026 - 2029</span>
+                                University of California, Berkeley<br>
+                                <span class="education-year">2018 - 2022</span>
                             </div>
                             <div class="education-item">
-                                <strong>Diploma in Computer Engneering</strong><br>
-                                S.V.Government.Ploythenic College<br>
-                                <span class="education-year">2023 - 2026</span>
+                                <strong>High School Diploma</strong><br>
+                                Lincoln High School<br>
+                                <span class="education-year">2014 - 2018</span>
                             </div>
                         </div>
                     </div>
@@ -106,7 +112,7 @@
         </div>
     </div>
 
-    <script src="script/user-profile.js"></script>
+    <script src="script/job-seeker-profile-update.js"></script>
 </body>
 
 </html>

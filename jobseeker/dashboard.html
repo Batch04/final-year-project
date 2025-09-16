@@ -190,22 +190,20 @@
         async function getdata() {
             let res = await fetch("../backend/get_seeker.php");
             let rawdata = await res.text();
-            console.log(rawdata);
-            seekerdata  = JSON.parse(rawdata);
-            console.log(seekerdata);
+            seekerdata = JSON.parse(rawdata);
         }
 
-        async function main(){
+        async function main() {
             await getdata();
-            if(seekerdata.status === "success"){
-                document.querySelector("#name").innerHTML=`Welcome back , ${seekerdata.user.name}`;
-                document.querySelector(".header-location").innerHTML=`Find your perfect part-time opportunity in Tirupati`
+            if (seekerdata.status === "success") {
+                document.querySelector("#name").innerHTML = `Welcome back , ${seekerdata.user.name}`;
+                document.querySelector(".header-location").innerHTML = `Find your perfect part-time opportunity in ${seekerdata.user.location}`
             }
         }
 
         main();
 
-          
+
     </script>
 </body>
 
