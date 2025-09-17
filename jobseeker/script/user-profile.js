@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 showNotification("Error loading profile", "error");
                 return;
             }
-
             // Fill profile fields dynamically
-            document.querySelector('.user-name').textContent = data.user.name || "Seeker";
+            const userName=document.querySelector('.user-name');
+            if(userName) userName.textContent=data.user.name || "seeker";
 
             const fullName=document.querySelector(".field-value-fullName");
              if (fullName) fullName.textContent = data.user.name || "Not Provided";
