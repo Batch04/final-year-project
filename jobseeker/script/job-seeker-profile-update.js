@@ -269,6 +269,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
+
+
+
     // Form submission
     form.addEventListener('submit',async function(e)  {
         e.preventDefault();
@@ -283,12 +286,31 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show loading state
         saveButton.classList.add('loading');
         saveButton.disabled = true;
+        const form=document.getElementById("profile-settings-form");
+        const formData=new FormData(form);
+        console.log(formData);
+        for (let [key, value] of formData.entries()) {
+    console.log(`${key}:`, value);
+}       
+   const educationEntries = document.querySelectorAll('.education-entry');
+const educationArray = Array.from(educationEntries).map(entry => ({
+  degree: entry.querySelector('.education-degree')?.value.trim() || '',
+  institution: entry.querySelector('.education-institution')?.value.trim() || '',
+}));
+formData.append('education', JSON.stringify(educationArray));
 
-        const formData =new FormData(this);
+    formData.append('education', JSON.stringify(educationArray));
+        const skillTags = document.querySelectorAll('.skill-tag');
+const skills = Array.from(skillTags).map(tag => 
+  tag.textContent.trim().replace(',', '')
+);
+formData.append('skills', JSON.stringify(skills));
+
+
+
         try{
        const response=await fetch("../backend/update_seeker.php",{
             method:"POST",
-            headers:{"Content-Type":"application/json"},
             body:formData
         })
         const text=await response.text();

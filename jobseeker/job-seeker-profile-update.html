@@ -80,7 +80,7 @@
                                 <i class="fas fa-phone"></i>
                                 Mobile Number
                             </label>
-                            <input type="tel" id="mobile" name="mobile" value="91+0000000000" class="form-input" required>
+                            <input type="text" id="mobile" name="mobile"  maxlength="10" class="form-input" required>
                         </div>
 
                         <div class="form-group">
@@ -98,10 +98,10 @@
                             <i class="fas fa-graduation-cap"></i>
                             Education
                         </label>
-                        <div class="education-container">
+                        <div class="education-container" name="education">
                             <div class="education-entry">
                                 <div class="education-row">
-                                    <input type="text" placeholder="Degree/Certification" class="form-input education-degree" value="Diploma of Computer Science">
+                                    <input type="text" placeholder="Degree/Certification" class="form-input education-degree"  value="Diploma of Computer Science">
                                     <input type="text" placeholder="Institution" class="form-input education-institution" value="S.V.goverment polythechnic college">
                                 </div>
                                 <div class="education-row">
@@ -124,7 +124,7 @@
                             <i class="fas fa-tools"></i>
                             Skills
                         </label>
-                        <div class="skills-container">
+                        <div class="skills-container" name="skills">
                             <div class="skills-input-container">
                                 <input type="text" id="skills-input" placeholder="Type a skill and press Enter" class="form-input">
                                 <div class="skills-suggestions"></div>
