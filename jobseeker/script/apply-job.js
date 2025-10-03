@@ -94,16 +94,8 @@ function shareViaEmail(text, url) {
 
 
 
-function closeSuccessModal() {
-    const modal = document.querySelector('.application-success-modal');
-    if (modal) {
-        document.body.removeChild(modal);
-    }
-}
 
-function goToDashboard() {
-    window.location.href = '../app/job-seeker/applied-jobs.html';
-}
+
 
 
 
@@ -507,6 +499,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+function goToDashboard() {
+    window.location.href = '../jobseeker/dashboard.html';
+}
+
+
+
+async function closeSuccessModal() {
+    const modal = document.querySelector('.application-success-modal');
+    if (modal) {
+        document.body.removeChild(modal);
+        main();
+    }
+
+}
 
 
 
@@ -548,10 +554,10 @@ function showApplicationSuccess() {
                 <i class="fas fa-check-circle"></i>
             </div>
             <h3>Application Submitted Successfully!</h3>
-            <p>Your application for <strong>${jobiddata[0].job_title}</strong> at <strong>${jobiddata[0].company_name}</strong> has been submitted.</p>
+            <p>Your application for <strong   style="color:var(--blue)">${jobiddata[0].job_title}</strong> at <strong style="color:var(--blue)" >${jobiddata[0].company_name}</strong> has been submitted.</p>
             <div class="success-actions">
                 <button class="btn-primary" onclick="goToDashboard()">View Applications</button>
-                <button class="btn-secondary" onclick="closeSuccessModal()">Continue Browsing</button>
+                <button class="btn-secondary browser-btn" onclick="closeSuccessModal()">Continue Browsing</button>
             </div>
         </div>
     `;
@@ -562,6 +568,7 @@ function showApplicationSuccess() {
     setTimeout(() => {
         if (document.body.contains(modal)) {
             document.body.removeChild(modal);
+            main();
         }
     }, 5000);
 
@@ -734,7 +741,6 @@ function genrateidjob() {
                         <h4>What We Offer</h4>
                         <div class="benefits-grid">
                             ${jobsbenfits()}
-                           
                         </div>
                     </div>
                 </div>
@@ -767,7 +773,7 @@ function genrateidjob() {
                     </div>
 
 
-                 ${isapplied(job.jobs_id) ? `<button class="apply-now-btn""> <i class="fas fa-paper-plane"> </i>Applied On ${getapplieddate(job.jobs_id)} </button>` : `<button class="apply-now-btn"  data-jobid ="${job.jobs_id}" data-companyid ="${job.provider_name}" data-companyname="${job.company_name}"> <i class="fas fa-paper-plane"></i> Apply Now</button>`}  
+                 ${isapplied(job.jobs_id) ? `<button class="apply-now-btn""> <i class="fas fa-paper-plane"> </i>Applied On ${getapplieddate(job.jobs_id)} </button>` : `<button class="apply-now-btn"  data-jobid ="${job.jobs_id}" data-companyid ="${job.provider_name}" data-companyname="${job.company_name}" onclick="applyForJob()"> <i class="fas fa-paper-plane"></i> Apply Now</button>`}  
 
                 </div>
             </section>
@@ -881,7 +887,7 @@ async function postsavejob(jobid, jobtitile, jobstatus) {
     let data = await response.text();
     console.log(data);
 
-    let realdata = await data.json();
+    let realdata = await JSON.parse(data);
     console.log(realdata);
 }
 
@@ -913,6 +919,9 @@ async function main() {
             console.log(rawtext);
             let realdata = await JSON.parse(rawtext);
             console.log(realdata);
+        }
+        else {
+            applyBtn.disabled = true;
         }
     });
 
@@ -957,6 +966,18 @@ async function main() {
         }
     });
 
+
+    window.addEventListener("pageshow", async function (event) {
+        if (event.persisted) {
+            main();
+        }
+    });
+
+    document.addEventListener("visibilitychange", async function () {
+        if (document.visibilityState === "visible") {
+            main();
+        }
+    });
 
 }
 

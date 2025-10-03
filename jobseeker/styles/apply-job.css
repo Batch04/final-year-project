@@ -795,6 +795,10 @@ body {
     color: var(--text-muted);
 }
 
+.strong-tag{
+    color: var(--blue);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     body {
