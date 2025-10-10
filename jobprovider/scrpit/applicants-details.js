@@ -1,7 +1,3 @@
-// Job Provider Dashboard JavaScript
-// Handles functionality for both Posted Jobs Overview and Job Details & Applicants pages
-
-// Global Variables
 let currentJobData = null;
 let applicantsData = [];
 let filteredApplicants = [];
@@ -547,19 +543,17 @@ window.shortlistApplicant = shortlistApplicant;
 window.scheduleInterview = scheduleInterview;
 window.loadMoreApplicants = loadMoreApplicants;
 
+// real js
 
-// real js starts
-
-let providerjobsdata = [];
+let jobiddata = [];
+let jobbenfits = [];
+let benfits = '';
+let appliedapplicants = [];
 let providerdata = [];
-let requireddata = [];
 
-async function providerjobs() {
-    let data = await fetch("../backend/getprovider-jobs.php");
-    let response = await data.text();
-    providerjobsdata = JSON.parse(response);
-    console.log(providerjobsdata);
-}
+let url = new URL(window.location.href);
+let jobId = url.searchParams.get("jobId");
+console.log(jobId);
 
 async function providername() {
     let data = await fetch("../backend/get_provider.php");
@@ -567,80 +561,149 @@ async function providername() {
     console.log(providerdata);
 }
 
-async function getrequireddata() {
-    let res = await fetch("../backend/get-required-data.php");
-    let response = await res.text();
-    console.log(response);
-    requireddata = JSON.parse(response);
-    console.log(requireddata);
+
+
+async function getjobiddata() {
+
+    let response = await fetch("../backend/getidjob.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ "jobId": jobId })
+    });
+
+    let rawText = await response.text();
+    console.log(rawText);
+
+    jobiddata = JSON.parse(rawText);
+    console.log(jobiddata);
+    benfits = jobiddata[0].job_benifits;
 }
 
-async function getapplicantsnum(jobid) {
-    let data = await fetch("../backend/getjobapplicants-num.php", {
+
+function jobsbenfits() {
+
+    jobbenfits = benfits.split("\n")
+    let benfitsgrid = ``;
+    jobbenfits.forEach((val) => {
+        benfitsgrid += `
+        <div class="benefit-item">
+            <i class="fa-solid fa-medal"></i>
+            <span>${val}</span>
+        </div>`
+    });
+    return benfitsgrid;
+}
+
+
+async function getappliedapplicants() {
+    let data = await fetch("../backend/getappliedapplicants.php", {
         method: "POST",
-        body: JSON.stringify({ jobid: jobid }),
+        body: JSON.stringify({ jobid: jobId }),
         headers: {
             "Content-Type": "application/json"
         }
     });
 
-    let response = await data.text();
-    console.log(response);
-    let applicantsnum = JSON.parse(response);
-    console.log(applicantsnum);
-    return applicantsnum.count;
+    let realdata = await data.text();
+    console.log(realdata);
+    appliedapplicants = JSON.parse(realdata);
+    console.log(appliedapplicants);
 }
 
-async function genratejobs() {
-    let jobshtml = "";
-    for (const job of providerjobsdata) {
 
-        jobshtml += `
-        
-                <a href="job-details-applicants.html?jobId=${job.jobs_id}" class="job-card">
-                        <div class="job-card-header">
-                            <h3 class="job-title">${job.job_title} </h3>
-                            <span class="job-type">${job.job_type} </span>
+function genratedidjobs() {
+    let jobinfo = ``;
+
+    jobiddata.forEach((job) => {
+
+        jobinfo += `
+            <div class="section-header">
+                        <h2>
+                            <i class="fas fa-briefcase"></i>
+                            Job Details
+                        </h2>
+                        <div class="job-actions">
+                            <button class="btn-secondary" onclick="editJob()" data-jobid="${job.jobs_id}">
+                                <i class="fas fa-edit"></i> Edit Job
+                            </button>
+                            <button class="btn-danger" onclick="closeJob()" data-jobid="${job.jobs_id}">
+                                <i class="fas fa-times-circle"></i> Close Job
+                            </button>
                         </div>
-                        <div class="job-card-details">
-                            <p class="job-salary"><i class="fas fa-dollar-sign"></i> ₹ ${job.job_salary} / ${job.job_salary_time}</p>
-                            <p class="job-location"><i class="fas fa-map-marker-alt"></i> ${job.job_location}</p>
-                            <p class="job-posted-date"><i class="fas fa-calendar-alt"></i> Posted on ${job.job_posted} </p>
+                    </div>
+
+                    <div class="job-details-card">
+                        <div class="job-header">
+                            <div class="job-title-section">
+                                <h3 class="job-title" id="jobTitle">${job.job_title} </h3>
+                                <span class="job-type" id="jobType">${job.job_type}</span>
+                            </div>
+                            <div class="job-meta">
+                                ${(job.job_status === "open") ? `<span class="job-status active"><i class="fas fa-circle"></i> Active</span>` : `<span class="job-status inactive"><i class="fas fa-circle"></i> Closed</span>`}
+                                <span class="job-posted-date"><i class="fas fa-calendar-alt"></i> Posted on ${job.job_posted}</span>
+                            </div>
                         </div>
-                        <div class="job-card-footer">
-                            <span class="applicants-count"><i class="fas fa-users"></i> ${await getapplicantsnum(job.jobs_id)} Applied</span>
-                            ${(job.job_status === "open") ? `<span class="job-status active"><i class="fas fa-circle"></i> Active</span>` : `<span class="job-status inactive"><i class="fas fa-circle"></i> Closed</span>`}
+
+                        <div class="job-info-grid">
+                            <div class="job-info-item">
+                                <i class="fas fa-dollar-sign"></i>
+                                <div>
+                                    <span class="info-label">Salary</span>
+                                    <span class="info-value" id="jobSalary">₹ ${job.job_salary} / ${job.job_salary_time}</span>
+                                </div>
+                            </div>
+                            <div class="job-info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <span class="info-label">Location</span>
+                                    <span class="info-value" id="jobLocation">${job.job_location} </span>
+                                </div>
+                            </div>
+                            <div class="job-info-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <span class="info-label">Job Type</span>
+                                    <span class="info-value" id="jobTypeDetail">${job.job_type} (${job.workload} Hrs/${job.workperiod})</span>
+                                </div>
+                            </div>
+                            <div class="job-info-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <span class="info-label">Experience</span>
+                                    <span class="info-value" id="jobExperience">${(job.job_experience === "entry-level") ? `entry-level` : `${job.job_experience} year required`}</span>
+                                </div>
+                            </div>
                         </div>
-                    </a>
+
+                        <div class="job-description">
+                            <h4><i class="fas fa-file-alt"></i> Job Description</h4>
+                            <div class="description-content" id="jobDescription">
+                                <p>${job.job_description} </p>
+                            </div>
+                        </div>
+
+                        <div class="job-offers">
+                            <h4><i class="fas fa-gift"></i> What We Offer</h4>
+                            <div class="offers-content" id="jobOffers">
+                                <ul>
+                                    ${jobsbenfits()}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
         `
-    }
-
-    document.querySelector(".job-grid").innerHTML = jobshtml;
+    });
+    document.querySelector(".job-details-section").innerHTML = jobinfo;
 }
 
-
 async function main() {
-    await providerjobs();
+    await getjobiddata();
+    await getappliedapplicants();
     await providername();
-    await getrequireddata();
-    genratejobs();
+    genratedidjobs();
     document.querySelector(".company-name").innerHTML = providerdata.user.company_name;
-    document.querySelector(".posted-jobs").innerHTML = providerjobsdata.length;
-    document.querySelector(".applicants-num").innerHTML = requireddata.count;
-    document.querySelector(".active-jobs").innerHTML = requireddata.active;
 
-    window.addEventListener("pageshow", async function (event) {
-        if (event.persisted) {
-            main();
-        }
-    });
-
-    document.addEventListener("visibilitychange", async function () {
-        if (document.visibilityState === "visible") {
-            main();
-        }
-    });
 }
 
 main();

@@ -81,6 +81,7 @@ body {
     margin: 0;
 }
 
+
 /* Settings Container */
 .settings-container {
     display: flex;
@@ -142,22 +143,48 @@ body {
     width: 16px;
 }
 
+/* Input/Select/Textarea Base Style */
 .form-input,
-.form-select {
+.form-select,
+.form-textarea { 
     padding: 0.875rem 1rem;
     border: 2px solid var(--border-gray);
     border-radius: 8px;
     font-size: 1rem;
     transition: var(--transition);
     background-color: var(--white);
+    width: 100%; /* Ensure all form inputs are 100% width */
+}
+
+/* Textarea Specific Style */
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    max-height: 300px;
 }
 
 .form-input:focus,
-.form-select:focus {
+.form-select:focus,
+.form-textarea:focus { 
     outline: none;
     border-color: var(--blue);
     box-shadow: 0 0 0 3px rgba(3, 132, 252, 0.1);
 }
+
+/* Character Count Display */
+.char-count-display {
+    text-align: right;
+    font-size: 0.875rem;
+    color: var(--gray);
+    margin-top: -0.25rem;
+}
+
+/* 🎯 SKILLS INPUT ENHANCEMENT */
+/* Ensures the input field takes up all available width to prevent the placeholder from being cut off. */
+#skills-input {
+    min-width: 100%; 
+}
+/* ------------------------------- */
 
 /* File Upload Styling */
 .file-upload-container {
@@ -458,7 +485,7 @@ body {
     }
 }
 
-/* Animation for form elements */
+/* Animation for form elements (UPDATED to include the new field) */
 .form-group {
     animation: fadeInUp 0.6s ease forwards;
     opacity: 0;
@@ -470,7 +497,11 @@ body {
 .form-group:nth-child(3) { animation-delay: 0.3s; }
 .form-group:nth-child(4) { animation-delay: 0.4s; }
 .form-group:nth-child(5) { animation-delay: 0.5s; }
-.form-group:nth-child(6) { animation-delay: 0.6s; }
+.form-group:nth-child(6) { animation-delay: 0.6s; } /* About Me field */
+.form-group:nth-child(7) { animation-delay: 0.7s; } /* Education field */
+.form-group:nth-child(8) { animation-delay: 0.8s; } /* Skills field */
+.form-group:nth-child(9) { animation-delay: 0.9s; } /* Availability field */
+
 
 @keyframes fadeInUp {
     to {
@@ -540,4 +571,3 @@ body {
     display: block;
     animation: slideDown 0.3s ease;
 }
-
