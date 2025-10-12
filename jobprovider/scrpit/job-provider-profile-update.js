@@ -382,6 +382,18 @@ async function main() {
         }
 
     });
+
+     window.addEventListener("pageshow", async function (event) {
+        if (event.persisted) {
+            main();
+        }
+    });
+
+    document.addEventListener("visibilitychange", async function () {
+        if (document.visibilityState === "visible") {
+            main();
+        }
+    });
 };
 
 main();

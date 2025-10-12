@@ -48,12 +48,24 @@ function genratejobs() {
 async function main() {
     await providerjobs();
     genratejobs();
-    document.querySelectorAll(".viewapplicants").forEach((button)=>{
-        button.addEventListener("click",()=>{
+    document.querySelectorAll(".viewapplicants").forEach((button) => {
+        button.addEventListener("click", () => {
             let id = button.dataset.jobid;
-            window.location.href=`job-details-applicants.html?jobId=${id}`;
+            window.location.href = `job-details-applicants.html?jobId=${id}`;
         })
     })
+
+    window.addEventListener("pageshow", async function (event) {
+        if (event.persisted) {
+            main();
+        }
+    });
+
+    document.addEventListener("visibilitychange", async function () {
+        if (document.visibilityState === "visible") {
+            main();
+        }
+    });
 }
 
 main();

@@ -394,10 +394,10 @@ console.log(sid);
 let userdata = [];
 
 async function getseekerdata() {
-    let data = await fetch("../backend/getidseekerdata.php",{
-        method:"POST",
-        body:JSON.stringify({"id":sid}),
-        headers:{'Content-Type': 'application/json'}
+    let data = await fetch("../backend/getidseekerdata.php", {
+        method: "POST",
+        body: JSON.stringify({ "id": sid }),
+        headers: { 'Content-Type': 'application/json' }
     })
     let res = await data.text();
     console.log(res);
@@ -518,9 +518,21 @@ function generateUserProfile() {
 
 }
 
-async function main(){
+async function main() {
     await getseekerdata();
     generateUserProfile();
+    
+    window.addEventListener("pageshow", async function (event) {
+        if (event.persisted) {
+            main();
+        }
+    });
+
+    document.addEventListener("visibilitychange", async function () {
+        if (document.visibilityState === "visible") {
+            main();
+        }
+    });
 }
 
 main();
