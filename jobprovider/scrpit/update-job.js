@@ -1,9 +1,58 @@
 
-let data = [];
-async function getdata() {
-    let res = await fetch("../backend/get_provider.php");
-    let rawdata = await res.text();
-    data = JSON.parse(rawdata);
+let url = new URL(window.location.href);
+let id = url.searchParams.get("jobid");
+console.log(id);
+
+let idjobdata = [];
+
+async function getjobdata() {
+
+    let data = await fetch("../backend/getidjob.php", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ "jobId": id })
+    });
+    let text = await data.text();
+    console.log(text);
+    idjobdata = JSON.parse(text);
+    console.log(idjobdata);
+}
+
+function setbenfittag() {
+    updateJobData(); 
+    let benefitsArray = jobData.whatTheyOffer
+        .replace(/•/g, "")     
+        .split("\n")           
+        .map(b => b.trim())    
+        .filter(b => b !== "");
+
+    
+    benefitsArray.forEach((benefitText) => {
+        
+        document.querySelectorAll(".benefit-tag").forEach((element) => {
+            let data = element.getAttribute("data-benefit"); 
+            if (benefitText === data) {
+                element.classList.add("selected"); 
+            }
+        });
+    });
+}
+
+
+function setprofiledata() {
+    let profile = idjobdata[0];
+    document.getElementById("jobTitle").value = profile.job_title;
+    document.getElementById("location").value = profile.job_location;
+    document.getElementById("salaryAmount").value = profile.job_salary;
+    document.getElementById("workload").value = profile.workload;
+    document.getElementById("postedDate").value = profile.job_posted;
+    document.getElementById("jobDescription").value = profile.job_description;
+    document.getElementById("whatTheyOffer").value = profile.job_benifits;
+    document.getElementById("jobType").value = profile.job_type;
+    document.getElementById("salaryPeriod").value = profile.job_salary_time;
+    document.getElementById("workPeriod").value = profile.workperiod;
+    document.getElementById("experienceRequired").value = profile.job_experience;
+
 }
 
 
@@ -19,20 +68,71 @@ let jobData = {
     jobDescription: '',
     whatTheyOffer: '',
     workload: '',
-    workperiod: ''
+    workperiod: '',
+    jobid: id
 };
 
 let isDraft = false;
 
 // Initialize page functionality
 document.addEventListener('DOMContentLoaded', async function () {
-    await getdata();
+    await getjobdata();
+    setprofiledata();
+    setbenfittag();
     initializeForm();
     initializeCharacterCounters();
     initializeBenefitTags();
-    setDefaultDate();
-    loadDraftData();
-    document.querySelector(".company-name").innerHTML=data.user.company_name;
+
+    console.log(setbenfittag());
+
+    document.querySelector(".namecompany").innerHTML=idjobdata[0].company_name;
+
+    let submitBtn = document.querySelector(".btn-preview");
+    submitBtn.addEventListener("click", async () => {
+        updateJobData();
+        console.log(jobData);
+
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating Job...';
+        submitBtn.disabled = true;
+
+        try {
+            let response = await fetch("../backend/updateidjob.php", {
+                method: "POST",
+                body: JSON.stringify(jobData),
+                headers: { "Content-Type": "application/json" }
+            });
+
+            let rawText = await response.text();
+            console.log("Raw backend response:", rawText);
+
+            let data;
+            try {
+                data = JSON.parse(rawText); // Try to parse JSON
+            } catch (err) {
+                showNotification("Server returned invalid JSON. Check console logs.", "error");
+                return;
+            }
+
+            if (data.status === "success") {
+                setTimeout(() => {
+
+                    submitBtn.innerHTML = `<i class="fas fa-save"></i> Update Job`;
+                    submitBtn.disabled = false;
+                    showNotification('Job posted successfully!', 'success');
+
+                }, 3000);
+            } else {
+                showNotification(data.message || "Failed to post job.", "error");
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
+            showNotification("Network or server error. Please try again later.", "error");
+        }
+
+
+
+    });
+
 });
 
 
@@ -54,7 +154,6 @@ function initializeForm() {
         input.addEventListener('input', function () {
             validateField(this);
             updateJobData();
-            autoSaveDraft();
         });
 
         input.addEventListener('blur', function () {
@@ -142,15 +241,6 @@ function initializeBenefitTags() {
     });
 }
 
-// Set default date to today
-function setDefaultDate() {
-    const postedDateInput = document.getElementById('postedDate');
-    if (postedDateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        postedDateInput.value = today;
-    }
-}
-
 // Form validation
 function validateField(field) {
     const value = field.value.trim();
@@ -185,18 +275,6 @@ function validateField(field) {
                 return false;
             }
             break;
-        case 'postedDate':
-            if (value) {
-                const selectedDate = new Date(value);
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-
-                if (selectedDate < today) {
-                    field.classList.add('error');
-                    return false;
-                }
-            }
-            break;
     }
 
     return true;
@@ -229,151 +307,19 @@ function updateJobData() {
         jobDescription: document.getElementById('jobDescription').value,
         whatTheyOffer: document.getElementById('whatTheyOffer').value,
         workload: document.getElementById("workload").value,
-        workperiod: document.getElementById("workPeriod").value
+        workperiod: document.getElementById("workPeriod").value,
+        jobid: id
     };
 }
 
-// Auto-save draft functionality
-let autoSaveTimeout;
-function autoSaveDraft() {
-    clearTimeout(autoSaveTimeout);
-    autoSaveTimeout = setTimeout(() => {
-        if (hasFormData()) {
-            localStorage.setItem('jobPostDraft', JSON.stringify(jobData));
-            showNotification('Draft saved automatically', 'info', 2000);
-        }
-    }, 3000); // Auto-save after 3 seconds of inactivity
-}
+
 
 function hasFormData() {
     return Object.values(jobData).some(value => value && value.trim() !== '');
 }
 
-// Load draft data
-function loadDraftData() {
-    const draftData = localStorage.getItem('jobPostDraft');
-    if (draftData) {
-        try {
-            const parsedData = JSON.parse(draftData);
 
-            // Ask user if they want to restore draft
-            if (confirm('We found a saved draft. Would you like to restore it?')) {
-                restoreDraftData(parsedData);
-                showNotification('Draft restored successfully', 'success');
-            } else {
-                localStorage.removeItem('jobPostDraft');
-            }
-        } catch (error) {
-            console.error('Error loading draft:', error);
-            localStorage.removeItem('jobPostDraft');
-        }
-    }
-}
 
-function restoreDraftData(data) {
-    Object.keys(data).forEach(key => {
-        const element = document.getElementById(key);
-        if (element && data[key]) {
-            element.value = data[key];
-
-            // Trigger input event to update character counters
-            element.dispatchEvent(new Event('input'));
-        }
-    });
-
-    jobData = { ...data };
-    isDraft = true;
-}
-
-// Save draft manually
-function saveDraft() {
-    updateJobData();
-
-    if (!hasFormData()) {
-        showNotification('No data to save as draft', 'warning');
-        return;
-    }
-
-    localStorage.setItem('jobPostDraft', JSON.stringify(jobData));
-    isDraft = true;
-    showNotification('Draft saved successfully!', 'success');
-}
-
-// Preview job functionality
-function previewJob() {
-    updateJobData();
-
-    if (!validateForm()) {
-        showNotification('Please fill in all required fields to preview the job.', 'error');
-        return;
-    }
-
-    generateJobPreview();
-    showModal('jobPreviewModal');
-}
-
-function generateJobPreview() {
-    const previewContent = document.getElementById('jobPreviewContent');
-
-    const salaryDisplay = jobData.salaryAmount && jobData.salaryPeriod
-        ? `₹${parseInt(jobData.salaryAmount).toLocaleString()} ${jobData.salaryPeriod.replace('-', ' ')}`
-        : 'Salary not specified';
-
-    const workDisplay = jobData.workload && jobData.workperiod
-        ? ` ${jobData.workload}hrs ${jobData.workperiod.replace('-', ' ')}`
-        : 'workload not specified';
-
-    const experienceDisplay = jobData.experienceRequired
-        ? jobData.experienceRequired.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())
-        : 'Not specified';
-
-    previewContent.innerHTML = `
-        <div class="job-preview">
-            <div class="preview-header">
-                <div class="preview-company">
-                    <img src="../app/assets/images/default-company-logo-1.png" alt="Company Logo" class="preview-logo">
-                    <div>
-                        <h2>${jobData.jobTitle}</h2>
-                        <p>TechStart Solutions</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="preview-details">
-                <div class="detail-grid">
-                    <div class="detail-item">
-                        <strong>Job Type:</strong> ${jobData.jobType.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                    </div>
-                    <div class="detail-item">
-                        <strong>Location:</strong> ${jobData.location}
-                    </div>
-                    <div class="detail-item">
-                        <strong>Salary:</strong> ${salaryDisplay}
-                    </div>
-                    <div class="detail-item">
-                        <strong>Experience:</strong> ${experienceDisplay}
-                    </div>
-                    <div class="detail-item">
-                        <strong>Posted:</strong> ${new Date(jobData.postedDate).toLocaleDateString()}
-                    </div>
-                    <div class="detail-item">
-                        <strong>Work:</strong> ${workDisplay}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="preview-section">
-                <h3>Job Description</h3>
-                <div class="preview-content">${jobData.jobDescription.replace(/\n/g, '<br>')}</div>
-            </div>
-            
-            <div class="preview-section">
-                <h3>What We Offer</h3>
-                <div class="preview-content">${jobData.whatTheyOffer.replace(/\n/g, '<br>')}</div>
-            </div>
-        </div>
-    `;
-}
 
 // Form submission
 function handleFormSubmission() {
@@ -413,39 +359,7 @@ function handleFormSubmission() {
     }, 2000);
 }
 
-async function submitJob() {
-    updateJobData();
-    console.log(jobData);
 
-    try {
-        let response = await fetch("../backend/add_jobs.php", {
-            method: "POST",
-            body: JSON.stringify(jobData),
-            headers: { "Content-Type": "application/json" }
-        });
-
-        let rawText = await response.text();
-        console.log("Raw backend response:", rawText);
-
-        let data;
-        try {
-            data = JSON.parse(rawText); // Try to parse JSON
-        } catch (err) {
-            showNotification("Server returned invalid JSON. Check console logs.", "error");
-            return;
-        }
-
-        if (data.status === "success") {
-            closeModal("jobPreviewModal");
-            handleFormSubmission();
-        } else {
-            showNotification(data.message || "Failed to post job.", "error");
-        }
-    } catch (error) {
-        console.error("Fetch error:", error);
-        showNotification("Network or server error. Please try again later.", "error");
-    }
-}
 
 // Modal functionality
 function showModal(modalId) {
@@ -733,21 +647,6 @@ window.addEventListener('beforeunload', function (e) {
     }
 });
 
-// Utility functions
-function formatSalary(amount, period) {
-    const formattedAmount = parseInt(amount).toLocaleString();
-    const periodText = period.replace('-', ' ');
-    return `₹${formattedAmount} ${periodText}`;
-}
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-}
 
 // Error handling
 window.addEventListener('error', function (e) {

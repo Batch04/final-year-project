@@ -1,6 +1,8 @@
 
 let userdata = [];
 
+let educationString = "";
+
 async function getuserdata() {
     let data = await fetch("../backend/get_seeker.php");
     let res = await data.text();
@@ -14,11 +16,13 @@ function genrateeducation() {
     let education = [];
     let edu = [];
     let educationhtml = "";
-    education = userdata.education.split("\n");
-    education.forEach((e1) => {
-        if (e1 !== "") {
-            edu = e1.split(",");
-            educationhtml += `
+    if (userdata.education !== "") {
+        education = userdata.education.split("\n");
+
+        education.forEach((e1) => {
+            if (e1 !== "") {
+                edu = e1.split(",");
+                educationhtml += `
                 <div class="education-entry">
                     <div class="education-row">
                         <input type="text" placeholder="Degree/Certification"
@@ -37,10 +41,11 @@ function genrateeducation() {
                 </div>    
             
             `
-        }
+            }
 
 
-    });
+        });
+    }
 
     return educationhtml;
 }
@@ -64,7 +69,7 @@ function genrateskils() {
 
 function genrateprofile() {
 
-    document.querySelector(".profile-name-display").innerHTML=(userdata.name !== "") ? `${userdata.name}` : `seeker`;
+    document.querySelector(".profile-name-display").innerHTML = (userdata.name !== "") ? `${userdata.name}` : `seeker`;
     let updateprofilehtml = "";
     updateprofilehtml = `
     
@@ -115,7 +120,7 @@ function genrateprofile() {
                                 <i class="fas fa-phone"></i>
                                 Mobile Number
                             </label>
-                            <input type="text" id="mobile" name="mobile" maxlength="10" value="${(userdata.location !== "") ? `${userdata.location}` : `NOT PROVIDED`}" class="form-input" required>
+                            <input type="text" id="mobile" name="mobile" maxlength="10" value="${(userdata.phone !== 0) ? `${userdata.phone}` : `NOT PROVIDED`}" class="form-input" required>
                         </div>
 
                         <div class="form-group">
@@ -123,7 +128,7 @@ function genrateprofile() {
                                 <i class="fas fa-map-marker-alt"></i>
                                 Location
                             </label>
-                            <input type="text" id="location" name="location" value="${(userdata.phone !== 0) ? `${userdata.phone}` : `NOT PROVIDED`}"
+                            <input type="text" id="location" name="location" value="${(userdata.location !== "") ? `${userdata.location}` : `NOT PROVIDED`}"
                                 class="form-input" required>
                         </div>
                     </div>
@@ -207,14 +212,13 @@ function genrateprofile() {
 
     `
 
-    document.querySelector(".settings-form").innerHTML=updateprofilehtml;
+    document.querySelector(".settings-form").innerHTML = updateprofilehtml;
 }
 
 
 function geteducation() {
     // Get all education entries
     const educationEntries = document.querySelectorAll('.education-entry');
-
 
     educationEntries.forEach((entry, index) => {
         const degree = entry.querySelector('.education-degree').value.trim();
@@ -247,9 +251,6 @@ async function main() {
         skills: "",
         availability: ""
     };
-
-    let educationString = "";
-
     // Get form elements
     const form = document.getElementById('profile-settings-form');
     const avatarInput = document.getElementById('profile-avatar');

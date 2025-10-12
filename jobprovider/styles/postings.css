@@ -78,7 +78,7 @@
    min-height: 80vh;
    display:flex;
    flex-direction: column;
-   justify-content: space-around;
+   justify-content: flex-start;
    margin-top: 2%;
 }
 

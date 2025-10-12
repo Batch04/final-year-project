@@ -178,7 +178,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Buttons */
-.btn-primary, .btn-secondary, .btn-success, .btn-warning, .btn-danger {
+.btn-primary, .btn-secondary, .btn-success, .btn-warning, .btn-danger ,.btn-safe {
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
@@ -243,6 +243,11 @@ h1, h2, h3, h4, h5, h6 {
 .btn-danger:hover {
     background-color: #c82333;
     transform: translateY(-2px);
+}
+
+.btn-safe{
+    background-color: var(--success-color);
+    color: var(--white);
 }
 
 /* Job Grid */
@@ -357,6 +362,8 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(220, 53, 69, 0.1);
     color: var(--danger-color);
 }
+
+
 
 
 /* Job Details Page Styles */

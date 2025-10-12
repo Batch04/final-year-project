@@ -31,7 +31,8 @@ while ($row = mysqli_fetch_assoc($res)) {
         "job_id" => $row['job_id'],
         "provider_name" => $row['provider_name'],
         "company_name" => $row['company_name'],
-        "applied_date" => $row['applied_date']
+        "applied_date" => $row['applied_date'],
+        "about"=>$row['about']
     ];
 }
 

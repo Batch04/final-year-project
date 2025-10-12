@@ -387,15 +387,18 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-
-
-
-/* html genration using js */
+let url = new URL(window.location.href);
+let sid = url.searchParams.get("seekerid");
+console.log(sid);
 
 let userdata = [];
 
-async function getuserdata() {
-    let data = await fetch("../backend/get_seeker.php");
+async function getseekerdata() {
+    let data = await fetch("../backend/getidseekerdata.php",{
+        method:"POST",
+        body:JSON.stringify({"id":sid}),
+        headers:{'Content-Type': 'application/json'}
+    })
     let res = await data.text();
     console.log(res);
     let realdata = JSON.parse(res);
@@ -515,17 +518,9 @@ function generateUserProfile() {
 
 }
 
-async function main() {
-    await getuserdata();
+async function main(){
+    await getseekerdata();
     generateUserProfile();
-
-    document.querySelector(".edit-button").addEventListener('click', function () {
-        window.location.href = "./job-seeker-profile-update.html";
-    });
-
 }
 
 main();
-
-
-

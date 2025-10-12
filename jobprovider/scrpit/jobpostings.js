@@ -32,7 +32,7 @@ function genratejobs() {
                             <span class="job-date">Posted on ${job.job_posted}</span>
                         </div>
                     </div>
-                    <button class="view-applicants-btn" data-jobid="${job.jobs_id}">
+                    <button class="view-applicants-btn viewapplicants " data-jobid="${job.jobs_id}">
                         <i class="fas fa-users"></i>
                         View Applicants
                     </button>
@@ -48,6 +48,12 @@ function genratejobs() {
 async function main() {
     await providerjobs();
     genratejobs();
+    document.querySelectorAll(".viewapplicants").forEach((button)=>{
+        button.addEventListener("click",()=>{
+            let id = button.dataset.jobid;
+            window.location.href=`job-details-applicants.html?jobId=${id}`;
+        })
+    })
 }
 
 main();

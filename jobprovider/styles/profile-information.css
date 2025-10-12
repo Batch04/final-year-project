@@ -415,36 +415,7 @@ body {
     margin-right: 0.5rem;
 }
 
-/* Enhanced hover effects */
-.company-header,
-.profile-section {
-    position: relative;
-    overflow: hidden;
-}
 
-.company-header::before,
-.profile-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(3, 132, 252, 0.1), transparent);
-    transition: left 0.5s ease;
-    z-index: 1;
-}
-
-.company-header:hover::before,
-.profile-section:hover::before {
-    left: 100%;
-}
-
-.company-header > *,
-.profile-section > * {
-    position: relative;
-    z-index: 2;
-}
 
 
 
@@ -494,26 +465,6 @@ body {
     box-shadow: var(--shadow-hover);
 }
 
-.job-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(3, 132, 252, 0.05), transparent);
-    transition: left 0.5s ease;
-    z-index: 1;
-}
-
-.job-card:hover::before {
-    left: 100%;
-}
-
-.job-card > * {
-    position: relative;
-    z-index: 2;
-}
 
 /* Job Header */
 .job-header {
