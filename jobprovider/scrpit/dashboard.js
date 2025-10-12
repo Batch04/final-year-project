@@ -140,7 +140,7 @@ async function genrateproviderjob() {
                 </div>
 
                 <div class="job-actions">
-                    <button class="btn btn-outline btn-sm" data-jobid="${job.jobs_id}">
+                    <button class="btn btn-outline btn-sm editjob " data-jobid="${job.jobs_id}">
                         <i class="fas fa-edit"></i> Edit
                     </button>
                     <button class="btn btn-primary btn-sm viewapplicants" data-jobid="${job.jobs_id}">
@@ -162,17 +162,22 @@ async function main() {
     genraterecentjob();
     await genrateproviderjob();
 
+    document.querySelector(".browse").addEventListener("click",()=>{
+        window.location.href="posted-jobs-overview.html"
+    })
+
     document.querySelectorAll(".btn-outline").forEach((button) => {
         button.addEventListener("click", () => {
 
-            let seeker_id = button.dataset.jobid;
+            let seeker_id = button.dataset.seekerid;
+            window.location.href=`./seeker-profile.html?seekerid=${seeker_id}`
         })
     })
 
     document.querySelectorAll(".viewapplicants").forEach((applicants) => {
         applicants.addEventListener("click", () => {
             let job_id = applicants.dataset.jobid;
-            window.location.href = `./job-details-applicants.html?jobid=${job_id}`;
+            window.location.href = `./job-details-applicants.html?jobId=${job_id}`;
         });
     });
 
@@ -180,6 +185,14 @@ async function main() {
     document.querySelector(".active-jobs").innerHTML = requireddata.active;
     document.querySelector(".applicants-num").innerHTML = requireddata.count;
     document.querySelector(".hired-num").innerHTML = "0"
+
+    document.querySelectorAll(".editjob").forEach((edit)=>{
+        edit.addEventListener("click",()=>{
+
+            let jobid = edit.dataset.jobid;
+            window.location.href=`./update-job.html?jobid=${jobid}`;
+        })
+    })
 
     window.addEventListener("pageshow", async function (event) {
         if (event.persisted) {
