@@ -98,6 +98,14 @@ session_start();
         const name = '<?php echo $_SESSION['seeker_name'] ?>';
         console.log(name);
         document.querySelector(".profile-name").innerHTML = name;
+        const input = document.querySelector("#locationSearch");
+        if (window.location.pathname.includes("search-page.html")) {
+            input.disabled = true;
+        } else {
+            input.addEventListener("focus", () => {
+                window.location.href = "search-page.html";
+            });
+        }
     </script>
 
 </body>
