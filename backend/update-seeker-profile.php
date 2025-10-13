@@ -34,6 +34,7 @@ $sql = "UPDATE seekers
 $res = mysqli_query($con, $sql);
 if ($res) {
     echo json_encode(['status' => 'success', 'message' => 'Profile updated successfully!']);
+    $_SESSION['seeker_name'] = "$fullName";
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Failed to update profile. Please try again.']);
 }

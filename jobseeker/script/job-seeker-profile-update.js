@@ -743,6 +743,7 @@ async function main() {
                 saveButton.innerHTML = '  <i class="fas fa-save"></i> Save Changes';
                 if (result.status === 'success') {
                     showNotification(result.message, 'info');
+                    location.reload();
                 }
                 else {
                     showNotification(result.message, 'error');

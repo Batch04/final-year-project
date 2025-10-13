@@ -7,14 +7,12 @@ async function getrecentapplications() {
     let data = await fetch("../backend/getrecent-applicants.php");
     let response = await data.text();
     recentapplicantsdata = JSON.parse(response);
-    console.log(recentapplicantsdata);
 }
 
 async function getproviderdata() {
     let data = await fetch("../backend/get-jobs.php");
     let respose = await data.text();
     providerdata = JSON.parse(respose);
-    console.log(providerdata);
 }
 
 function getjobname(jobid) {
@@ -31,7 +29,6 @@ async function providerjobs() {
     let data = await fetch("../backend/getprovider-jobs.php");
     let response = await data.text();
     providerjobsdata = JSON.parse(response);
-    console.log(providerjobsdata);
 }
 
 
@@ -50,9 +47,7 @@ function jobstatus(status) {
 async function getrequireddata() {
     let res = await fetch("../backend/get-required-data.php");
     let response = await res.text();
-    console.log(response);
     requireddata = JSON.parse(response);
-    console.log(requireddata);
 }
 
 async function getapplicantsnum(jobid) {
@@ -65,9 +60,7 @@ async function getapplicantsnum(jobid) {
     });
 
     let response = await data.text();
-    console.log(response);
     let applicantsnum = JSON.parse(response);
-    console.log(applicantsnum);
     return applicantsnum.count;
 }
 

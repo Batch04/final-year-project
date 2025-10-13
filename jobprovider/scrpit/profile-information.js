@@ -106,6 +106,10 @@ async function main() {
     await providerjobs();
     genratecompnayprofile();
     genratejobs();
+
+    document.querySelector(".company-name").innerHTML=companydata.company_name;
+    document.querySelector(".company-loaction").innerHTML=companydata.location;
+
     // Get all buttons that open external links
     const visitButton = document.querySelector('.visit-button');
     const socialButtons = document.querySelectorAll('.social-button');

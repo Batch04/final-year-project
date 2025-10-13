@@ -107,6 +107,9 @@ async function main() {
 
     await getdata();
     genrateprofile();
+
+    document.querySelector(".company-name").innerHTML=companydata.company_name;
+    document.querySelector(".company-loaction").innerHTML=companydata.location;
     // Get form elements
     const form = document.getElementById('company-settings-form');
     const logoInput = document.getElementById('company-logo');
@@ -372,6 +375,7 @@ async function main() {
                 saveButton.innerHTML = '  <i class="fas fa-save"></i> Save Changes';
                 if (result.status === 'success') {
                     showNotification(result.message, 'info');
+                    location.reload();
                 }
                 else {
                     showNotification(result.message, 'error');
