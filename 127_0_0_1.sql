@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2025 at 01:04 PM
+-- Generation Time: Oct 13, 2025 at 09:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -50,6 +50,27 @@ INSERT INTO `applied_job` (`applied_jobid`, `seeker_id`, `job_id`, `provider_nam
 (45, 5, 28, 22, 'Jasstech', '2025-10-12'),
 (46, 5, 23, 23, 'jastechcrop', '2025-10-12'),
 (47, 5, 21, 19, 'starterwave', '2025-10-13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hired`
+--
+
+CREATE TABLE `hired` (
+  `hired_id` int(11) NOT NULL,
+  `job_id` int(11) NOT NULL,
+  `provider_id` int(11) NOT NULL,
+  `seeker_id` int(11) NOT NULL,
+  `hired_at` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `hired`
+--
+
+INSERT INTO `hired` (`hired_id`, `job_id`, `provider_id`, `seeker_id`, `hired_at`) VALUES
+(4, 24, 23, 18, '2025-10-14');
 
 -- --------------------------------------------------------
 
@@ -125,7 +146,7 @@ INSERT INTO `providers` (`provider_id`, `company_name`, `email`, `password`, `lo
 (20, 'PET ', 'vennela@gmail.com', '$2y$10$GRUAHOvVXWEnd3PiJatcg.23fe9hdH4.kofbh4IhTpnobvjX94pjq', 'grfdc', '8512318938', '', '2025-09-02 19:46:08'),
 (21, 'sdfg', 'error@gmail.com', '$2y$10$CHbfanrzhfn5ndH43zaF.OmpgbkuM6qBjGEdDVO95/xIGhJFbWJ52', 'dsfgh', '23456', '', '2025-09-05 10:19:12'),
 (22, 'Jasstech', 'jasu5511246@gmail.com', '$2y$10$CxXDlxZUQWhmPGTldLQguOEem8mJx0UHgC.1apRdVrooJ6YLyBzI2', 'Tirupati', '7981629173', 'We are a leading technology company focused on innovation and excellence in software development.', '2025-09-07 12:03:43'),
-(23, 'abhirampitta', 'abcd5511246@gmail.com', '$2y$10$4N1onDLkRDss7JWgEaxOw.ekkcEItJOqoiYe17tDmDr5nyfz.h21K', 'Tirupati , Andhrapardesh', '7981629173', 'MY company is to provider the all type of services', '2025-09-07 12:12:41'),
+(23, 'jastechcrop', 'abcd5511246@gmail.com', '$2y$10$4N1onDLkRDss7JWgEaxOw.ekkcEItJOqoiYe17tDmDr5nyfz.h21K', 'Tirupati , Andhrapardesh', '7981629173', 'MY company is to provider the all type of services', '2025-09-07 12:12:41'),
 (24, 'sharuktech', 'sharuk12345678@gmail.com', '$2y$10$oDWChxVOH5bP6n3xE.gKqeY/0x71fU7Tv5artqHXq8eYYTh8ZU58u', 'Adoni', '1234567890', 'this is hightly professional company', '2025-09-14 16:31:05'),
 (28, 'alpha', 'alpha1234567@gmail.com', '$2y$10$8oujYkHTJc7Z9IiOriQIfuwlDY3EAQLOfKNSQxAhCHoSv9HLRdOf6', 'Palasa', '123', 'This is my company', '2025-09-14 16:45:43'),
 (33, 'alpha', 'alpha123456711@gmail.com', '$2y$10$MFE.6uLiq6n5meVWsuWbX.meT8Gz/kcMLes72FoK2UfAQd9byhgP.', 'Tirupati', '1234567890', 'this is my alpha', '2025-09-14 18:00:59');
@@ -265,7 +286,9 @@ CREATE TABLE `shortlisted` (
 --
 
 INSERT INTO `shortlisted` (`shortlist_id`, `job_id`, `provider_id`, `seeker_id`, `shortlisted_time`) VALUES
-(3, 24, 23, 5, '2025-10-13');
+(8, 24, 23, 5, '2025-10-14'),
+(9, 24, 23, 18, '2025-10-14'),
+(10, 22, 23, 18, '2025-10-14');
 
 --
 -- Indexes for dumped tables
@@ -276,6 +299,12 @@ INSERT INTO `shortlisted` (`shortlist_id`, `job_id`, `provider_id`, `seeker_id`,
 --
 ALTER TABLE `applied_job`
   ADD PRIMARY KEY (`applied_jobid`);
+
+--
+-- Indexes for table `hired`
+--
+ALTER TABLE `hired`
+  ADD PRIMARY KEY (`hired_id`);
 
 --
 -- Indexes for table `posted_jobs`
@@ -325,6 +354,12 @@ ALTER TABLE `applied_job`
   MODIFY `applied_jobid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
+-- AUTO_INCREMENT for table `hired`
+--
+ALTER TABLE `hired`
+  MODIFY `hired_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `posted_jobs`
 --
 ALTER TABLE `posted_jobs`
@@ -358,7 +393,7 @@ ALTER TABLE `seekers`
 -- AUTO_INCREMENT for table `shortlisted`
 --
 ALTER TABLE `shortlisted`
-  MODIFY `shortlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `shortlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
