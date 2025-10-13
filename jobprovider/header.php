@@ -65,6 +65,12 @@ session_start();
                                 <p>Applicants</p>
                             </div>
                         </a>
+                        <a href="hired-employee.html" class="dropdown-item">
+                            <div>
+                                <i class="fas fa-users"></i>
+                                <p>Hired Employess</p>
+                            </div>
+                        </a>
                         <a href="settings.html" class="dropdown-item">
                             <div>
                                 <i class="fas fa-cog"></i>

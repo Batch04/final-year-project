@@ -47,10 +47,14 @@ function isLocationAvailable(locationInput) {
 function genratelocationjob() {
     let searchloaction = document.querySelector(".search-input").value;
     console.log(searchloaction);
+    document.querySelector(".searchgrid-container").innerHTML = ``;
     let postjob = "";
-    data.forEach((job) => {
-        if (job.job_status === "open" && isLocationAvailable(searchloaction)) {
-            postjob += `
+    if (searchloaction) {
+        let status = false;
+        data.forEach((job) => {
+            if (job.job_status === "open" && ((job.job_location).toLowerCase().includes(searchloaction) && isLocationAvailable(searchloaction))) {
+                status = true;
+                postjob += `
              <div class="job-card">
                 <div class="job-header">
                     <div class="logo-container">
@@ -108,10 +112,20 @@ function genratelocationjob() {
                 </div>
             </div>
             `
+            }
+        });
+        if (status) {
+            document.querySelector(".searchgrid-container").innerHTML = postjob;
         }
-    });
-    document.querySelector(".searchgrid-container").innerHTML = postjob;
-    document.querySelector(".jobinlocation").innerHTML = `JOBS IN ${searchloaction}`;
+        else{
+            document.querySelector(".searchgrid-container").innerHTML=`<h3 style="color:red">No JOBS FOUND IN ${searchloaction}</h3>`;
+        }
+        document.querySelector(".jobinlocation").innerHTML = `JOBS IN ${searchloaction}`;
+    }
+    else{
+        document.querySelector(".jobinlocation").innerHTML = `JOBS  FOR YOU `;
+        genratejob();
+    }
 }
 
 

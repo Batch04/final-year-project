@@ -215,7 +215,9 @@ async function isshorlisted(jobid, providerid, seekerid) {
         body: JSON.stringify({ 'jobid': jobid, 'providerid': providerid })
     });
     let text = await res.text();
+    console.log(text);
     shortlistdata = JSON.parse(text);
+    console.log(shortlistdata);
 
     shortlistdata.forEach((user) => {
         if (parseInt(user.seekerid) === parseInt(seekerid)) {
@@ -225,12 +227,35 @@ async function isshorlisted(jobid, providerid, seekerid) {
     return istrue;
 }
 
+let hireddata = [];
+async function ishired(jobid, providerid, seekerid) {
+
+    let istrue = false;
+    let res = await fetch("../backend/ishired.php", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 'jobid': jobid, 'providerid': providerid })
+    });
+    let text = await res.text();
+    hireddata = JSON.parse(text);
+
+    hireddata.forEach((user) => {
+        if (parseInt(user.seekerid) === parseInt(seekerid)) {
+            istrue = true;
+        }
+    });
+    return istrue;
+}
 
 async function genrateapplicants() {
     let applicantshtml = ``;
     if (appliedapplicants.length !== 0) {
 
         for (const applicant of appliedapplicants) {
+
+            let shortliststatus = await isshorlisted(applicant.job_id, applicant.provider_name, applicant.seeker_id);
+            let hirestatus = await ishired(applicant.job_id, applicant.provider_name, applicant.seeker_id);
+
             applicantshtml += `
         
             <div class="applicant-card">
@@ -240,7 +265,7 @@ async function genrateapplicants() {
                                 <h4 class="applicant-name">${applicant.name}</h4>
                                 <div class="applicant-meta">
                                     <span class="application-date"><i class="fas fa-calendar-alt"></i> Applied ${timeAgo(applicant.applied_date)}</span>
-                                    ${await isshorlisted(applicant.job_id, applicant.provider_name, applicant.seeker_id)? `<span class="applicant-status shortlisted "><i class="fas fa-circle"></i>Shortlisted</span>` : `<span class="applicant-status new"><i class="fas fa-circle"></i>New</span>`}
+                                    ${shortliststatus ? `${hirestatus ? `<span class="applicant-status shortlisted"><i class="fas fa-circle"></i>Hired</span>` : `<span class="applicant-status reviewed "><i class="fas fa-circle"></i>Shortlisted</span>`}` : `<span class="applicant-status new"><i class="fas fa-circle"></i>New</span>`}
                                 </div>
                             </div>
                         </div>
@@ -257,7 +282,7 @@ async function genrateapplicants() {
                             <button class="btn-secondary view-profile " data-seekerid="${applicant.seeker_id}">
                                 <i class="fas fa-user"></i> View Profile
                             </button>
-                            ${await isshorlisted(applicant.job_id, applicant.provider_name, applicant.seeker_id) ? `` : `<button class="btn-success shortlist-btn " data-seekerid="${applicant.seeker_id}" data-jobid="${applicant.job_id}" data-providerid="${applicant.provider_name}"><i class="fas fa-star"></i> Shortlist</button>`}
+                            ${shortliststatus ? `${hirestatus ? `` : `<button class="btn-success hire-btn" data-seekerid="${applicant.seeker_id}" data-jobid="${applicant.job_id}" data-providerid="${applicant.provider_name}"><i class="fas fa-star"></i> hire employee</button>`}` : ` <button class="btn-warning shortlist-btn " data-seekerid="${applicant.seeker_id}" data-jobid="${applicant.job_id}" data-providerid="${applicant.provider_name}" > <i class="fas fa-star"></i> Shortlist</button> `}
                         </div>
                     </div>
         
@@ -434,7 +459,9 @@ async function main() {
             let id = shortlist.dataset.seekerid;
             let jobid = shortlist.dataset.jobid;
             let providerid = shortlist.dataset.providerid;
-            if (!await isshorlisted(jobid, providerid, id)) {
+            let shortliststatus = await isshorlisted(jobid, providerid, id);
+
+            if (!shortliststatus) {
 
                 let res = await fetch("../backend/shortlist.php", {
                     method: "POST",
@@ -445,12 +472,37 @@ async function main() {
                 console.log(text);
                 let realdata = JSON.parse(text);
                 console.log(realdata);
+                main();
             }
 
         })
     });
 
-     window.addEventListener("pageshow", async function (event) {
+    document.querySelectorAll(".hire-btn").forEach((hire) => {
+        hire.addEventListener("click", async () => {
+            let id = hire.dataset.seekerid;
+            let jobid = hire.dataset.jobid;
+            let providerid = hire.dataset.providerid;
+            let hirestatus = await ishired(jobid, providerid,id);
+
+            if (!hirestatus) {
+
+                let res = await fetch("../backend/hireemploye.php", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 'seekerid': id, 'jobid': jobid, 'providerid': providerid })
+                });
+                let text = await res.text();
+                console.log(text);
+                let realdata = JSON.parse(text);
+                console.log(realdata);
+                main();
+            }
+
+        });
+    });
+
+    window.addEventListener("pageshow", async function (event) {
         if (event.persisted) {
             main();
         }

@@ -87,7 +87,7 @@ function genraterecentjob() {
                     </div>
 
                     <div class="application-actions">
-                        <button class="btn btn-outline btn-sm" data-seekerid="${applicant.seeker_id}">View Profile</button>
+                        <button class="btn btn-outline btn-sm view-profile " data-seekerid="${applicant.seeker_id}">View Profile</button>
                     </div>
                 </div>
         
@@ -155,15 +155,15 @@ async function main() {
     genraterecentjob();
     await genrateproviderjob();
 
-    document.querySelector(".browse").addEventListener("click",()=>{
-        window.location.href="posted-jobs-overview.html"
+    document.querySelector(".browse").addEventListener("click", () => {
+        window.location.href = "posted-jobs-overview.html"
     })
 
-    document.querySelectorAll(".btn-outline").forEach((button) => {
+    document.querySelectorAll(".view-profile").forEach((button) => {
         button.addEventListener("click", () => {
 
             let seeker_id = button.dataset.seekerid;
-            window.location.href=`./seeker-profile.html?seekerid=${seeker_id}`
+            window.location.href = `./seeker-profile.html?seekerid=${seeker_id}`
         })
     })
 
@@ -177,25 +177,29 @@ async function main() {
 
     document.querySelector(".active-jobs").innerHTML = requireddata.active;
     document.querySelector(".applicants-num").innerHTML = requireddata.count;
-    document.querySelector(".hired-num").innerHTML = "0"
+    document.querySelector(".hired-num").innerHTML = requireddata.hired;
 
-    document.querySelectorAll(".editjob").forEach((edit)=>{
-        edit.addEventListener("click",()=>{
+    document.querySelectorAll(".editjob").forEach((edit) => {
+        edit.addEventListener("click", () => {
 
             let jobid = edit.dataset.jobid;
-            window.location.href=`./update-job.html?jobid=${jobid}`;
+            window.location.href = `./update-job.html?jobid=${jobid}`;
         })
     })
 
     window.addEventListener("pageshow", async function (event) {
         if (event.persisted) {
             main();
+            this.location.reload();
+
         }
     });
 
     document.addEventListener("visibilitychange", async function () {
         if (document.visibilityState === "visible") {
             main();
+            this.location.reload();
+
         }
     });
 }

@@ -58,12 +58,16 @@ async function main() {
     window.addEventListener("pageshow", async function (event) {
         if (event.persisted) {
             main();
+            this.location.reload();
+
         }
     });
 
     document.addEventListener("visibilitychange", async function () {
         if (document.visibilityState === "visible") {
             main();
+            this.location.reload();
+
         }
     });
 }

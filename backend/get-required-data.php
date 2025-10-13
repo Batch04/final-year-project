@@ -24,7 +24,14 @@ $res2 = mysqli_query($con,$sql2);
 
 $active = mysqli_num_rows($res2);
 
+// get hired numbers
 
-echo json_encode(["count"=>$cout,"active"=>$active]);
+$sql3 = "SELECT * FROM `hired` WHERE  provider_id = $provider_id";
+
+$res3 = mysqli_query($con,$sql3);
+
+$hire = mysqli_num_rows($res3);
+
+echo json_encode(["count"=>$cout,"active"=>$active,"hired"=>$hire]);
 
 ?>

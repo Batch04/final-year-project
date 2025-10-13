@@ -27,29 +27,29 @@ function genratecompnayprofile() {
                     <!-- Name -->
                     <div class="info-card">
                         <div class="info-label">Name:</div>
-                        <div class="info-value-name">${companydata.company_name !== ""?`${companydata.company_name}`:`NOT PROVIDED`}</div>
+                        <div class="info-value-name">${companydata.company_name !== "" ? `${companydata.company_name}` : `NOT PROVIDED`}</div>
                     </div>
 
                     <!-- Email -->
                     <div class="info-card">
                         <div class="info-label">Email:</div>
-                        <div class="info-value-email">${companydata.email !== ""?`${companydata.email}`:`NOT PROVIDED`}</div>
+                        <div class="info-value-email">${companydata.email !== "" ? `${companydata.email}` : `NOT PROVIDED`}</div>
                     </div>
 
                     <!-- Location -->
                     <div class="info-card">
                         <div class="info-label">Contact:</div>
-                        <div class="info-value-location">${companydata.contact_number !== "0"?`${companydata.contact_number}`:`NOT PROVIDED`}</div>
+                        <div class="info-value-location">${companydata.contact_number !== "0" ? `${companydata.contact_number}` : `NOT PROVIDED`}</div>
                     </div>
                     <div class="info-card">
                         <div class="info-label">Location:</div>
-                        <div class="info-value-location">${companydata.location !== ""?`${companydata.location}`:`NOT PROVIDED`}</div>
+                        <div class="info-value-location">${companydata.location !== "" ? `${companydata.location}` : `NOT PROVIDED`}</div>
                     </div>
 
                     <!-- Company Description -->
                     <div class="info-card full-width">
                         <div class="info-label">Company Description:</div>
-                        <div class="info-value-description">${companydata.company_description !== ""?`${companydata.company_description}`:`NOT PROVIDED`}
+                        <div class="info-value-description">${companydata.company_description !== "" ? `${companydata.company_description}` : `NOT PROVIDED`}
                         </div>
                     </div>
                    
@@ -57,7 +57,7 @@ function genratecompnayprofile() {
 
     `;
 
-    document.querySelector(".profile-content").innerHTML=companyhtml;
+    document.querySelector(".profile-content").innerHTML = companyhtml;
 
 }
 
@@ -107,8 +107,8 @@ async function main() {
     genratecompnayprofile();
     genratejobs();
 
-    document.querySelector(".company-name").innerHTML=companydata.company_name;
-    document.querySelector(".company-loaction").innerHTML=companydata.location;
+    document.querySelector(".company-name").innerHTML = companydata.company_name;
+    document.querySelector(".company-loaction").innerHTML = companydata.location;
 
     // Get all buttons that open external links
     const visitButton = document.querySelector('.visit-button');
@@ -178,7 +178,7 @@ async function main() {
             setTimeout(() => {
                 // Remove loading state
                 removeLoadingState(this);
-                window.location.href=`./job-details-applicants.html?jobId=${jobId}`;
+                window.location.href = `./job-details-applicants.html?jobId=${jobId}`;
             }, 800);
         });
 
@@ -391,15 +391,19 @@ async function main() {
     });
 
 
-     window.addEventListener("pageshow", async function (event) {
+    window.addEventListener("pageshow", async function (event) {
         if (event.persisted) {
             main();
+            this.location.reload();
+
         }
     });
 
     document.addEventListener("visibilitychange", async function () {
         if (document.visibilityState === "visible") {
             main();
+            this.location.reload();
+
         }
     });
 
