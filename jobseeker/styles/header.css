@@ -253,6 +253,10 @@ body {
     color: var(--blue);
 }
 
+body{
+    background-color: #f8fafc;
+}
+
 /* Mobile Styles */
 @media (max-width: 480px) {
 
