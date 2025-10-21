@@ -1,5 +1,6 @@
 let data = [];
 let savedstatus = [];
+let requireddata = [];
 async function genratedata() {
     try {
         let resposive = await fetch("../backend/get-jobs.php");
@@ -127,16 +128,22 @@ async function postsavejob(jobid, jobtitile, jobstatus) {
     });
 
     let data = await response.text();
-    console.log(data);
 
-    let realdata = await data.json();
-    console.log(realdata);
+    let realdata = JSON.parse(data);
 }
 
+
+async function getrequireddat(){
+
+    let response = await fetch("../backend/get-s-requireddata.php");
+    let data = await response.text();
+    requireddata = JSON.parse(data);
+}
 
 async function main() {
     await genratedata();
     await issaveddata();
+    await getrequireddat();
     genratejob();
 
     let savebuttons = document.querySelectorAll(".save-job-btn");
@@ -170,6 +177,10 @@ async function main() {
             window.location.href = `./apply-job.html?jobid=${jobid}`;
         })
     });
+
+
+    document.querySelector(".appliedjobs").innerHTML = `<b>${requireddata.applications_count}</b>`;
+    document.querySelector(".saved-jobs").innerHTML = `<b>${requireddata.saved_jobs_count}</b>`;
 
 }
 
