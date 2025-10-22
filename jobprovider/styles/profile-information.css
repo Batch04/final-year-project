@@ -73,7 +73,9 @@ body {
     box-shadow: var(--shadow);
     border: 4px solid var(--white);
     transition: var(--transition);
-    background-color: var(--blue);
+    background-color: var(--lblue);
+    color: var(--blue);
+    font-size: 2.6rem;
     display: flex;
     align-items: center;
     justify-content: center;

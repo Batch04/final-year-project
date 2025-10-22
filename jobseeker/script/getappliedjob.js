@@ -9,6 +9,15 @@ async function genrateapplieddata() {
 
 }
 
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
 
 function genrateapplyjob() {
     let appliedjob = '';
@@ -18,7 +27,7 @@ function genrateapplyjob() {
         <div class="job-card">
                 <div class="company-basic-details">
                     <div class="logo-container">
-                        <img src="images/logo.png" alt="">
+                        <h3>${getInitials(job.company_name)}</h3>
                     </div>
                     <div class="saved-container">
                         ${issave(job.jobs_id) ? `<button class="saved-button" data-heart="save" data-jobid="${job.jobs_id} " data-jobtitle="${job.job_title}"><i class="fa-solid fa-heart"></i></button>` : `<button class="saved-button" data-heart="unsave"  data-jobid="${job.jobs_id} " data-jobtitle="${job.job_title}"> <i class="fa-regular fa-heart"></i></button>`}

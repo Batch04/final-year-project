@@ -8,40 +8,20 @@ let data = {
 
 let companydata = {};
 
-async function getdata(){
+async function getdata() {
     let res = await fetch("../backend/get_provider.php");
     let text = await res.text();
-    console.log(text);
     let real = JSON.parse(text);
     companydata = real.user;
-    console.log(companydata);
 }
 
 
-function genrateprofile(){
+function genrateprofile() {
     let profilehtml = ``;
 
-    profilehtml +=`
+    profilehtml += `
     
          <div class="form-group">
-                        <label for="company-logo" class="form-label">
-                            <i class="fas fa-image"></i>
-                            Change Company Logo
-                        </label>
-                        <div class="file-upload-container">
-                            <input type="file" id="company-logo" name="company-logo" accept="image/*" class="file-input">
-                            <div class="file-upload-display">
-                                <div class="upload-preview">
-                                    <img id="logo-preview" src="images/logo.png" alt="Logo Preview">
-                                </div>
-                                <div class="upload-text">
-                                    <span class="upload-label">Click to upload or drag and drop</span>
-                                    <span class="upload-hint">PNG, JPG up to 5MB</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Company Name and Description Row -->
                     <div class="form-row">
                         <div class="form-group">
@@ -49,7 +29,7 @@ function genrateprofile(){
                                 <i class="fas fa-building"></i>
                                 Company Name
                             </label>
-                            <input type="text" id="company-name" name="company_name" value="${companydata.company_name !== ""?`${companydata.company_name}`:`NOT PROVIDED`}" class="form-input" required>
+                            <input type="text" id="company-name" name="company_name" value="${companydata.company_name !== "" ? `${companydata.company_name}` : `NOT PROVIDED`}" class="form-input" required>
                         </div>
 
                         <div class="form-group">
@@ -57,7 +37,7 @@ function genrateprofile(){
                                 <i class="fas fa-envelope"></i>
                                 Contact Email
                             </label>
-                            <input type="email" id="contact-email" name="contact-email" value="${companydata.email !== ""?`${companydata.email}`:`NOT PROVIDED`}" class="form-input" required>
+                            <input type="email" id="contact-email" name="contact-email" value="${companydata.email !== "" ? `${companydata.email}` : `NOT PROVIDED`}" class="form-input" required>
                         </div>
                     </div>
 
@@ -67,7 +47,7 @@ function genrateprofile(){
                             <i class="fas fa-align-left"></i>
                             Company Description
                         </label>
-                        <textarea id="company-description" name="company-description" rows="4" class="form-textarea" placeholder="Tell us about your company...">${companydata.company_description !== ""?`${companydata.company_description}`:`NOT PROVIDED`}</textarea>
+                        <textarea id="company-description" name="company-description" rows="4" class="form-textarea" placeholder="Tell us about your company...">${companydata.company_description !== "" ? `${companydata.company_description}` : `NOT PROVIDED`}</textarea>
                     </div>
 
                     <!-- Contact Phone and Location Row -->
@@ -77,7 +57,7 @@ function genrateprofile(){
                                 <i class="fas fa-phone"></i>
                                 Contact Phone
                             </label>
-                            <input type="tel" id="contact-phone" value="${companydata.contact_number !== "0"?`${companydata.contact_number}`:`NOT PROVIDED`}" name="contact-phone" maxlength="10" class="form-input">
+                            <input type="tel" id="contact-phone" value="${companydata.contact_number !== "0" ? `${companydata.contact_number}` : `NOT PROVIDED`}" name="contact-phone" maxlength="10" class="form-input">
                         </div>
 
                         <div class="form-group">
@@ -85,7 +65,7 @@ function genrateprofile(){
                                 <i class="fas fa-map-marker-alt"></i>
                                 Location
                             </label>
-                            <input type="text" id="location" name="location" value="${companydata.location !== ""?`${companydata.location}`:`NOT PROVIDED`}" class="form-input">
+                            <input type="text" id="location" name="location" value="${companydata.location !== "" ? `${companydata.location}` : `NOT PROVIDED`}" class="form-input">
                         </div>
                     </div>
 
@@ -99,7 +79,7 @@ function genrateprofile(){
 
     `;
 
-    document.querySelector(".settings-form").innerHTML=profilehtml;
+    document.querySelector(".settings-form").innerHTML = profilehtml;
 
 }
 
@@ -108,8 +88,8 @@ async function main() {
     await getdata();
     genrateprofile();
 
-    document.querySelector(".company-name").innerHTML=companydata.company_name;
-    document.querySelector(".company-loaction").innerHTML=companydata.location;
+    document.querySelector(".company-name").innerHTML = companydata.company_name;
+    document.querySelector(".company-loaction").innerHTML = companydata.location;
     // Get form elements
     const form = document.getElementById('company-settings-form');
     const logoInput = document.getElementById('company-logo');
@@ -124,63 +104,6 @@ async function main() {
 
 
     // Image preview functionality
-    logoInput.addEventListener('change', function (e) {
-        const file = e.target.files[0];
-        if (file) {
-            // Validate file type
-            if (!file.type.startsWith('image/')) {
-                alert('Please select a valid image file.');
-                return;
-            }
-
-            // Validate file size (5MB limit)
-            if (file.size > 5 * 1024 * 1024) {
-                alert('File size must be less than 5MB.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                logoPreview.src = e.target.result;
-                companyLogoDisplay.src = e.target.result;
-
-                // Add upload success animation
-                fileUploadDisplay.style.borderColor = 'var(--blue)';
-                fileUploadDisplay.style.backgroundColor = 'rgba(3, 132, 252, 0.05)';
-
-                setTimeout(() => {
-                    fileUploadDisplay.style.borderColor = '';
-                    fileUploadDisplay.style.backgroundColor = '';
-                }, 2000);
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // Drag and drop functionality for logo upload
-    fileUploadDisplay.addEventListener('dragover', function (e) {
-        e.preventDefault();
-        this.style.borderColor = 'var(--blue)';
-        this.style.backgroundColor = 'rgba(3, 132, 252, 0.05)';
-    });
-
-    fileUploadDisplay.addEventListener('dragleave', function (e) {
-        e.preventDefault();
-        this.style.borderColor = '';
-        this.style.backgroundColor = '';
-    });
-
-    fileUploadDisplay.addEventListener('drop', function (e) {
-        e.preventDefault();
-        this.style.borderColor = '';
-        this.style.backgroundColor = '';
-
-        const files = e.dataTransfer.files;
-        if (files.length > 0) {
-            logoInput.files = files;
-            logoInput.dispatchEvent(new Event('change'));
-        }
-    });
 
     // Real-time company name update
     companyNameInput.addEventListener('input', function (e) {
@@ -331,7 +254,15 @@ async function main() {
         group.style.animationDelay = `${index * 0.1}s`;
     });
 
+    function getInitials(name) {
+        if (!name) return "";
 
+        return name
+            .trim()
+            .split(/\s+/)             // split by one or more spaces
+            .map(word => word[0].toUpperCase()) // take first letter of each word
+            .join('');                // join them together
+    }
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
@@ -360,7 +291,7 @@ async function main() {
             });
             let text = await res.text();
             console.log(text);
-             result = JSON.parse(text);
+            result = JSON.parse(text);
             console.log(result);
         } catch (e) {
             showNotification("Server error or fetching ", 'error');
@@ -387,7 +318,7 @@ async function main() {
 
     });
 
-     window.addEventListener("pageshow", async function (event) {
+    window.addEventListener("pageshow", async function (event) {
         if (event.persisted) {
             main();
         }
@@ -398,6 +329,8 @@ async function main() {
             main();
         }
     });
+
+    document.querySelector(".company-logo").innerHTML = getInitials(companydata.company_name);
 };
 
 main();

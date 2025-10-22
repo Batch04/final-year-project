@@ -42,7 +42,15 @@ function isLocationAvailable(locationInput) {
     });
 }
 
+function getInitials(name) {
+    if (!name) return "";
 
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
 
 function genratelocationjob() {
     let searchloaction = document.querySelector(".search-input").value;
@@ -59,7 +67,7 @@ function genratelocationjob() {
                 <div class="job-header">
                     <div class="logo-container">
                         <div class="company-logo">
-                            <img src="images/logo.png" alt="TechCorp">
+                            <h3>${getInitials(job.company_name)}</h3>
                         </div>
                         <div class="save-container">
                             ${issave(job.jobs_id) ? `<button class="save-job-btn" data-heart="save" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}"><i class="fa-solid fa-heart "></i></button>` : `<button class="save-job-btn" data-heart="unsave" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}"> <i class="far fa-heart" ></i></button>`}
@@ -138,7 +146,7 @@ function genratejob() {
                 <div class="job-header">
                     <div class="logo-container">
                         <div class="company-logo">
-                            <img src="images/logo.png" alt="TechCorp">
+                           <h3>${getInitials(job.company_name)}</h3>
                         </div>
                         <div class="save-container">
                             ${issave(job.jobs_id) ? `<button class="save-job-btn" data-heart="save" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}"><i class="fa-solid fa-heart "></i></button>` : `<button class="save-job-btn" data-heart="unsave" data-jobid="${job.jobs_id}" data-jobtitle="${job.job_title}"> <i class="far fa-heart" ></i></button>`}

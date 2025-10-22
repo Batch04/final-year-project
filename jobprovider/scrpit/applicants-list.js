@@ -619,6 +619,15 @@ async function genratejobs() {
     document.querySelector(".job-grid").innerHTML = jobshtml;
 }
 
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
 
 async function main() {
     await providerjobs();
@@ -629,6 +638,8 @@ async function main() {
     document.querySelector(".posted-jobs").innerHTML = providerjobsdata.length;
     document.querySelector(".applicants-num").innerHTML = requireddata.count;
     document.querySelector(".active-jobs").innerHTML = requireddata.active;
+
+    document.querySelector(".company-logo").innerHTML = getInitials(providerdata.user.company_name);
 
     window.addEventListener("pageshow", async function (event) {
         if (event.persisted) {

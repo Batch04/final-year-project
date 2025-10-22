@@ -66,6 +66,15 @@ function genrateskils() {
     return skillshtml;
 }
 
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
 
 function genrateprofile() {
 
@@ -73,26 +82,6 @@ function genrateprofile() {
     let updateprofilehtml = "";
     updateprofilehtml = `
     
-        
-                    <div class="form-group">
-                        <label for="profile-avatar" class="form-label">
-                            <i class="fas fa-camera"></i>
-                            Profile Picture
-                        </label>
-                        <div class="file-upload-container">
-                            <input type="file" id="profile-avatar" name="profile-avatar" accept="image/*"
-                                class="file-input">
-                            <div class="file-upload-display">
-                                <div class="upload-preview">
-                                    <img id="avatar-preview" src="images/job-seeker-avatar.png" alt="Avatar Preview">
-                                </div>
-                                <div class="upload-text">
-                                    <span class="upload-label">Click to upload or drag and drop</span>
-                                    <span class="upload-hint">PNG, JPG up to 5MB</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="form-row">
                         <div class="form-group">
@@ -239,6 +228,8 @@ async function main() {
 
     await getuserdata();
     genrateprofile();
+
+    document.querySelector("#profile-avatar-display").innerHTML = getInitials(userdata.name);
 
     let data = {
         name: "",

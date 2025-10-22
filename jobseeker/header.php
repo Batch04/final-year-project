@@ -39,7 +39,7 @@ session_start();
                 <div class="profile-dropdown">
                     <div class="profile-section-header">
                         <div class="avatar-image">
-                            <img src="images/job-seeker-avatar.png" alt="Profile" class="profile-avatar">
+                            <h3 class="name-avater"></h3>
                         </div>
                         <span id="profile-name" class="profile-name">Jaswant</span>
                         <i class="fas fa-chevron-down"></i>
@@ -106,6 +106,19 @@ session_start();
                 window.location.href = "search-page.html";
             });
         }
+
+        function getInitials(name) {
+            if (!name) return "";
+
+            return name
+                .trim()
+                .split(/\s+/)             // split by one or more spaces
+                .map(word => word[0].toUpperCase()) // take first letter of each word
+                .join('');                // join them together
+        }
+
+        document.querySelector(".name-avater").innerHTML = getInitials(name);
+
     </script>
 
 </body>

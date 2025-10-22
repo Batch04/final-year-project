@@ -73,7 +73,12 @@ h6 {
     width: 100px;
     height: 100px;
     border-radius: 8px;
-    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--lblue);
+    color: var(--blue);
+    font-size: 2.5rem;
     border: 3px solid var(--white);
     box-shadow: var(--card-shadow);
     transition: var(--transition);

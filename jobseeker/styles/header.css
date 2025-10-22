@@ -4,6 +4,7 @@
     --white: white;
     --black: #000;
     --gray: #797272;
+    --lblue: #cfe5fa;
 }
 
 ::selection {
@@ -168,16 +169,17 @@ body {
 
 
 .avatar-image {
-    width: 27%;
+    width: 23%;
     height: 70%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--lblue);
+    color: var(--blue);
 }
 
-.avatar-image img {
-    width: 100%;
-    height: 100%;
-}
+
 
 .profile-name {
     color: var(--blue);
@@ -253,7 +255,7 @@ body {
     color: var(--blue);
 }
 
-body{
+body {
     background-color: #f8fafc;
 }
 

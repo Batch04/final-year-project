@@ -260,7 +260,7 @@ async function genrateapplicants() {
         
             <div class="applicant-card">
                         <div class="applicant-header">
-                            <img src="../app/profile/assets/images/default-user-avatar.png" alt="Sarah Johnson" class="applicant-avatar">
+                            <h3 class="applicant-avatar">${getInitials(applicant.name)}</h3>
                             <div class="applicant-info">
                                 <h4 class="applicant-name">${applicant.name}</h4>
                                 <div class="applicant-meta">
@@ -385,6 +385,16 @@ function genratedidjobs() {
     document.querySelector(".job-details-section").innerHTML = jobinfo;
 }
 
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
+
 async function main() {
     await getjobiddata();
     await getappliedapplicants();
@@ -392,6 +402,7 @@ async function main() {
     genratedidjobs();
     await genrateapplicants();
     document.querySelector(".company-name").innerHTML = providerdata.user.company_name;
+    document.querySelector(".company-logo").innerHTML = getInitials(providerdata.user.company_name);
     let close = document.querySelector(".closejob");
     if (close) {
         close.addEventListener("click", async () => {
@@ -513,6 +524,8 @@ async function main() {
             main();
         }
     });
+
+
 }
 
 main();

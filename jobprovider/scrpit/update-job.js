@@ -39,6 +39,7 @@ function setbenfittag() {
 }
 
 
+
 function setprofiledata() {
     let profile = idjobdata[0];
     document.getElementById("jobTitle").value = profile.job_title;
@@ -74,6 +75,15 @@ let jobData = {
 
 let isDraft = false;
 
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
 // Initialize page functionality
 document.addEventListener('DOMContentLoaded', async function () {
     await getjobdata();
@@ -86,6 +96,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     console.log(setbenfittag());
 
     document.querySelector(".namecompany").innerHTML=idjobdata[0].company_name;
+    document.querySelector(".company-logo").innerHTML=getInitials(idjobdata[0].company_name);
 
     let submitBtn = document.querySelector(".btn-preview");
     submitBtn.addEventListener("click", async () => {

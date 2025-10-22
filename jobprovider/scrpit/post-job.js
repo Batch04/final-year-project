@@ -24,6 +24,15 @@ let jobData = {
 
 let isDraft = false;
 
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
 // Initialize page functionality
 document.addEventListener('DOMContentLoaded', async function () {
     await getdata();
@@ -32,7 +41,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     initializeBenefitTags();
     setDefaultDate();
     loadDraftData();
-    document.querySelector(".company-name").innerHTML=data.user.company_name;
+    document.querySelector(".company-name").innerHTML = data.user.company_name;
+    document.querySelector(".company-logo").innerHTML = getInitials(data.user.company_name);
 });
 
 

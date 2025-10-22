@@ -515,9 +515,21 @@ function generateUserProfile() {
 
 }
 
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
+
 async function main() {
     await getuserdata();
     generateUserProfile();
+
+    document.querySelector(".user-avatar").innerHTML = getInitials(userdata.name);
 
     document.querySelector(".edit-button").addEventListener('click', function () {
         window.location.href = "./job-seeker-profile-update.html";

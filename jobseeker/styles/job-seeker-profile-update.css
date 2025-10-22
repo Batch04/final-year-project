@@ -61,6 +61,11 @@ body {
     box-shadow: var(--shadow);
     border: 2px solid var(--blue);
     transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--blue);
 }
 
 .profile-avatar-circle:hover {

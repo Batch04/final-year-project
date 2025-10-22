@@ -64,6 +64,16 @@ async function getapplicantsnum(jobid) {
     return applicantsnum.count;
 }
 
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
+
 function genraterecentjob() {
     let recentjobhtml = ``;
     recentapplicantsdata.forEach((applicant) => {
@@ -72,7 +82,7 @@ function genraterecentjob() {
         <div class="application-card">
                     <div class="applicant-info">
                         <div class="applicant-avatar">
-                            <img src="images/person-image.png" alt="${applicant.name}">
+                        <h3>${getInitials(applicant.name)}</h3>
                         </div>
                         <div class="applicant-details">
                             <h2>${applicant.name} </h2>
