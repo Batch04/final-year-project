@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2025 at 09:41 PM
+-- Generation Time: Oct 22, 2025 at 12:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -49,7 +49,10 @@ INSERT INTO `applied_job` (`applied_jobid`, `seeker_id`, `job_id`, `provider_nam
 (44, 5, 24, 23, 'jastechcrop', '2025-10-12'),
 (45, 5, 28, 22, 'Jasstech', '2025-10-12'),
 (46, 5, 23, 23, 'jastechcrop', '2025-10-12'),
-(47, 5, 21, 19, 'starterwave', '2025-10-13');
+(47, 5, 21, 19, 'starterwave', '2025-10-13'),
+(48, 11, 24, 23, 'jastechcrop', '2025-10-18'),
+(49, 5, 30, 23, 'jastechcrop', '2025-10-18'),
+(50, 11, 21, 19, 'starterwave', '2025-10-18');
 
 -- --------------------------------------------------------
 
@@ -70,7 +73,10 @@ CREATE TABLE `hired` (
 --
 
 INSERT INTO `hired` (`hired_id`, `job_id`, `provider_id`, `seeker_id`, `hired_at`) VALUES
-(4, 24, 23, 18, '2025-10-14');
+(4, 24, 23, 18, '2025-10-14'),
+(6, 24, 23, 11, '2025-10-18'),
+(7, 24, 23, 5, '2025-10-18'),
+(8, 30, 23, 5, '2025-10-18');
 
 -- --------------------------------------------------------
 
@@ -203,7 +209,11 @@ INSERT INTO `reset_tokens` (`id`, `user_id`, `user_type`, `email`, `otp`, `reset
 (30, 5, 'seeker', 'jasu5511246@gmail.com', '502551', NULL, '2025-09-14 01:37:50', '2025-09-13 19:57:50'),
 (31, 5, 'seeker', 'jasu5511246@gmail.com', '341524', NULL, '2025-09-14 01:37:51', '2025-09-13 19:57:51'),
 (32, 5, 'seeker', 'jasu5511246@gmail.com', '851001', NULL, '2025-09-14 01:37:51', '2025-09-13 19:57:51'),
-(33, 5, 'seeker', 'jasu5511246@gmail.com', '401273', NULL, '2025-09-14 01:37:51', '2025-09-13 19:57:51');
+(33, 5, 'seeker', 'jasu5511246@gmail.com', '401273', NULL, '2025-09-14 01:37:51', '2025-09-13 19:57:51'),
+(34, 5, 'seeker', 'jasu5511246@gmail.com', '311259', NULL, '2025-10-22 01:34:50', '2025-10-21 19:54:50'),
+(35, 5, 'seeker', 'jasu5511246@gmail.com', '776962', NULL, '2025-10-22 01:34:51', '2025-10-21 19:54:51'),
+(36, 5, 'seeker', 'jasu5511246@gmail.com', '424752', NULL, '2025-10-22 01:35:48', '2025-10-21 19:55:48'),
+(37, 5, 'seeker', 'jasu5511246@gmail.com', '521422', NULL, '2025-10-22 02:15:39', '2025-10-21 20:35:39');
 
 -- --------------------------------------------------------
 
@@ -226,7 +236,10 @@ INSERT INTO `saved_jobs` (`saved_id`, `seeker_id`, `job_id`, `job_title`) VALUES
 (73, 5, 22, 'helper'),
 (75, 16, 22, 'helper'),
 (76, 5, 28, 'blood collectoe'),
-(80, 11, 26, 'watchman');
+(80, 11, 26, 'watchman'),
+(84, 5, 30, 'teas'),
+(86, 11, 21, 'team'),
+(87, 11, 22, 'helper');
 
 -- --------------------------------------------------------
 
@@ -288,7 +301,9 @@ CREATE TABLE `shortlisted` (
 INSERT INTO `shortlisted` (`shortlist_id`, `job_id`, `provider_id`, `seeker_id`, `shortlisted_time`) VALUES
 (8, 24, 23, 5, '2025-10-14'),
 (9, 24, 23, 18, '2025-10-14'),
-(10, 22, 23, 18, '2025-10-14');
+(10, 22, 23, 18, '2025-10-14'),
+(12, 24, 23, 11, '2025-10-18'),
+(13, 30, 23, 5, '2025-10-18');
 
 --
 -- Indexes for dumped tables
@@ -351,13 +366,13 @@ ALTER TABLE `shortlisted`
 -- AUTO_INCREMENT for table `applied_job`
 --
 ALTER TABLE `applied_job`
-  MODIFY `applied_jobid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `applied_jobid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `hired`
 --
 ALTER TABLE `hired`
-  MODIFY `hired_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `hired_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `posted_jobs`
@@ -375,13 +390,13 @@ ALTER TABLE `providers`
 -- AUTO_INCREMENT for table `reset_tokens`
 --
 ALTER TABLE `reset_tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `saved_jobs`
 --
 ALTER TABLE `saved_jobs`
-  MODIFY `saved_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `saved_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `seekers`
@@ -393,7 +408,7 @@ ALTER TABLE `seekers`
 -- AUTO_INCREMENT for table `shortlisted`
 --
 ALTER TABLE `shortlisted`
-  MODIFY `shortlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `shortlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
