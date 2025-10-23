@@ -44,6 +44,7 @@
 
  a{
   color: var(--blue);
+  text-decoration: none;
 }
 
 
@@ -55,7 +56,9 @@
 .nav-links {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 13%;
   margin: 0;
   padding: 0;
   gap: 20px;
@@ -176,20 +179,14 @@ body {
   opacity: 0;
   transform: translateY(-10px);
   transition: all 0.3s ease;
+  
 }
 
-.message.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.message.error {
+.error{
   color: var(--error);
 }
 
-.message.success {
-  color: var(--success);
-}
+
 
 .forgot-password {
   align-self: flex-end;

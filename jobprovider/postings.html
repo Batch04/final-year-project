@@ -4,201 +4,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Part Time Connect</title>
+    <title>My Job Postings | Part Time Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/postings.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="../scrpit/jquery.js"></script>
     <script src="scrpit/loadhead.js"></script>
     <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add_circle" />
 
 </head>
 
 <body>
     <header id="header"></header>
 
-    <div class="main-content">
-        <div class="content">
-            <div class="page-header">
-                <div class="job-heading">
-                    <h2>My Job Postings</h2>
-                    <p>Manager your active and past job postings.</p>
-                </div>
-                <div class="post-job-btn">
-                    <button class="btn-post" onclick="window.location.href='post-job.html'"><span class="material-symbols-outlined">add_circle</span>&nbsp;Post New
-                        Job</button>
-                </div>
+    <div class="page-container">
+        
+        <div class="page-header-container">
+            <div class="job-heading">
+                <h2>My Job Postings</h2>
+                <p class="subtext-description">Manager your active and past job postings.</p>
+            </div>
+            <div class="post-job-btn-wrapper">
+                <button class="btn-post" onclick="window.location.href='post-job.html'">
+                    <span class="material-symbols-outlined icon-post">add_circle</span>
+                    Post New Job
+                </button>
             </div>
         </div>
+
         <div class="posted-jobs-section">
             <div class="section-header">
-                <h2 class="section-title">Your Posted Jobs</h2>
+                <h2 class="section-title">Your Active Posted Jobs</h2>
+                <div class="header-divider"></div>
             </div>
 
             <div class="jobs-grid">
-                <!-- Job Card 1 -->
-                <div class="job-card">
+                <div class="job-card" data-job-id="1">
                     <div class="job-header">
                         <h3 class="job-title">Senior Frontend Developer</h3>
                         <span class="job-type full-time">Full-Time</span>
                     </div>
                     <div class="job-details">
                         <div class="job-info">
-                            <i class="fas fa-dollar-sign"></i>
+                            <span class="material-symbols-outlined icon-detail">payments</span>
                             <span class="job-salary">$80,000 - $120,000</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">location_on</span>
                             <span class="job-location">San Francisco, CA</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-calendar-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">calendar_today</span>
                             <span class="job-date">Posted 3 days ago</span>
                         </div>
                     </div>
                     <button class="view-applicants-btn" data-job-id="1" data-job-title="Senior Frontend Developer">
-                        <i class="fas fa-users"></i>
-                        View Applicants
+                        <span class="material-symbols-outlined icon-btn">group</span>
+                        View Applicants (35)
                     </button>
                 </div>
 
-                <!-- Job Card 2 -->
-                <div class="job-card">
+                <div class="job-card" data-job-id="2">
                     <div class="job-header">
                         <h3 class="job-title">UX/UI Designer</h3>
                         <span class="job-type part-time">Part-Time</span>
                     </div>
                     <div class="job-details">
                         <div class="job-info">
-                            <i class="fas fa-dollar-sign"></i>
+                            <span class="material-symbols-outlined icon-detail">payments</span>
                             <span class="job-salary">$40 - $60 /hour</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">location_on</span>
                             <span class="job-location">Remote</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-calendar-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">calendar_today</span>
                             <span class="job-date">Posted 1 week ago</span>
                         </div>
                     </div>
                     <button class="view-applicants-btn" data-job-id="2" data-job-title="UX/UI Designer">
-                        <i class="fas fa-users"></i>
-                        View Applicants
+                        <span class="material-symbols-outlined icon-btn">group</span>
+                        View Applicants (12)
                     </button>
                 </div>
 
-                <!-- Job Card 3 -->
-                <div class="job-card">
+                <div class="job-card" data-job-id="3">
                     <div class="job-header">
                         <h3 class="job-title">Backend Developer</h3>
                         <span class="job-type full-time">Full-Time</span>
                     </div>
                     <div class="job-details">
                         <div class="job-info">
-                            <i class="fas fa-dollar-sign"></i>
+                            <span class="material-symbols-outlined icon-detail">payments</span>
                             <span class="job-salary">$70,000 - $100,000</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">location_on</span>
                             <span class="job-location">San Francisco, CA</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-calendar-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">calendar_today</span>
                             <span class="job-date">Posted 5 days ago</span>
                         </div>
                     </div>
                     <button class="view-applicants-btn" data-job-id="3" data-job-title="Backend Developer">
-                        <i class="fas fa-users"></i>
-                        View Applicants
+                        <span class="material-symbols-outlined icon-btn">group</span>
+                        View Applicants (8)
                     </button>
                 </div>
 
-                <!-- Job Card 4 -->
-                <div class="job-card">
+                <div class="job-card" data-job-id="4">
                     <div class="job-header">
                         <h3 class="job-title">Marketing Specialist</h3>
                         <span class="job-type contract">Contract</span>
                     </div>
                     <div class="job-details">
                         <div class="job-info">
-                            <i class="fas fa-dollar-sign"></i>
+                            <span class="material-symbols-outlined icon-detail">payments</span>
                             <span class="job-salary">$50,000 - $70,000</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">location_on</span>
                             <span class="job-location">Hybrid</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-calendar-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">calendar_today</span>
                             <span class="job-date">Posted 2 weeks ago</span>
                         </div>
                     </div>
                     <button class="view-applicants-btn" data-job-id="4" data-job-title="Marketing Specialist">
-                        <i class="fas fa-users"></i>
-                        View Applicants
+                        <span class="material-symbols-outlined icon-btn">group</span>
+                        View Applicants (19)
                     </button>
                 </div>
 
-                <!-- Job Card 5 -->
-                <div class="job-card">
+                <div class="job-card" data-job-id="5">
                     <div class="job-header">
                         <h3 class="job-title">Data Analyst</h3>
                         <span class="job-type part-time">Part-Time</span>
                     </div>
                     <div class="job-details">
                         <div class="job-info">
-                            <i class="fas fa-dollar-sign"></i>
+                            <span class="material-symbols-outlined icon-detail">payments</span>
                             <span class="job-salary">$35 - $50 /hour</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">location_on</span>
                             <span class="job-location">Remote</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-calendar-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">calendar_today</span>
                             <span class="job-date">Posted 4 days ago</span>
                         </div>
                     </div>
                     <button class="view-applicants-btn" data-job-id="5" data-job-title="Data Analyst">
-                        <i class="fas fa-users"></i>
-                        View Applicants
+                        <span class="material-symbols-outlined icon-btn">group</span>
+                        View Applicants (4)
                     </button>
                 </div>
 
-                <!-- Job Card 6 -->
-                <div class="job-card">
+                <div class="job-card" data-job-id="6">
                     <div class="job-header">
                         <h3 class="job-title">Project Manager</h3>
                         <span class="job-type full-time">Full-Time</span>
                     </div>
                     <div class="job-details">
                         <div class="job-info">
-                            <i class="fas fa-dollar-sign"></i>
+                            <span class="material-symbols-outlined icon-detail">payments</span>
                             <span class="job-salary">$90,000 - $130,000</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">location_on</span>
                             <span class="job-location">San Francisco, CA</span>
                         </div>
                         <div class="job-info">
-                            <i class="fas fa-calendar-alt"></i>
+                            <span class="material-symbols-outlined icon-detail">calendar_today</span>
                             <span class="job-date">Posted 1 day ago</span>
                         </div>
                     </div>
                     <button class="view-applicants-btn" data-job-id="6" data-job-title="Project Manager">
-                        <i class="fas fa-users"></i>
-                        View Applicants
+                        <span class="material-symbols-outlined icon-btn">group</span>
+                        View Applicants (51)
                     </button>
                 </div>
+                
+                
             </div>
         </div>
 
 
     </div>
-    <script>
-
-    </script>
+    <script src="scrpit/jobpostings.js"></script>
 </body>
 
 </html>

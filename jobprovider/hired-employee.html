@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hired Employees Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/hired-employee.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script src="../scrpit/jquery.js"></script>
+    <link rel="stylesheet" href="styles/header.css">
+    <script src="scrpit/loadhead.js"></script>
+</head>
+<body>
+    <header id="header"></header>
+    <main class="dashboard-container">
+        <header class="dashboard-header">
+            <h1 class="main-heading">Hired Employees</h1>
+            <p class="sub-heading">A central dashboard to view and manage all talent across the organization.</p>
+        </header>
+
+        <section class="employee-grid">
+            <div class="employee-card" data-name="Aarav Sharma" data-role="Senior Frontend Developer">
+                <div class="card-header">
+                    <div class="avatar bg-blue-light">AS</div>
+                    <div class="name-role">
+                        <h2 class="name">Aarav Sharma</h2>
+                        <p class="role blue-accent">Senior Frontend Developer</p>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <p class="detail-item"><i class="ri-briefcase-line"></i>Full-Time</p>
+                    <p class="detail-item"><i class="ri-time-line"></i>8 hours per day</p>
+                    <p class="detail-item"><i class="ri-money-rupee-circle-line"></i>₹1,25,000 per month</p>
+                    <p class="detail-item"><i class="ri-calendar-line"></i>2023-01-15</p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-contact">Contact</button>
+                    <button class="btn btn-view-profile">View Profile</button>
+                    <button class="btn btn-fire bg-red" title="Terminate Employment">Fire</button>
+                </div>
+            </div>
+            <div class="employee-card" data-name="Aarav Sharma" data-role="Senior Frontend Developer">
+                <div class="card-header">
+                    <div class="avatar bg-blue-light">AS</div>
+                    <div class="name-role">
+                        <h2 class="name">Aarav Sharma</h2>
+                        <p class="role blue-accent">Senior Frontend Developer</p>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <p class="detail-item"><i class="ri-briefcase-line"></i>Full-Time</p>
+                    <p class="detail-item"><i class="ri-time-line"></i>8 hours per day</p>
+                    <p class="detail-item"><i class="ri-money-rupee-circle-line"></i>₹1,25,000 per month</p>
+                    <p class="detail-item"><i class="ri-calendar-line"></i>2023-01-15</p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-contact">Contact</button>
+                    <button class="btn btn-view-profile">View Profile</button>
+                    <button class="btn btn-fire bg-red" title="Terminate Employment">Fire</button>
+                </div>
+            </div>
+            <div class="employee-card" data-name="Aarav Sharma" data-role="Senior Frontend Developer">
+                <div class="card-header">
+                    <div class="avatar bg-blue-light">AS</div>
+                    <div class="name-role">
+                        <h2 class="name">Aarav Sharma</h2>
+                        <p class="role blue-accent">Senior Frontend Developer</p>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <p class="detail-item"><i class="ri-briefcase-line"></i>Full-Time</p>
+                    <p class="detail-item"><i class="ri-time-line"></i>8 hours per day</p>
+                    <p class="detail-item"><i class="ri-money-rupee-circle-line"></i>₹1,25,000 per month</p>
+                    <p class="detail-item"><i class="ri-calendar-line"></i>2023-01-15</p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-contact">Contact</button>
+                    <button class="btn btn-view-profile">View Profile</button>
+                    <button class="btn btn-fire bg-red" title="Terminate Employment">Fire</button>
+                </div>
+            </div>
+
+            <div class="employee-card" data-name="Priya Patel" data-role="UX/UI Designer">
+                <div class="card-header">
+                    <div class="avatar bg-blue-light">PP</div>
+                    <div class="name-role">
+                        <h2 class="name">Priya Patel</h2>
+                        <p class="role blue-accent">UX/UI Designer</p>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <p class="detail-item"><i class="ri-briefcase-line"></i>Full-Time</p>
+                    <p class="detail-item"><i class="ri-time-line"></i>8 hours per day</p>
+                    <p class="detail-item"><i class="ri-money-rupee-circle-line"></i>₹95,000 per month</p>
+                    <p class="detail-item"><i class="ri-calendar-line"></i>2023-02-20</p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-contact">Contact</button>
+                    <button class="btn btn-view-profile">View Profile</button>
+                    <button class="btn btn-fire bg-red" title="Terminate Employment">Fire</button>
+                </div>
+            </div>
+
+            <div class="employee-card" data-name="Rohan Das" data-role="Backend Engineer">
+                <div class="card-header">
+                    <div class="avatar bg-blue-light">RD</div>
+                    <div class="name-role">
+                        <h2 class="name">Rohan Das</h2>
+                        <p class="role blue-accent">Backend Engineer</p>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <p class="detail-item"><i class="ri-briefcase-line"></i>Full-Time</p>
+                    <p class="detail-item"><i class="ri-time-line"></i>8 hours per day</p>
+                    <p class="detail-item"><i class="ri-money-rupee-circle-line"></i>₹1,10,000 per month</p>
+                    <p class="detail-item"><i class="ri-calendar-line"></i>2023-03-10</p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-contact">Contact</button>
+                    <button class="btn btn-view-profile">View Profile</button>
+                    <button class="btn btn-fire bg-red" title="Terminate Employment">Fire</button>
+                </div>
+            </div>
+
+            <div class="employee-card" data-name="Sneha Verma" data-role="Content Writer">
+                <div class="card-header">
+                    <div class="avatar bg-blue-light">SV</div>
+                    <div class="name-role">
+                        <h2 class="name">Sneha Verma</h2>
+                        <p class="role blue-accent">Content Writer</p>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <p class="detail-item"><i class="ri-briefcase-line"></i>Part-Time</p>
+                    <p class="detail-item"><i class="ri-time-line"></i>4 hours per day</p>
+                    <p class="detail-item"><i class="ri-money-rupee-circle-line"></i>₹30,000 per month</p>
+                    <p class="detail-item"><i class="ri-calendar-line"></i>2023-04-05</p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-contact">Contact</button>
+                    <button class="btn btn-view-profile">View Profile</button>
+                    <button class="btn btn-fire bg-red" title="Terminate Employment">Fire</button>
+                </div>
+            </div>
+
+
+        </section>
+
+    </main>
+
+    <script src="scrpit/hired-employee.js"></script>
+</body>
+</html>

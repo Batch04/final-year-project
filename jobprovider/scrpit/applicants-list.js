@@ -135,7 +135,7 @@ const sampleApplicants = [
 ];
 
 // Initialize the application
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeNavigation();
     initializePage();
     setupEventListeners();
@@ -146,18 +146,18 @@ function initializeNavigation() {
     // Profile dropdown functionality
     const profileBtn = document.querySelector('.profile-btn');
     const dropdownMenu = document.querySelector('.dropdown-menu');
-    
+
     if (profileBtn && dropdownMenu) {
-        profileBtn.addEventListener('click', function(e) {
+        profileBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             dropdownMenu.classList.toggle('active');
         });
-        
-        document.addEventListener('click', function() {
+
+        document.addEventListener('click', function () {
             dropdownMenu.classList.remove('active');
         });
-        
-        dropdownMenu.addEventListener('click', function(e) {
+
+        dropdownMenu.addEventListener('click', function (e) {
             e.stopPropagation();
         });
     }
@@ -171,7 +171,7 @@ function initializeNavigation() {
     // Enter key search
     const searchInputs = document.querySelectorAll('.search-field input');
     searchInputs.forEach(input => {
-        input.addEventListener('keypress', function(e) {
+        input.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 performSearch();
             }
@@ -182,7 +182,7 @@ function initializeNavigation() {
 // Initialize page-specific functionality
 function initializePage() {
     const currentPage = getCurrentPage();
-    
+
     if (currentPage === 'posted-jobs-overview') {
         initializeJobsOverview();
     } else if (currentPage === 'job-details-applicants') {
@@ -213,12 +213,12 @@ function initializeJobsOverview() {
 
     // Add click tracking for job cards
     jobCards.forEach(card => {
-        card.addEventListener('click', function(e) {
+        card.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href) {
                 // Add loading state
                 this.classList.add('loading');
-                
+
                 // Simulate loading delay
                 setTimeout(() => {
                     window.location.href = href;
@@ -233,7 +233,7 @@ function initializeJobDetails() {
     loadJobDetails();
     loadApplicants();
     setupApplicantsFilter();
-    
+
     // Add fade-in animation to sections
     const sections = document.querySelectorAll('.job-details-card, .applicant-card');
     sections.forEach((section, index) => {
@@ -247,9 +247,9 @@ function initializeJobDetails() {
 function loadJobDetails() {
     const urlParams = new URLSearchParams(window.location.search);
     const jobId = urlParams.get('jobId') || '1';
-    
+
     currentJobData = jobsData[jobId];
-    
+
     if (currentJobData) {
         updateJobDetailsUI(currentJobData);
     }
@@ -279,12 +279,12 @@ function updateJobDetailsUI(jobData) {
     if (elements.jobExperience) elements.jobExperience.textContent = jobData.experience;
     if (elements.applicantsCount) elements.applicantsCount.textContent = `${jobData.applicantsCount} Applied`;
     if (elements.jobViews) elements.jobViews.textContent = `${jobData.views} Views`;
-    
+
     // Update description and offers if available
     if (elements.jobDescription && jobData.description) {
         elements.jobDescription.innerHTML = formatJobDescription(jobData.description);
     }
-    
+
     if (elements.jobOffers && jobData.offers) {
         elements.jobOffers.innerHTML = formatJobOffers(jobData.offers);
     }
@@ -322,7 +322,7 @@ function loadApplicants() {
 function setupApplicantsFilter() {
     const filterSelect = document.getElementById('applicantsFilter');
     if (filterSelect) {
-        filterSelect.addEventListener('change', function() {
+        filterSelect.addEventListener('change', function () {
             filterApplicants(this.value);
         });
     }
@@ -335,7 +335,7 @@ function filterApplicants(filterValue) {
     } else {
         filteredApplicants = applicantsData.filter(applicant => applicant.status === filterValue);
     }
-    
+
     // Update applicants display (in a real app, this would re-render the applicants grid)
     showNotification(`Filtered to show ${filteredApplicants.length} applicants`, 'info');
 }
@@ -343,20 +343,20 @@ function filterApplicants(filterValue) {
 // Setup event listeners
 function setupEventListeners() {
     // Notification close buttons
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (e.target.classList.contains('notification-close')) {
             e.target.closest('.notification').remove();
         }
     });
 
     // Keyboard shortcuts
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         // Ctrl/Cmd + H for home
         if ((e.ctrlKey || e.metaKey) && e.key === 'h') {
             e.preventDefault();
             window.location.href = 'posted-jobs-overview.html';
         }
-        
+
         // Escape to close modals/dropdowns
         if (e.key === 'Escape') {
             const activeDropdown = document.querySelector('.dropdown-menu.active');
@@ -371,15 +371,15 @@ function setupEventListeners() {
 function performSearch() {
     const jobTitleSearch = document.getElementById('jobTitleSearch');
     const locationSearch = document.getElementById('locationSearch');
-    
+
     const jobTitle = jobTitleSearch ? jobTitleSearch.value : '';
     const location = locationSearch ? locationSearch.value : '';
-    
+
     if (jobTitle || location) {
         const params = new URLSearchParams();
         if (jobTitle) params.append('job', jobTitle);
         if (location) params.append('location', location);
-        
+
         // In a real application, this would navigate to search results
         showNotification(`Searching for: ${jobTitle} in ${location}`, 'info');
     }
@@ -395,7 +395,7 @@ function closeJob() {
     if (confirm('Are you sure you want to close this job posting? This action cannot be undone.')) {
         showNotification('Job posting has been closed successfully', 'success');
         // In a real app, this would make an API call to close the job
-        
+
         // Update UI to reflect closed status
         const statusElements = document.querySelectorAll('.job-status');
         statusElements.forEach(element => {
@@ -410,10 +410,10 @@ function contactApplicant(email) {
     // Create mailto link
     const subject = encodeURIComponent(`Regarding your application for ${currentJobData ? currentJobData.title : 'our job posting'}`);
     const body = encodeURIComponent(`Dear Applicant,\n\nThank you for your interest in the ${currentJobData ? currentJobData.title : 'position'} at TechStart Solutions.\n\nBest regards,\nTechStart Solutions Hiring Team`);
-    
+
     const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
-    
+
     showNotification(`Opening email client to contact applicant`, 'info');
 }
 
@@ -424,7 +424,7 @@ function viewProfile(applicantId) {
 
 function shortlistApplicant(applicantId) {
     showNotification(`${applicantId} has been added to shortlist`, 'success');
-    
+
     // Update the applicant's status in the UI
     const applicantCard = document.querySelector(`[data-applicant-id="${applicantId}"]`);
     if (applicantCard) {
@@ -433,7 +433,7 @@ function shortlistApplicant(applicantId) {
             statusElement.className = 'applicant-status shortlisted';
             statusElement.innerHTML = '<i class="fas fa-circle"></i> Shortlisted';
         }
-        
+
         // Update the action button
         const shortlistBtn = applicantCard.querySelector('button[onclick*="shortlistApplicant"]');
         if (shortlistBtn) {
@@ -451,13 +451,13 @@ function scheduleInterview(applicantId) {
 
 function loadMoreApplicants() {
     showNotification('Loading more applicants...', 'info');
-    
+
     // Simulate loading delay
     const loadMoreBtn = document.querySelector('.load-more-btn');
     if (loadMoreBtn) {
         loadMoreBtn.classList.add('loading');
         loadMoreBtn.textContent = 'Loading...';
-        
+
         setTimeout(() => {
             loadMoreBtn.classList.remove('loading');
             loadMoreBtn.textContent = 'All applicants loaded';
@@ -472,7 +472,7 @@ function showNotification(message, type = 'info') {
     // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
-    
+
     // Create new notification
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
@@ -485,15 +485,15 @@ function showNotification(message, type = 'info') {
             <i class="fas fa-times"></i>
         </button>
     `;
-    
+
     // Add to page
     document.body.appendChild(notification);
-    
+
     // Show notification
     setTimeout(() => {
         notification.classList.add('show');
     }, 100);
-    
+
     // Auto-remove after 5 seconds
     setTimeout(() => {
         if (notification.parentElement) {
@@ -521,11 +521,11 @@ function getNotificationIcon(type) {
 // Performance monitoring
 function trackPerformance() {
     if ('performance' in window) {
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             setTimeout(() => {
                 const perfData = performance.getEntriesByType('navigation')[0];
                 const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
-                
+
                 if (loadTime > 3000) {
                     console.warn('Page load time is slow:', loadTime + 'ms');
                 }
@@ -547,3 +547,115 @@ window.shortlistApplicant = shortlistApplicant;
 window.scheduleInterview = scheduleInterview;
 window.loadMoreApplicants = loadMoreApplicants;
 
+
+// real js starts
+
+let providerjobsdata = [];
+let providerdata = [];
+let requireddata = [];
+
+async function providerjobs() {
+    let data = await fetch("../backend/getprovider-jobs.php");
+    let response = await data.text();
+    providerjobsdata = JSON.parse(response);
+    console.log(providerjobsdata);
+}
+
+async function providername() {
+    let data = await fetch("../backend/get_provider.php");
+    providerdata = await data.json();
+    console.log(providerdata);
+}
+
+async function getrequireddata() {
+    let res = await fetch("../backend/get-required-data.php");
+    let response = await res.text();
+    console.log(response);
+    requireddata = JSON.parse(response);
+    console.log(requireddata);
+}
+
+async function getapplicantsnum(jobid) {
+    let data = await fetch("../backend/getjobapplicants-num.php", {
+        method: "POST",
+        body: JSON.stringify({ jobid: jobid }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    let response = await data.text();
+    console.log(response);
+    let applicantsnum = JSON.parse(response);
+    console.log(applicantsnum);
+    return applicantsnum.count;
+}
+
+async function genratejobs() {
+    let jobshtml = "";
+    for (const job of providerjobsdata) {
+
+        jobshtml += `
+        
+                <a href="job-details-applicants.html?jobId=${job.jobs_id}" class="job-card">
+                        <div class="job-card-header">
+                            <h3 class="job-title">${job.job_title} </h3>
+                            <span class="job-type">${job.job_type} </span>
+                        </div>
+                        <div class="job-card-details">
+                            <p class="job-salary"><i class="fas fa-dollar-sign"></i> ₹ ${job.job_salary} / ${job.job_salary_time}</p>
+                            <p class="job-location"><i class="fas fa-map-marker-alt"></i> ${job.job_location}</p>
+                            <p class="job-posted-date"><i class="fas fa-calendar-alt"></i> Posted on ${job.job_posted} </p>
+                        </div>
+                        <div class="job-card-footer">
+                            <span class="applicants-count"><i class="fas fa-users"></i> ${await getapplicantsnum(job.jobs_id)} Applied</span>
+                            ${(job.job_status === "open") ? `<span class="job-status active"><i class="fas fa-circle"></i> Active</span>` : `<span class="job-status inactive"><i class="fas fa-circle"></i> Closed</span>`}
+                        </div>
+                    </a>
+
+        `
+    }
+
+    document.querySelector(".job-grid").innerHTML = jobshtml;
+}
+
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
+
+async function main() {
+    await providerjobs();
+    await providername();
+    await getrequireddata();
+    genratejobs();
+    document.querySelector(".company-name").innerHTML = providerdata.user.company_name;
+    document.querySelector(".posted-jobs").innerHTML = providerjobsdata.length;
+    document.querySelector(".applicants-num").innerHTML = requireddata.count;
+    document.querySelector(".active-jobs").innerHTML = requireddata.active;
+
+    document.querySelector(".company-logo").innerHTML = getInitials(providerdata.user.company_name);
+
+    window.addEventListener("pageshow", async function (event) {
+        if (event.persisted) {
+            main();
+            this.location.reload();
+
+        }
+    });
+
+    document.addEventListener("visibilitychange", async function () {
+        if (document.visibilityState === "visible") {
+            main();
+            this.location.reload();
+
+        }
+    });
+}
+
+main();

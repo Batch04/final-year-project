@@ -39,12 +39,13 @@
     font-weight: 400;
   }
 
- .grid-container {
+ 
+ .savedgrid-container{
      width: 100%;
      min-height: 80vh;
      display: grid;
      grid-template-columns: repeat(3, 1fr);
-     grid-auto-rows: 500px;
+     grid-auto-rows: 600px;
      gap: 10px;
      align-items: center;
      justify-items: center;
@@ -89,15 +90,17 @@
 
  }
 
- .company-logo {
-     width: 10%;
-     height: 70%;
- }
+.company-logo {
+  width: 15%;
+  height: 80%;
+  background-color:var(--lblue);
+  color: var(--blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
- .company-logo img {
-     width: 100%;
-     height: 100%;
- }
+}
 
  .save-container {
      width: 20%;
@@ -108,11 +111,11 @@
  }
 
  .save-job-btn {
-     width: 46%;
-     height: 46%;
+     width: 56%;
+     height: 56%;
      background-color: white;
      border: none;
-     cursor: pointer;
+     cursor:pointer;
      border: 0px solid transparent;
      border-radius: 50%;
  }
@@ -122,9 +125,7 @@
      color: var(--blue);
  }
 
- .far.fa-heart {
-     display: none;
- }
+
 
  .job-basic-info {
      width: 100%;
@@ -148,8 +149,8 @@
  }
 
  .job-meta {
-     width: 76%;
-     height: 30%;
+     width: 100%;
+     height: 35%;
      display: flex;
      align-items: start;
      justify-content: space-between;
@@ -160,12 +161,12 @@
      height: 100%;
      display: flex;
      align-items: center;
-     justify-content: space-around;
  }
 
  .job-location i {
      font-size: 1.1rem;
-     color: var(--gray);
+     color: var(--blue);
+     width: 8%;
  }
 
  .job-location p {
@@ -174,7 +175,7 @@
  }
 
  .job-type {
-     width: 28%;
+     width: 27%;
      height: 100%;
      display: flex;
      align-items: center;
@@ -190,7 +191,7 @@
  }
 
  .job-container {
-     width: 80%;
+     width: 100%;
      height: 100%;
      display: flex;
      align-items: center;
@@ -198,17 +199,17 @@
  }
 
  .job-salary {
-     width: 27%;
+     width: 50%;
      height: 100%;
      display: flex;
      align-items: center;
-     justify-content: space-between;
  }
 
  .job-time i,
  .job-salary i {
      font-size: 1rem;
      color: var(--blue);
+     width: 8%;
  }
 
  .job-time p,
@@ -221,16 +222,19 @@
      height: 100%;
      display: flex;
      align-items: center;
-     justify-content: space-between;
+     justify-content: flex-end;
  }
 
+ .job-time i{
+    width: 12%;
+ }
 
  .job-description {
      display: flex;
      align-items: center;
      text-align: justify;
      width: 90%;
-     height: 20%;
+     height: 25%;
  }
 
  .job-footer {
@@ -247,7 +251,7 @@
  }
 
  .job-posted {
-     width: 45%;
+     width: 50%;
      height: 45%;
      background-color: white;
      color: green;
@@ -258,7 +262,7 @@
 
  .apply-container {
      width: 30%;
-     height: 60%;
+     height: 48%;
      display: flex;
      align-items: center;
      justify-content: center;
@@ -269,7 +273,7 @@
      height: 100%;
      border: 0px solid transparent;
      border-radius: 15px;
-     display: flex;
+     display: flex; 
      align-items: center;
      justify-content: center;
      font-size: 1.1rem;

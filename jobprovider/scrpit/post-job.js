@@ -1,4 +1,11 @@
-// Post Job Page JavaScript Functionality
+
+let data = [];
+async function getdata() {
+    let res = await fetch("../backend/get_provider.php");
+    let rawdata = await res.text();
+    data = JSON.parse(rawdata);
+}
+
 
 // Global variables
 let jobData = {
@@ -10,99 +17,63 @@ let jobData = {
     experienceRequired: '',
     postedDate: '',
     jobDescription: '',
-    whatTheyOffer: ''
+    whatTheyOffer: '',
+    workload: '',
+    workperiod: ''
 };
 
 let isDraft = false;
 
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
 // Initialize page functionality
-document.addEventListener('DOMContentLoaded', function() {
-    initializeNavigation();
+document.addEventListener('DOMContentLoaded', async function () {
+    await getdata();
     initializeForm();
     initializeCharacterCounters();
     initializeBenefitTags();
     setDefaultDate();
     loadDraftData();
+    document.querySelector(".company-name").innerHTML = data.user.company_name;
+    document.querySelector(".company-logo").innerHTML = getInitials(data.user.company_name);
 });
 
-// Navigation functionality (from header)
-function initializeNavigation() {
-    const profileBtn = document.querySelector('.profile-btn');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    
-    if (profileBtn && dropdownMenu) {
-        profileBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            dropdownMenu.classList.toggle('active');
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function() {
-            dropdownMenu.classList.remove('active');
-        });
-        
-        // Prevent dropdown from closing when clicking inside
-        dropdownMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-    }
-}
 
-// Search functionality
-function performSearch() {
-    const jobTitle = document.getElementById('jobTitleSearch').value;
-    const location = document.getElementById('locationSearch').value;
-    
-    if (jobTitle || location) {
-        const params = new URLSearchParams();
-        if (jobTitle) params.append('job', jobTitle);
-        if (location) params.append('location', location);
-        
-        // Redirect to job seeker dashboard with search parameters
-        window.location.href = `../app/job-seeker/dashboard.html?${params.toString()}`;
-    } else {
-        showNotification('Please enter a job title or location to search.', 'warning');
-    }
-}
 
-// Handle Enter key in search fields
-document.addEventListener('DOMContentLoaded', function() {
-    const searchFields = document.querySelectorAll('#jobTitleSearch, #locationSearch');
-    searchFields.forEach(field => {
-        field.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-    });
-});
 
 // Form initialization
 function initializeForm() {
     const form = document.getElementById('jobPostingForm');
-    
+
     // Add form submission handler
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         handleFormSubmission();
     });
-    
+
     // Add input event listeners for real-time validation and data saving
     const formInputs = form.querySelectorAll('input, select, textarea');
     formInputs.forEach(input => {
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             validateField(this);
             updateJobData();
             autoSaveDraft();
         });
-        
-        input.addEventListener('blur', function() {
+
+        input.addEventListener('blur', function () {
             validateField(this);
         });
     });
-    
+
     // Add form validation on submit
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         if (!validateForm()) {
             e.preventDefault();
             showNotification('Please fill in all required fields correctly.', 'error');
@@ -116,12 +87,12 @@ function initializeCharacterCounters() {
     const whatTheyOffer = document.getElementById('whatTheyOffer');
     const descriptionCount = document.getElementById('descriptionCount');
     const offersCount = document.getElementById('offersCount');
-    
+
     if (jobDescription && descriptionCount) {
-        jobDescription.addEventListener('input', function() {
+        jobDescription.addEventListener('input', function () {
             const count = this.value.length;
             descriptionCount.textContent = count;
-            
+
             // Change color based on character limit
             if (count > 1800) {
                 descriptionCount.style.color = 'var(--danger-color)';
@@ -132,12 +103,12 @@ function initializeCharacterCounters() {
             }
         });
     }
-    
+
     if (whatTheyOffer && offersCount) {
-        whatTheyOffer.addEventListener('input', function() {
+        whatTheyOffer.addEventListener('input', function () {
             const count = this.value.length;
             offersCount.textContent = count;
-            
+
             // Change color based on character limit
             if (count > 900) {
                 offersCount.style.color = 'var(--danger-color)';
@@ -154,15 +125,15 @@ function initializeCharacterCounters() {
 function initializeBenefitTags() {
     const benefitTags = document.querySelectorAll('.benefit-tag');
     const whatTheyOfferTextarea = document.getElementById('whatTheyOffer');
-    
+
     benefitTags.forEach(tag => {
-        tag.addEventListener('click', function() {
+        tag.addEventListener('click', function () {
             const benefit = this.getAttribute('data-benefit');
             const currentValue = whatTheyOfferTextarea.value;
-            
+
             // Toggle selection
             this.classList.toggle('selected');
-            
+
             if (this.classList.contains('selected')) {
                 // Add benefit to textarea
                 const newValue = currentValue ? `${currentValue}\n• ${benefit}` : `• ${benefit}`;
@@ -173,7 +144,7 @@ function initializeBenefitTags() {
                 const filteredLines = lines.filter(line => !line.includes(benefit));
                 whatTheyOfferTextarea.value = filteredLines.join('\n');
             }
-            
+
             // Trigger input event to update character count
             whatTheyOfferTextarea.dispatchEvent(new Event('input'));
             updateJobData();
@@ -194,16 +165,16 @@ function setDefaultDate() {
 function validateField(field) {
     const value = field.value.trim();
     const fieldName = field.name;
-    
+
     // Remove existing error styling
     field.classList.remove('error');
-    
+
     // Check if required field is empty
     if (field.hasAttribute('required') && !value) {
         field.classList.add('error');
         return false;
     }
-    
+
     // Specific field validations
     switch (fieldName) {
         case 'salaryAmount':
@@ -229,7 +200,7 @@ function validateField(field) {
                 const selectedDate = new Date(value);
                 const today = new Date();
                 today.setHours(0, 0, 0, 0);
-                
+
                 if (selectedDate < today) {
                     field.classList.add('error');
                     return false;
@@ -237,7 +208,7 @@ function validateField(field) {
             }
             break;
     }
-    
+
     return true;
 }
 
@@ -245,13 +216,13 @@ function validateForm() {
     const form = document.getElementById('jobPostingForm');
     const requiredFields = form.querySelectorAll('[required]');
     let isValid = true;
-    
+
     requiredFields.forEach(field => {
         if (!validateField(field)) {
             isValid = false;
         }
     });
-    
+
     return isValid;
 }
 
@@ -266,7 +237,9 @@ function updateJobData() {
         experienceRequired: document.getElementById('experienceRequired').value,
         postedDate: document.getElementById('postedDate').value,
         jobDescription: document.getElementById('jobDescription').value,
-        whatTheyOffer: document.getElementById('whatTheyOffer').value
+        whatTheyOffer: document.getElementById('whatTheyOffer').value,
+        workload: document.getElementById("workload").value,
+        workperiod: document.getElementById("workPeriod").value
     };
 }
 
@@ -292,7 +265,7 @@ function loadDraftData() {
     if (draftData) {
         try {
             const parsedData = JSON.parse(draftData);
-            
+
             // Ask user if they want to restore draft
             if (confirm('We found a saved draft. Would you like to restore it?')) {
                 restoreDraftData(parsedData);
@@ -312,12 +285,12 @@ function restoreDraftData(data) {
         const element = document.getElementById(key);
         if (element && data[key]) {
             element.value = data[key];
-            
+
             // Trigger input event to update character counters
             element.dispatchEvent(new Event('input'));
         }
     });
-    
+
     jobData = { ...data };
     isDraft = true;
 }
@@ -325,12 +298,12 @@ function restoreDraftData(data) {
 // Save draft manually
 function saveDraft() {
     updateJobData();
-    
+
     if (!hasFormData()) {
         showNotification('No data to save as draft', 'warning');
         return;
     }
-    
+
     localStorage.setItem('jobPostDraft', JSON.stringify(jobData));
     isDraft = true;
     showNotification('Draft saved successfully!', 'success');
@@ -339,27 +312,31 @@ function saveDraft() {
 // Preview job functionality
 function previewJob() {
     updateJobData();
-    
+
     if (!validateForm()) {
         showNotification('Please fill in all required fields to preview the job.', 'error');
         return;
     }
-    
+
     generateJobPreview();
     showModal('jobPreviewModal');
 }
 
 function generateJobPreview() {
     const previewContent = document.getElementById('jobPreviewContent');
-    
-    const salaryDisplay = jobData.salaryAmount && jobData.salaryPeriod 
+
+    const salaryDisplay = jobData.salaryAmount && jobData.salaryPeriod
         ? `₹${parseInt(jobData.salaryAmount).toLocaleString()} ${jobData.salaryPeriod.replace('-', ' ')}`
         : 'Salary not specified';
-    
-    const experienceDisplay = jobData.experienceRequired 
+
+    const workDisplay = jobData.workload && jobData.workperiod
+        ? ` ${jobData.workload}hrs ${jobData.workperiod.replace('-', ' ')}`
+        : 'workload not specified';
+
+    const experienceDisplay = jobData.experienceRequired
         ? jobData.experienceRequired.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())
         : 'Not specified';
-    
+
     previewContent.innerHTML = `
         <div class="job-preview">
             <div class="preview-header">
@@ -389,6 +366,9 @@ function generateJobPreview() {
                     <div class="detail-item">
                         <strong>Posted:</strong> ${new Date(jobData.postedDate).toLocaleDateString()}
                     </div>
+                    <div class="detail-item">
+                        <strong>Work:</strong> ${workDisplay}
+                    </div>
                 </div>
             </div>
             
@@ -408,45 +388,45 @@ function generateJobPreview() {
 // Form submission
 function handleFormSubmission() {
     updateJobData();
-    
+
     if (!validateForm()) {
         showNotification('Please fill in all required fields correctly.', 'error');
         return;
     }
-    
+
     // Show loading state
     const submitBtn = document.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting Job...';
     submitBtn.disabled = true;
-    
+
     // Simulate API call
     setTimeout(() => {
         // Reset button
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
-        
+
         // Clear draft data
         localStorage.removeItem('jobPostDraft');
-        
+
         // Show success modal
         showModal('successModal');
-        
+
         // Reset form
         document.getElementById('jobPostingForm').reset();
         setDefaultDate();
-        
+
         // Clear job data
         jobData = {};
-        
+
         showNotification('Job posted successfully!', 'success');
     }, 2000);
 }
 
 async function submitJob() {
-      updateJobData();
+    updateJobData();
     console.log(jobData);
-    
+
     try {
         let response = await fetch("../backend/add_jobs.php", {
             method: "POST",
@@ -514,7 +494,7 @@ function showNotification(message, type = 'info', duration = 5000) {
     // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
-    
+
     // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
@@ -529,7 +509,7 @@ function showNotification(message, type = 'info', duration = 5000) {
             </button>
         </div>
     `;
-    
+
     // Add notification styles if not already present
     if (!document.querySelector('#notificationStyles')) {
         const styles = document.createElement('style');
@@ -698,10 +678,10 @@ function showNotification(message, type = 'info', duration = 5000) {
         `;
         document.head.appendChild(styles);
     }
-    
+
     // Add to page
     document.body.appendChild(notification);
-    
+
     // Auto remove after specified duration
     setTimeout(() => {
         if (notification.parentElement) {
@@ -720,13 +700,13 @@ function getNotificationIcon(type) {
 }
 
 // Keyboard shortcuts
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     // Ctrl/Cmd + S to save draft
     if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
         saveDraft();
     }
-    
+
     // Ctrl/Cmd + Enter to submit form
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
         e.preventDefault();
@@ -734,7 +714,7 @@ document.addEventListener('keydown', function(e) {
             handleFormSubmission();
         }
     }
-    
+
     // Escape to close modals
     if (e.key === 'Escape') {
         const activeModals = document.querySelectorAll('.modal.active');
@@ -746,7 +726,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 // Close modals when clicking outside
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     if (e.target.classList.contains('modal')) {
         e.target.classList.remove('active');
         document.body.style.overflow = 'auto';
@@ -754,7 +734,7 @@ document.addEventListener('click', function(e) {
 });
 
 // Form data persistence on page unload
-window.addEventListener('beforeunload', function(e) {
+window.addEventListener('beforeunload', function (e) {
     updateJobData();
     if (hasFormData() && !isDraft) {
         const message = 'You have unsaved changes. Are you sure you want to leave?';
@@ -780,13 +760,13 @@ function formatDate(dateString) {
 }
 
 // Error handling
-window.addEventListener('error', function(e) {
+window.addEventListener('error', function (e) {
     console.error('JavaScript error:', e.error);
     showNotification('An error occurred. Please refresh the page.', 'error');
 });
 
 // Page visibility handling
-document.addEventListener('visibilitychange', function() {
+document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'visible') {
         // Check for updates when page becomes visible
         const draftData = localStorage.getItem('jobPostDraft');
@@ -799,7 +779,7 @@ document.addEventListener('visibilitychange', function() {
 
 // Performance monitoring
 if ('performance' in window) {
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         setTimeout(() => {
             const perfData = performance.getEntriesByType('navigation')[0];
             console.log('Page load time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
@@ -808,10 +788,10 @@ if ('performance' in window) {
 }
 
 // Initialize tooltips for better UX
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const elementsWithTooltips = document.querySelectorAll('[title]');
     elementsWithTooltips.forEach(element => {
-        element.addEventListener('mouseenter', function() {
+        element.addEventListener('mouseenter', function () {
             // Could implement custom tooltip here
         });
     });
@@ -832,21 +812,21 @@ function scrollToSection(sectionId) {
 function updateFormProgress() {
     const requiredFields = document.querySelectorAll('[required]');
     let filledFields = 0;
-    
+
     requiredFields.forEach(field => {
         if (field.value.trim() !== '') {
             filledFields++;
         }
     });
-    
+
     const progress = (filledFields / requiredFields.length) * 100;
-    
+
     // Could add a progress bar here
     console.log(`Form completion: ${Math.round(progress)}%`);
 }
 
 // Add progress tracking to form inputs
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const formInputs = document.querySelectorAll('input[required], select[required], textarea[required]');
     formInputs.forEach(input => {
         input.addEventListener('input', updateFormProgress);

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up - Job Seeker</title>
+  <title>Sign Up - Job Provider</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles/jobprovidersignup.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">
+      <a href="../index.html">PartTimeConnect</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+    </ul>
+  </nav>
+
+
+  <div id="app">
+    <div class="signup-container">
+      <div class="signup-card">
+        <div class="signup-header">
+          <h1 class="signup-title">Job Provider Sign Up</h1>
+          <p class="signup-subtitle">Create your job provider account</p>
+        </div>
+
+        <form class="signup-form" id="signupForm">
+          <div class="form-group">
+            <label class="form-label" for="companyName">Company Name</label>
+            <input type="text" id="companyName" name="companyName" class="form-input"
+              placeholder="Enter your company name" required autocomplete="organization" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-input"
+              placeholder="Enter your business email address" required autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-input"
+              placeholder="Enter your password (min. 6 characters)" required autocomplete="new-password"/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="Enter your business phone number"
+              required autocomplete="tel" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="companyLocation">Company Location</label>
+            <input type="text" id="companyLocation" name="companyLocation" class="form-input"
+              placeholder="Enter your company location (city, state)" required autocomplete="address-level2" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="companyAddress">Company Address</label>
+            <input type="text" id="companyAddress" name="companyAddress" class="form-input"
+              placeholder="Enter your complete company address" required autocomplete="street-address" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="companyDescription">Company Description</label>
+            <textarea id="companyDescription" name="companyDescription" class="form-textarea"
+              placeholder="Describe your company, industry, and what makes you unique..." required rows="4"></textarea>
+          </div>
+
+          <div class="message-area">
+            <div class="error" id="messageDisplay"></div>
+          </div>
+
+          <button type="submit" class="signup-button" id="signupButton">
+            Sign Up
+          </button>
+        </form>
+
+        <div class="login-link">
+          <p>Do you have an account? Then <a href="jobprovider-login.html" id="loginLink">Login</a></p>
+        </div>
+
+        <div class="back-home">
+          <a href="signuppage.html" id="backHome">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="script/jobprovidersignup.js"></script>
+</body>
+
+</html>

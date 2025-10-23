@@ -14,7 +14,7 @@ body {
 
 .welcome-container {
     width: 94%;
-    height: 12vh;
+    height: 15vh;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -25,12 +25,12 @@ body {
     font-weight: 400;
 }
 
-.grid-container {
+.apply-grid-container {
     width: 100%;
     min-height: 80vh;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 500px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 450px;
     gap: 5px;
     align-items: center;
     justify-items: center;
@@ -60,13 +60,15 @@ body {
 }
 
 .logo-container {
-    width: 20%;
-    height: 100%;
-}
+  width: 12%;
+  height: 100%;
+  background-color:var(--lblue);
+  color: var(--blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.logo-container img {
-    width: 100%;
-    height: 100%;
 }
 
 .saved-container {
@@ -88,9 +90,7 @@ body {
     cursor: pointer;
 }
 
-.fa-solid.fa-heart {
-    display: none;
-}
+
 
 .job-basic-deatils {
     width: 90%;
@@ -123,11 +123,11 @@ body {
     font-size: .9rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .job-location i{
     color: var(--blue);
+    width: 9%;
 }
 
 .job-type {
@@ -155,12 +155,12 @@ body {
     height: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .job-time i,
 .job-slary i {
     color: var(--blue);
+    width: 6%;
 }
 
 .job-slary p {
@@ -172,7 +172,6 @@ body {
     height: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .job-time p {
@@ -193,7 +192,6 @@ body {
     height: 50%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .job-status p {
@@ -203,6 +201,7 @@ body {
 .job-status i {
     font-size: 1.7em;
     color: rgb(4, 167, 15);
+    width: 10%;
 }
 
 
@@ -224,11 +223,72 @@ body {
 }
 
 .view-more button {
-    width: 60%;
+    width: 50%;
     height: 100%;
     background-color: var(--blue);
     color: var(--white);
     border: 0px solid transparent;
     border-radius: 15px;
     cursor: pointer;
+}
+
+@media (max-width: 375px) {
+    .welcome-container{
+        padding-top: 15%;
+    }
+    .welcome-container h3{
+        font-size: .9rem;
+    }
+    .apply-grid-container {
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 460px;
+        gap: 5px;
+        margin-top: 15%;
+    }
+    .job-title{
+        font-size: 1.2rem;
+    }
+    .job-type{
+        width: 40%;
+        font-size: 0.8rem;
+        padding: 3px;
+    }
+    .job-time p{
+        padding-left: 5px;
+    }
+    .job-status p{
+        padding-left: 10px;
+    }
+}
+
+@media (min-width:375px) and (max-width:480px) {
+    .welcome-container{
+        padding-top: 10%;
+    }
+    .welcome-container h3{
+        font-size: 1rem;
+    }
+    .apply-grid-container {
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: 420px;
+        gap: 10px;
+        margin-top: 10%;
+    }
+    .job-card{
+        padding: 10px 4px;
+    }
+}
+
+@media (min-width:481px) and (max-width: 768px) {
+    .apply-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 450px;
+    }
+}
+
+@media (min-width:769px) and (max-width: 1024px) {
+    .apply-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 500px;
+    }
 }

@@ -33,7 +33,7 @@ session_start();
             <div class="nav-profile">
                 <div class="profile-dropdown">
                     <div class="avater-image-container">
-                        <img src="images/job-provider-avatar.png" alt="Profile" class="profile-avatar">
+                        <h3 class="profile-avatar-header"></h3>
                     </div>
                     <div class="profile-details">
                         <span class="profile-name">TechCorp Solutions</span>
@@ -65,6 +65,12 @@ session_start();
                                 <p>Applicants</p>
                             </div>
                         </a>
+                        <a href="hired-employee.html" class="dropdown-item">
+                            <div>
+                                <i class="fas fa-users"></i>
+                                <p>Hired Employess</p>
+                            </div>
+                        </a>
                         <a href="settings.html" class="dropdown-item">
                             <div>
                                 <i class="fas fa-cog"></i>
@@ -85,12 +91,20 @@ session_start();
 
         <script>
 
+            function getInitials(name) {
+                if (!name) return "";
 
-
+                return name
+                    .trim()
+                    .split(/\s+/)             // split by one or more spaces
+                    .map(word => word[0].toUpperCase()) // take first letter of each word
+                    .join('');                // join them together
+            }
             const name = '<?php echo $_SESSION['company_name'] ?>'
 
             console.log(name);
             document.querySelector(".profile-name").innerHTML = name;
+            document.querySelector(".profile-avatar-header").innerHTML = getInitials(name);
 
         </script>
 </body>

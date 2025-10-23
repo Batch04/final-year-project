@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location:../auth/seeker_login.html");
+header("Location:../authentication/jobseeker-login.html");
 exit();
 ?>

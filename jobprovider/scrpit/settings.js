@@ -1,8 +1,28 @@
-document.addEventListener("DOMContentLoaded", function() {
+let data = [];
+async function getdata() {
+    let res = await fetch("../backend/get_provider.php");
+    let rawdata = await res.text();
+    data = JSON.parse(rawdata);
+}
+
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
+
+document.addEventListener("DOMContentLoaded", async function() {
+    await getdata();
     initializeDropdowns();
     initializeModals();
     initializeNavbarFunctionality();
     initializeSearchFunctionality();
+    document.querySelector(".company-logo").innerHTML = getInitials(data.user.company_name);
+    document.querySelector(".company-name").textContent = data.user.company_name;
 });
 
 // Dropdown functionality

@@ -1,31 +1,28 @@
 <?php
-include 'connect.php';
-include 'dbcreate.php';
-include 'tables.php';
+include 'connection.php';
 header("Content-Type:application/json");
 session_start();
+$data = json_decode(file_get_contents("php://input"), true);
 
-    $email=$_POST['email'];
-    $pass=$_POST['pass'];
-    $sql=$con->prepare("SELECT * FROM providers WHERE email=? ");
-    $sql->bind_param('s',$email);
-    $sql->execute();
-    $res=$sql->get_result();
-    if($res->num_rows>0){
-        while($row=$res->fetch_assoc()){
-            if(password_verify($pass,$row['password'])){
-                $_SESSION['provider_id']=$row['provider_id'];
-                $_SESSION['company_name']=$row['company_name'];
-                echo json_encode(['status'=>'success']);
-            }
-            else{
-                echo json_encode(['status'=>'error','message'=>'invalid login']);
-            }
+$email = $data['email'];
+$pass = $data['pass'];
+$sql = $con->prepare("SELECT * FROM providers WHERE email=? ");
+$sql->bind_param('s', $email);
+$sql->execute();
+$res = $sql->get_result();
+if ($res->num_rows > 0) {
+    while ($row = $res->fetch_assoc()) {
+        if (password_verify($pass, $row['password'])) {
+            $_SESSION['provider_id'] = $row['provider_id'];
+            $_SESSION['company_name'] = $row['company_name'];
+            echo json_encode(['status' => 'success']);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'invalid login']);
         }
     }
-    else{
-        echo json_encode(['status'=>'error','message'=>'No data found']);
-    }
+} else {
+    echo json_encode(['status' => 'dataerror', 'message' => 'No data found']);
+}
 $sql->close();
 $con->close();
 ?>

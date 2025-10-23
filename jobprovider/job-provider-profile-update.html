@@ -19,26 +19,15 @@
         <!-- Top Section with Company Logo and Name -->
         <section class="company-header">
                 <div class="company-logo-container">
-                    <img src="images/logo.png" alt="TechStart Solutions Logo" class="company-logo">
+                    <h3 class="company-logo"></h3>
                 </div>
                 <div class="company-info">
                     <h1 class="company-name">TechStart Solutions</h1>
                     <div class="company-details">
-                        <span class="company-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span class="rating-text">4.5 (127 reviews)</span>
-                        </span>
-                        <span class="company-size">
-                            <i class="fas fa-users"></i>
-                            50-100 employees
-                        </span>
+                       
                         <span class="company-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            San Francisco, CA
+                            <span class="company-loaction">San Francisco, CA</span>
                         </span>
                     </div>
                 </div>
@@ -47,7 +36,7 @@
         <!-- Settings Form Section -->
         <div class="settings-container">
             <div class="settings-card">
-                <h2 class="settings-title">Company Settings</h2>
+                <h2 class="settings-title">Company Profile</h2>
                 
                 <form id="company-settings-form" class="settings-form">
                     <!-- Company Logo Upload -->
@@ -77,7 +66,7 @@
                                 <i class="fas fa-building"></i>
                                 Company Name
                             </label>
-                            <input type="text" id="company-name" name="company-name" value="TechCorp" class="form-input" required>
+                            <input type="text" id="company-name" name="company_name" value="TechCorp" class="form-input" required>
                         </div>
 
                         <div class="form-group">
@@ -105,61 +94,21 @@
                                 <i class="fas fa-phone"></i>
                                 Contact Phone
                             </label>
-                            <input type="tel" id="contact-phone" name="contact-phone" value="+1 (555) 123-4567" class="form-input">
+                            <input type="tel" id="contact-phone" name="contact-phone" maxlength="10" class="form-input">
                         </div>
 
                         <div class="form-group">
                             <label for="location" class="form-label">
                                 <i class="fas fa-map-marker-alt"></i>
-                                Location / Address
+                                Location
                             </label>
                             <input type="text" id="location" name="location" value="123 Tech Street, San Francisco, CA" class="form-input">
                         </div>
                     </div>
 
-                    <!-- Website Link -->
-                    <div class="form-group">
-                        <label for="website" class="form-label">
-                            <i class="fas fa-globe"></i>
-                            Website Link
-                        </label>
-                        <input type="url" id="website" name="website" value="https://www.techcorp.com" class="form-input" placeholder="https://www.yourcompany.com">
-                    </div>
-
-                    <!-- Social Media Links -->
-                    <div class="social-media-section">
-                        <h3 class="section-subtitle">Social Media Links (Optional)</h3>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="linkedin" class="form-label">
-                                    <i class="fab fa-linkedin"></i>
-                                    LinkedIn
-                                </label>
-                                <input type="url" id="linkedin" name="linkedin" value="https://linkedin.com/company/techcorp" class="form-input" placeholder="https://linkedin.com/company/yourcompany">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="twitter" class="form-label">
-                                    <i class="fab fa-twitter"></i>
-                                    Twitter
-                                </label>
-                                <input type="url" id="twitter" name="twitter" value="https://twitter.com/techcorp" class="form-input" placeholder="https://twitter.com/yourcompany">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="facebook" class="form-label">
-                                <i class="fab fa-facebook"></i>
-                                Facebook
-                            </label>
-                            <input type="url" id="facebook" name="facebook" value="https://facebook.com/techcorp" class="form-input" placeholder="https://facebook.com/yourcompany">
-                        </div>
-                    </div>
-
                     <!-- Save Changes Button -->
                     <div class="form-actions">
-                        <button type="submit" class="btn-save">
+                        <button type="submit"  name="submit"  class="btn-save">
                             <i class="fas fa-save"></i>
                             Save Changes
                         </button>

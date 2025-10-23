@@ -178,6 +178,16 @@ function performSearch() {
     }
 }
 
+
+function getInitials(name) {
+    if (!name) return "";
+
+    return name
+        .trim()
+        .split(/\s+/)             // split by one or more spaces
+        .map(word => word[0].toUpperCase()) // take first letter of each word
+        .join('');                // join them together
+}
 // Update profile name and avatar (simulated)
 document.addEventListener("DOMContentLoaded", function() {
     
@@ -191,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
        const userName =  document.querySelector(".profile-name-display");
+       document.getElementById("profileAvatarPreview").textContent=getInitials(data.user.name);
         if (userName) {
         userName.textContent =data.user.name;
     }
@@ -198,23 +209,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     )
 
-    // Simulate loading user data
-    
-    const userAvatar = "images/job-seeker-avatar.png"; // Or a path to a default image
 
-   
-    if (profileNameNavbar) {
-        profileNameNavbar.textContent = userName;
-    }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const profileAvatarPreview = document.getElementById("profileAvatarPreview");
 
-    // Simulate loading user data
-    const userAvatar = "images/job-seeker-avatar.png"; // Or a path to a default image
-    if (profileAvatarPreview) {
-        profileAvatarPreview.src = userAvatar;
-    }
-});
 })
 

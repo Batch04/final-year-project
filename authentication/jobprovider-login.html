@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="">
 
 </head>
-
+ 
 <body>
 
   <nav class="navbar">
@@ -36,22 +36,22 @@
         <form class="login-form" id="loginForm">
           <div class="form-group">
             <label class="form-label" for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email address"
+            <input type="email" id="email" name="email " class="form-input email-input" placeholder="Enter your email address"
               required autocomplete="email" />
           </div>
 
           <div class="form-group">
             <label class="form-label" for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password"
+            <input type="password" id="password" name="password" class="form-input password-input" placeholder="Enter your password"
               required autocomplete="current-password" />
           </div>
 
           <div class="forgot-password">
-            <a href="#" id="forgotPassword">Forgot your password?</a>
+            <a href="../auth/forgotpass/forgot.html" id="forgotPassword">Forgot your password?</a>
           </div>
 
           <div class="message-area">
-            <div class="message" id="messageDisplay"></div>
+            <div class="error" id="messageDisplay"></div>
           </div>
 
           <button type="submit" class="login-button" id="loginButton">
@@ -61,17 +61,17 @@
 
         <div class="signup-link">
           <p>Don't have an account?</p>
-          <a href="#" id="signupLink">Sign Up</a>
+          <a href="jobprovidersignup.html" id="signupLink">Sign Up</a>
         </div>
 
         <div class="back-home">
-          <a href="#" id="backHome">Back to Home</a>
+          <a href="loginpage.html" id="backHome">Back to Home</a>
         </div>
       </div>
     </div>
     `
   </div>
-  <script type="module" src="script/login.js"></script>
+  <script type="module" src="script/jobprovider-login.js"></script>
 </body>
 
 </html>

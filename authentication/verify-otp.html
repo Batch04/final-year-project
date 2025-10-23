@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify OTP - Job Portal</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/verify-otp.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="verify-otp-container">
+            <h4 class="verify-heading">Verify OTP</h4>
+
+            <p class="description-text">
+                Enter the OTP sent to your registered email.
+            </p>
+
+            <form class="verify-form" id="verifyForm">
+                <div class="input-group">
+                    <input type="text" id="otp" class="input-field" placeholder="Enter OTP" maxlength="6"
+                        autocomplete="one-time-code" inputmode="numeric" pattern="[0-9]*" />
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+                <div class="success-message" id="successMessage"></div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Verify
+                </button>
+
+                <div class="resend-text">
+                    Didn't receive the OTP?
+                    <a href="#" class="resend-link" id="resendLink">Resend</a>
+                    <div class="timer-display" id="timerDisplay"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="script/verify-otp.js"></script>
+</body>
+
+</html>

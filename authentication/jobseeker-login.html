@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Your App</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles/login.css">
+  <link rel="stylesheet" href="">
+
+</head>
+ 
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">
+      <a href="../index.html">PartTimeConnect</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+    </ul>
+  </nav>
+
+  <div id="app">
+    <div class="login-container">
+      <div class="login-card">
+        <div class="login-header">
+          <h1 class="login-title"> Job Seeker Login</h1>
+          <p class="login-subtitle">Welcome back! Please sign in to your account</p>
+        </div>
+
+        <form class="login-form" id="loginForm">
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-input email-input" placeholder="Enter your email address"
+              required autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-input password-input" placeholder="Enter your password"
+              required autocomplete="current-password" />
+          </div>
+
+          <div class="forgot-password">
+            <a href="../auth/forgotpass/forgot.html" id="forgotPassword">Forgot your password?</a>
+          </div>
+
+          <div class="message-area">
+            <div class="error" id="messageDisplay"></div>
+          </div>
+
+          <button type="submit" class="login-button" id="loginButton">
+            Login In
+          </button>
+        </form>
+
+        <div class="signup-link">
+          <p>Don't have an account?</p>
+          <a href="jobseekersignup.html" id="signupLink">Sign Up</a>
+        </div>
+
+        <div class="back-home">
+          <a href="loginpage.html" id="backHome">Back to Home</a>
+        </div>
+      </div>
+    </div>
+    `
+  </div>
+  <script type="module" src="script/jobseeker-login.js"></script>
+</body>
+
+</html>

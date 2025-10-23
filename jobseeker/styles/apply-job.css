@@ -453,7 +453,7 @@ body {
 
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 15px;
     margin-top: 15px;
 }
@@ -462,7 +462,7 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 15px;
+    padding: 25px;
     border-radius: var(--border-radius);
     background: var(--light-gray);
     transition: var(--transition);
@@ -481,7 +481,7 @@ body {
 
 .benefit-item span {
     font-weight: 500;
-    color: var(--black);
+    color: var(--blue);
 }
 
 /* Application Section */
@@ -793,6 +793,10 @@ body {
     padding-top: 20px;
     border-top: 1px solid var(--gray);
     color: var(--text-muted);
+}
+
+.strong-tag{
+    color: var(--blue);
 }
 
 /* Responsive Design */

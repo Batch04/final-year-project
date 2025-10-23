@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - PartTimeConnect</title>
+    <link rel="stylesheet" href="styles/post-job.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../scrpit/jquery.js"></script>
+    <link rel="stylesheet" href="styles/header.css">
+    <script src="scrpit/loadhead.js"></script>
+</head>
+<body>
+    <header id="header"></header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <section class="company-header">
+                <div class="company-logo-container">
+                    <h3 class="company-logo"></h3>
+                </div>
+                <div class="company-info">
+                    <h1 class="company-name namecompany ">TechStart Solutions</h1>
+                    <div class="company-details">
+                        <span class="company-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="rating-text">4.5 (127 reviews)</span>
+                        </span>
+                        <span class="company-size">
+                            <i class="fas fa-users"></i>
+                            50-100 employees
+                        </span>
+                        <span class="company-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            San Francisco, CA
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Job Posting Form -->
+            <section class="job-form-section">
+                <div class="form-header">
+                    <h2>
+                        <i class="fas fa-plus-circle"></i>
+                        Update Job
+                    </h2>
+                </div>
+
+                <form class="job-form" onsubmit="event.preventDefault();submitJob();" id="jobPostingForm">
+                    <!-- Basic Job Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-info-circle"></i>
+                            Basic Job Information
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="jobTitle" class="form-label">
+                                    Job Title <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="jobTitle" 
+                                    name="jobTitle" 
+                                    class="form-input" 
+                                    placeholder="e.g., Part-Time Marketing Assistant"
+                                    required
+                                >
+                                <div class="input-hint">Enter a clear and descriptive job title</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="jobType" class="form-label">
+                                    Job Type <span class="required">*</span>
+                                </label>
+                                <select id="jobType" name="jobType" class="form-select" required>
+                                    <option value="">Select job type</option>
+                                    <option value="part-time">Part-Time</option>
+                                    <option value="full-time">Full-Time</option>
+                                    <option value="internship">Internship</option>
+                                    <option value="remote">Remote</option>
+                                    <option value="contract">Contract</option>
+                                    <option value="freelance">Freelance</option>
+                                </select>
+                                <div class="input-hint">Choose the employment type</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location" class="form-label">
+                                    Location <span class="required">*</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="location" 
+                                    name="location" 
+                                    class="form-input" 
+                                    placeholder="e.g., San Francisco, CA or Remote"
+                                    required
+                                >
+                                <div class="input-hint">City, state or "Remote" for remote positions</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compensation Details -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-dollar-sign"></i>
+                            Compensation Details
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="salaryAmount" class="form-label">
+                                    Salary Amount <span class="required">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-prefix">₹</span>
+                                    <input 
+                                        type="number" 
+                                        id="salaryAmount" 
+                                        name="salaryAmount" 
+                                        class="form-input" 
+                                        placeholder="25000"
+                                        min="1"
+                                        step="1000"
+                                        required
+                                    >
+                                </div>
+                                <div class="input-hint">Enter the salary amount in rupees</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="salaryPeriod" class="form-label">
+                                    Salary Period <span class="required">*</span>
+                                </label>
+                                <select id="salaryPeriod" name="salaryPeriod" class="form-select" required>
+                                    <option value="">Select period</option>
+                                    <option value="per-day">Per Day</option>
+                                    <option value="per-week">Per Week</option>
+                                    <option value="per-month">Per Month</option>
+                                    <option value="per-year">Per Year</option>
+                                    <option value="hourly">Per Hour</option>
+                                </select>
+                                <div class="input-hint">How often the salary is paid</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- working hours -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-clock"></i>
+                            Working Hours
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="salaryAmount" class="form-label">
+                                    Work Load<span class="required">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-prefix" style="color: var(--blue);"><i class="fas fa-clock"></i></span>
+                                    <input 
+                                        type="number" 
+                                        id="workload" 
+                                        name="salaryAmount" 
+                                        class="form-input" 
+                                        placeholder="2hours"
+                                        min="1"
+                                        step="1000"
+                                        required
+                                    >
+                                </div>
+                                <div class="input-hint">Enter How much work </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="salaryPeriod" class="form-label">
+                                    Work Period <span class="required">*</span>
+                                </label>
+                                <select id="workPeriod" name="salaryPeriod" class="form-select" required>
+                                    <option value="">Select period</option>
+                                    <option value="per-day">Per Day</option>
+                                    <option value="per-week">Per Week</option>
+                                    <option value="per-month">Per Month</option>
+                                    <option value="hourly">Per Hour</option>
+                                </select>
+                                <div class="input-hint">work per period</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job Requirements -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            Job Requirements
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="experienceRequired" class="form-label">
+                                    Experience Required <span class="required">*</span>
+                                </label>
+                                <select id="experienceRequired" name="experienceRequired" class="form-select" required>
+                                    <option value="">Select experience level</option>
+                                    <option value="entry-level">Entry Level (0-1 years)</option>
+                                    <option value="junior">Junior (1-2 years)</option>
+                                    <option value="mid-level">Mid Level (2-5 years)</option>
+                                    <option value="senior">Senior (5+ years)</option>
+                                    <option value="no-experience">No Experience Required</option>
+                                </select>
+                                <div class="input-hint">Minimum experience required for this role</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postedDate" class="form-label">
+                                    Posted Date <span class="required">*</span>
+                                </label>
+                               <input 
+                                    type="text" 
+                                    id="postedDate" 
+                                    name="jobTitle" 
+                                    class="form-input" 
+                                    placeholder="25-05-2008"
+                                    required
+                                >
+                                <div class="input-hint">When this job posting should go live</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job Description -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-file-alt"></i>
+                            Job Description
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="jobDescription" class="form-label">
+                                    Job Description <span class="required">*</span>
+                                </label>
+                                <textarea 
+                                    id="jobDescription" 
+                                    name="jobDescription" 
+                                    class="form-textarea" 
+                                    rows="8"
+                                    placeholder="Describe the role, responsibilities, and requirements in detail. Include:&#10;• Key responsibilities&#10;• Required skills and qualifications&#10;• Day-to-day tasks&#10;• Team structure&#10;• Growth opportunities"
+                                    required
+                                ></textarea>
+                                <div class="character-count">
+                                    <span id="descriptionCount">0</span> / 2000 characters
+                                </div>
+                                <div class="input-hint">Provide a comprehensive description of the job role</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- What They Offer -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-gift"></i>
+                            What We Offer
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="whatTheyOffer" class="form-label">
+                                    Benefits & Perks <span class="required">*</span>
+                                </label>
+                                <textarea 
+                                    id="whatTheyOffer" 
+                                    name="whatTheyOffer" 
+                                    class="form-textarea" 
+                                    rows="6"
+                                    placeholder="List the benefits, perks, and facilities you offer:&#10;• Competitive salary with performance bonuses&#10;• Flexible working hours&#10;• Health insurance coverage&#10;• Free meals and snacks&#10;• Professional development opportunities&#10;• Remote work options&#10;• Paid time off"
+                                    required
+                                ></textarea>
+                                <div class="character-count">
+                                    <span id="offersCount">0</span> / 1000 characters
+                                </div>
+                                <div class="input-hint">Highlight what makes your company attractive to candidates</div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Benefits Selector -->
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label class="form-label">Quick Add Benefits</label>
+                                <div class="benefits-grid">
+                                    <button type="button" class="benefit-tag" data-benefit="Flexible working hours">
+                                        <i class="fas fa-clock"></i> Flexible Hours
+                                    </button>
+                                    <button type="button" class="benefit-tag" data-benefit="Health insurance coverage">
+                                        <i class="fas fa-heart"></i> Health Insurance
+                                    </button>
+                                    <button type="button" class="benefit-tag" data-benefit="Free meals and snacks">
+                                        <i class="fas fa-utensils"></i> Free Meals
+                                    </button>
+                                    <button type="button" class="benefit-tag" data-benefit="Remote work options">
+                                        <i class="fas fa-home"></i> Remote Work
+                                    </button>
+                                    <button type="button" class="benefit-tag" data-benefit="Professional development opportunities">
+                                        <i class="fas fa-graduation-cap"></i> Learning & Development
+                                    </button>
+                                    <button type="button" class="benefit-tag" data-benefit="Paid time off">
+                                        <i class="fas fa-calendar-alt"></i> Paid Time Off
+                                    </button>
+                                    <button type="button" class="benefit-tag" data-benefit="Performance bonuses">
+                                        <i class="fas fa-trophy"></i> Performance Bonuses
+                                    </button>
+                                    <button type="button" class="benefit-tag" data-benefit="Team building activities">
+                                        <i class="fas fa-users"></i> Team Building
+                                    </button>
+                                </div>
+                                <div class="input-hint">Click on benefits to add them to your description</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn-preview">
+                            <i class="fas fa-save"></i>
+                            update Job
+                        </button>
+              
+                    </div>
+                </form>
+            </section>
+
+        </div>
+    </div>
+
+    
+    <script src="scrpit/update-job.js"></script>
+</body>
+</html>
+
