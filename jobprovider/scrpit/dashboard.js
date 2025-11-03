@@ -76,8 +76,9 @@ function getInitials(name) {
 
 function genraterecentjob() {
     let recentjobhtml = ``;
-    recentapplicantsdata.forEach((applicant) => {
-        recentjobhtml += `
+    if (recentapplicantsdata.length != 0) {
+        recentapplicantsdata.forEach((applicant) => {
+            recentjobhtml += `
         
         <div class="application-card">
                     <div class="applicant-info">
@@ -102,17 +103,21 @@ function genraterecentjob() {
                 </div>
         
         `
-    })
+        })
 
-    document.querySelector(".applications-list").innerHTML = recentjobhtml;
+        document.querySelector(".applications-list").innerHTML = recentjobhtml;
+    } else {
+        document.querySelector(".applications-list").innerHTML = `<h3 class="no-applications" style="color:red">No recent applications available.</h3>`;
+    }
 }
 
 
 async function genrateproviderjob() {
     let providerjobhtml = ``;
-    for (const job of providerjobsdata) {
-        const applicantsCount = await getapplicantsnum(job.jobs_id);
-        providerjobhtml += `
+    if (providerjobsdata.length != 0) {
+        for (const job of providerjobsdata) {
+            const applicantsCount = await getapplicantsnum(job.jobs_id);
+            providerjobhtml += `
             <div class="job-posting-card">
                 <div class="job-header">
                     <div class="job-title-section">
@@ -151,9 +156,12 @@ async function genrateproviderjob() {
                     </button>
                 </div>
             </div>`;
-    }
+        }
 
-    document.querySelector(".job-postings-grid").innerHTML = providerjobhtml;
+        document.querySelector(".job-postings-grid").innerHTML = providerjobhtml;
+    } else {
+        document.querySelector(".job-postings-grid").innerHTML = `<h3 class="no-jobs" style="color:red">No jobs posted yet.</h3>`;
+    }
 }
 
 

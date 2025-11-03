@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2025 at 12:32 PM
+-- Generation Time: Nov 03, 2025 at 05:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -76,7 +76,8 @@ INSERT INTO `hired` (`hired_id`, `job_id`, `provider_id`, `seeker_id`, `hired_at
 (4, 24, 23, 18, '2025-10-14'),
 (6, 24, 23, 11, '2025-10-18'),
 (7, 24, 23, 5, '2025-10-18'),
-(8, 30, 23, 5, '2025-10-18');
+(8, 30, 23, 5, '2025-10-18'),
+(10, 28, 22, 5, '2025-10-31');
 
 -- --------------------------------------------------------
 
@@ -128,6 +129,7 @@ CREATE TABLE `providers` (
   `company_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `address` varchar(200) NOT NULL,
   `location` varchar(255) NOT NULL,
   `contact_number` varchar(20) DEFAULT NULL,
   `company_description` varchar(200) NOT NULL,
@@ -138,24 +140,25 @@ CREATE TABLE `providers` (
 -- Dumping data for table `providers`
 --
 
-INSERT INTO `providers` (`provider_id`, `company_name`, `email`, `password`, `location`, `contact_number`, `company_description`, `created_at`) VALUES
-(1, 'buddy', 'asma@gmal.com', '$2y$10$6SvvzMSNUD.aPgkAjuz/P.GEg127czddQvUKC5K0BGcHL1fUWNf92', 'nandyal', '8688543238', '', '2025-08-31 18:31:10'),
-(2, 'Nani', 'k2482230@gmail.com', '$2y$10$KHUMaW4i4uav1Sd8lB2rg.SfS2G7jM5zXiYhvdugqC1lojYH6oCdG', 'karakambadi', '66304506106', '', '2025-09-01 09:51:39'),
-(3, 'Wolswagen', 'mithin1617@gmail.com', '$2y$10$7fAa/OziKnNZONBSjbGAse7fDxzavq2JErDxzG/6ximtgU47tL1q.', 'karakambadi', '564234685412', '', '2025-09-01 15:27:58'),
-(7, 'T3x', 'vyshnavinarala25@gmail.com', '$2y$10$eAAhsU5tDBBvv7xX9dSH7Of5mCFP6dXdrtg0GYE8HL8fNiTvbpGR2', 'tirupati', '8512318938', '', '2025-09-01 15:52:30'),
-(8, 'Wolswagen', 'ravi@gmail.com', '$2y$10$5hc9EkEG8Fp6Vb5ri8iyD.CoOTuNnXJAr27uESj8oC0fI9YrAxgwC', 'tpt', '3521152153', '', '2025-09-01 16:01:29'),
-(11, 'TechCrop', 'fdsfs@gmail.com', '$2y$10$51Kz2/xGJaCRzEed1fhtku3F3DmtYuBJonJw6hm/tBwSXhN/sa4w.', 'dsf', '54353', '', '2025-09-01 17:30:15'),
-(15, 'Wolswagen', 'fgfd@gmail.com', '$2y$10$YRdXkckSzPJJrzbjKyn2OOVUFrOO6iJlwRPeRYDJBcBQtKEjtEYCW', 'gdf', '42342443534', '', '2025-09-01 17:54:33'),
-(17, 'Wolswagen', 'dfdsnmm@gmail.com', '$2y$10$RbOzbT.MVc.3dewhJdc9OuxEc4OWWW8XfyaPLrbuz8hM0FlRG25iC', 'gdf', '42342443534', '', '2025-09-01 17:55:16'),
-(18, 'T3x', 'jghjd@gmail.com', '$2y$10$CEXxfPtIy13gisS63gTPfuIZJWeA6imB3AAUtYHUFgnC1IbE5aImm', 'fsdf', '3521152153', '', '2025-09-01 17:55:46'),
-(19, 'starterwave', 'starterwave25@gmail.com', '$2y$10$aJxZFqJKKhtBzEmi1Eq3Ne1H811v.oRZCRAnBs/74XNfFCaRsZHMu', 'tirupati', '0', '', '2025-09-02 10:23:04'),
-(20, 'PET ', 'vennela@gmail.com', '$2y$10$GRUAHOvVXWEnd3PiJatcg.23fe9hdH4.kofbh4IhTpnobvjX94pjq', 'grfdc', '8512318938', '', '2025-09-02 19:46:08'),
-(21, 'sdfg', 'error@gmail.com', '$2y$10$CHbfanrzhfn5ndH43zaF.OmpgbkuM6qBjGEdDVO95/xIGhJFbWJ52', 'dsfgh', '23456', '', '2025-09-05 10:19:12'),
-(22, 'Jasstech', 'jasu5511246@gmail.com', '$2y$10$CxXDlxZUQWhmPGTldLQguOEem8mJx0UHgC.1apRdVrooJ6YLyBzI2', 'Tirupati', '7981629173', 'We are a leading technology company focused on innovation and excellence in software development.', '2025-09-07 12:03:43'),
-(23, 'jastechcrop', 'abcd5511246@gmail.com', '$2y$10$4N1onDLkRDss7JWgEaxOw.ekkcEItJOqoiYe17tDmDr5nyfz.h21K', 'Tirupati , Andhrapardesh', '7981629173', 'MY company is to provider the all type of services', '2025-09-07 12:12:41'),
-(24, 'sharuktech', 'sharuk12345678@gmail.com', '$2y$10$oDWChxVOH5bP6n3xE.gKqeY/0x71fU7Tv5artqHXq8eYYTh8ZU58u', 'Adoni', '1234567890', 'this is hightly professional company', '2025-09-14 16:31:05'),
-(28, 'alpha', 'alpha1234567@gmail.com', '$2y$10$8oujYkHTJc7Z9IiOriQIfuwlDY3EAQLOfKNSQxAhCHoSv9HLRdOf6', 'Palasa', '123', 'This is my company', '2025-09-14 16:45:43'),
-(33, 'alpha', 'alpha123456711@gmail.com', '$2y$10$MFE.6uLiq6n5meVWsuWbX.meT8Gz/kcMLes72FoK2UfAQd9byhgP.', 'Tirupati', '1234567890', 'this is my alpha', '2025-09-14 18:00:59');
+INSERT INTO `providers` (`provider_id`, `company_name`, `email`, `password`, `address`, `location`, `contact_number`, `company_description`, `created_at`) VALUES
+(1, 'buddy', 'asma@gmal.com', '$2y$10$6SvvzMSNUD.aPgkAjuz/P.GEg127czddQvUKC5K0BGcHL1fUWNf92', '', 'nandyal', '8688543238', '', '2025-08-31 18:31:10'),
+(2, 'Nani', 'k2482230@gmail.com', '$2y$10$KHUMaW4i4uav1Sd8lB2rg.SfS2G7jM5zXiYhvdugqC1lojYH6oCdG', '', 'karakambadi', '66304506106', '', '2025-09-01 09:51:39'),
+(3, 'Wolswagen', 'mithin1617@gmail.com', '$2y$10$7fAa/OziKnNZONBSjbGAse7fDxzavq2JErDxzG/6ximtgU47tL1q.', '', 'karakambadi', '564234685412', '', '2025-09-01 15:27:58'),
+(7, 'T3x', 'vyshnavinarala25@gmail.com', '$2y$10$eAAhsU5tDBBvv7xX9dSH7Of5mCFP6dXdrtg0GYE8HL8fNiTvbpGR2', '', 'tirupati', '8512318938', '', '2025-09-01 15:52:30'),
+(8, 'Wolswagen', 'ravi@gmail.com', '$2y$10$5hc9EkEG8Fp6Vb5ri8iyD.CoOTuNnXJAr27uESj8oC0fI9YrAxgwC', '', 'tpt', '3521152153', '', '2025-09-01 16:01:29'),
+(11, 'TechCrop', 'fdsfs@gmail.com', '$2y$10$51Kz2/xGJaCRzEed1fhtku3F3DmtYuBJonJw6hm/tBwSXhN/sa4w.', '', 'dsf', '54353', '', '2025-09-01 17:30:15'),
+(15, 'Wolswagen', 'fgfd@gmail.com', '$2y$10$YRdXkckSzPJJrzbjKyn2OOVUFrOO6iJlwRPeRYDJBcBQtKEjtEYCW', '', 'gdf', '42342443534', '', '2025-09-01 17:54:33'),
+(17, 'Wolswagen', 'dfdsnmm@gmail.com', '$2y$10$RbOzbT.MVc.3dewhJdc9OuxEc4OWWW8XfyaPLrbuz8hM0FlRG25iC', '', 'gdf', '42342443534', '', '2025-09-01 17:55:16'),
+(18, 'T3x', 'jghjd@gmail.com', '$2y$10$CEXxfPtIy13gisS63gTPfuIZJWeA6imB3AAUtYHUFgnC1IbE5aImm', '', 'fsdf', '3521152153', '', '2025-09-01 17:55:46'),
+(19, 'starterwave', 'starterwave25@gmail.com', '$2y$10$aJxZFqJKKhtBzEmi1Eq3Ne1H811v.oRZCRAnBs/74XNfFCaRsZHMu', '', 'tirupati', '0', '', '2025-09-02 10:23:04'),
+(20, 'PET ', 'vennela@gmail.com', '$2y$10$GRUAHOvVXWEnd3PiJatcg.23fe9hdH4.kofbh4IhTpnobvjX94pjq', '', 'grfdc', '8512318938', '', '2025-09-02 19:46:08'),
+(21, 'sdfg', 'error@gmail.com', '$2y$10$CHbfanrzhfn5ndH43zaF.OmpgbkuM6qBjGEdDVO95/xIGhJFbWJ52', '', 'dsfgh', '23456', '', '2025-09-05 10:19:12'),
+(22, 'Jasstech', 'jasu5511246@gmail.com', '$2y$10$CxXDlxZUQWhmPGTldLQguOEem8mJx0UHgC.1apRdVrooJ6YLyBzI2', '', 'Tirupati', '7981629173', 'We are a leading technology company focused on innovation and excellence in software development.', '2025-09-07 12:03:43'),
+(23, 'jastechcrop', 'abcd5511246@gmail.com', '$2y$10$4N1onDLkRDss7JWgEaxOw.ekkcEItJOqoiYe17tDmDr5nyfz.h21K', '', 'Tirupati , Andhrapardesh', '7981629173', 'MY company is to provider the all type of services', '2025-09-07 12:12:41'),
+(24, 'sharuktech', 'sharuk12345678@gmail.com', '$2y$10$oDWChxVOH5bP6n3xE.gKqeY/0x71fU7Tv5artqHXq8eYYTh8ZU58u', '', 'Adoni', '1234567890', 'this is hightly professional company', '2025-09-14 16:31:05'),
+(28, 'alpha', 'alpha1234567@gmail.com', '$2y$10$8oujYkHTJc7Z9IiOriQIfuwlDY3EAQLOfKNSQxAhCHoSv9HLRdOf6', '', 'Palasa', '123', 'This is my company', '2025-09-14 16:45:43'),
+(33, 'alpha', 'alpha123456711@gmail.com', '$2y$10$MFE.6uLiq6n5meVWsuWbX.meT8Gz/kcMLes72FoK2UfAQd9byhgP.', '', 'Tirupati', '1234567890', 'this is my alpha', '2025-09-14 18:00:59'),
+(34, 'tharuntech', 'tharunking12345678@gmail.com', '$2y$10$PQvVaSky1wrnSkyzndM6cuUYudDLmOS0Bkze5HRFGRu7l/0jW99Mq', 'Palasa near Reddy Building', 'Palasa', '1234567890', 'ssfdghj', '2025-11-03 16:23:10');
 
 -- --------------------------------------------------------
 
@@ -303,7 +306,8 @@ INSERT INTO `shortlisted` (`shortlist_id`, `job_id`, `provider_id`, `seeker_id`,
 (9, 24, 23, 18, '2025-10-14'),
 (10, 22, 23, 18, '2025-10-14'),
 (12, 24, 23, 11, '2025-10-18'),
-(13, 30, 23, 5, '2025-10-18');
+(13, 30, 23, 5, '2025-10-18'),
+(14, 28, 22, 5, '2025-10-22');
 
 --
 -- Indexes for dumped tables
@@ -372,7 +376,7 @@ ALTER TABLE `applied_job`
 -- AUTO_INCREMENT for table `hired`
 --
 ALTER TABLE `hired`
-  MODIFY `hired_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `hired_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `posted_jobs`
@@ -384,7 +388,7 @@ ALTER TABLE `posted_jobs`
 -- AUTO_INCREMENT for table `providers`
 --
 ALTER TABLE `providers`
-  MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `provider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `reset_tokens`
@@ -408,7 +412,7 @@ ALTER TABLE `seekers`
 -- AUTO_INCREMENT for table `shortlisted`
 --
 ALTER TABLE `shortlisted`
-  MODIFY `shortlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `shortlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
