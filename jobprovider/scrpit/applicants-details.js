@@ -1,4 +1,3 @@
-
 // Setup event listeners
 function setupEventListeners() {
     // Notification close buttons
@@ -26,11 +25,6 @@ function setupEventListeners() {
     });
 }
 
-
-
-
-
-
 // Utility function to show notifications
 function showNotification(message, type = 'info') {
     // Remove existing notifications
@@ -45,9 +39,6 @@ function showNotification(message, type = 'info') {
             <i class="fas fa-${getNotificationIcon(type)}"></i>
             <span>${message}</span>
         </div>
-        <button class="notification-close" onclick="this.parentElement.remove()">
-            <i class="fas fa-times"></i>
-        </button>
     `;
 
     // Add to page
@@ -81,8 +72,6 @@ function getNotificationIcon(type) {
     };
     return icons[type] || 'info-circle';
 }
-
-
 
 function timeAgo(inputDate) {
     const now = new Date();
@@ -119,11 +108,6 @@ function timeAgo(inputDate) {
     }
 }
 
-// Example usage:
-console.log(timeAgo('2025-10-09')); // Output: "2 days ago" (depending on current date)
-console.log(timeAgo('2025-09-30')); // Output: "1 week ago"
-
-
 // real js
 
 let jobiddata = [];
@@ -134,15 +118,13 @@ let providerdata = [];
 
 let url = new URL(window.location.href);
 let jobId = url.searchParams.get("jobId");
-console.log(jobId);
+
+let jobIdtilte = "";
 
 async function providername() {
     let data = await fetch("../backend/get_provider.php");
     providerdata = await data.json();
-    console.log(providerdata);
 }
-
-
 
 async function getjobiddata() {
 
@@ -155,7 +137,6 @@ async function getjobiddata() {
     let rawText = await response.text();
 
     jobiddata = JSON.parse(rawText);
-    console.log(jobiddata);
     benfits = jobiddata[0].job_benifits;
 }
 
@@ -215,9 +196,7 @@ async function isshorlisted(jobid, providerid, seekerid) {
         body: JSON.stringify({ 'jobid': jobid, 'providerid': providerid })
     });
     let text = await res.text();
-    console.log(text);
     shortlistdata = JSON.parse(text);
-    console.log(shortlistdata);
 
     shortlistdata.forEach((user) => {
         if (parseInt(user.seekerid) === parseInt(seekerid)) {
@@ -255,7 +234,6 @@ async function genrateapplicants() {
 
             let shortliststatus = await isshorlisted(applicant.job_id, applicant.provider_name, applicant.seeker_id);
             let hirestatus = await ishired(applicant.job_id, applicant.provider_name, applicant.seeker_id);
-
             applicantshtml += `
         
             <div class="applicant-card">
@@ -282,7 +260,7 @@ async function genrateapplicants() {
                             <button class="btn-secondary view-profile " data-seekerid="${applicant.seeker_id}">
                                 <i class="fas fa-user"></i> View Profile
                             </button>
-                            ${shortliststatus ? `${hirestatus ? `` : `<button class="btn-success hire-btn" data-seekerid="${applicant.seeker_id}" data-jobid="${applicant.job_id}" data-providerid="${applicant.provider_name}"><i class="fas fa-star"></i> hire employee</button>`}` : ` <button class="btn-warning shortlist-btn " data-seekerid="${applicant.seeker_id}" data-jobid="${applicant.job_id}" data-providerid="${applicant.provider_name}" > <i class="fas fa-star"></i> Shortlist</button> `}
+                            ${shortliststatus ? `${hirestatus ? `` : `<button class="btn-success hire-btn" data-seekerid="${applicant.seeker_id}" data-jobid="${applicant.job_id}" data-providerid="${applicant.provider_name}" data-email="${applicant.email}"  data-jobname="${jobIdtilte}"><i class="fas fa-star"></i> hire employee</button>`}` : ` <button class="btn-warning shortlist-btn " data-seekerid="${applicant.seeker_id}" data-jobid="${applicant.job_id}" data-providerid="${applicant.provider_name}" > <i class="fas fa-star"></i> Shortlist</button> `}
                         </div>
                     </div>
         
@@ -303,7 +281,7 @@ async function genrateapplicants() {
 
 function genratedidjobs() {
     let jobinfo = ``;
-
+    jobIdtilte = jobiddata[0].job_title;
     jobiddata.forEach((job) => {
 
         jobinfo += `
@@ -408,17 +386,13 @@ async function main() {
         close.addEventListener("click", async () => {
             let jobstatus = close.dataset.status;
             let jobid = close.dataset.jobid;
-            console.log(jobstatus);
-            console.log(jobid);
             let res = await fetch("../backend/required-updates.php", {
                 method: "POST",
                 body: JSON.stringify({ "status": jobstatus, "jobid": jobid }),
                 headers: { 'Content-Type': 'application/json' }
             });
             let text = await res.text();
-            console.log(text);
             let realdata = JSON.parse(text);
-            console.log(realdata);
             main();
         });
     }
@@ -428,17 +402,13 @@ async function main() {
         open.addEventListener("click", async () => {
             let jobstatus = open.dataset.status;
             let jobid = open.dataset.jobid;
-            console.log(jobstatus);
-            console.log(jobid);
             let res = await fetch("../backend/required-updates.php", {
                 method: "POST",
                 body: JSON.stringify({ "status": jobstatus, "jobid": jobid }),
                 headers: { 'Content-Type': 'application/json' }
             });
             let text = await res.text();
-            console.log(text);
             let realdata = JSON.parse(text);
-            console.log(realdata);
             main();
         });
     }
@@ -480,9 +450,7 @@ async function main() {
                     body: JSON.stringify({ 'seekerid': id, 'jobid': jobid, 'providerid': providerid })
                 });
                 let text = await res.text();
-                console.log(text);
                 let realdata = JSON.parse(text);
-                console.log(realdata);
                 main();
             }
 
@@ -490,24 +458,68 @@ async function main() {
     });
 
     document.querySelectorAll(".hire-btn").forEach((hire) => {
-        hire.addEventListener("click", async () => {
-            let id = hire.dataset.seekerid;
-            let jobid = hire.dataset.jobid;
-            let providerid = hire.dataset.providerid;
-            let hirestatus = await ishired(jobid, providerid,id);
+        hire.addEventListener("click", async function() { 
+            const hireButton = this;
+            let id = hireButton.dataset.seekerid;
+            let jobid = hireButton.dataset.jobid;
+            let providerid = hireButton.dataset.providerid;
+            let jobname = hireButton.dataset.jobname;
+            
+            // 1. Immediately disable and change state for feedback
+            hireButton.disabled = true;
+            hireButton.innerHTML = `Sending Mail... <i class="fas fa-paper-plane fa-spin"></i> `;
+            
+            let hirestatus = await ishired(jobid, providerid, id);
 
             if (!hirestatus) {
-
+                // HIRE EMPLOYEE LOGIC
                 let res = await fetch("../backend/hireemploye.php", {
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 'seekerid': id, 'jobid': jobid, 'providerid': providerid })
                 });
                 let text = await res.text();
-                console.log(text);
                 let realdata = JSON.parse(text);
-                console.log(realdata);
+                
+                // SEND EMAIL LOGIC
+                let response = await fetch("../backend/sendemail.php", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 'seekerid': id, 'jobid': jobid, 'providerid': providerid, 'jobname': jobname })
+                });
+                let resptext = await response.text();
+                let respdata = JSON.parse(resptext);
+                
+                // 3. Handle Notification and final button state
+                if (respdata.status === "success") {
+                    // Update button to success state
+                    hireButton.innerHTML = `<i class="fas fa-envelope-open-text"></i> Mail Sent`;
+                    hireButton.classList.remove('btn-success');
+                    hireButton.classList.add('btn-safe'); 
+                    
+                    // Show notification
+                    showNotification(respdata.message, 'success');
+                    
+                } else if (respdata.message) {
+                    // Re-enable on failure with original text and show error
+                    hireButton.disabled = false;
+                    hireButton.innerHTML = `<i class="fas fa-star"></i> hire employee`;
+                    showNotification(respdata.message, 'error');
+                } else {
+                    // Re-enable on unknown failure with original text and show warning
+                    hireButton.disabled = false;
+                    hireButton.innerHTML = `<i class="fas fa-star"></i> hire employee`;
+                    showNotification("Hired employee, but failed to send email notification.", 'warning');
+                }
+                
+                // 4. Call main() to reload the applicant list after notification/feedback
+                // The main() call will re-render the button as hired and remove the button
                 main();
+            } else {
+                 // If already hired
+                 // Re-enable on failure (should not happen if logic is correct, but safe)
+                 hireButton.disabled = false;
+                 hireButton.innerHTML = `<i class="fas fa-star"></i> hire employee`;
             }
 
         });

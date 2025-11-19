@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2025 at 05:28 PM
+-- Generation Time: Nov 19, 2025 at 08:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -77,7 +77,7 @@ INSERT INTO `hired` (`hired_id`, `job_id`, `provider_id`, `seeker_id`, `hired_at
 (6, 24, 23, 11, '2025-10-18'),
 (7, 24, 23, 5, '2025-10-18'),
 (8, 30, 23, 5, '2025-10-18'),
-(10, 28, 22, 5, '2025-10-31');
+(12, 28, 22, 5, '2025-11-04');
 
 -- --------------------------------------------------------
 
@@ -376,7 +376,7 @@ ALTER TABLE `applied_job`
 -- AUTO_INCREMENT for table `hired`
 --
 ALTER TABLE `hired`
-  MODIFY `hired_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `hired_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `posted_jobs`

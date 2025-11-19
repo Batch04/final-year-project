@@ -63,7 +63,7 @@ function genratehireddata() {
 
 
 
-document.addEventListener('DOMContentLoaded', async () => {
+async function main() {
     // Select all buttons
 
     await gethireddata();
@@ -98,11 +98,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(rawdata);
             let result = JSON.parse(rawdata);
             console.log(result);
-
-            await gethireddata();
-            genratehireddata();
-
+            main();
         })
     })
 
-});
+}
+
+main();
