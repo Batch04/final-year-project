@@ -8,6 +8,10 @@
   --black: #000;
   --gray: #797272;
   --red: #f44336;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
   /* Complementary accent for 'Fire' button */
 
   /* Spacing System: 8-point grid */
@@ -245,4 +249,108 @@ body {
   .dashboard-container {
     padding: var(--spacing-lg) var(--spacing-sm);
   }
+}
+
+/* Animation Classes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Notification Styles */
+.notification {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  background: var(--white);
+  border-left: 4px solid var(--blue);
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: var(--hover-shadow);
+  z-index: 1001;
+  transform: translateX(400px);
+  transition: var(--transition);
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification.success {
+  border-bottom: 1px solid var(--success-color);
+  border-top: 1px solid var(--success-color);
+  border-right: 1px solid var(--success-color);
+  border-left-color: var(--success-color);
+}
+
+.notification.error {
+  border-left-color: var(--danger-color);
+  border-bottom: 1px solid var(--danger-color);
+  border-top: 1px solid var(--danger-color);
+  border-right: 1px solid var(--danger-color);
+}
+
+.notification.warning {
+  border-left-color: var(--warning-color);
+  border-bottom: 1px solid var(--warning-color);
+  border-top: 1px solid var(--warning-color);
+  border-right: 1px solid var(--warning-color);
+}
+
+/* Icon Colors for Notification Types */
+.notification.success i {
+  color: #28a745;
+  /* Green */
+}
+
+.notification.error i {
+  color: #dc3545;
+  /* Red */
+}
+
+.notification.warning i {
+  color: #ffc107;
+  /* Yellow */
+}
+
+.notification.info i {
+  color: #17a2b8;
+  /* Blue */
 }
