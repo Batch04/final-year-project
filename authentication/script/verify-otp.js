@@ -259,3 +259,25 @@ window.addEventListener('popstate', (event) => {
   console.log('Navigation state changed');
 });
 
+
+
+const params=new URLSearchParams(window.location.search);
+document.getElementById("email").value=params.get("email");
+
+        document.getElementById("verifyForm").addEventListener("submit",function(e){
+            e.preventDefault();
+            let email=document.getElementById("email").value;
+            let otp=document.getElementById("otp").value;
+            fetch("../backend/verify_otp.php",{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({email:email,otp:otp})
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                if(data.status==="success"){
+                    window.location.href="set-password.html?email="+encodeURIComponent(email)+"&token="+data.token;
+                }
+            });
+
+        });
