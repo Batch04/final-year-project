@@ -1,3 +1,53 @@
+// --- UTILITY FUNCTIONS (For Notifications) ---
+
+function getNotificationIcon(type) {
+    const icons = {
+        success: 'check-circle',
+        error: 'exclamation-circle',
+        warning: 'exclamation-triangle',
+        info: 'info-circle'
+    };
+    return icons[type] || 'info-circle';
+}
+
+function showNotification(message, type = 'info') {
+    // Remove existing notifications to avoid stacking
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => notification.remove());
+
+    // Create new notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${getNotificationIcon(type)}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+
+    // Add to page
+    document.body.appendChild(notification);
+
+    // Show notification with transition
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 300);
+        }
+    }, 5000);
+}
+
+
+// --- CORE APPLICATION LOGIC ---
 
 let hireddata = [];
 async function gethireddata() {
@@ -44,7 +94,7 @@ function genratehireddata() {
                 <div class="card-actions">
                     <button class="btn btn-contact" data-phone="${user.phone}">Contact</button>
                     <button class="btn btn-view-profile" data-seekerid="${user.seeker_id}">View Profile</button>
-                    <button class="btn btn-fire bg-red" title="Terminate Employment" data-seekerid="${user.seeker_id}" data-jobid="${user.job_id}" >Fire</button>
+                    <button class="btn btn-fire bg-red" title="Terminate Employment" data-seekerid="${user.seeker_id}" data-jobid="${user.job_id}" data-jobname="${user.job_title}" >Fire</button>
                 </div>
             </div>
 
@@ -55,7 +105,7 @@ function genratehireddata() {
         document.querySelector(".employee-grid").innerHTML = hiredhtml;
     }
     else {
-        document.querySelector(".employee-grid").innerHTML = `<h3 style="color:red">NO EMPLOYEES HIRED</h3>`;
+        document.querySelector(".employee-grid").innerHTML = `<h3 style="color:var(--red)">NO EMPLOYEES HIRED</h3>`;
 
     }
 
@@ -63,9 +113,8 @@ function genratehireddata() {
 
 
 
-document.addEventListener('DOMContentLoaded', async () => {
-    // Select all buttons
-
+async function main() {
+    
     await gethireddata();
     genratehireddata();
 
@@ -82,27 +131,73 @@ document.addEventListener('DOMContentLoaded', async () => {
             window.location.href = `tel:+91${id}`;
         })
     })
+
     document.querySelectorAll(".btn-fire").forEach((fire) => {
-        fire.addEventListener("click", async () => {
-            let id = fire.dataset.seekerid;
-            let jobid = fire.dataset.jobid;
-            console.log(id);
-            console.log(jobid);
-            let res = await fetch("../backend/fireemploye.php", {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 'seekerid': id, 'jobid': jobid })
-            })
+        fire.addEventListener("click", async function() {
+            const fireButton = this;
+            let id = fireButton.dataset.seekerid;
+            let jobid = fireButton.dataset.jobid;
+            let jobname = fireButton.dataset.jobname;
 
-            let rawdata = await res.text();
-            console.log(rawdata);
-            let result = JSON.parse(rawdata);
-            console.log(result);
+            // 1. Disable button and show sending mail transition
+            fireButton.disabled = true;
+            // Use Font Awesome spin class for visual transition
+            fireButton.innerHTML = `<i class="fas fa-paper-plane fa-spin"></i>...`;
+            
+            try {
+                // 2. Fire employee (database update)
+                let res = await fetch("../backend/fireemploye.php", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 'seekerid': id, 'jobid': jobid })
+                });
+                let rawdata = await res.text();
+                let result = JSON.parse(rawdata);
+                
+                // 3. Send email notification
+                let response = await fetch("../backend/send-fire-mail.php", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 'seekerid': id, 'jobid': jobid, 'jobname': jobname })
+                });
+                let maildata = await response.text();
+                let mailresult = JSON.parse(maildata);
+                console.log(mailresult);
 
-            await gethireddata();
-            genratehireddata();
-
+                // 4. Handle Notification and final button state
+                if (mailresult.status === "success") {
+                    // Update button to success state (Mail Sent)
+                    fireButton.innerHTML = `<i class="fas fa-envelope-open-text"></i> Mail Sent`;
+                    fireButton.classList.remove('bg-red');
+                    fireButton.classList.add('bg-safe'); 
+                    
+                    // Show notification
+                    showNotification(mailresult.message, 'success');
+                    
+                } else if (mailresult.message) {
+                    // Re-enable button on email failure and show error
+                    fireButton.disabled = false;
+                    fireButton.innerHTML = `Fire`; // Revert to original text
+                    showNotification(`Email failed: ${mailresult.message}`, 'error');
+                } else {
+                    // Default email failure handling
+                    fireButton.disabled = false;
+                    fireButton.innerHTML = `Fire`; // Revert to original text
+                    showNotification("Fired employee, but failed to send email notification.", 'warning');
+                }
+                
+            } catch (error) {
+                // Handle critical network or parsing errors
+                showNotification("An unexpected error occurred during the process.", 'error');
+                fireButton.disabled = false;
+                fireButton.innerHTML = `Fire`; // Revert to original text
+            }
+            
+            // 5. Call main() to reload the list (removes the card)
+            main();
         })
     })
 
-});
+}
+
+main(); 

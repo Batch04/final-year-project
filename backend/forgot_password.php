@@ -1,4 +1,9 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../vendor/autoload.php';
+
 include 'connect.php';
 include 'dbcreate.php';
 include 'tables.php';
@@ -25,8 +30,28 @@ if($res->num_rows>0){
         VALUES(?,?,?,?,DATE_ADD(NOW(),INTERVAL 10 MINUTE)) ");
     $insert->bind_param('isss',$user_id,$user_type,$email,$otp);
     $insert->execute();
-    mail($email,"PASSWORD RESET OTP","YOUR OTP is:$otp");
-    echo json_encode(['status'=>'success','message'=>'OTP sent to your email']);
+
+    //Send OTP email
+    $mail = new PHPMailer(true);
+    try{
+        $mail->isSMTP();
+        $mail->Host='smtp.gmail.com';
+        $mail->SMTPAuth=true;
+        $mail->Username='parttimeconnect2025@gmail.com';
+        $mail->Password='sxbu tvvl vfqe psaa';
+        $mail->SMTPSecure='tls';
+        $mail->Port=587;
+        $mail->setFrom('parttimeconnect2025@gmail.com','Parttimeconnect');
+        $mail->addAddress($email);
+        $mail->isHTML(true);
+        $mail->Subject='Your OTP Code';
+        $mail->Body='Your OTP code is <b>'.$otp.' It will expire in 10 minutes.';
+        $mail->send();
+        echo json_encode(['status'=>'success','message'=>'OTP sent to your email']);   
+    }
+    catch(Exception $e){
+        echo json_encode(['status'=>'error','message'=>'Mailer Error: '.$mail->ErrorInfo]);
+    }
 }
 else{
     echo json_encode(['status'=>'error','message'=>'Email not Found']);

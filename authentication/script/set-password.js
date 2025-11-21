@@ -179,3 +179,36 @@ document.addEventListener('keydown', function(e) {
 document.addEventListener('DOMContentLoaded', function() {
     newPasswordInput.focus();
 });
+
+
+const params = new URLSearchParams(window.location.search);
+    document.getElementById("token").value = params.get("token")||"";
+  document.getElementById("email").value = params.get("email")||"";
+
+
+  document.getElementById("passwordForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      let email = document.getElementById("email").value;
+      let token = document.getElementById("token").value;
+      let password = document.getElementById("newPassword").value;
+      let confirm_password = document.getElementById("confirmPassword").value;
+
+      if(password !== confirm_password){
+          document.getElementById("errorMessage").innerText = "Passwords do not match";
+          return;
+      }
+
+      fetch("../backend/reset_password.php", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ email:email, token:token, password:password })
+      })
+      .then(res => res.json())
+      .then(data => {
+          document.getElementById("errorMessage").innerText = data.message;
+          if(data.status === "success"){
+            document.getElementById("successMessage").innerText=data.message;
+              setTimeout(()=>{ window.location.href = "loginpage.html"; }, 2000);
+          }
+      });
+  });

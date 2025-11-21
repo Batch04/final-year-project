@@ -11,8 +11,24 @@ class ResetPasswordManager {
     const backToLoginLink = document.getElementById('backToLogin');
 
     // Form submission
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async(e) => {
       e.preventDefault();
+       let email = document.getElementById("email").value;
+        fetch("../backend/forgot_password.php",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({email:email})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.status==='success'){
+              this.showSuccess('Password reset link sent! Check your email inbox');
+                window.location.href="verify-otp.html?email="+encodeURIComponent(email);
+            }
+            else{
+              this.showError('data.message');
+            }
+        });
       this.handleResetPassword();
     });
 
