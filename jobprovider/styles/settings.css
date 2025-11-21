@@ -33,7 +33,6 @@ h6 {
     color: var(--black);
 }
 
-/* Main content styling */
 .settings-container {
     max-width: 900px;
     margin: 100px auto;
@@ -42,13 +41,11 @@ h6 {
     border-radius: 8px;
     box-shadow: 0 4px 8px var(--shadow-color);
     min-height: 70vh;
-    /* Larger height for balanced design */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Company Header Section */
 .company-header {
     background: linear-gradient(135deg, var(--white), var(--light-blue));
     border-radius: 8px;
@@ -128,7 +125,6 @@ h6 {
     margin-left: 5px;
 }
 
-/* settings card */
 .settings-card {
     padding: 20px;
     width: 100%;
@@ -225,7 +221,6 @@ h6 {
     background-color: #006bb3;
 }
 
-/* Modal styles */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -254,7 +249,6 @@ h6 {
     box-shadow: 0 5px 15px var(--shadow-color);
     position: relative;
     max-width: 500px;
-    /* Fixed width for desktop */
     width: 90%;
     transform: translateY(-20px);
     transition: transform 0.3s ease;
@@ -358,6 +352,9 @@ h6 {
 .modal-delete-btn:hover {
     background-color: #c82333;
 }
+
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

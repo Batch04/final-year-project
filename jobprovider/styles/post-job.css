@@ -1,4 +1,3 @@
-/* CSS Variables - Consistent with header styles */
 :root {
     --blue: #0384fc;
     --white: #ffffff;
@@ -20,7 +19,6 @@
     --transition: all 0.3s ease;
 }
 
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -38,9 +36,6 @@ body {
     background-color: var(--light-gray);
 }
 
-
-
-/* Main Content Styles */
 .main-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -51,9 +46,6 @@ body {
     width: 100%;
 }
 
-
-
-/* Company Header Section */
 .company-header {
     background: linear-gradient(135deg, var(--white), var(--light-blue));
     border-radius: var(--border-radius);
@@ -133,7 +125,6 @@ body {
     margin-left: 5px;
 }
 
-/* Job Form Section */
 .job-form-section {
     background: var(--white);
     border-radius: var(--border-radius);
@@ -171,7 +162,6 @@ body {
     margin: 0 auto;
 }
 
-/* Form Styles */
 .job-form {
     padding: 40px;
 }
@@ -305,7 +295,6 @@ body {
     text-align: right;
 }
 
-/* Benefits Grid */
 .benefits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -345,7 +334,6 @@ body {
     font-size: 12px;
 }
 
-/* Form Actions */
 .form-actions {
     display: flex;
     gap: 15px;
@@ -409,7 +397,6 @@ body {
     box-shadow: var(--card-shadow);
 }
 
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -485,7 +472,6 @@ body {
     background: var(--light-gray);
 }
 
-/* Success Modal */
 .success-modal {
     text-align: center;
     padding: 40px 30px;
@@ -544,7 +530,6 @@ body {
     justify-content: center;
 }
 
-/* Footer */
 .footer {
     background: var(--black);
     color: var(--white);
@@ -597,7 +582,95 @@ body {
     color: var(--text-muted);
 }
 
-/* Responsive Design */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.company-header,
+.job-form-section {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.job-form-section {
+    animation-delay: 0.2s;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+@media print {
+    .navbar,
+    .form-actions,
+    .footer {
+        display: none;
+    }
+    
+    body {
+        padding-top: 0;
+        background: white;
+    }
+    
+    .company-header,
+    .job-form-section {
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+    }
+}
+
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: #000000;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+
+
+
+
+
+
 @media (min-width: 768px) {
     .form-row {
         grid-template-columns: 1fr 1fr;
@@ -614,7 +687,7 @@ body {
 
 @media (max-width: 768px) {
     body {
-        padding-top: 120px; /* Adjust for wrapped navbar */
+        padding-top: 120px; 
     }
     
     .nav-container {
@@ -720,96 +793,7 @@ body {
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 2fr;
         text-align: center;
     }
 }
-
-/* Animation Keyframes */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Page Load Animations */
-.company-header,
-.job-form-section {
-    animation: fadeInUp 0.6s ease-out;
-}
-
-.job-form-section {
-    animation-delay: 0.2s;
-}
-
-/* Focus styles for accessibility */
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-    outline: 2px solid var(--blue);
-    outline-offset: 2px;
-}
-
-/* Print styles */
-@media print {
-    .navbar,
-    .form-actions,
-    .footer {
-        display: none;
-    }
-    
-    body {
-        padding-top: 0;
-        background: white;
-    }
-    
-    .company-header,
-    .job-form-section {
-        box-shadow: none;
-        border: 1px solid var(--border-color);
-    }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-    :root {
-        --border-color: #000000;
-        --shadow-color: rgba(0, 0, 0, 0.3);
-    }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-

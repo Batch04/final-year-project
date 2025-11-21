@@ -1,14 +1,11 @@
-/* Custom Properties and Typography Setup */
 :root {
-    /* Color Palette (Based on provided blue/gray, aligned with 60-30-10 rule) */
-    --color-primary: #0384fc; /* Accent (10%) */
-    --color-background: #f5f6f7; /* Neutral (60%) */
+    --color-primary: #0384fc; 
+    --color-background: #f5f6f7; 
     --color-card-bg: #ffffff; 
     --color-text-dark: #1a1a1a; 
-    --color-text-subtle: #797272; /* Gray */
+    --color-text-subtle: #797272;
     --color-border-subtle: rgba(0, 0, 0, 0.08);
 
-    /* Spacing System: Multiples of 8 (8-point system) */
     --space-xs: 8px;
     --space-sm: 16px;
     --space-md: 24px;
@@ -16,14 +13,12 @@
     --space-xl: 64px;
     --space-xxl: 96px; 
 
-    /* Typography */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Poppins', sans-serif;
     --line-height-heading: 1.1; 
     --transition: all 0.2s ease-out;
 }
 
-/* Base Reset and Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -39,25 +34,21 @@ body {
     min-height: 100vh;
 }
 
-/* --- Core 12-Column Grid Wrapper (90% Width) --- */
 .page-container {
-    /* Enforce 90% of the viewport width, centered */
     width: 90%; 
     margin: 0 auto;
-    /* Master 12-column grid for alignment */
     display: grid;
     grid-template-columns: repeat(12, 1fr); 
-    gap: var(--space-lg); /* 32px gap */
+    gap: var(--space-lg); 
     padding: 0; 
 }
 
-/* --- Page Header Section --- */
 .page-header-container {
-    grid-column: 1 / -1; /* Spans all 12 columns */
+    grid-column: 1 / -1; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-xl) 0 var(--space-md); /* 64px top/bottom margin */
+    padding: var(--space-xl) 0 var(--space-md);
     border-bottom: 1px solid var(--color-border-subtle); 
 }
 
@@ -72,7 +63,7 @@ body {
     font-weight: 700;
     color: var(--color-text-dark);
     line-height: var(--line-height-heading);
-    margin-bottom: var(--space-xs); /* 8px */
+    margin-bottom: var(--space-xs); 
 }
 
 .subtext-description {
@@ -81,7 +72,6 @@ body {
     font-weight: 400;
 }
 
-/* Post New Job Button (Primary CTA) */
 .btn-post {
     display: flex;
     align-items: center;
@@ -107,17 +97,16 @@ body {
 .icon-post {
     font-size: 24px;
     font-weight: 400;
-    font-variation-settings: 'FILL' 1; /* Filled icon style */
+    font-variation-settings: 'FILL' 1;
 }
 
-/* --- Posted Jobs Section --- */
 .posted-jobs-section {
     grid-column: 1 / -1; 
-    padding-bottom: var(--space-xxl); /* 96px bottom padding for separation [cite: 30] */
+    padding-bottom: var(--space-xxl); 
 }
 
 .section-header {
-    margin-bottom: var(--space-lg); /* 32px */
+    margin-bottom: var(--space-lg); 
 }
 
 .section-title {
@@ -128,18 +117,16 @@ body {
     margin-bottom: var(--space-xs);
 }
 
-/* Jobs Grid (Sub-Grid) */
+
 .jobs-grid {
     display: grid;
-    /* 3 cards per row for desktop (12 columns / 3 cards = 4 columns per card) */
     grid-template-columns: repeat(3, 1fr); 
-    gap: var(--space-lg); /* 32px spacing */
+    gap: var(--space-lg); 
 }
 
-/* Job Card (Premium Floating Design) */
 .job-card {
     background-color: var(--color-card-bg);
-    padding: var(--space-lg); /* 32px */
+    padding: var(--space-lg); 
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
@@ -149,11 +136,10 @@ body {
 
 .job-card:hover {
     transform: translateY(-4px); 
-    box-shadow: 0 12px 30px rgba(3, 132, 252, 0.15); /* Blue hover accent */
+    box-shadow: 0 12px 30px rgba(3, 132, 252, 0.15); 
     cursor: pointer;
 }
 
-/* Placeholder card for visual completion */
 .job-card.card-placeholder {
     display: flex;
     align-items: center;
@@ -176,12 +162,11 @@ body {
     text-align: center;
 }
 
-/* Job Header */
 .job-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: var(--space-md); /* 24px */
+    margin-bottom: var(--space-md); 
     gap: var(--space-sm);
 }
 
@@ -194,7 +179,6 @@ body {
     flex: 1;
 }
 
-/* Job Type Badge - Refined Styles */
 .job-type {
     padding: 0.25rem 0.75rem;
     border-radius: 4px;
@@ -221,18 +205,17 @@ body {
     color: #3d348b;
 }
 
-/* Job Details */
 .job-details {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm); /* 16px */
-    margin-bottom: var(--space-lg); /* 32px */
+    gap: var(--space-sm); 
+    margin-bottom: var(--space-lg); 
 }
 
 .job-info {
     display: flex;
     align-items: center;
-    gap: var(--space-xs); /* 8px */
+    gap: var(--space-xs); 
     color: var(--color-text-subtle);
     font-size: 0.95rem;
 }
@@ -249,9 +232,8 @@ body {
     color: var(--color-text-dark);
 }
 
-/* View Applicants Button (Conversion-focused at bottom) */
 .view-applicants-btn {
-    margin-top: auto; /* Push button to the bottom */
+    margin-top: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -282,33 +264,17 @@ body {
 }
 
 
-/* --- Responsive Design (Adapting the 12-column grid) --- */
 
-/* Tablet (8-column equivalent layout: 2 cards per row) */
-@media (max-width: 1024px) {
-    .jobs-grid {
-        grid-template-columns: repeat(2, 1fr);
+@media (max-width: 425px) {
+    .page-container {
+        width: 95%; 
     }
-    
-    .page-header-container {
+     .page-header-container {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-md);
         padding: var(--space-md) 0;
     }
-
-    .post-job-btn-wrapper {
-        align-self: auto;
-    }
-}
-
-/* Mobile (4-column equivalent layout: 1 card per row) */
-@media (max-width: 600px) {
-    .page-container {
-        /* Reduce width slightly on small screens for comfortable padding/margins */
-        width: 95%; 
-    }
-    
     .jobs-grid {
         grid-template-columns: 1fr;
         gap: var(--space-md);
@@ -322,5 +288,17 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-sm);
+    }
+}
+
+@media (min-width:426px) and (max-width: 768px){
+    .jobs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }   
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .jobs-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
