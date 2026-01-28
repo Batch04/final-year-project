@@ -28,7 +28,7 @@ function getInitials(name) {
 
 
 function genratejob() {
-    let postjob = "";
+    let postjob = ""; 
     data.forEach((job) => {
         if (job.job_status === "open") {
             postjob += `

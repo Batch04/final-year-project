@@ -489,6 +489,7 @@ async function main() {
                 });
                 let resptext = await response.text();
                 let respdata = JSON.parse(resptext);
+                console.log(respdata);
                 
                 // 3. Handle Notification and final button state
                 if (respdata.status === "success") {

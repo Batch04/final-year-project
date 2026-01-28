@@ -205,7 +205,6 @@ const params = new URLSearchParams(window.location.search);
       })
       .then(res => res.json())
       .then(data => {
-          document.getElementById("errorMessage").innerText = data.message;
           if(data.status === "success"){
             document.getElementById("successMessage").innerText=data.message;
               setTimeout(()=>{ window.location.href = "loginpage.html"; }, 2000);
